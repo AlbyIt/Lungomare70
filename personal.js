@@ -72,7 +72,10 @@ function renderPersonalSection(index,lang) {
    const arrival=document.createElement('p');arrival.className='personal-arrival';
    const formatted=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(date);
    const prefix={it:'Ti aspettiamo',en:'We look forward to welcoming you',de:'Wir erwarten dich',fr:'Nous t’attendons',es:'Te esperamos',nl:'We verwachten je',pl:'Czekamy na Ciebie'}[lang]||'Ti aspettiamo';
-   arrival.textContent=prefix+' '+formatted+' · 15:00';panel.append(arrival);
+   arrival.textContent=prefix+' '+formatted+' · 15:00';
+   const detail=document.getElementById('detail-text');
+   detail.prepend(document.createTextNode(arrival.textContent+'\n\n'));
+   detail.style.whiteSpace='pre-line';
   }
  }
  for(const kind of ['gate','safe']){
