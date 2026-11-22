@@ -104,3 +104,13 @@ prima dell'utilizzo operativo con i codici reali degli ospiti.
   e altri elenchi locali. Orari e prezzi non fissati nella guida.
 - La revisione estetica con pulsanti più amichevoli resta rinviata su richiesta
   di Alberto. L'eventuale foto ravvicinata dei comandi water-bidet è da aggiungere.
+
+### Dotazioni confermate da Alberto per TUTTE le camere — 22 novembre 2026
+- Mini frigo; aria condizionata; TV; Wi-Fi gratuito; ventilatore a soffitto;
+  asciugacapelli; bagno privato con doccia e water-bidet; balcone con vista mare.
+- Mostrare questo elenco in «La mia camera», in tutte e sette le lingue.
+- Non elencare armadio e grucce. Eliminare dalla scheda personale la capienza:
+  l'ospite ha già prenotato. Conservare la fotografia e il collegamento alle
+  istruzioni del water-bidet. Ulteriori fotografie saranno scelte in seguito.
+- Il balcone vista mare e queste dotazioni non sono esclusivi di Stella:
+  Alberto conferma esplicitamente che sono presenti in tutte e quattro le camere.

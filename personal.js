@@ -10,6 +10,7 @@ const PERSONAL_TEXT = {
  nl: {welcome:'Welkom, {name}!',room:'Mijn kamer',entry:'Mijn aankomst',gate:'Poortcode',safe:'Code van het sleutelkluisje',missing:'Wordt meegedeeld',gateHelp:'Voer de 6 cijfers in, gevolgd door #.',safeHelp:'Het sleutelkluisje bevindt zich rechts van de glazen ingang. Aan de sleutelring zitten je kamersleutel en de kleine afstandsbediening van de poort.',gatePhoto:'Foto van het poorttoetsenbord',safePhoto:'Foto van het sleutelkluisje',pending:'Foto volgt',demo:'Voorbeeld · Kamer {room}',capacity:['Maximaal 2 gasten.','Maximaal 3 gasten.','Maximaal 2 gasten.','2 volwassenen en 2 kinderen of 1 volwassene en 3 kinderen.'],invalid:'Deze persoonlijke link is ongeldig. Vraag Cinzia en Alberto om een nieuwe link.'},
  pl: {welcome:'Witaj, {name}!',room:'Mój pokój',entry:'Moje wejście',gate:'Kod do bramy',safe:'Kod do sejfu na klucze',missing:'Do przekazania',gateHelp:'Wpisz 6 cyfr, a następnie #.',safeHelp:'Sejf na klucze znajduje się po prawej stronie przeszklonego wejścia. Brelok zawiera klucz do pokoju i mały pilot do bramy.',gatePhoto:'Zdjęcie klawiatury bramy',safePhoto:'Zdjęcie sejfu na klucze',pending:'Zdjęcie wkrótce',demo:'Podgląd · Pokój {room}',capacity:['Do 2 osób.','Do 3 osób.','Do 2 osób.','2 dorosłych i 2 dzieci lub 1 dorosły i 3 dzieci.'],invalid:'Ten link osobisty jest nieprawidłowy. Poproś Cinzię i Alberta o nowy link.'}
 };
+const ROOM_AMENITIES = {"it":{"title":"Le dotazioni della tua camera","items":["Mini frigo","Aria condizionata","TV","Wi-Fi gratuito","Ventilatore a soffitto","Asciugacapelli","Bagno privato con doccia e water-bidet","Balcone con vista mare"]},"en":{"title":"Your room amenities","items":["Mini fridge","Air conditioning","TV","Free Wi-Fi","Ceiling fan","Hairdryer","Private bathroom with shower and bidet toilet","Balcony with sea view"]},"de":{"title":"Deine Zimmerausstattung","items":["Mini-Kühlschrank","Klimaanlage","Fernseher","Kostenloses WLAN","Deckenventilator","Haartrockner","Eigenes Bad mit Dusche und WC mit Bidetfunktion","Balkon mit Meerblick"]},"fr":{"title":"Les équipements de ta chambre","items":["Mini-réfrigérateur","Climatisation","Télévision","Wi-Fi gratuit","Ventilateur de plafond","Sèche-cheveux","Salle de bains privative avec douche et WC-bidet","Balcon avec vue sur la mer"]},"es":{"title":"El equipamiento de tu habitación","items":["Mini nevera","Aire acondicionado","TV","Wi-Fi gratuito","Ventilador de techo","Secador de pelo","Baño privado con ducha y WC-bidé","Balcón con vistas al mar"]},"nl":{"title":"De voorzieningen in je kamer","items":["Minikoelkast","Airconditioning","TV","Gratis wifi","Plafondventilator","Haardroger","Eigen badkamer met douche en bidettoilet","Balkon met zeezicht"]},"pl":{"title":"Wyposażenie Twojego pokoju","items":["Minilodówka","Klimatyzacja","Telewizor","Bezpłatne Wi-Fi","Wentylator sufitowy","Suszarka do włosów","Prywatna łazienka z prysznicem i WC z funkcją bidetu","Balkon z widokiem na morze"]}};
 const ROOM_KEYS = ['stella','duna','onda','perla'];
 const ROOM_NAMES = ['Stella','Duna','Onda','Perla'];
 // Add only the owner's actual access photographs here when supplied.
@@ -48,12 +49,21 @@ function renderPersonalHeader(lang) {
  if(guest.demo) document.getElementById('subtitle').textContent=t.demo.replace('{room}',guest.room);
 }
 function renderPersonalSection(index,lang) {
+ document.getElementById('room-amenities')?.remove();
  const previous=document.getElementById('personal-access');
  if(previous) previous.remove();
  if(!guest || guest.invalid) return;
  const t=PERSONAL_TEXT[lang];
  document.getElementById('detail-title').textContent=personalLabel(index,GUIDE[lang].labels[index],lang);
- if(index===3) document.getElementById('detail-text').textContent=`${guest.room} · ${ROOM_NAMES[guest.room-1]}. ${t.capacity[guest.room-1]}`;
+ if(index===3) {
+  document.getElementById('detail-text').textContent=`${guest.room} · ${ROOM_NAMES[guest.room-1]}`;
+  const amenities=ROOM_AMENITIES[lang];
+  const section=document.createElement('section');section.id='room-amenities';
+  const heading=document.createElement('h3');heading.textContent=amenities.title;
+  const list=document.createElement('ul');list.className='room-amenities-list';
+  for(const item of amenities.items){const li=document.createElement('li');li.textContent=item;list.append(li);}
+  section.append(heading,list);document.getElementById('detail-text').after(section);
+ }
  if(index!==0) return;
  const panel=document.createElement('div'); panel.id='personal-access';
  for(const kind of ['gate','safe']){
