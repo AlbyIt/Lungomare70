@@ -51,6 +51,7 @@ function renderPersonalHeader(lang) {
 }
 function renderPersonalSection(index,lang) {
  document.getElementById('room-amenities')?.remove();
+ document.querySelector('.personal-cleaning')?.remove();
  const previous=document.getElementById('personal-access');
  if(previous) previous.remove();
  if(!guest || guest.invalid) return;
@@ -81,7 +82,8 @@ function renderPersonalSection(index,lang) {
   const heading=document.createElement('h3');heading.textContent=tr.title;section.append(heading);
   if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');li.textContent=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d)+' — '+tr[kind];list.append(li);}section.append(list);}
   const towels=document.createElement('p');towels.textContent=tr.towels;section.append(towels);
-  document.getElementById('detail-text').replaceWith(section);
+  document.getElementById('detail-text').textContent='';
+  document.getElementById('detail-text').after(section);
  }
  if(index!==0) return;
  const panel=document.createElement('div'); panel.id='personal-access';
