@@ -22,6 +22,7 @@ let selected = 'it';
 let activeSection = null;
 try { const preferred = localStorage.getItem('lungomare70-language'); if (Object.hasOwn(GUIDE, preferred)) selected = preferred; else {const browserLanguage = navigator.language.split('-')[0]; if(Object.hasOwn(GUIDE,browserLanguage)) selected=browserLanguage;} } catch {}
 function openSection(index) {
+ if(guest?.invalid) return;
  activeSection = index;
  const t=GUIDE[selected];
  document.querySelector('#detail-icon').innerHTML=svg(index);
@@ -32,13 +33,17 @@ function openSection(index) {
  if([2,4,11].includes(index)) addLink(links,t.contact,'mailto:info@lungomare70.it');
  if(index===11) addLink(links,'+39 335 7739549','tel:+393357739549');
  const gallery=document.querySelector('#detail-photos');gallery.replaceChildren();
- for(const photo of photos[index]||[]){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];img.alt=fixedCaptions[photo]||t.labels[index];img.loading='lazy';figure.append(img);if(fixedCaptions[photo]){const caption=document.createElement('figcaption');caption.textContent=fixedCaptions[photo];figure.append(caption);}gallery.append(figure);}
+ const sectionPhotos = guest && !guest.invalid && index===3 ? [ROOM_KEYS[guest.room-1]] : guest && index===0 ? [] : guest && guest.room!==1 && index===6 ? [] : photos[index]||[];
+ for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];img.alt=fixedCaptions[photo]||t.labels[index];img.loading='lazy';figure.append(img);if(fixedCaptions[photo]){const caption=document.createElement('figcaption');caption.textContent=fixedCaptions[photo];figure.append(caption);}gallery.append(figure);}
+ renderPersonalSection(index,selected);
  if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');dialog.scrollTop=0;}
 }
 function addLink(parent,label,href,external=false){const a=document.createElement('a');a.textContent=label;a.href=href;if(external){a.target='_blank';a.rel='noopener noreferrer';}parent.append(a);}
-function render(){const t=GUIDE[selected];document.documentElement.lang=selected;language.value=selected;document.title=`Lungomare 70 · ${t.subtitle}`;for(const id of ['subtitle','welcome','intro','footer'])document.getElementById(id).textContent=t[id];document.querySelector('#hero-title').textContent=t.title;document.querySelector('#guide-title').textContent=t.menu;document.querySelector('#close').setAttribute('aria-label',t.close);document.querySelector('.photo-strip').setAttribute('aria-label',t.photo);const cards=document.querySelector('#cards');cards.replaceChildren();t.labels.forEach((label,i)=>{const button=document.createElement('button');button.type='button';button.className='card';button.setAttribute('aria-haspopup','dialog');button.innerHTML=svg(i);const span=document.createElement('span');span.textContent=label;button.append(span);button.addEventListener('click',()=>openSection(i));cards.append(button);});if(dialog.open)openSection(activeSection);}
+function render(){const t=GUIDE[selected];document.documentElement.lang=selected;language.value=selected;document.title=`Lungomare 70 · ${t.subtitle}`;for(const id of ['subtitle','welcome','intro','footer'])document.getElementById(id).textContent=t[id];document.querySelector('#hero-title').textContent=t.title;document.querySelector('#guide-title').textContent=t.menu;document.querySelector('#close').setAttribute('aria-label',t.close);document.querySelector('.photo-strip').setAttribute('aria-label',t.photo);const cards=document.querySelector('#cards');cards.replaceChildren();t.labels.forEach((label,i)=>{const button=document.createElement('button');button.type='button';button.className='card';button.setAttribute('aria-haspopup','dialog');button.innerHTML=svg(i);const span=document.createElement('span');span.textContent=personalLabel(i,label,selected);button.append(span);button.addEventListener('click',()=>openSection(i));cards.append(button);});renderPersonalHeader(selected);if(dialog.open)openSection(activeSection);}
 language.addEventListener('change',()=>{selected=language.value;try{localStorage.setItem('lungomare70-language',selected);}catch{}render();});
 document.querySelector('#close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');activeSection=null;});
+if(guest && !guest.invalid && Object.hasOwn(GUIDE,guest.lang)) selected=guest.lang;
+window.addEventListener('hashchange',()=>{guest=readPersonalLink(location.hash);if(dialog.open)dialog.close();render();});
 render();
