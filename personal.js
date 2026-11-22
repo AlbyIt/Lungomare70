@@ -61,7 +61,7 @@ function renderPersonalSection(index,lang) {
   const section=document.createElement('section');section.id='room-amenities';
   const heading=document.createElement('h3');heading.textContent=amenities.title;
   const list=document.createElement('ul');list.className='room-amenities-list';
-  for(const item of amenities.items){const li=document.createElement('li');li.textContent=item;list.append(li);}
+  for(const item of amenities.items){const li=document.createElement('li');const terms=['water-bidet','bidet toilet','WC mit Bidetfunktion','WC-bidet','WC-bidé','bidettoilet','WC z funkcją bidetu'];const term=terms.find(x=>item.toLocaleLowerCase().includes(x.toLocaleLowerCase()));if(term){const at=item.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());li.append(document.createTextNode(item.slice(0,at)));const link=document.createElement('button');link.type='button';link.className='inline-bidet-link';link.textContent=item.slice(at,at+term.length);link.addEventListener('click',()=>{openSection(6);document.getElementById('detail').scrollTop=0;});li.append(link,document.createTextNode(item.slice(at+term.length)));}else li.textContent=item;list.append(li);}
   section.append(heading,list);document.getElementById('detail-text').after(section);
  }
  if(index!==0) return;
