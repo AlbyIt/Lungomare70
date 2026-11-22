@@ -76,3 +76,12 @@ prima dell'utilizzo operativo con i codici reali degli ospiti.
 - Foto della tastiera del cancello e della cassaforte, associate alle rispettive
   istruzioni e codici. Alberto prevede di fornire le fotografie.
 - Nessuna fotografia inventata o sostituita con immagini di un altro ingresso.
+
+### Perfezionamenti della pagina iniziale — 22 novembre 2026
+- Benvenuto personalizzato in grande sulla fotografia di intestazione.
+- Selettore lingua compatto: solo bandierina nello stato chiuso; bandiera e nome
+  della lingua nel menu aperto.
+- Pulsante Google Maps del B&B vicino al selettore lingua.
+- Ogni futuro luogo d'interesse, ristorante o servizio (inclusi farmacia e
+  supermercato) deve avere il proprio collegamento Google Maps alla destinazione
+  specifica. Nomi e destinazioni vanno verificati prima di inserirli.

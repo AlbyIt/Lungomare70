@@ -30,6 +30,7 @@ function personalLabel(index, label, lang) {
  return index===3 ? PERSONAL_TEXT[lang].room : index===0 ? PERSONAL_TEXT[lang].entry : label;
 }
 function renderPersonalHeader(lang) {
+ document.body.classList.toggle('personal-mode',Boolean(guest && !guest.invalid));
  if (!guest) return;
  document.querySelector('.brand').setAttribute('href',location.pathname+location.search+location.hash);
  const t=PERSONAL_TEXT[lang];
@@ -39,6 +40,10 @@ function renderPersonalHeader(lang) {
   return;
  }
  document.getElementById('welcome').textContent=t.welcome.replace('{name}',guest.name);
+ const title=document.getElementById('hero-title');
+ const [greeting,ending]=t.welcome.split('{name}');
+ const name=document.createElement('span');name.className='guest-name';name.textContent=guest.name+ending;
+ title.replaceChildren(document.createTextNode(greeting.trim()),name);
  document.getElementById('intro').textContent=`${t.room}: ${guest.room} · ${ROOM_NAMES[guest.room-1]}`;
  if(guest.demo) document.getElementById('subtitle').textContent=t.demo.replace('{room}',guest.room);
 }
