@@ -63,7 +63,7 @@ function renderAreaSection(index,lang){
    const meters=preview.meters;
    distance.textContent='≈ '+(meters<1000?Math.round(meters/50)*50+' m':new Intl.NumberFormat(lang,{maximumFractionDigits:meters<10000?1:0}).format(meters/1000)+' km');
    summary.append(name,distance);item.append(summary);
-   item.addEventListener('toggle',()=>{if(item.open)for(const sibling of panel.querySelectorAll('details'))if(sibling!==item)sibling.open=false;document.getElementById('close').setAttribute('aria-label',panel.querySelector('details[open]')?PLACE_BACK_LABELS[lang]:GUIDE[lang].close);});
+   item.addEventListener('toggle',()=>{if(item.open)for(const sibling of panel.querySelectorAll('details'))if(sibling!==item)sibling.open=false;document.getElementById('close').setAttribute('aria-label',GUIDE[lang].close);});
    if(preview.photo){
     const figure=document.createElement('figure');figure.className='place-photo';
     const img=document.createElement('img');img.src=preview.photo;img.alt=place.name;img.loading='lazy';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>figure.remove(),{once:true});
@@ -81,17 +81,4 @@ function renderAreaSection(index,lang){
   content.append(address,description,links);item.append(content);panel.append(item);
  }
  const note=document.createElement('p');note.className='place-note';note.textContent=previews?PLACE_HINTS[lang].note:t.note;panel.append(note);
-}
-
-const PLACE_BACK_LABELS={"it":"Torna alla lista","en":"Back to the list","de":"Zurück zur Liste","fr":"Retour à la liste","es":"Volver a la lista","nl":"Terug naar de lijst","pl":"Powrót do listy"};
-function returnToPlaceList(){
- const panel=document.getElementById('area-content');
- const opened=panel?.querySelector('details[open]');
- if(!opened)return false;
- const summary=opened.querySelector('summary');
- for(const item of panel.querySelectorAll('details[open]'))item.open=false;
- document.getElementById('detail').scrollTop=0;
- summary.focus({preventScroll:true});
- document.getElementById('close').setAttribute('aria-label',GUIDE[document.documentElement.lang].close);
- return true;
 }
