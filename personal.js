@@ -23,7 +23,7 @@ function readPersonalLink(hash) {
  const gate=p.get('cancello')||'';
  const safe=p.get('cassaforte')||'';
  if (!name || name.length>100 || !/^[1-4]$/.test(room) || (gate && !/^\d{6}$/.test(gate)) || (safe && !/^\d{4}$/.test(safe))) return {invalid:true};
- return {name, room:Number(room), gate, safe, lang:p.get('lingua'), demo:p.get('prova')==='1'};
+ return {name, room:Number(room), gate, safe, lang:p.get('lingua'), arrival:p.get('arrivo')||'', demo:p.get('prova')==='1'};
 }
 let guest = readPersonalLink(location.hash);
 function personalLabel(index, label, lang) {
@@ -66,6 +66,15 @@ function renderPersonalSection(index,lang) {
  }
  if(index!==0) return;
  const panel=document.createElement('div'); panel.id='personal-access';
+ if(guest.arrival && /^\d{4}-\d{2}-\d{2}$/.test(guest.arrival)){
+  const date=new Date(guest.arrival+'T12:00:00');
+  if(!Number.isNaN(date.getTime())){
+   const arrival=document.createElement('p');arrival.className='personal-arrival';
+   const formatted=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(date);
+   const prefix={it:'Ti aspettiamo',en:'We look forward to welcoming you',de:'Wir erwarten dich',fr:'Nous t’attendons',es:'Te esperamos',nl:'We verwachten je',pl:'Czekamy na Ciebie'}[lang]||'Ti aspettiamo';
+   arrival.textContent=prefix+' '+formatted+' · 15:00';panel.append(arrival);
+  }
+ }
  for(const kind of ['gate','safe']){
   const box=document.createElement('section');box.className='access-step';
   const heading=document.createElement('h3');heading.textContent=t[kind];
