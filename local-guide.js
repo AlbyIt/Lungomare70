@@ -86,7 +86,7 @@ function renderAreaSection(index,lang){
  const kind={9:'visit',12:'food',13:'services'}[index];
  document.getElementById('detail-text').textContent=t[kind+'Intro'];
  const previews=PLACE_PREVIEW[kind];
- if(previews)document.getElementById('detail-text').textContent=PLACE_HINTS[lang].note;
+ if(previews)document.getElementById('detail-text').textContent='';
  const entries=AREA_PLACES[kind].map((place,i)=>({place,preview:previews?.[i]}));
  if(previews)entries.sort((a,b)=>(a.preview.meters??Infinity)-(b.preview.meters??Infinity));
  for(const {place,preview} of entries){
