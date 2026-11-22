@@ -74,7 +74,10 @@ function renderPersonalSection(index,lang) {
    const prefix={it:'Ti aspettiamo',en:'We look forward to welcoming you',de:'Wir erwarten dich',fr:'Nous t’attendons',es:'Te esperamos',nl:'We verwachten je',pl:'Czekamy na Ciebie'}[lang]||'Ti aspettiamo';
    arrival.textContent=prefix+' '+formatted+' · 15:00';
    const detail=document.getElementById('detail-text');
-   detail.prepend(document.createTextNode(arrival.textContent+'\n\n'));
+   const original=detail.textContent||'';
+   const firstSentenceEnd=original.indexOf('.');
+   const remaining=firstSentenceEnd>=0 ? original.slice(firstSentenceEnd+1).trimStart() : original;
+   detail.textContent=arrival.textContent+'. '+remaining;
    detail.style.whiteSpace='pre-line';
   }
  }
