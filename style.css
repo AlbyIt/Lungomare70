@@ -112,19 +112,7 @@
 /* Compact room equipment list, with comfortable mobile readability. */
 #room-amenities{margin-top:16px}#room-amenities h3{font-size:.95rem;margin-bottom:7px}.room-amenities-list{font-size:.9rem;line-height:1.45;padding-left:20px}.room-amenities-list li{padding:2px 0}
 
-/* Arrival is the primary action in the guest guide. */
-.card.entry-card{grid-column:1/-1;min-height:78px;padding:15px 20px;background:#155b6a;border:1px solid #155b6a;color:#fff;gap:16px;box-shadow:0 4px 12px #143e491c}
+/* Entry keeps the same size as the other cards, with a distinct pill shape. */
+.card.entry-card{background:#155b6a;border-color:#155b6a;color:#fff;border-radius:999px}
+.card.entry-card>svg{stroke:#fff}
 .card.entry-card:hover{background:#104a57;border-color:#104a57}
-.card.entry-card>svg{stroke:#fff;width:32px;height:32px}
-.card.entry-card .entry-copy{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
-.card.entry-card .entry-copy>span{font-size:1.1rem;font-weight:700}
-.card.entry-card small{font-size:.83rem;font-weight:400;line-height:1.25;color:#fff}
-.card.entry-card .entry-arrow{margin-left:auto;font-size:1.65rem;font-weight:400}
-@media(max-width:600px){
- .cards{height:auto;grid-template-rows:64px repeat(7,minmax(44px,auto))}
- .card.entry-card{min-height:64px;padding:10px 13px;gap:12px}
- .card.entry-card>svg{width:27px;height:27px}
- .card.entry-card .entry-copy>span{font-size:1rem}
- .card.entry-card small{font-size:.75rem}
- .card:last-child{grid-column:1/-1}
-}
