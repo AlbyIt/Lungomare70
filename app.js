@@ -14,7 +14,9 @@ const icons = [
 '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/>'
 ];
 icons.push('<path d="M4 2v7M7 2v7M1 2v7c0 3 6 3 6 0M4 11v11M16 2v20M16 2c-5 5-5 10 0 10"/>','<path d="M8 2h8v6h6v8h-6v6H8v-6H2V8h6Z"/>');
-const photos = {0:['esterno'],1:['veranda'],3:['stella','duna','onda','perla'],6:['bagno'],7:['giardino','balcone'],8:['sala','veranda'],9:['balcone']};
+const photos = {0:['esterno'],1:['buffet','veranda'],3:['stella','duna','onda','perla'],6:['bagno'],7:['giardino','balcone'],8:['sala','veranda'],9:['balcone']};
+PHOTO_ASSETS.buffet='assets/buffet.jpg';
+const breakfastCaptions={it:'Il buffet della colazione',en:'The breakfast buffet',de:'Das Frühstücksbuffet',fr:'Le buffet du petit-déjeuner',es:'El bufé del desayuno',nl:'Het ontbijtbuffet',pl:'Bufet śniadaniowy'};
 const fixedCaptions = {stella:'1 · Stella',duna:'2 · Duna',onda:'3 · Onda',perla:'4 · Perla'};
 const svg = i => `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[i]}</svg>`;
 const language = document.querySelector('#language');
@@ -35,7 +37,7 @@ function openSection(index) {
  if(index===11) addLink(links,'+39 335 7739549','tel:+393357739549');
  const gallery=document.querySelector('#detail-photos');gallery.replaceChildren();
  const sectionPhotos = [9,12,13].includes(index) ? [] : guest && !guest.invalid && index===3 ? [ROOM_KEYS[guest.room-1]] : guest && index===0 ? [] : guest && guest.room!==1 && index===6 ? [] : photos[index]||[];
- for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];img.alt=fixedCaptions[photo]||t.labels[index];img.loading='lazy';figure.append(img);if(fixedCaptions[photo]){const caption=document.createElement('figcaption');caption.textContent=fixedCaptions[photo];figure.append(caption);}gallery.append(figure);}
+ for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];img.alt=(photo==='buffet'?breakfastCaptions[selected]:fixedCaptions[photo])||t.labels[index];img.loading='lazy';figure.append(img);if(fixedCaptions[photo]||photo==='buffet'){const caption=document.createElement('figcaption');caption.textContent=photo==='buffet'?breakfastCaptions[selected]:fixedCaptions[photo];figure.append(caption);}gallery.append(figure);}
  renderPersonalSection(index,selected);
  renderAreaSection(index,selected);
  if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');dialog.scrollTop=0;}
