@@ -136,3 +136,5 @@
 .place-links-subtle a{display:inline-flex;align-items:center;gap:5px;font-size:.82rem;text-underline-offset:3px;padding:7px 0}
 .place-links-subtle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6}
 @media(max-width:600px){.place-disclosure summary{gap:9px;min-height:58px}.place-name{font-size:.92rem}.place-distance{font-size:.8rem}.place-photo img{max-height:190px}}
+
+.inline-bidet-link{display:inline;padding:0;border:0;background:none;color:inherit;font:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
