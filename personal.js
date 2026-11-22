@@ -31,6 +31,7 @@ function personalLabel(index, label, lang) {
 }
 function renderPersonalHeader(lang) {
  if (!guest) return;
+ document.querySelector('.brand').setAttribute('href',location.pathname+location.search+location.hash);
  const t=PERSONAL_TEXT[lang];
  if(guest.invalid){
   document.getElementById('welcome').textContent=t.invalid;
