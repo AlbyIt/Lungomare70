@@ -21,7 +21,7 @@ const AREA_PLACES={
  ],
  food:[
   {name:'La Perla Grigia',address:'Lungomare Italia 18, Marzocca',query:'La Perla Grigia Lungomare Italia 18 Marzocca',source:'https://www.la-perla-grigia.it/',description:areaWords('Cucina di pesce e tradizione pugliese sul lungomare.','Seafood and Puglian cooking on the seafront.','Fischgerichte und Küche aus Apulien an der Strandpromenade.','Poissons et cuisine des Pouilles sur le front de mer.','Pescado y cocina de Apulia en el paseo marítimo.','Visgerechten en keuken uit Puglia aan de boulevard.','Ryby i kuchnia Apulii przy promenadzie.')},
-  {name:'Il Tesoro dei Pirati',address:'Lungomare Italia 3, Marzocca',query:'Il Tesoro dei Pirati Lungomare Italia 3 Marzocca',source:'https://www.feelsenigallia.it/dove-mangiare/il-tesoro-dei-pirati/',description:areaWords('Un’altra possibilità per mangiare sul lungomare di Marzocca. Consulta menu e disponibilità.','Another dining option on the Marzocca seafront. Check the menu and availability.','Eine weitere Möglichkeit zum Essen an der Strandpromenade. Speisekarte und Verfügbarkeit prüfen.','Une autre adresse sur le front de mer de Marzocca. Consulte le menu et les disponibilités.','Otra opción en el paseo marítimo de Marzocca. Consulta menú y disponibilidad.','Nog een eetgelegenheid aan de boulevard van Marzocca. Bekijk menu en beschikbaarheid.','Kolejna propozycja przy promenadzie w Marzocca. Sprawdź menu i dostępność.')},
+  {name:'Il Tesoro dei Pirati',address:'Lungomare Italia 3bis, Marzocca',query:'Il Tesoro dei Pirati Lungomare Italia 3bis Marzocca',source:'https://www.feelsenigallia.it/dove-mangiare/il-tesoro-dei-pirati/',description:areaWords('Un’altra possibilità per mangiare sul lungomare di Marzocca. Consulta menu e disponibilità.','Another dining option on the Marzocca seafront. Check the menu and availability.','Eine weitere Möglichkeit zum Essen an der Strandpromenade. Speisekarte und Verfügbarkeit prüfen.','Une autre adresse sur le front de mer de Marzocca. Consulte le menu et les disponibilités.','Otra opción en el paseo marítimo de Marzocca. Consulta menú y disponibilidad.','Nog een eetgelegenheid aan de boulevard van Marzocca. Bekijk menu en beschikbaarheid.','Kolejna propozycja przy promenadzie w Marzocca. Sprawdź menu i dostępność.')},
   {name:'Madonnina del Pescatore',address:'Lungomare Italia 11, Marzocca',query:'Madonnina del Pescatore Lungomare Italia 11 Marzocca',source:'https://www.feelsenigallia.it/dove-mangiare/madonnina-del-pescatore/',description:areaWords('Cucina creativa di pesce dello chef Moreno Cedroni, per un’esperienza gastronomica speciale.','Chef Moreno Cedroni’s creative seafood cuisine for a special dining experience.','Kreative Fischküche von Küchenchef Moreno Cedroni für einen besonderen Restaurantbesuch.','La cuisine créative de poissons du chef Moreno Cedroni pour une expérience gastronomique spéciale.','Cocina creativa de pescado del chef Moreno Cedroni para una experiencia gastronómica especial.','Creatieve visgerechten van chef Moreno Cedroni voor een bijzondere culinaire ervaring.','Kreatywna kuchnia rybna szefa Moreno Cedroniego na wyjątkową kolację.')}
  ],
  services:[
@@ -29,6 +29,8 @@ const AREA_PLACES={
   {name:'Sì con Te Superstore',address:'Viale della Resistenza 112, Marzocca',query:'Si con Te Superstore Viale della Resistenza 112 Marzocca',source:'https://trovavolantini.it/negozio/si-con-te/marzocca/viale-della-resistenza/191133',description:areaWords('Supermercato a Marzocca per la spesa durante il soggiorno.','Supermarket in Marzocca for shopping during your stay.','Supermarkt in Marzocca für Einkäufe während deines Aufenthalts.','Supermarché à Marzocca pour les courses pendant ton séjour.','Supermercado en Marzocca para las compras durante tu estancia.','Supermarkt in Marzocca voor boodschappen tijdens je verblijf.','Supermarket w Marzocca na zakupy podczas pobytu.')}
  ]
 };
+const PLACE_PREVIEW={"visit":[{"meters":57542.3,"coords":[12.9697294,43.4028026],"mode":"driving","photo":"https://www.frasassi.com/contenuti/cicimm/risorse/1/202504011745397023-2-galleria-8.jpg","credit":"Grotte di Frasassi"},{"meters":22535.2,"coords":[13.5097416,43.6250561],"mode":"driving","photo":"https://anconatourism.it/wp-content/uploads/2021/04/san-ciriaco-736x414.jpg","credit":"Ancona Tourism"},{"meters":31093,"coords":[13.5931044,43.5619063],"mode":"driving","photo":"https://www.comune.ancona.it/s3/223/media/portonovo.jpg","credit":"Comune di Ancona"},{"meters":26519,"coords":[13.0486854,43.6488676],"mode":"driving","photo":"https://www.visitcorinaldo.it/site/wp-content/uploads/2026/06/MC_202006_drone_41-1024x768.webp","credit":"Visit Corinaldo"},{"meters":7124,"coords":[13.2205412,43.7153671],"mode":"driving","photo":"https://www.feelsenigallia.it/wp-content/uploads/2022/02/senigallia_centro_storico_rocca_roveresca_da_vedere-856x500.jpg","credit":"Feel Senigallia"}],"food":[{"meters":850.7,"coords":[13.2809564,43.6811424],"mode":"walking","photo":"https://9bc2811e84.cbaul-cdnwnd.com/c89e721a5a68da39fdd558f64c3920e6/system_preview_200000089-7f45c7f45d/sala%202-edit-20260625121816.jpeg","credit":"La Perla Grigia"},{"meters":1814.8,"coords":[13.2716869,43.686633],"mode":"walking","photo":null,"credit":null},{"meters":937.2,"coords":[13.280116,43.681634],"mode":"walking","photo":"https://www.feelsenigallia.it/wp-content/uploads/2022/02/ristorante_madonnina_pescatore_senigallia-856x500.jpg","credit":"Feel Senigallia"}]};
+const PLACE_HINTS={"it":{"drive":"Dal B&B · distanze indicative in auto","walk":"Dal B&B · distanze indicative a piedi","note":"Distanze approssimative sul percorso, senza traffico in tempo reale. Apri la mappa per le indicazioni aggiornate.","photo":"Fonte foto"},"en":{"drive":"From the B&B · approximate driving distances","walk":"From the B&B · approximate walking distances","note":"Approximate route distances, without live traffic. Open the map for current directions.","photo":"Photo source"},"de":{"drive":"Ab dem B&B · ungefähre Fahrstrecken","walk":"Ab dem B&B · ungefähre Fußwege","note":"Ungefähre Strecken ohne aktuelle Verkehrsdaten. Öffne die Karte für aktuelle Wegbeschreibungen.","photo":"Fotoquelle"},"fr":{"drive":"Depuis le B&B · distances indicatives en voiture","walk":"Depuis le B&B · distances indicatives à pied","note":"Distances approximatives par trajet, sans trafic en temps réel. Ouvre la carte pour les indications à jour.","photo":"Source photo"},"es":{"drive":"Desde el B&B · distancias aproximadas en coche","walk":"Desde el B&B · distancias aproximadas a pie","note":"Distancias aproximadas por ruta, sin tráfico en tiempo real. Abre el mapa para indicaciones actualizadas.","photo":"Fuente de la foto"},"nl":{"drive":"Vanaf de B&B · geschatte rijafstanden","walk":"Vanaf de B&B · geschatte loopafstanden","note":"Geschatte routeafstanden, zonder actuele verkeersgegevens. Open de kaart voor de routebeschrijving.","photo":"Fotobron"},"pl":{"drive":"Od B&B · przybliżone odległości samochodem","walk":"Od B&B · przybliżone odległości pieszo","note":"Przybliżone odległości trasą, bez ruchu drogowego na żywo. Otwórz mapę, aby sprawdzić aktualne wskazówki.","photo":"Źródło zdjęcia"}};
 function areaLabel(index,label,lang){const t=AREA_UI[lang];return ({6:t.bath,9:t.visit,12:t.food,13:t.services})[index]||label;}
 function renderAreaSection(index,lang){
  document.getElementById('area-content')?.remove();
@@ -47,15 +49,36 @@ function renderAreaSection(index,lang){
  }
  const kind={9:'visit',12:'food',13:'services'}[index];
  document.getElementById('detail-text').textContent=t[kind+'Intro'];
- for(const place of AREA_PLACES[kind]){
-  const item=document.createElement('article');item.className='place-item';
-  const heading=document.createElement('h3');heading.textContent=place.name;
+ const previews=PLACE_PREVIEW[kind];
+ if(previews)document.getElementById('detail-text').textContent=PLACE_HINTS[lang][kind==='food'?'walk':'drive'];
+ const entries=AREA_PLACES[kind].map((place,i)=>({place,preview:previews?.[i]}));
+ if(previews)entries.sort((a,b)=>a.preview.meters-b.preview.meters);
+ for(const {place,preview} of entries){
+  const item=document.createElement(preview?'details':'article');item.className=preview?'place-disclosure':'place-item';
+  const content=document.createElement('div');content.className='place-expanded';
+  if(preview){
+   const summary=document.createElement('summary');
+   const name=document.createElement('span');name.className='place-name';name.textContent=place.name;
+   const distance=document.createElement('span');distance.className='place-distance';
+   const meters=preview.meters;
+   distance.textContent='≈ '+(meters<1000?Math.round(meters/50)*50+' m':new Intl.NumberFormat(lang,{maximumFractionDigits:meters<10000?1:0}).format(meters/1000)+' km');
+   summary.append(name,distance);item.append(summary);
+   item.addEventListener('toggle',()=>{if(item.open)for(const sibling of panel.querySelectorAll('details'))if(sibling!==item)sibling.open=false;});
+   if(preview.photo){
+    const figure=document.createElement('figure');figure.className='place-photo';
+    const img=document.createElement('img');img.src=preview.photo;img.alt=place.name;img.loading='lazy';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>figure.remove(),{once:true});
+    const credit=document.createElement('figcaption');credit.textContent=PLACE_HINTS[lang].photo+': '+preview.credit;
+    figure.append(img,credit);content.append(figure);
+   }
+  }else{const heading=document.createElement('h3');heading.textContent=place.name;content.append(heading);}
   const address=document.createElement('p');address.className='place-address';address.textContent=place.address;
   const description=document.createElement('p');description.textContent=place.description[lang];
-  const links=document.createElement('div');links.className='place-links';
-  addLink(links,t.map,'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place.query),true);
+  const links=document.createElement('div');links.className=preview?'place-links-subtle':'place-links';
+  const map=preview?'https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent('Lungomare Italia 70, Marzocca di Senigallia')+'&destination='+preview.coords[1]+','+preview.coords[0]+'&travelmode='+preview.mode:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place.query);
+  addLink(links,t.map,map,true);
+  if(preview){const icon=document.createElementNS('http://www.w3.org/2000/svg','svg');icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('aria-hidden','true');icon.innerHTML='<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>';links.firstElementChild.prepend(icon);}
   addLink(links,t.info,place.source,true);
-  item.append(heading,address,description,links);panel.append(item);
+  content.append(address,description,links);item.append(content);panel.append(item);
  }
- const note=document.createElement('p');note.className='place-note';note.textContent=t.note;panel.append(note);
+ const note=document.createElement('p');note.className='place-note';note.textContent=previews?PLACE_HINTS[lang].note:t.note;panel.append(note);
 }
