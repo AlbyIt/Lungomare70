@@ -72,12 +72,10 @@ function renderPersonalSection(index,lang) {
    const arrival=document.createElement('p');arrival.className='personal-arrival';
    const formatted=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(date);
    const prefix={it:'Ti aspettiamo',en:'We look forward to welcoming you',de:'Wir erwarten dich',fr:'Nous t’attendons',es:'Te esperamos',nl:'We verwachten je',pl:'Czekamy na Ciebie'}[lang]||'Ti aspettiamo';
-   arrival.textContent=prefix+' '+formatted+' · 15:00';
+   const timeWord={it:'alle ore',en:'at',de:'um',fr:'à',es:'a las',nl:'om',pl:'o godzinie'}[lang]||'alle ore';
+   arrival.textContent=prefix+' '+formatted+' '+timeWord+' 15:00';
    const detail=document.getElementById('detail-text');
-   const original=detail.textContent||'';
-   const firstSentenceEnd=original.indexOf('.');
-   const remaining=firstSentenceEnd>=0 ? original.slice(firstSentenceEnd+1).trimStart() : original;
-   detail.textContent=arrival.textContent+'. '+remaining;
+   detail.textContent=arrival.textContent+'.\nLungomare ITALIA, 70 – Marzocca di Senigallia.';
    detail.style.whiteSpace='pre-line';
   }
  }
