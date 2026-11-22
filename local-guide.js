@@ -72,7 +72,7 @@ function renderAreaSection(index,lang){
  document.getElementById('area-content')?.remove();
  const t=AREA_UI[lang];
  if(index===3){
-  const button=document.createElement('button');button.type='button';button.className='bath-shortcut';button.textContent=t.bathLink;button.addEventListener('click',()=>{openSection(6);document.getElementById('detail').scrollTop=0;});document.getElementById('detail-links').append(button);return;
+  const el=document.getElementById('detail-text');const term=({it:'water-bidet',en:'bidet toilet',de:'WC mit Bidetfunktion',fr:'WC-bidet',es:'bidettoilet',nl:'bidettoilet',pl:'WC z funkcją bidetu'})[lang];const source=el.textContent;const at=source.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());if(at>=0){el.replaceChildren(document.createTextNode(source.slice(0,at)));const button=document.createElement('button');button.type='button';button.className='inline-bidet-link';button.textContent=source.slice(at,at+term.length);button.addEventListener('click',()=>{openSection(6);document.getElementById('detail').scrollTop=0;});el.append(button,document.createTextNode(source.slice(at+term.length)));}return;
  }
  if(![6,9,12,13].includes(index))return;
  document.getElementById('detail-title').textContent=areaLabel(index,'',lang);
