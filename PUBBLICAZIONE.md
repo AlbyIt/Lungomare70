@@ -85,3 +85,22 @@ prima dell'utilizzo operativo con i codici reali degli ospiti.
 - Ogni futuro luogo d'interesse, ristorante o servizio (inclusi farmacia e
   supermercato) deve avere il proprio collegamento Google Maps alla destinazione
   specifica. Nomi e destinazioni vanno verificati prima di inserirli.
+
+### Contenuti completati — 22 novembre 2026
+- Pulsante «Water-bidet: come si usa», spostato prima di pulizie e regole, con
+  spiegazione del getto integrato e istruzioni generali senza inventare direzioni
+  o posizioni dei comandi. Collegamento anche da «La mia camera».
+- «Luoghi da visitare»: Grotte di Frasassi, Duomo San Ciriaco, Portonovo,
+  Corinaldo e Rocca Roveresca. «Dove mangiare» e «Servizi vicini» separati.
+- Ogni scheda ha indirizzo/località, descrizione in sette lingue, Google Maps
+  sulla destinazione specifica e collegamento alla fonte informativa.
+- Farmacia Sbrozzi FGS (via Giuseppe Garibaldi 5), Sì con Te Superstore
+  (viale della Resistenza 112): riferimenti a Marzocca, senza dichiarare un primato
+  di vicinanza o distanze non misurate. Maps consente di verificare il percorso.
+- Ristoranti: La Perla Grigia (Lungomare Italia 18), Il Tesoro dei Pirati
+  (Lungomare Italia 3), Madonnina del Pescatore (Lungomare Italia 11).
+- Fonti: siti degli esercizi, Feel Senigallia, Ancona Tourism, Comune di Ancona,
+  Frasassi, Visit Corinaldo; indirizzo supermercato riscontrato su TrovaVolantini
+  e altri elenchi locali. Orari e prezzi non fissati nella guida.
+- La revisione estetica con pulsanti più amichevoli resta rinviata su richiesta
+  di Alberto. L'eventuale foto ravvicinata dei comandi water-bidet è da aggiungere.

@@ -89,3 +89,20 @@
  .personal-mode .hero-text .eyebrow{margin-bottom:5px}
  .personal-mode .welcome{margin:8px auto}
 }
+
+.place-item{margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.place-item h3{font:600 1.15rem system-ui;margin:0 0 6px}
+.place-item p{line-height:1.55;margin:8px 0;color:#344e54}
+.place-item .place-address{color:var(--muted);font-size:.85rem}
+.place-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.place-links a,.bath-shortcut{border:0;border-radius:8px;padding:11px 14px;background:var(--ink);color:white;text-decoration:none;font:500 .9rem system-ui;cursor:pointer;display:inline-block}
+.place-links a:last-child{background:var(--aqua);color:var(--ink)}
+.bath-shortcut{margin-top:18px}
+.bidet-steps{padding-left:24px;line-height:1.7}
+.bidet-steps li{padding:5px 0}
+.place-note{font-size:.85rem;line-height:1.5;color:var(--muted)}
+@media(max-width:600px){
+ .cards{grid-template-rows:repeat(7,minmax(44px,1fr));height:clamp(350px,calc(100svh - 260px),460px)}
+ .card span{font-size:.76rem}
+ .place-item{padding:14px}
+}

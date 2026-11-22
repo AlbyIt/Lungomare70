@@ -13,6 +13,7 @@ const icons = [
 '<path d="M10 3H3v18h7M8 12h14M17 7l5 5-5 5"/>',
 '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/>'
 ];
+icons.push('<path d="M4 2v7M7 2v7M1 2v7c0 3 6 3 6 0M4 11v11M16 2v20M16 2c-5 5-5 10 0 10"/>','<path d="M8 2h8v6h6v8h-6v6H8v-6H2V8h6Z"/>');
 const photos = {0:['esterno'],1:['veranda'],3:['stella','duna','onda','perla'],6:['bagno'],7:['giardino','balcone'],8:['sala','veranda'],9:['balcone']};
 const fixedCaptions = {stella:'1 · Stella',duna:'2 · Duna',onda:'3 · Onda',perla:'4 · Perla'};
 const svg = i => `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[i]}</svg>`;
@@ -26,20 +27,21 @@ function openSection(index) {
  activeSection = index;
  const t=GUIDE[selected];
  document.querySelector('#detail-icon').innerHTML=svg(index);
- document.querySelector('#detail-title').textContent=t.labels[index];
- document.querySelector('#detail-text').textContent=t.text[index];
+ document.querySelector('#detail-title').textContent=t.labels[index]||'';
+ document.querySelector('#detail-text').textContent=t.text[index]||'';
  const links=document.querySelector('#detail-links');links.replaceChildren();
- if([0,9].includes(index)) addLink(links,t.map,'https://www.google.com/maps/search/?api=1&query=Lungomare+Italia+70+Marzocca+di+Senigallia',true);
+ if(index===0) addLink(links,t.map,'https://www.google.com/maps/search/?api=1&query=Lungomare+Italia+70+Marzocca+di+Senigallia',true);
  if([2,4,11].includes(index)) addLink(links,t.contact,'mailto:info@lungomare70.it');
  if(index===11) addLink(links,'+39 335 7739549','tel:+393357739549');
  const gallery=document.querySelector('#detail-photos');gallery.replaceChildren();
- const sectionPhotos = guest && !guest.invalid && index===3 ? [ROOM_KEYS[guest.room-1]] : guest && index===0 ? [] : guest && guest.room!==1 && index===6 ? [] : photos[index]||[];
+ const sectionPhotos = [9,12,13].includes(index) ? [] : guest && !guest.invalid && index===3 ? [ROOM_KEYS[guest.room-1]] : guest && index===0 ? [] : guest && guest.room!==1 && index===6 ? [] : photos[index]||[];
  for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];img.alt=fixedCaptions[photo]||t.labels[index];img.loading='lazy';figure.append(img);if(fixedCaptions[photo]){const caption=document.createElement('figcaption');caption.textContent=fixedCaptions[photo];figure.append(caption);}gallery.append(figure);}
  renderPersonalSection(index,selected);
+ renderAreaSection(index,selected);
  if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');dialog.scrollTop=0;}
 }
 function addLink(parent,label,href,external=false){const a=document.createElement('a');a.textContent=label;a.href=href;if(external){a.target='_blank';a.rel='noopener noreferrer';}parent.append(a);}
-function render(){const t=GUIDE[selected];document.documentElement.lang=selected;language.value=selected;document.getElementById('language-flag').textContent={it:'🇮🇹',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',es:'🇪🇸',nl:'🇳🇱',pl:'🇵🇱'}[selected];document.getElementById('header-map').setAttribute('aria-label',`${t.map} · Lungomare 70 · Google Maps`);document.getElementById('header-map').title=`${t.map} · Lungomare 70 · Google Maps`;document.title=`Lungomare 70 · ${t.subtitle}`;for(const id of ['subtitle','welcome','intro','footer'])document.getElementById(id).textContent=t[id];document.querySelector('#hero-title').textContent=t.title;document.querySelector('#guide-title').textContent=t.menu;document.querySelector('#close').setAttribute('aria-label',t.close);document.querySelector('.photo-strip').setAttribute('aria-label',t.photo);const cards=document.querySelector('#cards');cards.replaceChildren();t.labels.forEach((label,i)=>{const button=document.createElement('button');button.type='button';button.className='card';button.setAttribute('aria-haspopup','dialog');button.innerHTML=svg(i);const span=document.createElement('span');span.textContent=personalLabel(i,label,selected);button.append(span);button.addEventListener('click',()=>openSection(i));cards.append(button);});renderPersonalHeader(selected);if(dialog.open)openSection(activeSection);}
+function render(){const t=GUIDE[selected];document.documentElement.lang=selected;language.value=selected;document.getElementById('language-flag').textContent={it:'🇮🇹',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',es:'🇪🇸',nl:'🇳🇱',pl:'🇵🇱'}[selected];document.getElementById('header-map').setAttribute('aria-label',`${t.map} · Lungomare 70 · Google Maps`);document.getElementById('header-map').title=`${t.map} · Lungomare 70 · Google Maps`;document.title=`Lungomare 70 · ${t.subtitle}`;for(const id of ['subtitle','welcome','intro','footer'])document.getElementById(id).textContent=t[id];document.querySelector('#hero-title').textContent=t.title;document.querySelector('#guide-title').textContent=t.menu;document.querySelector('#close').setAttribute('aria-label',t.close);document.querySelector('.photo-strip').setAttribute('aria-label',t.photo);const cards=document.querySelector('#cards');cards.replaceChildren();const menuLabels=[...t.labels,AREA_UI[selected].food,AREA_UI[selected].services];[0,1,2,3,6,4,5,7,8,9,12,13,10,11].forEach(i=>{const label=menuLabels[i];const button=document.createElement('button');button.type='button';button.className='card';button.setAttribute('aria-haspopup','dialog');button.innerHTML=svg(i);const span=document.createElement('span');span.textContent=areaLabel(i,personalLabel(i,label,selected),selected);button.append(span);button.addEventListener('click',()=>openSection(i));cards.append(button);});renderPersonalHeader(selected);if(dialog.open)openSection(activeSection);}
 language.addEventListener('change',()=>{selected=language.value;try{localStorage.setItem('lungomare70-language',selected);}catch{}render();});
 document.querySelector('#close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
