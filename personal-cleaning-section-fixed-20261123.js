@@ -128,7 +128,25 @@ function renderPersonalSection(index,lang) {
   const code=document.createElement('p');code.className=guest[kind]?'access-code':'access-missing';
   code.textContent=guest[kind] ? guest[kind]+(kind==='gate'?' #':'') : t.missing;
   if(kind==='safe' && guest.rooms.length>1){code.textContent=guest.safe||t.missing;}
-  const help=document.createElement('p');help.textContent=t[kind+'Help'];
+  const help=document.createElement('p');
+  if(kind==='safe' && guest.rooms.length>1){
+   const roomList=guest.rooms.slice().sort((a,b)=>a-b).map(n=>n+' – '+ROOM_NAMES[n-1]);
+   const format=new Intl.ListFormat(lang,{style:'long',type:'conjunction'});
+   const roomsText=format.format(roomList);
+   const count=guest.rooms.length;
+   const multiHelp={
+    it:'La cassaforte si trova a destra della vetrata. Aprila con il codice indicato e ritira tutti i '+count+' portachiavi, uno per ciascuna camera ('+roomsText+'). Ogni portachiavi contiene la chiave della rispettiva camera e il telecomando del cancello.',
+    de:'Der Schlüsselsafe befindet sich rechts neben der Glasfront. Öffnet ihn mit dem angegebenen Code und nehmt alle '+count+' Schlüsselbunde heraus, je einen für die Zimmer '+roomsText+'. Jeder Schlüsselbund enthält den Zimmerschlüssel und eine kleine Fernbedienung für das Tor.',
+    en:'The key safe is to the right of the glass entrance. Open it with the code shown and take all '+count+' key rings, one for each room ('+roomsText+'). Each key ring contains its room key and a small gate remote.',
+    fr:'Le coffre à clés se trouve à droite de la baie vitrée. Ouvrez-le avec le code indiqué et prenez les '+count+' trousseaux, un pour chaque chambre ('+roomsText+'). Chaque trousseau contient la clé de sa chambre et une télécommande du portail.',
+    es:'La caja de llaves está a la derecha de la cristalera. Abridla con el código indicado y recoged los '+count+' llaveros, uno para cada habitación ('+roomsText+'). Cada llavero contiene la llave de su habitación y un mando del portón.',
+    nl:'De sleutelkluis bevindt zich rechts van de glazen ingang. Open deze met de aangegeven code en neem alle '+count+' sleutelbossen mee, één voor elke kamer ('+roomsText+'). Elke sleutelbos bevat de kamersleutel en een afstandsbediening voor de poort.',
+    pl:'Sejf na klucze znajduje się po prawej stronie przeszklonego wejścia. Otwórzcie go podanym kodem i zabierzcie wszystkie '+count+' komplety kluczy, po jednym do każdego pokoju ('+roomsText+'). Każdy komplet zawiera klucz do pokoju i pilot do bramy.'
+   };
+   help.textContent=multiHelp[lang]||multiHelp.it;
+  }else{
+   help.textContent=t[kind+'Help'];
+  }
   box.append(heading,code,help);
   if(ACCESS_PHOTOS[kind].length){
    for(const src of ACCESS_PHOTOS[kind]){const img=document.createElement('img');img.src=src;img.alt=t[kind+'Photo'];img.loading='lazy';box.append(img);}
