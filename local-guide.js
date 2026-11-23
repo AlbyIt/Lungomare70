@@ -105,13 +105,14 @@ function renderAreaSection(index,lang){
     const img=document.createElement('img');img.src=preview.photo;img.alt=place.name;img.loading='lazy';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>figure.remove(),{once:true});
     const credit=document.createElement('figcaption');credit.textContent=PLACE_HINTS[lang].photo+': '+preview.credit;
     if(preview.creditUrl){credit.textContent=PLACE_HINTS[lang].photo+': ';addLink(credit,preview.credit,preview.creditUrl,true);credit.append(' · ');addLink(credit,'CC BY-SA 4.0',preview.licenseUrl,true);}
+    if(preview.sourceUrl){credit.textContent=PLACE_HINTS[lang].photo+': ';addLink(credit,preview.credit,preview.sourceUrl,true);}
     figure.append(img,credit);content.append(figure);
    }
   }else{const heading=document.createElement('h3');heading.textContent=place.name;content.append(heading);}
   const address=document.createElement('p');address.className='place-address';address.textContent=place.address;
   const description=document.createElement('p');description.textContent=place.description[lang];
   const links=document.createElement('div');links.className=preview?'place-links-subtle':'place-links';
-  const map=preview?.coords?'https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent('Lungomare Italia 70, Marzocca di Senigallia')+'&destination='+preview.coords[1]+','+preview.coords[0]+'&travelmode='+preview.mode:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place.query);
+  const map=preview?.coords?'https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent('Lungomare Italia 70, Marzocca di Senigallia')+'&destination='+preview.coords[1]+','+preview.coords[0]+(kind==='food'?'':'&travelmode='+preview.mode):'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place.query);
   addLink(links,t.map,map,true);
   if(preview){const icon=document.createElementNS('http://www.w3.org/2000/svg','svg');icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('aria-hidden','true');icon.innerHTML='<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>';links.firstElementChild.prepend(icon);}
   addLink(links,t.info,place.source,true);
