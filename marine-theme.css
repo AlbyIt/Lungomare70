@@ -6,18 +6,18 @@ body{background:#e8dfd0 url("assets/marine-background.jpg") center top/600px aut
 .guide{background:url("assets/marine-background.jpg") center top/100% auto repeat-y;border:1px solid #d4c5ac;border-radius:18px;padding-top:12px;padding-bottom:20px;box-shadow:0 4px 18px #514d4220}
 .section-heading h2{background:rgba(255,252,246,.94);border-radius:6px;padding:4px 8px}
 .section-heading>span{background:rgba(255,252,246,.94);border-radius:6px;padding:4px 8px}
-.card,.card:nth-child(1),.card:nth-child(2),.card:nth-child(3){background:rgba(255,253,248,.86);border-color:#ddcbb6;box-shadow:0 3px 10px #52402b22}
-.card:hover{background:#fffdf8;border-color:#bd966c}
+.card,.card:nth-child(1),.card:nth-child(2),.card:nth-child(3){background:rgba(255,253,248,.72);border-color:#ddcbb6;box-shadow:0 3px 10px #52402b22}
+.card:hover{background:rgba(255,253,248,.90);border-color:#bd966c}
 .card svg{stroke:#246a70}
-.card.entry-card{background:#f4e3cbeF;border:2px solid #b58c61;color:#244b4e;border-radius:13px;box-shadow:0 3px 10px #52402b22}
+.card.entry-card{background:rgba(244,227,203,.82);border:2px solid #b58c61;color:#244b4e;border-radius:13px;box-shadow:0 3px 10px #52402b22}
 .card.entry-card svg{stroke:#246a70}
-.card.entry-card:hover{background:#f0d7b4}
+.card.entry-card:hover{background:rgba(240,215,180,.94)}
 .photo-strip{background:rgba(255,250,242,.72);padding:5px}
 footer{background:rgba(255,250,242,.94)}
 @media(max-width:600px){
  body{background-size:420px auto}
  .brand>img{width:36px;height:30px}
  .guide{margin:0 8px;padding:10px 10px 18px;border-radius:14px;width:calc(100% - 16px)}
- .card{border-radius:10px;background:rgba(255,253,248,.82)}
+ .card{border-radius:10px}
  .card.entry-card{border-radius:10px}
 }
