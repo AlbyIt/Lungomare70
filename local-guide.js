@@ -115,17 +115,18 @@ function renderAreaSection(index,lang){
  const entries=AREA_PLACES[kind].map((place,i)=>({place,preview:previews?.[i]}));
  if(previews)entries.sort((a,b)=>(a.preview.meters??Infinity)-(b.preview.meters??Infinity));
  for(const {place,preview} of entries){
-  const item=document.createElement(preview?'details':'article');item.className=preview?'place-disclosure':'place-item';
+  const collapsible=Boolean(preview)||kind==='services';
+  const item=document.createElement(collapsible?'details':'article');item.className=collapsible?'place-disclosure':'place-item';
   const content=document.createElement('div');content.className='place-expanded';
-  if(preview){
+  if(collapsible){
    const summary=document.createElement('summary');
    const name=document.createElement('span');name.className='place-name';name.textContent=place.name;if(place.offer)name.append(partnerShell(lang));
    const distance=document.createElement('span');distance.className='place-distance';
-   const meters=preview.meters;
+   const meters=preview?.meters;
    distance.textContent=meters==null?'':'≈ '+(meters<1000?Math.round(meters/50)*50+' m':new Intl.NumberFormat(lang,{maximumFractionDigits:meters<10000?1:0}).format(meters/1000)+' km');
    summary.append(name,distance);item.append(summary);
    item.addEventListener('toggle',()=>{if(item.open)for(const sibling of panel.querySelectorAll('details'))if(sibling!==item)sibling.open=false;document.getElementById('close').setAttribute('aria-label',GUIDE[lang].close);});
-   if(preview.photo){
+   if(preview?.photo){
     const figure=document.createElement('figure');figure.className='place-photo';
     const img=document.createElement('img');img.src=preview.photo;img.alt=place.name;img.loading='lazy';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>figure.remove(),{once:true});
     const credit=document.createElement('figcaption');credit.textContent=PLACE_HINTS[lang].photo+': '+preview.credit;
