@@ -119,3 +119,5 @@ prima dell'utilizzo operativo con i codici reali degli ospiti.
 - Le quattro targhette originali fornite da Alberto sono conservate in assets/room-1-sign.png (Stella), room-2-sign.png (Duna), room-3-sign.png (Onda), room-4-sign.png (Perla).
 - Usarle come icone dentro «La mia camera» e «Le nostre camere», mostrando soltanto le camere assegnate dal link personale. Le fotografie e le dotazioni restano nella scheda.
 - Nelle guide personalizzate non mostrare la fascia riepilogativa della camera né la testata «Esplora la guida».
+
+- Le targhette seguono il titolo «La mia camera»/«Le nostre camere» sulla stessa riga e compaiono come miniature anche dopo la scritta del relativo tasto del menu.

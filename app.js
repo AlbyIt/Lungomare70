@@ -28,25 +28,23 @@ const dialog = document.querySelector('#detail');
 let selected = 'it';
 let activeSection = null;
 try { const preferred = localStorage.getItem('lungomare70-language'); if (Object.hasOwn(GUIDE, preferred)) selected = preferred; else {const browserLanguage = navigator.language.split('-')[0]; if(Object.hasOwn(GUIDE,browserLanguage)) selected=browserLanguage;} } catch {}
+function createRoomSigns(className){
+ const signs=document.createElement('span');signs.className=className;
+ signs.setAttribute('aria-hidden','true');
+ for(const room of guest.rooms){
+  const image=document.createElement('img');
+  image.src='assets/room-'+room+'-sign.png';
+  image.alt=room+' · '+ROOM_NAMES[room-1];
+  image.width=96;image.height=86;signs.append(image);
+ }
+ return signs;
+}
 function openSection(index) {
  if(guest?.invalid) return;
  activeSection = index;
  const t=GUIDE[selected];
  const detailIcon=document.querySelector('#detail-icon');
- detailIcon.classList.remove('room-signs');
- detailIcon.innerHTML=svg(index);
- if(index===3 && guest && !guest.invalid){
-  detailIcon.classList.add('room-signs');
-  detailIcon.replaceChildren();
-  for(const room of guest.rooms){
-   const sign=document.createElement('img');
-   sign.src='assets/room-'+room+'-sign.png';
-   sign.alt=room+' · '+ROOM_NAMES[room-1];
-   sign.width=96;sign.height=86;
-   detailIcon.append(sign);
-  }
- }
-
+ detailIcon.innerHTML=index===3 && guest && !guest.invalid ? '' : svg(index);
  document.querySelector('#detail-title').textContent=index===3 && guest?.rooms?.length>1 ? personalLabel(index,t.labels[index]||'',selected) : areaLabel(index,t.labels[index]||'',selected);
  document.querySelector('#detail-text').textContent=t.text[index]||'';
  if(index===1){const breakfastInfo={
@@ -69,12 +67,16 @@ function openSection(index) {
  for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];const photoCaption=photo==='balcone'&&index===3?balconyCaptions[selected]:photo==='buffet'?breakfastCaptions[selected]:fixedCaptions[photo];img.alt=photoCaption||areaLabel(index,t.labels[index]||'',selected);img.loading='lazy';figure.append(img);if(photoCaption){const caption=document.createElement('figcaption');caption.textContent=photoCaption;figure.append(caption);}if(multiRoom && !img.getAttribute('src')){img.src='assets/'+photo+'.jpg';}gallery.append(figure);}
  renderPersonalSection(index,selected);
  renderAreaSection(index,selected);
+ const detailTitle=document.querySelector('#detail-title');
+ detailTitle.classList.toggle('room-title',index===3 && Boolean(guest && !guest.invalid));
+ if(index===3 && guest && !guest.invalid)detailTitle.append(createRoomSigns('room-title-signs'));
+
  // Keep the map action immediately after the address, regardless of other section renderers.
  if(index===0){const address=document.getElementById('detail-text');const map=document.getElementById('detail-links');if(address && map && map.firstElementChild)address.insertAdjacentElement('afterend',map);}
  if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');dialog.scrollTop=0;}
 }
 function addLink(parent,label,href,external=false){const a=document.createElement('a');a.textContent=label;a.href=href;if(external){a.target='_blank';a.rel='noopener noreferrer';}parent.append(a);}
-function render(){if(!guest || guest.invalid){document.body.classList.add('link-required');document.querySelector('main').hidden=true;document.querySelector('footer').hidden=true;let notice=document.getElementById('personal-link-required');if(!notice){notice=document.createElement('section');notice.id='personal-link-required';notice.setAttribute('role','status');document.querySelector('main').before(notice);}notice.textContent='Questa guida è disponibile soltanto tramite il link personale fornito da Lungomare 70. Per riceverlo, contatta Cinzia e Alberto: info@lungomare70.it.';return;}document.body.classList.remove('link-required');document.querySelector('main').hidden=false;document.querySelector('footer').hidden=false;document.getElementById('personal-link-required')?.remove();const t=GUIDE[selected];document.documentElement.lang=selected;language.value=selected;document.getElementById('language-flag').textContent={it:'🇮🇹',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',es:'🇪🇸',nl:'🇳🇱',pl:'🇵🇱'}[selected];document.getElementById('header-map').setAttribute('aria-label',`${t.map} · Lungomare 70 · Google Maps`);document.getElementById('header-map').title=`${t.map} · Lungomare 70 · Google Maps`;document.title=`Lungomare 70 · ${t.subtitle}`;for(const id of ['subtitle','welcome','intro','footer'])document.getElementById(id).textContent=t[id];document.querySelector('#hero-title').textContent=t.title;document.querySelector('#guide-title').textContent=t.menu;document.querySelector('#close').setAttribute('aria-label',t.close);document.querySelector('.photo-strip').setAttribute('aria-label',t.photo);const cards=document.querySelector('#cards');cards.replaceChildren();const menuLabels=[...t.labels,AREA_UI[selected].food,AREA_UI[selected].services,AREA_UI[selected].parking,BEACH_GUIDE_TEXT[selected].title];[0,14,1,2,3,4,5,15,7,8,9,12,13,10,11].forEach(i=>{const label=menuLabels[i];const button=document.createElement('button');button.type='button';button.className='card';button.setAttribute('aria-haspopup','dialog');button.innerHTML=svg(i);const span=document.createElement('span');span.textContent=i===3 && guest?.rooms?.length>1 ? personalLabel(i,label,selected) : areaLabel(i,personalLabel(i,label,selected),selected);if(i===0)button.classList.add('entry-card');button.append(span);button.addEventListener('click',()=>openSection(i));cards.append(button);});renderPersonalHeader(selected);if(dialog.open)openSection(activeSection);}
+function render(){if(!guest || guest.invalid){document.body.classList.add('link-required');document.querySelector('main').hidden=true;document.querySelector('footer').hidden=true;let notice=document.getElementById('personal-link-required');if(!notice){notice=document.createElement('section');notice.id='personal-link-required';notice.setAttribute('role','status');document.querySelector('main').before(notice);}notice.textContent='Questa guida è disponibile soltanto tramite il link personale fornito da Lungomare 70. Per riceverlo, contatta Cinzia e Alberto: info@lungomare70.it.';return;}document.body.classList.remove('link-required');document.querySelector('main').hidden=false;document.querySelector('footer').hidden=false;document.getElementById('personal-link-required')?.remove();const t=GUIDE[selected];document.documentElement.lang=selected;language.value=selected;document.getElementById('language-flag').textContent={it:'🇮🇹',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',es:'🇪🇸',nl:'🇳🇱',pl:'🇵🇱'}[selected];document.getElementById('header-map').setAttribute('aria-label',`${t.map} · Lungomare 70 · Google Maps`);document.getElementById('header-map').title=`${t.map} · Lungomare 70 · Google Maps`;document.title=`Lungomare 70 · ${t.subtitle}`;for(const id of ['subtitle','welcome','intro','footer'])document.getElementById(id).textContent=t[id];document.querySelector('#hero-title').textContent=t.title;document.querySelector('#guide-title').textContent=t.menu;document.querySelector('#close').setAttribute('aria-label',t.close);document.querySelector('.photo-strip').setAttribute('aria-label',t.photo);const cards=document.querySelector('#cards');cards.replaceChildren();const menuLabels=[...t.labels,AREA_UI[selected].food,AREA_UI[selected].services,AREA_UI[selected].parking,BEACH_GUIDE_TEXT[selected].title];[0,14,1,2,3,4,5,15,7,8,9,12,13,10,11].forEach(i=>{const label=menuLabels[i];const button=document.createElement('button');button.type='button';button.className='card';button.setAttribute('aria-haspopup','dialog');if(i!==3)button.innerHTML=svg(i);const span=document.createElement('span');span.textContent=i===3 && guest?.rooms?.length>1 ? personalLabel(i,label,selected) : areaLabel(i,personalLabel(i,label,selected),selected);if(i===0)button.classList.add('entry-card');button.append(span);if(i===3)button.append(createRoomSigns('room-button-signs'));button.addEventListener('click',()=>openSection(i));cards.append(button);});renderPersonalHeader(selected);if(dialog.open)openSection(activeSection);}
 language.addEventListener('change',()=>{selected=language.value;try{localStorage.setItem('lungomare70-language',selected);}catch{}render();});
 document.querySelector('#close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});

@@ -30,3 +30,14 @@ footer{background:rgba(255,250,242,.94)}
 .guide .section-heading{display:none}
 .detail-icon.room-signs{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
 .detail-icon.room-signs img{display:block;width:clamp(76px,20vw,96px);height:auto;border-radius:6px}
+
+/* Room plaques follow their title and also identify the assigned room on its menu button. */
+#detail-icon:empty{display:none}
+#detail-title.room-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.room-title-signs,.card .room-button-signs{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;flex-shrink:0}
+.room-title-signs img{display:block;width:64px;height:auto;border-radius:5px}
+.card:has(.room-button-signs){justify-content:space-between;gap:6px}
+.card .room-button-signs{justify-content:flex-end;max-width:48%;gap:3px}
+.room-button-signs img{display:block;width:40px;height:auto;border-radius:3px}
+.room-button-signs:has(img:nth-child(2)) img{width:28px}
+@media(max-width:600px){.room-button-signs img{width:36px}.room-button-signs:has(img:nth-child(2)) img{width:24px}.room-title-signs img{width:58px}}
