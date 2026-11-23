@@ -112,6 +112,8 @@ function renderAreaSection(index,lang){
  const previews=PLACE_PREVIEW[kind];
  if(kind==='food'&&AREA_PLACES.food.some(place=>place.offer)){const legend=document.createElement('p');legend.className='partner-legend';legend.style.cssText='display:flex;align-items:center;gap:.55rem;margin:0 0 1.2rem;font-size:.95rem';const icon=partnerShell(lang);icon.alt='';icon.style.marginLeft='0';const text=document.createElement('span');text.textContent=PARTNER_UI[lang].legend;legend.append(icon,text);panel.append(legend);}
  if(previews)document.getElementById('detail-text').textContent='';
+ const serviceIcon=(name)=>/farmacia/i.test(name)?'✚':/superstore|supermercato/i.test(name)?'🛒':/bancomat|banco marchigiano/i.test(name)?'🏧':/aeroporto/i.test(name)?'✈️':/stazione/i.test(name)?'🚆':'📍';
+ const serviceBadge=(name,large=false)=>{const badge=document.createElement('span');badge.textContent=serviceIcon(name);badge.setAttribute('aria-hidden','true');badge.style.cssText=large?'display:flex;align-items:center;justify-content:center;width:82px;height:82px;border-radius:18px;background:#e7f2f2;font-size:2.5rem;margin:0 0 12px;':'display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;background:#e7f2f2;font-size:1.15rem;flex-shrink:0;margin-right:10px;vertical-align:middle;';return badge;};
  const entries=AREA_PLACES[kind].map((place,i)=>({place,preview:previews?.[i]}));
  if(previews)entries.sort((a,b)=>(a.preview.meters??Infinity)-(b.preview.meters??Infinity));
  for(const {place,preview} of entries){
@@ -120,7 +122,7 @@ function renderAreaSection(index,lang){
   const content=document.createElement('div');content.className='place-expanded';
   if(collapsible){
    const summary=document.createElement('summary');
-   const name=document.createElement('span');name.className='place-name';name.textContent=place.name;if(place.offer)name.append(partnerShell(lang));
+   const name=document.createElement('span');name.className='place-name';name.textContent=place.name;if(kind==='services')name.prepend(serviceBadge(place.name));if(place.offer)name.append(partnerShell(lang));
    const distance=document.createElement('span');distance.className='place-distance';
    const meters=preview?.meters;
    distance.textContent=meters==null?'':'≈ '+(meters<1000?Math.round(meters/50)*50+' m':new Intl.NumberFormat(lang,{maximumFractionDigits:meters<10000?1:0}).format(meters/1000)+' km');
@@ -135,6 +137,7 @@ function renderAreaSection(index,lang){
     figure.append(img,credit);content.append(figure);
    }
   }else{const heading=document.createElement('h3');heading.textContent=place.name;content.append(heading);}
+  if(kind==='services')content.prepend(serviceBadge(place.name,true));
   const address=document.createElement('p');address.className='place-address';address.textContent=place.address;
   const description=document.createElement('p');description.textContent=place.description[lang];
   const links=document.createElement('div');links.className=preview?'place-links-subtle':'place-links';
