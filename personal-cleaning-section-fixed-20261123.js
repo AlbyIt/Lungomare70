@@ -80,7 +80,7 @@ function renderPersonalSection(index,lang) {
   const items=guest.cleaning.split(',').map(x=>x.split(':')).filter(x=>x.length===2&&/^\d{4}-\d{2}-\d{2}$/.test(x[0])&&['pulire','rifare'].includes(x[1]));
   const section=document.createElement('section');section.className='personal-cleaning';
   const heading=document.createElement('h3');heading.textContent=tr.title;section.append(heading);
-  if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');li.textContent=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d)+' — '+tr[kind];list.append(li);}section.append(list);}
+  if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');const date=document.createElement('strong');date.textContent=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);li.append(date,document.createTextNode(' — '+tr[kind]));list.append(li);}section.append(list);}
   const towels=document.createElement('p');towels.textContent=tr.towels;section.append(towels);
   document.getElementById('detail-text').textContent='';
   document.getElementById('detail-text').after(section);
