@@ -30,7 +30,7 @@ function readPersonalLink(hash) {
 let guest = readPersonalLink(location.hash);
 function personalLabel(index, label, lang) {
  if (!guest || guest.invalid) return label;
- return index===3 ? PERSONAL_TEXT[lang].room : index===0 ? PERSONAL_TEXT[lang].entry : label;
+ return index===3 ? (guest.rooms.length>1 ? ({it:'Le nostre camere',en:'Our rooms',de:'Unsere Zimmer',fr:'Nos chambres',es:'Nuestras habitaciones',nl:'Onze kamers',pl:'Nasze pokoje'}[lang]||'Le nostre camere') : PERSONAL_TEXT[lang].room) : index===0 ? PERSONAL_TEXT[lang].entry : label;
 }
 function renderPersonalHeader(lang) {
  document.body.classList.toggle('personal-mode',Boolean(guest && !guest.invalid));
