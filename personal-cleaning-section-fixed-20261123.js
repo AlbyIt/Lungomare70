@@ -76,11 +76,12 @@ function renderPersonalSection(index,lang) {
    nl:{title:'Geplande schoonmaak',pulire:'Reiniging van vloer en badkamer, met schone handdoeken',rifare:'Grondige schoonmaak van de kamer, met volledige verschoning van beddengoed en handdoeken',towels:'Je kunt op elk moment schone handdoeken vragen.'},
    pl:{title:'Planowane sprzątanie',pulire:'Mycie podłogi i łazienki oraz wymiana ręczników',rifare:'Dokładne sprzątanie pokoju z pełną wymianą pościeli i ręczników',towels:'W każdej chwili możesz poprosić o wymianę ręczników.'}
   };
+  const cleaningNames={"it":{"pulire":"Pulizia standard","rifare":"Pulizia completa"},"de":{"pulire":"Standardreinigung","rifare":"Komplettreinigung"},"en":{"pulire":"Standard cleaning","rifare":"Full cleaning"},"fr":{"pulire":"Ménage standard","rifare":"Ménage complet"},"es":{"pulire":"Limpieza estándar","rifare":"Limpieza completa"},"nl":{"pulire":"Standaardschoonmaak","rifare":"Volledige schoonmaak"},"pl":{"pulire":"Sprzątanie standardowe","rifare":"Pełne sprzątanie"}};
   const tr=labels[lang]||labels.it;
   const items=guest.cleaning.split(',').map(x=>x.split(':')).filter(x=>x.length===2&&/^\d{4}-\d{2}-\d{2}$/.test(x[0])&&['pulire','rifare'].includes(x[1]));
   const section=document.createElement('section');section.className='personal-cleaning';
   const heading=document.createElement('h3');heading.textContent=tr.title;section.append(heading);
-  if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');const date=document.createElement('strong');date.textContent=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);li.append(date,document.createTextNode(' — '+tr[kind]));list.append(li);}section.append(list);}
+  if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');const date=document.createElement('strong');date.textContent=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);date.textContent+=' — '+cleaningNames[lang][kind];const description=document.createElement('p');description.textContent=tr[kind];li.append(date,description);list.append(li);}section.append(list);}
   const towels=document.createElement('p');towels.textContent=tr.towels;section.append(towels);
   document.getElementById('detail-text').textContent='';
   document.getElementById('detail-text').after(section);
