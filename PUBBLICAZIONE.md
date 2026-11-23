@@ -143,3 +143,7 @@ Mostrare le tre frasi in capoversi separati, senza ripetere «buffet» nella pri
 - Sono presenti due access point con nomi diversi, attualmente non associati al nome Lungomare 70. I nomi non sono stati comunicati: non inventarli.
 - La scheda invita a chiedere a Cinzia e Alberto soltanto il nome della rete a cui collegarsi. Testo aggiornato in tutte le sette lingue.
 - Il cambio dei nomi degli access point resta da affrontare insieme ad Alberto in una sessione successiva.
+
+### Menu senza Spazi comuni — 23 novembre 2026
+- Su richiesta di Alberto, rimosso il tasto «Spazi comuni» dal menu di tutte le guide e in tutte le lingue.
+- Gli ospiti attraversano già veranda e salone all'arrivo; non serve una scheda per presentarli. Le altre sezioni e le fotografie degli ambienti sono conservate.
