@@ -1,0 +1,33 @@
+/* Seconda proposta: coastal hospitality, intentionally noticeable but compact. */
+:root{--paper:#fff7ec;--ink:#334b46;--sea:#236b70;--line:#e4cfb6;--gold:#bc8151}
+body{background:linear-gradient(155deg,#fff8ee 0%,#f9eddf 52%,#f3e7d8 100%)}
+.topbar{background:#fffaf2;border-bottom:2px solid #e8cfb1}
+.brand{color:#285b60}
+.hero{border-radius:0 0 22px 22px;box-shadow:0 12px 28px #70503935}
+.hero>img{filter:saturate(1.22) contrast(1.06) sepia(.09)}
+.hero-shade,.personal-mode .hero-shade{background:linear-gradient(90deg,rgba(20,44,47,.84) 0%,rgba(48,44,38,.42) 65%,rgba(48,44,38,.12) 100%)}
+.hero h1{color:#fff8e9;text-shadow:0 2px 14px #182b2b90}
+.hero .eyebrow{color:#f7d5a5}
+.welcome{background:#fffdf7;border:1px solid #ead6bb;border-radius:18px;padding:14px 20px;box-shadow:0 6px 24px #89644020}
+.welcome h2{color:#92633f;font-weight:500}
+.welcome p{color:#586d65}
+.section-heading h2{color:#875e40}
+.card{background:#fffdfa;border:1px solid #dec8aa;border-radius:15px;box-shadow:0 4px 12px #74512c24}
+.card:nth-child(1),.card:nth-child(2),.card:nth-child(3){background:#e4efe8;border-color:#b8d5c6}
+.card svg{stroke:#27767b;stroke-width:1.8}
+.card:hover{background:#f8ead8;border-color:#bd966c}
+.card.entry-card{background:#1f7175;border-color:#1f7175;color:white;box-shadow:0 5px 15px #1f71753b}
+.card.entry-card svg{stroke:#fff}
+.photo-strip{border-top:5px solid #ead3b7;margin-top:20px}
+.photo-strip img{filter:saturate(1.16) contrast(1.04)}
+footer{background:#f0e2d0;border-top:1px solid #dcc4a7}
+@media(max-width:600px){
+ .hero{border-radius:0 0 16px 16px}
+ .personal-mode .hero{min-height:136px}
+ .welcome{margin:9px 12px 12px;padding:10px 12px;border-radius:13px}
+ .welcome h2{font-size:1.06rem}
+ .welcome p{font-size:.77rem}
+ .card{border-radius:12px;box-shadow:0 2px 7px #74512c1d}
+ .card:nth-child(1),.card:nth-child(2),.card:nth-child(3){background:#e4efe8}
+ .photo-strip{margin-top:17px}
+}
