@@ -114,3 +114,8 @@ prima dell'utilizzo operativo con i codici reali degli ospiti.
   istruzioni del water-bidet. Ulteriori fotografie saranno scelte in seguito.
 - Il balcone vista mare e queste dotazioni non sono esclusivi di Stella:
   Alberto conferma esplicitamente che sono presenti in tutte e quattro le camere.
+
+### Immagini delle camere e menu — 23 novembre 2026
+- Le quattro targhette originali fornite da Alberto sono conservate in assets/room-1-sign.png (Stella), room-2-sign.png (Duna), room-3-sign.png (Onda), room-4-sign.png (Perla).
+- Usarle come icone dentro «La mia camera» e «Le nostre camere», mostrando soltanto le camere assegnate dal link personale. Le fotografie e le dotazioni restano nella scheda.
+- Nelle guide personalizzate non mostrare la fascia riepilogativa della camera né la testata «Esplora la guida».

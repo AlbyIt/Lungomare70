@@ -25,3 +25,8 @@ footer{background:rgba(255,250,242,.94)}
 /* Room details remain in the assigned-room dialog; omit the redundant header strip. */
 .personal-mode .welcome{display:none}
 .personal-mode .guide{margin-top:14px}
+
+/* The menu needs no additional heading; retain its existing accessible label. */
+.guide .section-heading{display:none}
+.detail-icon.room-signs{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.detail-icon.room-signs img{display:block;width:clamp(76px,20vw,96px);height:auto;border-radius:6px}

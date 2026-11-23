@@ -32,7 +32,21 @@ function openSection(index) {
  if(guest?.invalid) return;
  activeSection = index;
  const t=GUIDE[selected];
- document.querySelector('#detail-icon').innerHTML=svg(index);
+ const detailIcon=document.querySelector('#detail-icon');
+ detailIcon.classList.remove('room-signs');
+ detailIcon.innerHTML=svg(index);
+ if(index===3 && guest && !guest.invalid){
+  detailIcon.classList.add('room-signs');
+  detailIcon.replaceChildren();
+  for(const room of guest.rooms){
+   const sign=document.createElement('img');
+   sign.src='assets/room-'+room+'-sign.png';
+   sign.alt=room+' · '+ROOM_NAMES[room-1];
+   sign.width=96;sign.height=86;
+   detailIcon.append(sign);
+  }
+ }
+
  document.querySelector('#detail-title').textContent=index===3 && guest?.rooms?.length>1 ? personalLabel(index,t.labels[index]||'',selected) : areaLabel(index,t.labels[index]||'',selected);
  document.querySelector('#detail-text').textContent=t.text[index]||'';
  if(index===1){const breakfastInfo={
