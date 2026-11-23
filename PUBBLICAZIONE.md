@@ -154,3 +154,7 @@ Mostrare le tre frasi in capoversi separati, senza ripetere «buffet» nella pri
 - assets/spiaggia-marzocca-veduta-diurna.jpg: veduta dalla battigia di Marzocca con ombrelloni e strutture sportive sullo sfondo, fonte https://beach-searcher.de/images/beaches/380202151/IT202151-f.jpg
 - Fonte della seconda immagine: https://beachsearcher.com/it/beach/380202151/scoobydoo-beach ; non dichiarare una posizione esatta davanti al B&B non verificata.
 - Originali conservati con i nomi spiaggia-attrezzata-marzocca.jpg e spiaggia-marzocca-veduta-diurna.jpg. Didascalie nelle sette lingue.
+
+### Benvenuto a coppie e gruppi — 23 novembre 2026
+- Il parametro personale genere=p abilita «Benvenuti» in italiano e i corrispondenti saluti al plurale nelle altre lingue dove cambia la forma.
+- Prova ipotetica richiesta da Alberto: Fabio e Lydia (nome con Y), camera 1 Stella, 6–13 settembre 2027, sette notti, pulizia di prova il 9 settembre. Non inserita nei calendari e nessun codice cancello inventato.

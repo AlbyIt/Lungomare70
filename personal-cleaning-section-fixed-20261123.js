@@ -42,7 +42,7 @@ function renderPersonalHeader(lang) {
   document.getElementById('cards').replaceChildren();
   return;
  }
- const welcome=guest.gender==='f'&&lang==='it'?'Benvenuta, {name}!':guest.gender==='f'&&lang==='es'?'¡Bienvenida, {name}!':t.welcome;
+ const welcome=guest.gender==='p'?({it:'Benvenuti, {name}!',es:'¡Bienvenidos, {name}!',pl:'Witajcie, {name}!'}[lang]||t.welcome):guest.gender==='f'&&lang==='it'?'Benvenuta, {name}!':guest.gender==='f'&&lang==='es'?'¡Bienvenida, {name}!':t.welcome;
  document.getElementById('welcome').textContent=welcome.replace('{name}',guest.name);
  const title=document.getElementById('hero-title');
  const [greeting,ending]=welcome.split('{name}');
