@@ -127,7 +127,7 @@ function renderPersonalSection(index,lang) {
   const heading=document.createElement('h3');heading.textContent=t[kind];
   const code=document.createElement('p');code.className=guest[kind]?'access-code':'access-missing';
   code.textContent=guest[kind] ? guest[kind]+(kind==='gate'?' #':'') : t.missing;
-  if(kind==='safe' && guest.rooms.length>1){const other=pendingSafes(guest);if(other)code.textContent=other;}
+  if(kind==='safe' && guest.rooms.length>1){code.textContent=guest.safe||t.missing;}
   const help=document.createElement('p');help.textContent=t[kind+'Help'];
   box.append(heading,code,help);
   if(ACCESS_PHOTOS[kind].length){
