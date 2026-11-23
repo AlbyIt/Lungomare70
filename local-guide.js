@@ -122,7 +122,7 @@ function renderAreaSection(index,lang){
   addLink(links,t.info,place.source,true);
   for(const link of place.extraLinks||[])addLink(links,link.label[lang],link.url,true);
   content.append(address,description);
-  if(place.offer){const offer=document.createElement('p');offer.className='place-offer';const strong=document.createElement('strong');strong.textContent=place.offer[lang];offer.append(strong);content.append(offer);}
+  if(place.offer){const offer=document.createElement('p');offer.className='place-offer';const strong=document.createElement('strong');strong.textContent=place.offer[lang];const icon=partnerShell(lang);icon.alt='';icon.style.marginLeft='0';icon.style.marginRight='.4rem';offer.append(icon,strong);content.append(offer);}
   content.append(links);item.append(content);panel.append(item);
  }
  const note=document.createElement('p');note.className='place-note';note.textContent=previews?PLACE_HINTS[lang].note:t.note;panel.append(note);
