@@ -122,6 +122,16 @@ function renderPersonalSection(index,lang) {
    detail.style.whiteSpace='pre-line';
   }
  }
+ // Put the map action inside the entry panel, before either access code.
+ const mapLabels={it:'Apri la mappa',en:'Open map',de:'Karte öffnen',fr:'Ouvrir la carte',es:'Abrir mapa',nl:'Open de kaart',pl:'Otwórz mapę'};
+ const mapLink=document.createElement('a');
+ mapLink.className='entry-map-button';
+ mapLink.href='https://www.google.com/maps/search/?api=1&query=Lungomare+Italia+70+Marzocca+di+Senigallia';
+ mapLink.target='_blank';mapLink.rel='noopener noreferrer';
+ mapLink.textContent=mapLabels[lang]||mapLabels.it;
+ panel.append(mapLink);
+ const oldMapLinks=document.getElementById('detail-links');
+ if(oldMapLinks)oldMapLinks.replaceChildren();
  for(const kind of ['gate','safe']){
   const box=document.createElement('section');box.className='access-step';
   const heading=document.createElement('h3');heading.textContent=t[kind];
@@ -177,7 +187,5 @@ function renderPersonalSection(index,lang) {
   panel.append(box);
  }
  document.getElementById('detail-text').after(panel);
- const mapLinks=document.getElementById('detail-links');
- if(mapLinks && mapLinks.children.length){document.getElementById('detail-text').after(mapLinks);}
 
 }
