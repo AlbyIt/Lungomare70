@@ -41,6 +41,19 @@ function createRoomSigns(className){
 }
 function renderDepartureSection(lang){
  document.querySelector('#detail-title').textContent='Check-out';
+ const farewells={
+  it:'Ci auguriamo che abbiate trascorso un piacevole soggiorno! Buon viaggio e speriamo di rivedervi presto!\n\nCinzia e Alberto',
+  en:'We hope you have enjoyed your stay! Have a safe journey, and we look forward to seeing you again soon!\n\nCinzia and Alberto',
+  de:'Wir hoffen, dass ihr einen schönen Aufenthalt hattet! Gute Reise und auf ein baldiges Wiedersehen!\n\nCinzia und Alberto',
+  fr:'Nous espérons que vous avez passé un agréable séjour ! Bon voyage et au plaisir de vous revoir bientôt !\n\nCinzia et Alberto',
+  es:'¡Esperamos que hayáis disfrutado de vuestra estancia! ¡Buen viaje y hasta pronto!\n\nCinzia y Alberto',
+  nl:'We hopen dat jullie een fijn verblijf hebben gehad! Goede reis en graag tot ziens!\n\nCinzia en Alberto',
+  pl:'Mamy nadzieję, że miło spędziliście u nas czas! Szczęśliwej podróży i do zobaczenia wkrótce!\n\nCinzia i Alberto'
+ };
+ const farewell=farewells[lang]||farewells.it;
+ const text=document.querySelector('#detail-text');
+ text.textContent=GUIDE[lang].text[10]+'\n\n'+farewell;
+ text.style.whiteSpace='pre-line';
  if(!guest || guest.invalid || !/^\d{4}-\d{2}-\d{2}$/.test(guest.departure))return;
  const date=new Date(guest.departure+'T12:00:00Z');
  if(Number.isNaN(date.getTime()) || date.toISOString().slice(0,10)!==guest.departure)return;
@@ -59,8 +72,7 @@ function renderDepartureSection(lang){
  const emphasized=document.createElement('strong');emphasized.textContent=formatted;
  const original=GUIDE[lang].text[10];
  const rest=original.slice(original.indexOf('. ')+2);
- const text=document.querySelector('#detail-text');
- text.replaceChildren(document.createTextNode(before),emphasized,document.createTextNode(after+'\n\n'+rest));
+ text.replaceChildren(document.createTextNode(before),emphasized,document.createTextNode(after+'\n\n'+rest+'\n\n'+farewell));
  text.style.whiteSpace='pre-line';
 }
 function openSection(index) {

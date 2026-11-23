@@ -126,3 +126,5 @@ prima dell'utilizzo operativo con i codici reali degli ospiti.
 - Il tasto e il titolo della scheda Partenza sono rinominati «Check-out» in tutte le lingue.
 - La scheda mostra giorno della settimana e data di partenza dal link personale, con rilascio della camera o delle camere entro le 10:00.
 - Mantenere le istruzioni già presenti su chiavi, eventuale saldo e contatti. Se la data manca o non è valida, mantenere l'indicazione generale delle 10:00 senza inventare una data.
+
+- Saluto finale approvato per il Check-out: «Ci auguriamo che abbiate trascorso un piacevole soggiorno! Buon viaggio e speriamo di rivedervi presto!»; firma «Cinzia e Alberto». Presente nelle sette lingue della guida, dopo le istruzioni operative.
