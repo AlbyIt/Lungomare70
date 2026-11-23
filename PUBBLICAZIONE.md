@@ -137,3 +137,9 @@ Puoi scegliere liberamente dal buffet.
 Le bevande calde vi saranno servite da Cinzia e Alberto.
 
 Mostrare le tre frasi in capoversi separati, senza ripetere «buffet» nella prima frase. Aggiornate tutte le sette lingue.
+
+### Wi-Fi confermato da Alberto — 23 novembre 2026
+- La connessione è gratuita e non richiede password.
+- Sono presenti due access point con nomi diversi, attualmente non associati al nome Lungomare 70. I nomi non sono stati comunicati: non inventarli.
+- La scheda invita a chiedere a Cinzia e Alberto soltanto il nome della rete a cui collegarsi. Testo aggiornato in tutte le sette lingue.
+- Il cambio dei nomi degli access point resta da affrontare insieme ad Alberto in una sessione successiva.

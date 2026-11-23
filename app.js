@@ -88,6 +88,11 @@ function openSection(index) {
   text.textContent=breakfastInfo[selected]||breakfastInfo.it;
   text.style.whiteSpace='pre-line';
  }
+ if(index===2){const wifiInfo={"it": "Il Wi-Fi è gratuito e disponibile in tutta la struttura. Non è richiesta alcuna password.\n\nChiedi a Cinzia e Alberto il nome della rete a cui collegarti.", "en": "Wi-Fi is free and available throughout the property. No password is required.\n\nAsk Cinzia and Alberto which network to connect to.", "de": "WLAN ist kostenlos und in der gesamten Unterkunft verfügbar. Es ist kein Passwort erforderlich.\n\nFrag Cinzia und Alberto nach dem Namen des Netzwerks, mit dem du dich verbinden kannst.", "fr": "Le Wi-Fi est gratuit et disponible dans tout l’établissement. Aucun mot de passe n’est nécessaire.\n\nDemande à Cinzia et Alberto le nom du réseau auquel te connecter.", "es": "El Wi-Fi es gratuito y está disponible en todo el alojamiento. No se necesita contraseña.\n\nPregunta a Cinzia y Alberto el nombre de la red a la que puedes conectarte.", "nl": "Wifi is gratis en beschikbaar in de hele accommodatie. Er is geen wachtwoord nodig.\n\nVraag Cinzia en Alberto met welk netwerk je verbinding kunt maken.", "pl": "Wi-Fi jest bezpłatne i dostępne w całym obiekcie. Hasło nie jest wymagane.\n\nZapytaj Cinzię i Alberta o nazwę sieci, z którą możesz się połączyć."};
+  const text=document.querySelector('#detail-text');
+  text.textContent=wifiInfo[selected]||wifiInfo.it;
+  text.style.whiteSpace='pre-line';
+ }
  const links=document.querySelector('#detail-links');links.replaceChildren();
  if(index===0) addLink(links,t.map,'https://www.google.com/maps/search/?api=1&query=Lungomare+Italia+70+Marzocca+di+Senigallia',true);
  if([2,4,11].includes(index)) addLink(links,t.contact,'mailto:info@lungomare70.it');
