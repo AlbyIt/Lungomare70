@@ -147,3 +147,10 @@ Mostrare le tre frasi in capoversi separati, senza ripetere «buffet» nella pri
 ### Menu senza Spazi comuni — 23 novembre 2026
 - Su richiesta di Alberto, rimosso il tasto «Spazi comuni» dal menu di tutte le guide e in tutte le lingue.
 - Gli ospiti attraversano già veranda e salone all'arrivo; non serve una scheda per presentarli. Le altre sezioni e le fotografie degli ambienti sono conservate.
+
+### Fotografie della sezione Spiaggia — 23 novembre 2026
+- Alberto ha approvato due fotografie diurne da conservare e utilizzare nella sezione Spiaggia, sostituendo esclusivamente le due foto precedenti di giardino e balcone in quella scheda.
+- assets/spiaggia-attrezzata-marzocca.jpg: veduta dello stabilimento con ombrelloni gialli, fonte Hotel Rex: https://cmsmedia.titanka.com/www.hotelrexsenigallia.it/crp992x600-sf-index-2.jpg?v=1653992499.jpg
+- assets/spiaggia-marzocca-veduta-diurna.jpg: veduta dalla battigia di Marzocca con ombrelloni e strutture sportive sullo sfondo, fonte https://beach-searcher.de/images/beaches/380202151/IT202151-f.jpg
+- Fonte della seconda immagine: https://beachsearcher.com/it/beach/380202151/scoobydoo-beach ; non dichiarare una posizione esatta davanti al B&B non verificata.
+- Originali conservati con i nomi spiaggia-attrezzata-marzocca.jpg e spiaggia-marzocca-veduta-diurna.jpg. Didascalie nelle sette lingue.

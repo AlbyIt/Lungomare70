@@ -17,8 +17,11 @@ icons.push('<path d="M4 2v7M7 2v7M1 2v7c0 3 6 3 6 0M4 11v11M16 2v20M16 2c-5 5-5 
 icons.push('<rect x="3" y="2" width="18" height="20" rx="2"/><path d="M9 18V6h4a4 4 0 0 1 0 8H9"/>');
 icons.push(icons[7]);
 icons[7]='<ellipse cx="9" cy="8" rx="5" ry="7" transform="rotate(35 9 8)"/><path d="m6 14-4 7M5 6l6 5M6 3l7 6M4 10l5-6"/><circle cx="19" cy="18" r="3"/>';
-const photos = {0:['esterno'],1:['buffet','veranda'],3:['stella','duna','onda','perla'],6:['bagno'],15:['giardino','balcone'],8:['sala','veranda'],9:['balcone']};
+const photos = {0:['esterno'],1:['buffet','veranda'],3:['stella','duna','onda','perla'],6:['bagno'],15:['spiaggia-attrezzata','spiaggia-marzocca'],8:['sala','veranda'],9:['balcone']};
 PHOTO_ASSETS.buffet='assets/buffet.jpg';
+PHOTO_ASSETS['spiaggia-attrezzata']='assets/spiaggia-attrezzata-marzocca.jpg';
+PHOTO_ASSETS['spiaggia-marzocca']='assets/spiaggia-marzocca-veduta-diurna.jpg';
+const beachPhotoCaptions={"it": {"spiaggia-attrezzata": "La spiaggia attrezzata di Marzocca", "spiaggia-marzocca": "La spiaggia di Marzocca"}, "en": {"spiaggia-attrezzata": "The equipped beach in Marzocca", "spiaggia-marzocca": "Marzocca beach"}, "de": {"spiaggia-attrezzata": "Der Strand mit Liegen und Sonnenschirmen in Marzocca", "spiaggia-marzocca": "Der Strand von Marzocca"}, "fr": {"spiaggia-attrezzata": "La plage aménagée de Marzocca", "spiaggia-marzocca": "La plage de Marzocca"}, "es": {"spiaggia-attrezzata": "La playa equipada de Marzocca", "spiaggia-marzocca": "La playa de Marzocca"}, "nl": {"spiaggia-attrezzata": "Het strand met ligbedden en parasols in Marzocca", "spiaggia-marzocca": "Het strand van Marzocca"}, "pl": {"spiaggia-attrezzata": "Plaża z leżakami i parasolami w Marzocca", "spiaggia-marzocca": "Plaża w Marzocca"}};
 const breakfastCaptions={it:'Il buffet della colazione',en:'The breakfast buffet',de:'Das Frühstücksbuffet',fr:'Le buffet du petit-déjeuner',es:'El bufé del desayuno',nl:'Het ontbijtbuffet',pl:'Bufet śniadaniowy'};
 const balconyCaptions={"it":"Stella · Il balcone vista mare","en":"Stella · Sea-view balcony","de":"Stella · Balkon mit Meerblick","fr":"Stella · Le balcon vue mer","es":"Stella · El balcón con vistas al mar","nl":"Stella · Balkon met zeezicht","pl":"Stella · Balkon z widokiem na morze"};
 const fixedCaptions = {stella:'1 · Stella',duna:'2 · Duna',onda:'3 · Onda',perla:'4 · Perla'};
@@ -101,7 +104,7 @@ function openSection(index) {
  const multiRoom = Boolean(guest && !guest.invalid && index===3 && guest.rooms && guest.rooms.length>1);
  gallery.classList.toggle('multi-room-gallery',multiRoom);
  const sectionPhotos = [9,12,13].includes(index) ? [] : guest && !guest.invalid && index===3 ? (multiRoom ? guest.rooms.map(n=>({1:'stella',2:'duna',3:'onda',4:'perla'})[n]) : (guest.room===1 ? ['stella','balcone'] : [ROOM_KEYS[guest.room-1]])) : guest && index===0 ? [] : guest && guest.room!==1 && index===6 ? [] : photos[index]||[];
- for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];const photoCaption=photo==='balcone'&&index===3?balconyCaptions[selected]:photo==='buffet'?breakfastCaptions[selected]:fixedCaptions[photo];img.alt=photoCaption||areaLabel(index,t.labels[index]||'',selected);img.loading='lazy';figure.append(img);if(photoCaption){const caption=document.createElement('figcaption');caption.textContent=photoCaption;figure.append(caption);}if(multiRoom && !img.getAttribute('src')){img.src='assets/'+photo+'.jpg';}gallery.append(figure);}
+ for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];const photoCaption=beachPhotoCaptions[selected]?.[photo]|| (photo==='balcone'&&index===3?balconyCaptions[selected]:photo==='buffet'?breakfastCaptions[selected]:fixedCaptions[photo]);img.alt=photoCaption||areaLabel(index,t.labels[index]||'',selected);img.loading='lazy';figure.append(img);if(photoCaption){const caption=document.createElement('figcaption');caption.textContent=photoCaption;figure.append(caption);}if(multiRoom && !img.getAttribute('src')){img.src='assets/'+photo+'.jpg';}gallery.append(figure);}
  renderPersonalSection(index,selected);
  renderAreaSection(index,selected);
  if(index===10)renderDepartureSection(selected);
