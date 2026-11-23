@@ -144,3 +144,11 @@
 .detail-photos.multi-room-gallery figure{min-width:0}
 .detail-photos.multi-room-gallery img{width:100%;height:clamp(110px,24vw,210px);max-height:none;object-fit:cover}
 .detail-photos.multi-room-gallery figcaption{font-size:.83rem;text-align:center;padding:6px 2px}
+
+/* Entry directions: compact three-item keyring checklist and map near the address. */
+.keyring-items{margin:8px 0 10px;padding-left:23px;line-height:1.5}
+.keyring-items li{margin:3px 0}
+.access-step .remote-note{margin:10px 0 0}
+#personal-access + #detail-links{margin:0}
+#detail-text + #detail-links{margin:8px 0 14px}
+#detail-text + #detail-links a{margin-top:0}
