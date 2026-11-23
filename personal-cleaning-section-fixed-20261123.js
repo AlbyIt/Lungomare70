@@ -133,15 +133,14 @@ function renderPersonalSection(index,lang) {
    const roomList=guest.rooms.slice().sort((a,b)=>a-b).map(n=>n+' – '+ROOM_NAMES[n-1]);
    const format=new Intl.ListFormat(lang,{style:'long',type:'conjunction'});
    const roomsText=format.format(roomList);
-   const count=guest.rooms.length;
    const multiHelp={
-    it:'La cassaforte si trova a destra della vetrata. Aprila con il codice indicato e ritira tutti i '+count+' portachiavi, uno per ciascuna camera ('+roomsText+'). Ogni portachiavi contiene la chiave della rispettiva camera e il telecomando del cancello.',
-    de:'Der Schlüsselsafe befindet sich rechts neben der Glasfront. Öffnet ihn mit dem angegebenen Code und nehmt alle '+count+' Schlüsselbunde heraus, je einen für die Zimmer '+roomsText+'. Jeder Schlüsselbund enthält den Zimmerschlüssel und eine kleine Fernbedienung für das Tor.',
-    en:'The key safe is to the right of the glass entrance. Open it with the code shown and take all '+count+' key rings, one for each room ('+roomsText+'). Each key ring contains its room key and a small gate remote.',
-    fr:'Le coffre à clés se trouve à droite de la baie vitrée. Ouvrez-le avec le code indiqué et prenez les '+count+' trousseaux, un pour chaque chambre ('+roomsText+'). Chaque trousseau contient la clé de sa chambre et une télécommande du portail.',
-    es:'La caja de llaves está a la derecha de la cristalera. Abridla con el código indicado y recoged los '+count+' llaveros, uno para cada habitación ('+roomsText+'). Cada llavero contiene la llave de su habitación y un mando del portón.',
-    nl:'De sleutelkluis bevindt zich rechts van de glazen ingang. Open deze met de aangegeven code en neem alle '+count+' sleutelbossen mee, één voor elke kamer ('+roomsText+'). Elke sleutelbos bevat de kamersleutel en een afstandsbediening voor de poort.',
-    pl:'Sejf na klucze znajduje się po prawej stronie przeszklonego wejścia. Otwórzcie go podanym kodem i zabierzcie wszystkie '+count+' komplety kluczy, po jednym do każdego pokoju ('+roomsText+'). Każdy komplet zawiera klucz do pokoju i pilot do bramy.'
+    it:'La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Aprila con il codice indicato e ritira i portachiavi delle camere '+roomsText+'. Ogni portachiavi contiene la chiave della camera, la chiave della vetrata d’ingresso e il mini-telecomando del cancello.',
+    de:'Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Öffnet ihn mit dem angegebenen Code und nehmt die Schlüsselbunde für die Zimmer '+roomsText+'. Jeder Schlüsselbund enthält den Zimmerschlüssel, den Schlüssel zur verglasten Eingangstür und die kleine Fernbedienung für das Tor.',
+    en:'The key safe is to the right of the glass entrance door. Open it with the code shown and take the key rings for rooms '+roomsText+'. Each key ring contains the room key, the glass entrance door key and the small gate remote.',
+    fr:'Le coffre à clés se trouve à droite de la porte vitrée d’entrée. Ouvrez-le avec le code indiqué et prenez les trousseaux des chambres '+roomsText+'. Chaque trousseau contient la clé de la chambre, la clé de la porte vitrée d’entrée et la petite télécommande du portail.',
+    es:'La caja de llaves está a la derecha de la puerta acristalada de entrada. Abridla con el código indicado y recoged los llaveros de las habitaciones '+roomsText+'. Cada llavero contiene la llave de la habitación, la llave de la puerta acristalada de entrada y el pequeño mando del portón.',
+    nl:'De sleutelkluis bevindt zich rechts van de glazen toegangsdeur. Open deze met de aangegeven code en neem de sleutelbossen voor kamers '+roomsText+'. Elke sleutelbos bevat de kamersleutel, de sleutel van de glazen toegangsdeur en de kleine afstandsbediening voor de poort.',
+    pl:'Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Otwórzcie go podanym kodem i zabierzcie komplety kluczy do pokoi '+roomsText+'. Każdy komplet zawiera klucz do pokoju, klucz do przeszklonych drzwi wejściowych i mały pilot do bramy.'
    };
    help.textContent=multiHelp[lang]||multiHelp.it;
   }else{
