@@ -15,6 +15,59 @@ const ROOM_KEYS = ['stella','duna','onda','perla'];
 const ROOM_NAMES = ['Stella','Duna','Onda','Perla'];
 // Add only the owner's actual access photographs here when supplied.
 const ACCESS_PHOTOS = {gate:[],safe:[]};
+const CLEANING_TEXT = {
+ it:{intro:'Le pulizie previste durante il tuo soggiorno:',full:'Pulizia completa con cambio delle lenzuola e degli asciugamani.',light:'Pulizia leggera: pavimento, bagno e cambio degli asciugamani.',none:'Durante il tuo soggiorno non sono previste pulizie intermedie.',towels:'Puoi chiedere asciugamani puliti a Cinzia e Alberto in qualsiasi momento.'},
+ en:{intro:'Cleaning scheduled during your stay:',full:'Full cleaning, including a change of bed linen and towels.',light:'Light cleaning: floor, bathroom and fresh towels.',none:'No intermediate cleaning is scheduled during your stay.',towels:'You can ask Cinzia and Alberto for fresh towels at any time.'},
+ de:{intro:'Für deinen Aufenthalt sind folgende Reinigungen vorgesehen:',full:'Gründliche Reinigung mit Wechsel der Bettwäsche und Handtücher.',light:'Leichte Reinigung: Fußboden, Bad und frische Handtücher.',none:'Während deines Aufenthalts ist keine Zwischenreinigung vorgesehen.',towels:'Du kannst Cinzia und Alberto jederzeit um frische Handtücher bitten.'},
+ fr:{intro:'Les ménages prévus pendant ton séjour :',full:'Ménage complet avec changement des draps et des serviettes.',light:'Ménage léger : sol, salle de bains et changement des serviettes.',none:'Aucun ménage intermédiaire n’est prévu pendant ton séjour.',towels:'Tu peux demander des serviettes propres à Cinzia et Alberto à tout moment.'},
+ es:{intro:'Limpiezas previstas durante tu estancia:',full:'Limpieza completa con cambio de sábanas y toallas.',light:'Limpieza ligera: suelo, baño y cambio de toallas.',none:'No hay limpiezas intermedias previstas durante tu estancia.',towels:'Puedes pedir toallas limpias a Cinzia y Alberto en cualquier momento.'},
+ nl:{intro:'Geplande schoonmaak tijdens je verblijf:',full:'Volledige schoonmaak met schoon beddengoed en schone handdoeken.',light:'Lichte schoonmaak: vloer, badkamer en schone handdoeken.',none:'Tijdens je verblijf is geen tussentijdse schoonmaak gepland.',towels:'Je kunt Cinzia en Alberto op elk moment om schone handdoeken vragen.'},
+ pl:{intro:'Sprzątanie zaplanowane podczas Twojego pobytu:',full:'Pełne sprzątanie z wymianą pościeli i ręczników.',light:'Lekkie sprzątanie: podłoga, łazienka i wymiana ręczników.',none:'Podczas Twojego pobytu nie zaplanowano sprzątania pośredniego.',towels:'W każdej chwili możesz poprosić Cinzię i Alberta o czyste ręczniki.'}
+};
+function validStayDate(value){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
+ const date=new Date(value+'T12:00:00Z');
+ return !Number.isNaN(date.getTime())&&date.toISOString().slice(0,10)===value;
+}
+function personalCleaning(p,arrival){
+ const departure=p.get('partenza')||'';
+ if(departure&&(!validStayDate(arrival)||!validStayDate(departure)||departure<=arrival))return {invalid:true};
+ if(!p.has('pulizie'))return {departure,cleaning:null};
+ if(!validStayDate(arrival)||!validStayDate(departure))return {invalid:true};
+ const raw=p.get('pulizie');
+ if(raw.length>2000)return {invalid:true};
+ const cleaning=[];
+ for(const row of raw?raw.split(','):[]){
+  const match=/^(\d{4}-\d{2}-\d{2}):(rifare|pulire)$/.exec(row);
+  if(!match||!validStayDate(match[1])||match[1]<=arrival||match[1]>=departure||cleaning.some(x=>x.date===match[1]))return {invalid:true};
+  cleaning.push({date:match[1],type:match[2]});
+ }
+ cleaning.sort((a,b)=>a.date.localeCompare(b.date));
+ return {departure,cleaning};
+}
+function renderPersonalCleaning(lang){
+ const t=CLEANING_TEXT[lang];
+ if(guest.cleaning===null){
+  document.getElementById('detail-text').textContent=GUIDE[lang].text[4]+' '+t.towels;
+  return;
+ }
+ document.getElementById('detail-text').textContent=guest.cleaning.length?t.intro:t.none;
+ const section=document.createElement('section');section.id='personal-cleaning';
+ if(guest.cleaning.length){
+  const list=document.createElement('ul');list.className='personal-cleaning-list';
+  for(const event of guest.cleaning){
+   const item=document.createElement('li');
+   const heading=document.createElement('strong');
+   heading.textContent=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date(event.date+'T12:00:00'));
+   const description=document.createElement('p');description.textContent=t[event.type==='rifare'?'full':'light'];
+   item.append(heading,description);list.append(item);
+  }
+  section.append(list);
+ }
+ const towels=document.createElement('p');towels.textContent=t.towels;section.append(towels);
+ document.getElementById('detail-text').after(section);
+}
+
 function readPersonalLink(hash) {
  const p = new URLSearchParams(hash.replace(/^#/, ''));
  if (!p.has('nome') && !p.has('camera')) return null;
@@ -23,7 +76,10 @@ function readPersonalLink(hash) {
  const gate=p.get('cancello')||'';
  const safe=p.get('cassaforte')||'';
  if (!name || name.length>100 || !/^[1-4]$/.test(room) || (gate && !/^\d{6}$/.test(gate)) || (safe && !/^\d{4}$/.test(safe))) return {invalid:true};
- return {name, room:Number(room), gate, safe, lang:p.get('lingua'), arrival:p.get('arrivo')||'', demo:p.get('prova')==='1'};
+ const arrival=p.get('arrivo')||'';
+ const stay=personalCleaning(p,arrival);
+ if(stay.invalid)return {invalid:true};
+ return {name, room:Number(room), gate, safe, lang:p.get('lingua'), arrival, ...stay, gender:p.get('genere')||'', demo:p.get('prova')==='1'};
 }
 let guest = readPersonalLink(location.hash);
 function personalLabel(index, label, lang) {
@@ -34,7 +90,9 @@ function renderPersonalHeader(lang) {
  document.body.classList.toggle('personal-mode',Boolean(guest && !guest.invalid));
  if (!guest) return;
  document.querySelector('.brand').setAttribute('href',location.pathname+location.search+location.hash);
- const t=PERSONAL_TEXT[lang];
+ const t={...PERSONAL_TEXT[lang]};
+ if(lang==='it'&&guest.gender==='f')t.welcome='Benvenuta, {name}!';
+ if(lang==='es'&&guest.gender==='f')t.welcome='¡Bienvenida, {name}!';
  if(guest.invalid){
   document.getElementById('welcome').textContent=t.invalid;
   document.getElementById('cards').replaceChildren();
@@ -49,11 +107,13 @@ function renderPersonalHeader(lang) {
  if(guest.demo) document.getElementById('subtitle').textContent=t.demo.replace('{room}',guest.room);
 }
 function renderPersonalSection(index,lang) {
+ document.getElementById('personal-cleaning')?.remove();
  document.getElementById('room-amenities')?.remove();
  const previous=document.getElementById('personal-access');
  if(previous) previous.remove();
  if(!guest || guest.invalid) return;
  const t=PERSONAL_TEXT[lang];
+ if(index===4){renderPersonalCleaning(lang);return;}
  document.getElementById('detail-title').textContent=personalLabel(index,GUIDE[lang].labels[index],lang);
  if(index===3) {
   document.getElementById('detail-text').textContent=`${guest.room} · ${ROOM_NAMES[guest.room-1]}`;
