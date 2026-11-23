@@ -39,6 +39,30 @@ function createRoomSigns(className){
  }
  return signs;
 }
+function renderDepartureSection(lang){
+ document.querySelector('#detail-title').textContent='Check-out';
+ if(!guest || guest.invalid || !/^\d{4}-\d{2}-\d{2}$/.test(guest.departure))return;
+ const date=new Date(guest.departure+'T12:00:00Z');
+ if(Number.isNaN(date.getTime()) || date.toISOString().slice(0,10)!==guest.departure)return;
+ const multiple=guest.rooms.length>1;
+ const templates={
+  it:multiple?'Dovrai lasciare le camere {date} entro le ore 10:00.':'Dovrai lasciare la camera {date} entro le ore 10:00.',
+  en:multiple?'Please vacate your rooms on {date} by 10:00 am.':'Please vacate your room on {date} by 10:00 am.',
+  de:multiple?'Bitte gib deine Zimmer am {date} bis spätestens 10:00 Uhr frei.':'Bitte gib dein Zimmer am {date} bis spätestens 10:00 Uhr frei.',
+  fr:multiple?'Merci de libérer tes chambres le {date} avant 10 h.':'Merci de libérer ta chambre le {date} avant 10 h.',
+  es:multiple?'Deberás dejar las habitaciones el {date} antes de las 10:00.':'Deberás dejar la habitación el {date} antes de las 10:00.',
+  nl:multiple?'Verlaat je kamers op {date} uiterlijk om 10:00 uur.':'Verlaat je kamer op {date} uiterlijk om 10:00 uur.',
+  pl:multiple?'Prosimy o opuszczenie pokoi w dniu {date} do godziny 10:00.':'Prosimy o opuszczenie pokoju w dniu {date} do godziny 10:00.'
+ };
+ const formatted=new Intl.DateTimeFormat(lang,{timeZone:'Europe/Rome',weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(date);
+ const [before,after]=(templates[lang]||templates.it).split('{date}');
+ const emphasized=document.createElement('strong');emphasized.textContent=formatted;
+ const original=GUIDE[lang].text[10];
+ const rest=original.slice(original.indexOf('. ')+2);
+ const text=document.querySelector('#detail-text');
+ text.replaceChildren(document.createTextNode(before),emphasized,document.createTextNode(after+'\n\n'+rest));
+ text.style.whiteSpace='pre-line';
+}
 function openSection(index) {
  if(guest?.invalid) return;
  activeSection = index;
@@ -67,6 +91,7 @@ function openSection(index) {
  for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];const photoCaption=photo==='balcone'&&index===3?balconyCaptions[selected]:photo==='buffet'?breakfastCaptions[selected]:fixedCaptions[photo];img.alt=photoCaption||areaLabel(index,t.labels[index]||'',selected);img.loading='lazy';figure.append(img);if(photoCaption){const caption=document.createElement('figcaption');caption.textContent=photoCaption;figure.append(caption);}if(multiRoom && !img.getAttribute('src')){img.src='assets/'+photo+'.jpg';}gallery.append(figure);}
  renderPersonalSection(index,selected);
  renderAreaSection(index,selected);
+ if(index===10)renderDepartureSection(selected);
  const detailTitle=document.querySelector('#detail-title');
  detailTitle.classList.toggle('room-title',index===3 && Boolean(guest && !guest.invalid));
  if(index===3 && guest && !guest.invalid)detailTitle.append(createRoomSigns('room-title-signs'));
@@ -76,7 +101,7 @@ function openSection(index) {
  if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');dialog.scrollTop=0;}
 }
 function addLink(parent,label,href,external=false){const a=document.createElement('a');a.textContent=label;a.href=href;if(external){a.target='_blank';a.rel='noopener noreferrer';}parent.append(a);}
-function render(){if(!guest || guest.invalid){document.body.classList.add('link-required');document.querySelector('main').hidden=true;document.querySelector('footer').hidden=true;let notice=document.getElementById('personal-link-required');if(!notice){notice=document.createElement('section');notice.id='personal-link-required';notice.setAttribute('role','status');document.querySelector('main').before(notice);}notice.textContent='Questa guida è disponibile soltanto tramite il link personale fornito da Lungomare 70. Per riceverlo, contatta Cinzia e Alberto: info@lungomare70.it.';return;}document.body.classList.remove('link-required');document.querySelector('main').hidden=false;document.querySelector('footer').hidden=false;document.getElementById('personal-link-required')?.remove();const t=GUIDE[selected];document.documentElement.lang=selected;language.value=selected;document.getElementById('language-flag').textContent={it:'🇮🇹',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',es:'🇪🇸',nl:'🇳🇱',pl:'🇵🇱'}[selected];document.getElementById('header-map').setAttribute('aria-label',`${t.map} · Lungomare 70 · Google Maps`);document.getElementById('header-map').title=`${t.map} · Lungomare 70 · Google Maps`;document.title=`Lungomare 70 · ${t.subtitle}`;for(const id of ['subtitle','welcome','intro','footer'])document.getElementById(id).textContent=t[id];document.querySelector('#hero-title').textContent=t.title;document.querySelector('#guide-title').textContent=t.menu;document.querySelector('#close').setAttribute('aria-label',t.close);document.querySelector('.photo-strip').setAttribute('aria-label',t.photo);const cards=document.querySelector('#cards');cards.replaceChildren();const menuLabels=[...t.labels,AREA_UI[selected].food,AREA_UI[selected].services,AREA_UI[selected].parking,BEACH_GUIDE_TEXT[selected].title];[0,14,1,2,3,4,5,15,7,8,9,12,13,10,11].forEach(i=>{const label=menuLabels[i];const button=document.createElement('button');button.type='button';button.className='card';button.setAttribute('aria-haspopup','dialog');if(i!==3)button.innerHTML=svg(i);const span=document.createElement('span');span.textContent=i===3 && guest?.rooms?.length>1 ? personalLabel(i,label,selected) : areaLabel(i,personalLabel(i,label,selected),selected);if(i===0)button.classList.add('entry-card');button.append(span);if(i===3)button.append(createRoomSigns('room-button-signs'));button.addEventListener('click',()=>openSection(i));cards.append(button);});renderPersonalHeader(selected);if(dialog.open)openSection(activeSection);}
+function render(){if(!guest || guest.invalid){document.body.classList.add('link-required');document.querySelector('main').hidden=true;document.querySelector('footer').hidden=true;let notice=document.getElementById('personal-link-required');if(!notice){notice=document.createElement('section');notice.id='personal-link-required';notice.setAttribute('role','status');document.querySelector('main').before(notice);}notice.textContent='Questa guida è disponibile soltanto tramite il link personale fornito da Lungomare 70. Per riceverlo, contatta Cinzia e Alberto: info@lungomare70.it.';return;}document.body.classList.remove('link-required');document.querySelector('main').hidden=false;document.querySelector('footer').hidden=false;document.getElementById('personal-link-required')?.remove();const t=GUIDE[selected];document.documentElement.lang=selected;language.value=selected;document.getElementById('language-flag').textContent={it:'🇮🇹',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',es:'🇪🇸',nl:'🇳🇱',pl:'🇵🇱'}[selected];document.getElementById('header-map').setAttribute('aria-label',`${t.map} · Lungomare 70 · Google Maps`);document.getElementById('header-map').title=`${t.map} · Lungomare 70 · Google Maps`;document.title=`Lungomare 70 · ${t.subtitle}`;for(const id of ['subtitle','welcome','intro','footer'])document.getElementById(id).textContent=t[id];document.querySelector('#hero-title').textContent=t.title;document.querySelector('#guide-title').textContent=t.menu;document.querySelector('#close').setAttribute('aria-label',t.close);document.querySelector('.photo-strip').setAttribute('aria-label',t.photo);const cards=document.querySelector('#cards');cards.replaceChildren();const menuLabels=[...t.labels,AREA_UI[selected].food,AREA_UI[selected].services,AREA_UI[selected].parking,BEACH_GUIDE_TEXT[selected].title];[0,14,1,2,3,4,5,15,7,8,9,12,13,10,11].forEach(i=>{const label=i===10?'Check-out':menuLabels[i];const button=document.createElement('button');button.type='button';button.className='card';button.setAttribute('aria-haspopup','dialog');if(i!==3)button.innerHTML=svg(i);const span=document.createElement('span');span.textContent=i===3 && guest?.rooms?.length>1 ? personalLabel(i,label,selected) : areaLabel(i,personalLabel(i,label,selected),selected);if(i===0)button.classList.add('entry-card');button.append(span);if(i===3)button.append(createRoomSigns('room-button-signs'));button.addEventListener('click',()=>openSection(i));cards.append(button);});renderPersonalHeader(selected);if(dialog.open)openSection(activeSection);}
 language.addEventListener('change',()=>{selected=language.value;try{localStorage.setItem('lungomare70-language',selected);}catch{}render();});
 document.querySelector('#close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});

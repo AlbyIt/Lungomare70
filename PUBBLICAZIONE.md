@@ -121,3 +121,8 @@ prima dell'utilizzo operativo con i codici reali degli ospiti.
 - Nelle guide personalizzate non mostrare la fascia riepilogativa della camera né la testata «Esplora la guida».
 
 - Le targhette seguono il titolo «La mia camera»/«Le nostre camere» sulla stessa riga e compaiono come miniature anche dopo la scritta del relativo tasto del menu.
+
+### Check-out personalizzato — 23 novembre 2026
+- Il tasto e il titolo della scheda Partenza sono rinominati «Check-out» in tutte le lingue.
+- La scheda mostra giorno della settimana e data di partenza dal link personale, con rilascio della camera o delle camere entro le 10:00.
+- Mantenere le istruzioni già presenti su chiavi, eventuale saldo e contatti. Se la data manca o non è valida, mantenere l'indicazione generale delle 10:00 senza inventare una data.
