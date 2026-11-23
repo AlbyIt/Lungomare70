@@ -81,8 +81,26 @@ function renderPersonalSection(index,lang) {
   const items=guest.cleaning.split(',').map(x=>x.split(':')).filter(x=>x.length===2&&/^\d{4}-\d{2}-\d{2}$/.test(x[0])&&['pulire','rifare'].includes(x[1]));
   const section=document.createElement('section');section.className='personal-cleaning';
   const heading=document.createElement('h3');heading.textContent=tr.title;section.append(heading);
-  if(!items.length){const note=document.createElement('p');note.textContent=({it:'Non sono previste pulizie intermedie durante il soggiorno.',de:'Während deines Aufenthalts ist keine Zwischenreinigung vorgesehen.',en:'No intermediate cleaning is scheduled during your stay.',fr:'Aucun ménage intermédiaire n’est prévu pendant votre séjour.',es:'No hay limpieza intermedia programada durante tu estancia.',nl:'Er is geen tussentijdse schoonmaak gepland tijdens je verblijf.',pl:'Podczas pobytu nie zaplanowano sprzątania pośredniego.'})[lang]||'Non sono previste pulizie intermedie durante il soggiorno.';section.append(note);}if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');const date=document.createElement('strong');date.textContent=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);date.textContent+=' — '+cleaningNames[lang][kind];const description=document.createElement('p');description.textContent=tr[kind];li.append(date,description);list.append(li);}section.append(list);}
-  const towels=document.createElement('p');towels.textContent=tr.towels;section.append(towels);
+  if(!items.length){
+   const note=document.createElement('p');
+   const start=guest.arrival?new Date(guest.arrival+'T12:00:00'):null;
+   const end=guest.departure?new Date(guest.departure+'T12:00:00'):null;
+   const nights=start&&end?Math.round((end-start)/86400000):null;
+   const shortStay={
+    it:'Per un soggiorno di quattro notti non è prevista una pulizia intermedia. Se avete bisogno del cambio degli asciugamani, non esitate a chiederlo.',
+    de:'Bei einem Aufenthalt von vier Nächten ist keine Zwischenreinigung vorgesehen. Wenn ihr frische Handtücher braucht, fragt uns bitte jederzeit danach.',
+    en:'For a four-night stay, no intermediate cleaning is scheduled. If you need fresh towels, please do not hesitate to ask.',
+    fr:'Pour un séjour de quatre nuits, aucun ménage intermédiaire n’est prévu. Si vous avez besoin de serviettes propres, n’hésitez pas à nous en demander.',
+    es:'Para una estancia de cuatro noches no se prevé limpieza intermedia. Si necesitáis cambiar las toallas, no dudéis en pedirlo.',
+    nl:'Bij een verblijf van vier nachten is er geen tussentijdse schoonmaak gepland. Hebben jullie schone handdoeken nodig, vraag er dan gerust om.',
+    pl:'Przy pobycie na cztery noce nie przewidujemy sprzątania w trakcie pobytu. Jeśli potrzebujecie świeżych ręczników, śmiało poproście.'
+   };
+   const general={it:'Non sono previste pulizie intermedie durante il soggiorno.',de:'Während eures Aufenthalts ist keine Zwischenreinigung vorgesehen.',en:'No intermediate cleaning is scheduled during your stay.',fr:'Aucun ménage intermédiaire n’est prévu pendant votre séjour.',es:'No hay limpieza intermedia programada durante vuestra estancia.',nl:'Er is geen tussentijdse schoonmaak gepland tijdens jullie verblijf.',pl:'Podczas pobytu nie zaplanowano sprzątania pośredniego.'};
+   note.textContent=nights===4?(shortStay[lang]||shortStay.it):(general[lang]||general.it);
+   section.append(note);
+  }
+  if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');const date=document.createElement('strong');date.textContent=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);date.textContent+=' — '+cleaningNames[lang][kind];const description=document.createElement('p');description.textContent=tr[kind];li.append(date,description);list.append(li);}section.append(list);}
+  if(items.length || !(guest.arrival&&guest.departure&&Math.round((new Date(guest.departure+'T12:00:00')-new Date(guest.arrival+'T12:00:00'))/86400000)===4)){const towels=document.createElement('p');towels.textContent=tr.towels;section.append(towels);}
   document.getElementById('detail-text').textContent='';
   document.getElementById('detail-text').after(section);
  }
