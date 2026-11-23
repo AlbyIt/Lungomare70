@@ -128,3 +128,12 @@ prima dell'utilizzo operativo con i codici reali degli ospiti.
 - Mantenere le istruzioni già presenti su chiavi, eventuale saldo e contatti. Se la data manca o non è valida, mantenere l'indicazione generale delle 10:00 senza inventare una data.
 
 - Saluto finale approvato per il Check-out: «Ci auguriamo che abbiate trascorso un piacevole soggiorno! Buon viaggio e speriamo di rivedervi presto!»; firma «Cinzia e Alberto». Presente nelle sette lingue della guida, dopo le istruzioni operative.
+
+### Testo della colazione — 23 novembre 2026
+La colazione è servita al piano terra dalle ore 7:30 alle 9:30.
+
+Puoi scegliere liberamente dal buffet.
+
+Le bevande calde vi saranno servite da Cinzia e Alberto.
+
+Mostrare le tre frasi in capoversi separati, senza ripetere «buffet» nella prima frase. Aggiornate tutte le sette lingue.

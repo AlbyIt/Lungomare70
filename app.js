@@ -83,14 +83,10 @@ function openSection(index) {
  detailIcon.innerHTML=index===3 && guest && !guest.invalid ? '' : svg(index);
  document.querySelector('#detail-title').textContent=index===3 && guest?.rooms?.length>1 ? personalLabel(index,t.labels[index]||'',selected) : areaLabel(index,t.labels[index]||'',selected);
  document.querySelector('#detail-text').textContent=t.text[index]||'';
- if(index===1){const breakfastInfo={
- it:'La colazione è servita a buffet al piano terra, dalle 7:30 alle 9:30. Puoi scegliere liberamente dal buffet; caffè e cappuccino vengono preparati e serviti da Cinzia e Alberto.',
- en:'Breakfast is served buffet-style on the ground floor, from 7:30 to 9:30 am. Help yourself to the buffet; coffee and cappuccino are prepared and served by Cinzia and Alberto.',
- de:'Das Frühstück wird von 7:30 bis 9:30 Uhr als Buffet im Erdgeschoss angeboten. Bediene dich am Buffet; Kaffee und Cappuccino werden von Cinzia und Alberto zubereitet und serviert.',
- fr:'Le petit-déjeuner est servi sous forme de buffet au rez-de-chaussée, de 7 h 30 à 9 h 30. Sers-toi au buffet ; le café et le cappuccino sont préparés et servis par Cinzia et Alberto.',
- es:'El desayuno se sirve en forma de bufé en la planta baja, de 7:30 a 9:30. Sírvete del bufé; Cinzia y Alberto preparan y sirven el café y el capuchino.',
- nl:'Het ontbijt wordt van 7.30 tot 9.30 uur als buffet op de begane grond geserveerd. Je kunt zelf kiezen van het buffet; koffie en cappuccino worden bereid en geserveerd door Cinzia en Alberto.',
- pl:'Śniadanie podawane jest w formie bufetu na parterze, od 7:30 do 9:30. Poczęstuj się produktami z bufetu; kawę i cappuccino przygotowują i podają Cinzia i Alberto.'};document.querySelector('#detail-text').textContent=breakfastInfo[selected]||breakfastInfo.it;
+ if(index===1){const breakfastInfo={"it": "La colazione è servita al piano terra dalle ore 7:30 alle 9:30.\n\nPuoi scegliere liberamente dal buffet.\n\nLe bevande calde vi saranno servite da Cinzia e Alberto.", "en": "Breakfast is served on the ground floor from 7:30 to 9:30 am.\n\nHelp yourself to the buffet.\n\nHot drinks will be served by Cinzia and Alberto.", "de": "Das Frühstück wird im Erdgeschoss von 7:30 bis 9:30 Uhr serviert.\n\nBediene dich am Buffet.\n\nHeiße Getränke werden euch von Cinzia und Alberto serviert.", "fr": "Le petit-déjeuner est servi au rez-de-chaussée de 7 h 30 à 9 h 30.\n\nSers-toi librement au buffet.\n\nLes boissons chaudes vous seront servies par Cinzia et Alberto.", "es": "El desayuno se sirve en la planta baja de 7:30 a 9:30.\n\nPuedes servirte libremente del bufé.\n\nCinzia y Alberto os servirán las bebidas calientes.", "nl": "Het ontbijt wordt op de begane grond geserveerd van 7.30 tot 9.30 uur.\n\nJe kunt zelf kiezen van het buffet.\n\nWarme dranken worden door Cinzia en Alberto geserveerd.", "pl": "Śniadanie serwowane jest na parterze od 7:30 do 9:30.\n\nMożesz swobodnie korzystać z bufetu.\n\nCiepłe napoje podadzą Wam Cinzia i Alberto."};
+  const text=document.querySelector('#detail-text');
+  text.textContent=breakfastInfo[selected]||breakfastInfo.it;
+  text.style.whiteSpace='pre-line';
  }
  const links=document.querySelector('#detail-links');links.replaceChildren();
  if(index===0) addLink(links,t.map,'https://www.google.com/maps/search/?api=1&query=Lungomare+Italia+70+Marzocca+di+Senigallia',true);
