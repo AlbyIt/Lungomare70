@@ -129,24 +129,46 @@ function renderPersonalSection(index,lang) {
   code.textContent=guest[kind] ? guest[kind]+(kind==='gate'?' #':'') : t.missing;
   if(kind==='safe' && guest.rooms.length>1){code.textContent=guest.safe||t.missing;}
   const help=document.createElement('p');
-  if(kind==='safe' && guest.rooms.length>1){
+  if(kind==='safe'){
+   const multi=guest.rooms.length>1;
    const roomList=guest.rooms.slice().sort((a,b)=>a-b).map(n=>n+' – '+ROOM_NAMES[n-1]);
-   const format=new Intl.ListFormat(lang,{style:'long',type:'conjunction'});
-   const roomsText=format.format(roomList);
-   const multiHelp={
-    it:'La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Aprila con il codice indicato e ritira i portachiavi delle camere '+roomsText+'. Ogni portachiavi contiene la chiave della camera, la chiave della vetrata d’ingresso e il mini-telecomando del cancello.',
-    de:'Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Öffnet ihn mit dem angegebenen Code und nehmt die Schlüsselbunde für die Zimmer '+roomsText+'. Jeder Schlüsselbund enthält den Zimmerschlüssel, den Schlüssel zur verglasten Eingangstür und die kleine Fernbedienung für das Tor.',
-    en:'The key safe is to the right of the glass entrance door. Open it with the code shown and take the key rings for rooms '+roomsText+'. Each key ring contains the room key, the glass entrance door key and the small gate remote.',
-    fr:'Le coffre à clés se trouve à droite de la porte vitrée d’entrée. Ouvrez-le avec le code indiqué et prenez les trousseaux des chambres '+roomsText+'. Chaque trousseau contient la clé de la chambre, la clé de la porte vitrée d’entrée et la petite télécommande du portail.',
-    es:'La caja de llaves está a la derecha de la puerta acristalada de entrada. Abridla con el código indicado y recoged los llaveros de las habitaciones '+roomsText+'. Cada llavero contiene la llave de la habitación, la llave de la puerta acristalada de entrada y el pequeño mando del portón.',
-    nl:'De sleutelkluis bevindt zich rechts van de glazen toegangsdeur. Open deze met de aangegeven code en neem de sleutelbossen voor kamers '+roomsText+'. Elke sleutelbos bevat de kamersleutel, de sleutel van de glazen toegangsdeur en de kleine afstandsbediening voor de poort.',
-    pl:'Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Otwórzcie go podanym kodem i zabierzcie komplety kluczy do pokoi '+roomsText+'. Każdy komplet zawiera klucz do pokoju, klucz do przeszklonych drzwi wejściowych i mały pilot do bramy.'
+   const roomsText=new Intl.ListFormat(lang,{style:'long',type:'conjunction'}).format(roomList);
+   const intro={
+    it:multi?'La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Aprila con il codice indicato e ritira i portachiavi delle camere '+roomsText+'. Ogni portachiavi contiene:':'La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Aprila con il codice indicato e ritira il portachiavi della camera. Contiene:',
+    de:multi?'Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Öffnet ihn mit dem angegebenen Code und nehmt die Schlüsselbunde für die Zimmer '+roomsText+'. Jeder Schlüsselbund enthält:':'Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Öffnet ihn mit dem angegebenen Code und nehmt den Schlüsselbund für euer Zimmer. Er enthält:',
+    en:multi?'The key safe is to the right of the glass entrance door. Open it with the code shown and take the key rings for rooms '+roomsText+'. Each key ring contains:':'The key safe is to the right of the glass entrance door. Open it with the code shown and take your room key ring. It contains:',
+    fr:multi?'Le coffre à clés se trouve à droite de la porte vitrée d’entrée. Ouvrez-le avec le code indiqué et prenez les trousseaux des chambres '+roomsText+'. Chaque trousseau contient:':'Le coffre à clés se trouve à droite de la porte vitrée d’entrée. Ouvrez-le avec le code indiqué et prenez le trousseau de votre chambre. Il contient:',
+    es:multi?'La caja de llaves está a la derecha de la puerta acristalada de entrada. Abridla con el código indicado y recoged los llaveros de las habitaciones '+roomsText+'. Cada llavero contiene:':'La caja de llaves está a la derecha de la puerta acristalada de entrada. Abridla con el código indicado y recoged el llavero de vuestra habitación. Contiene:',
+    nl:multi?'De sleutelkluis bevindt zich rechts van de glazen toegangsdeur. Open deze met de aangegeven code en neem de sleutelbossen voor kamers '+roomsText+'. Elke sleutelbos bevat:':'De sleutelkluis bevindt zich rechts van de glazen toegangsdeur. Open deze met de aangegeven code en neem de sleutelbos voor jullie kamer. Deze bevat:',
+    pl:multi?'Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Otwórzcie go podanym kodem i zabierzcie komplety kluczy do pokoi '+roomsText+'. Każdy komplet zawiera:':'Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Otwórzcie go podanym kodem i zabierzcie komplet kluczy do swojego pokoju. Zawiera:'
    };
-   help.textContent=multiHelp[lang]||multiHelp.it;
+   const items={
+    it:['La chiave della camera','La chiave della vetrata d’ingresso','Il mini-telecomando del cancello'],
+    de:['Den Zimmerschlüssel','Den Schlüssel zur verglasten Eingangstür','Die kleine Fernbedienung für das Tor'],
+    en:['The room key','The glass entrance door key','The small gate remote'],
+    fr:['La clé de la chambre','La clé de la porte vitrée d’entrée','La petite télécommande du portail'],
+    es:['La llave de la habitación','La llave de la puerta acristalada de entrada','El pequeño mando del portón'],
+    nl:['De kamersleutel','De sleutel van de glazen toegangsdeur','De kleine afstandsbediening voor de poort'],
+    pl:['Klucz do pokoju','Klucz do przeszklonych drzwi wejściowych','Mały pilot do bramy']
+   };
+   const remote={
+    it:'Per aprire il cancello, basta avvicinare il mini-telecomando alla tastiera.',
+    de:'Um das Tor zu öffnen, haltet die kleine Fernbedienung einfach an das Tastenfeld.',
+    en:'To open the gate, simply hold the small remote close to the keypad.',
+    fr:'Pour ouvrir le portail, il suffit d’approcher la petite télécommande du clavier.',
+    es:'Para abrir el portón, basta con acercar el pequeño mando al teclado.',
+    nl:'Houd de kleine afstandsbediening gewoon dicht bij het toetsenpaneel om de poort te openen.',
+    pl:'Aby otworzyć bramę, wystarczy zbliżyć mały pilot do klawiatury.'
+   };
+   help.textContent=intro[lang]||intro.it;
+   const list=document.createElement('ul');list.className='keyring-items';
+   for(const item of (items[lang]||items.it)){const li=document.createElement('li');li.textContent=item;list.append(li);}
+   const note=document.createElement('p');note.className='remote-note';note.textContent=remote[lang]||remote.it;
+   box.append(heading,code,help,list,note);
   }else{
    help.textContent=t[kind+'Help'];
+   box.append(heading,code,help);
   }
-  box.append(heading,code,help);
   if(ACCESS_PHOTOS[kind].length){
    for(const src of ACCESS_PHOTOS[kind]){const img=document.createElement('img');img.src=src;img.alt=t[kind+'Photo'];img.loading='lazy';box.append(img);}
   } else if(guest.demo){
@@ -155,4 +177,7 @@ function renderPersonalSection(index,lang) {
   panel.append(box);
  }
  document.getElementById('detail-text').after(panel);
+ const mapLinks=document.getElementById('detail-links');
+ if(mapLinks && mapLinks.children.length){document.getElementById('detail-text').after(mapLinks);}
+
 }
