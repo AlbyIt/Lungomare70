@@ -1,0 +1,46 @@
+/* Lungomare 70 — warm coastal refresh, 23 Nov 2026.
+   Visual overrides only: all existing content, navigation, languages and guest data remain unchanged. */
+:root{
+ --ink:#314c4b;--sea:#26757b;--aqua:#e7f1ed;--muted:#64716b;
+ --line:#e9ded0;--paper:#fcf8f2;--gold:#b78655;
+ color:var(--ink);background:var(--paper);
+}
+body{background:linear-gradient(180deg,#fffaf3 0,#fcf8f2 48%,#f8f3eb 100%)}
+.topbar{background:rgba(255,250,244,.94);border-bottom:1px solid #eadfd1}
+.brand{color:#31595b}
+.brand small{color:#a17b58}
+.header-actions .language,.map-shortcut{background:#fffdf9;border-color:#e6d8c7;box-shadow:0 2px 10px #65452c0b}
+.hero{box-shadow:0 8px 30px #573e2c20}
+.hero>img{filter:saturate(1.09) sepia(.07) brightness(1.035)}
+.hero-shade{background:linear-gradient(90deg,rgba(38,48,45,.70),rgba(57,48,37,.18) 90%)}
+.personal-mode .hero-shade{background:linear-gradient(90deg,rgba(41,46,42,.78),rgba(60,50,39,.22))}
+.hero h1{text-shadow:0 2px 12px #231d1844}
+.eyebrow{color:#f5e1bd}
+.welcome h2{color:#355e5e}
+.welcome p{color:#6e7169}
+.section-heading h2{color:#775d47;letter-spacing:.025em}
+.card{background:#fffdfa;border:1px solid #e8dccc;box-shadow:0 3px 12px #745a4010;transition:background .18s,transform .18s,border-color .18s,box-shadow .18s}
+.card:nth-child(1),.card:nth-child(2),.card:nth-child(3){background:#f1f4ed;border-color:#d9e5dc}
+.card svg{stroke:#438086}
+.card:hover{background:#f7f0e6;border-color:#d5bda1;box-shadow:0 6px 18px #745a4020}
+.card.entry-card{background:#267078;border-color:#267078;color:white;box-shadow:0 3px 12px #26707822}
+.card.entry-card>svg{stroke:white}
+.card.entry-card:hover{background:#1f5d65;border-color:#1f5d65}
+.photo-strip img{filter:saturate(1.07) sepia(.04)}
+footer{color:#777267}
+footer p{color:#4e6864}
+dialog{background:#fffaf4;box-shadow:0 22px 80px #32291d60}
+.dialog-bar{background:#fffaf4;border-bottom-color:#e9ded0}
+.dialog-bar button{background:#eee4d8}
+.detail-links a,.place-links a,.access-step .entry-map-button,#personal-access .entry-map-button{background:#276e75}
+.access-step,.place-item{background:#fffdfa;border-color:#e8dccc}
+.place-disclosure{border-color:#e8dccc}
+.place-disclosure:first-child{border-color:#e8dccc}
+.place-disclosure summary:hover{background:#faf4eb}
+@media(max-width:600px){
+ .topbar{background:#fffaf4}
+ .hero{box-shadow:none}
+ .card{box-shadow:0 2px 8px #745a400c}
+ .card.entry-card{box-shadow:0 2px 8px #26707818}
+}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
