@@ -41,3 +41,10 @@ footer{background:rgba(255,250,242,.94)}
 .room-button-signs img{display:block;width:40px;height:auto;border-radius:3px}
 .room-button-signs:has(img:nth-child(2)) img{width:28px}
 @media(max-width:600px){.room-button-signs img{width:36px}.room-button-signs:has(img:nth-child(2)) img{width:24px}.room-title-signs img{width:58px}}
+
+/* Reversible mobile menu readability trial: previous labels were .76rem. */
+@media(max-width:600px){
+ .cards{height:auto;grid-template-rows:none;grid-auto-rows:minmax(56px,auto)}
+ .card{min-width:0;padding:9px 8px;gap:7px}
+ .card>span:not(.room-button-signs){font-size:.9375rem;line-height:1.25;overflow-wrap:normal;word-break:normal;min-width:0}
+}
