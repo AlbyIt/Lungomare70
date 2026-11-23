@@ -46,6 +46,8 @@ function openSection(index) {
  for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];const photoCaption=photo==='balcone'&&index===3?balconyCaptions[selected]:photo==='buffet'?breakfastCaptions[selected]:fixedCaptions[photo];img.alt=photoCaption||areaLabel(index,t.labels[index]||'',selected);img.loading='lazy';figure.append(img);if(photoCaption){const caption=document.createElement('figcaption');caption.textContent=photoCaption;figure.append(caption);}if(multiRoom && !img.getAttribute('src')){img.src='assets/'+photo+'.jpg';}gallery.append(figure);}
  renderPersonalSection(index,selected);
  renderAreaSection(index,selected);
+ // Keep the map action immediately after the address, regardless of other section renderers.
+ if(index===0){const address=document.getElementById('detail-text');const map=document.getElementById('detail-links');if(address && map && map.firstElementChild)address.insertAdjacentElement('afterend',map);}
  if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');dialog.scrollTop=0;}
 }
 function addLink(parent,label,href,external=false){const a=document.createElement('a');a.textContent=label;a.href=href;if(external){a.target='_blank';a.rel='noopener noreferrer';}parent.append(a);}
