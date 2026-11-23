@@ -48,3 +48,15 @@ footer{background:rgba(255,250,242,.94)}
  .card{min-width:0;padding:9px 8px;gap:7px}
  .card>span:not(.room-button-signs){font-size:.9375rem;line-height:1.25;overflow-wrap:normal;word-break:normal;min-width:0}
 }
+
+/* Slightly larger header branding, preserving the existing proportions. */
+.brand{font-size:1.225rem}
+.brand b{font-size:1.55rem}
+.brand small{font-size:.725rem}
+.brand>img{width:49px;height:42px}
+@media(max-width:600px){
+ .brand{font-size:.9rem}
+ .brand b{font-size:1.125rem}
+ .brand small{font-size:.52rem}
+ .brand>img{width:40px;height:34px}
+}
