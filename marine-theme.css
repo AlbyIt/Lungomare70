@@ -21,3 +21,7 @@ footer{background:rgba(255,250,242,.94)}
  .card{border-radius:10px}
  .card.entry-card{border-radius:10px}
 }
+
+/* Room details remain in the assigned-room dialog; omit the redundant header strip. */
+.personal-mode .welcome{display:none}
+.personal-mode .guide{margin-top:14px}
