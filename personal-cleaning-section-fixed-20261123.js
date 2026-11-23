@@ -23,7 +23,9 @@ function readPersonalLink(hash) {
  const gate=p.get('cancello')||'';
  const safe=p.get('cassaforte')||'';
  if (!name || name.length>100 || !/^[1-4]$/.test(room) || (gate && !/^\d{6}$/.test(gate)) || (safe && !/^\d{4}$/.test(safe))) return {invalid:true};
- return {name, room:Number(room), gate, safe, lang:p.get('lingua'), arrival:p.get('arrivo')||'', gender:p.get('genere')||'', cleaning:p.get('pulizie')||'', departure:p.get('partenza')||'', demo:p.get('prova')==='1'};
+ const rooms=(p.get('camere')||'').split(',').filter(Boolean).map(Number);
+ if(rooms.length && (rooms.some(n=>![1,2,3,4].includes(n)) || !rooms.includes(Number(room)) || new Set(rooms).size!==rooms.length)) return {invalid:true};
+ return {name, room:Number(room), rooms:rooms.length?rooms:[Number(room)], gate, safe, lang:p.get('lingua'), arrival:p.get('arrivo')||'', gender:p.get('genere')||'', cleaning:p.get('pulizie')||'', departure:p.get('partenza')||'', demo:p.get('prova')==='1'};
 }
 let guest = readPersonalLink(location.hash);
 function personalLabel(index, label, lang) {
@@ -46,9 +48,10 @@ function renderPersonalHeader(lang) {
  const [greeting,ending]=welcome.split('{name}');
  const name=document.createElement('span');name.className='guest-name';name.textContent=guest.name+ending;
  title.replaceChildren(document.createTextNode(greeting.trim()),name);
- document.getElementById('intro').textContent=`${t.room}: ${guest.room} · ${ROOM_NAMES[guest.room-1]}`;
+ document.getElementById('intro').textContent=`${t.room}: ${guest.rooms.map(n=>n+' · '+ROOM_NAMES[n-1]).join(' / ')}`;
  if(guest.demo) document.getElementById('subtitle').textContent=t.demo.replace('{room}',guest.room);
 }
+function pendingSafes(g){const p=new URLSearchParams(location.hash.replace(/^#/,''));return g.rooms.map(n=>{const c=n===g.room?g.safe:(p.get('cassaforte'+n)||'');return c&&/^\d{4}$/.test(c)?n+' · '+ROOM_NAMES[n-1]+': '+c:'';}).filter(Boolean).join(' | ');}
 function renderPersonalSection(index,lang) {
  document.getElementById('room-amenities')?.remove();
  document.querySelector('.personal-cleaning')?.remove();
@@ -58,7 +61,7 @@ function renderPersonalSection(index,lang) {
  const t=PERSONAL_TEXT[lang];
  document.getElementById('detail-title').textContent=personalLabel(index,GUIDE[lang].labels[index],lang);
  if(index===3) {
-  document.getElementById('detail-text').textContent=`${guest.room} · ${ROOM_NAMES[guest.room-1]}`;
+  document.getElementById('detail-text').textContent=guest.rooms.map(n=>n+' · '+ROOM_NAMES[n-1]).join(' / ');
   const amenities=ROOM_AMENITIES[lang];
   const section=document.createElement('section');section.id='room-amenities';
   const heading=document.createElement('h3');heading.textContent=amenities.title;
@@ -124,6 +127,7 @@ function renderPersonalSection(index,lang) {
   const heading=document.createElement('h3');heading.textContent=t[kind];
   const code=document.createElement('p');code.className=guest[kind]?'access-code':'access-missing';
   code.textContent=guest[kind] ? guest[kind]+(kind==='gate'?' #':'') : t.missing;
+  if(kind==='safe' && guest.rooms.length>1){const other=pendingSafes(guest);if(other)code.textContent=other;}
   const help=document.createElement('p');help.textContent=t[kind+'Help'];
   box.append(heading,code,help);
   if(ACCESS_PHOTOS[kind].length){
