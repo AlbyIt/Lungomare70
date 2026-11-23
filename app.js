@@ -40,7 +40,9 @@ function openSection(index) {
  if([2,4,11].includes(index)) addLink(links,t.contact,'mailto:info@lungomare70.it');
  if(index===11) addLink(links,'+39 335 7739549','tel:+393357739549');
  const gallery=document.querySelector('#detail-photos');gallery.replaceChildren();
- const sectionPhotos = [9,12,13].includes(index) ? [] : guest && !guest.invalid && index===3 ? (guest.room===1 ? ['stella','balcone'] : [ROOM_KEYS[guest.room-1]]) : guest && index===0 ? [] : guest && guest.room!==1 && index===6 ? [] : photos[index]||[];
+ const multiRoom = Boolean(guest && !guest.invalid && index===3 && guest.rooms && guest.rooms.length>1);
+ gallery.classList.toggle('multi-room-gallery',multiRoom);
+ const sectionPhotos = [9,12,13].includes(index) ? [] : guest && !guest.invalid && index===3 ? (multiRoom ? guest.rooms.map(n=>ROOM_KEYS[n-1]) : (guest.room===1 ? ['stella','balcone'] : [ROOM_KEYS[guest.room-1]])) : guest && index===0 ? [] : guest && guest.room!==1 && index===6 ? [] : photos[index]||[];
  for(const photo of sectionPhotos){const figure=document.createElement('figure');const img=document.createElement('img');img.src=PHOTO_ASSETS[photo];const photoCaption=photo==='balcone'&&index===3?balconyCaptions[selected]:photo==='buffet'?breakfastCaptions[selected]:fixedCaptions[photo];img.alt=photoCaption||areaLabel(index,t.labels[index]||'',selected);img.loading='lazy';figure.append(img);if(photoCaption){const caption=document.createElement('figcaption');caption.textContent=photoCaption;figure.append(caption);}gallery.append(figure);}
  renderPersonalSection(index,selected);
  renderAreaSection(index,selected);
