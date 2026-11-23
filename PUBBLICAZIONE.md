@@ -158,3 +158,17 @@ Mostrare le tre frasi in capoversi separati, senza ripetere «buffet» nella pri
 ### Benvenuto a coppie e gruppi — 23 novembre 2026
 - Il parametro personale genere=p abilita «Benvenuti» in italiano e i corrispondenti saluti al plurale nelle altre lingue dove cambia la forma.
 - Prova ipotetica richiesta da Alberto: Fabio e Lydia (nome con Y), camera 1 Stella, 6–13 settembre 2027, sette notti, pulizia di prova il 9 settembre. Non inserita nei calendari e nessun codice cancello inventato.
+
+### Controllo obbligatorio prima di ogni guida personale — 24 novembre 2026
+Procedura approvata da Alberto. Il controllo riguarda tutti i dati della guida e va eseguito dall'assistente prima di consegnare il link, senza richiedere ad Alberto di reinserire dati già disponibili.
+
+1. Confrontare la prenotazione con entrambi i calendari delle prenotazioni (dirette e Booking) e con Pulizia; verificare conflitti, duplicati e cambi camera. Consultare anche messaggi o screenshot pertinenti per dati non presenti sul calendario. Per un semplice controllo non modificare eventi.
+2. Verificare nome e accompagnatori, camera o camere, persone, lingua e saluto singolare/plurale; controllare corrispondenza tra numero, nome, targhetta e fotografie della camera.
+3. Controllare arrivo e partenza, anno, giorno della settimana e numero di NOTTI (differenza fra le date). Verificare gli orari.
+4. Confrontare codice cancello e cassaforte con fonti confermate. Codice cancello Booking: prime sei cifre del numero di prenotazione; dirette: soltanto codice comunicato da Alberto. Non inventare codici né inserirli in questo repository pubblico.
+5. Controllare le pulizie rispetto alla durata e al calendario Pulizia: 1–4 notti nessun intervento intermedio; 5 notti un Pulire dopo 2 o 3; 6 dopo 3; 7 dopo 3 o 4; 8 dopo 4; 9 due Pulire (3-3-3); 10 un Rifare e un Pulire (3-3-4, 4-3-3 o 3-4-3); 11 un Rifare e un Pulire (4-3-4, 3-4-4 o 4-4-3); 12 un Rifare centrale (6-6); 13 un Rifare centrale e un Pulire dopo 3 o 4 notti. Rifare mai dopo sole 3 notti e mai con meno di 3 notti residue. Per durate ulteriori o casi non definiti non inventare programmi. Verificare anche check-out e trasferimenti nel calendario operativo.
+6. Riportare nella guida tutte le pulizie pertinenti con data e tipo corretti. Il passaggio Calendar → guida non è una sincronizzazione automatica. L'assenza del dato nel link non dimostra l'assenza di pulizie: per soggiorni da 5 notti in su un programma mancante è un'anomalia da risolvere prima dell'invio. Non consegnare una guida che dichiari erroneamente nessuna pulizia.
+7. Aprire il collegamento finale e verificare i dati effettivamente mostrati nelle sezioni Come entrare, La mia camera, Pulizie e biancheria e Check-out, non soltanto i parametri preparati. Verificare lingua, collegamenti e corrispondenza con il messaggio di benvenuto.
+8. Se un dato indispensabile manca o è incoerente, risolverlo dalle fonti disponibili o chiedere ad Alberto; non dichiarare verifiche mai eseguite. Ripetere i controlli interessati dopo ogni modifica della prenotazione o del programma.
+
+La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valutare: non è approvata né implementata.
