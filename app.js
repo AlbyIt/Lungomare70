@@ -35,6 +35,15 @@ function openSection(index) {
  document.querySelector('#detail-icon').innerHTML=svg(index);
  document.querySelector('#detail-title').textContent=index===3 && guest?.rooms?.length>1 ? personalLabel(index,t.labels[index]||'',selected) : areaLabel(index,t.labels[index]||'',selected);
  document.querySelector('#detail-text').textContent=t.text[index]||'';
+ if(index===1){const breakfastInfo={
+ it:'La colazione è servita a buffet al piano terra, dalle 7:30 alle 9:30. Puoi scegliere liberamente dal buffet; caffè e cappuccino vengono preparati e serviti da Cinzia e Alberto.',
+ en:'Breakfast is served buffet-style on the ground floor, from 7:30 to 9:30 am. Help yourself to the buffet; coffee and cappuccino are prepared and served by Cinzia and Alberto.',
+ de:'Das Frühstück wird von 7:30 bis 9:30 Uhr als Buffet im Erdgeschoss angeboten. Bediene dich am Buffet; Kaffee und Cappuccino werden von Cinzia und Alberto zubereitet und serviert.',
+ fr:'Le petit-déjeuner est servi sous forme de buffet au rez-de-chaussée, de 7 h 30 à 9 h 30. Sers-toi au buffet ; le café et le cappuccino sont préparés et servis par Cinzia et Alberto.',
+ es:'El desayuno se sirve en forma de bufé en la planta baja, de 7:30 a 9:30. Sírvete del bufé; Cinzia y Alberto preparan y sirven el café y el capuchino.',
+ nl:'Het ontbijt wordt van 7.30 tot 9.30 uur als buffet op de begane grond geserveerd. Je kunt zelf kiezen van het buffet; koffie en cappuccino worden bereid en geserveerd door Cinzia en Alberto.',
+ pl:'Śniadanie podawane jest w formie bufetu na parterze, od 7:30 do 9:30. Poczęstuj się produktami z bufetu; kawę i cappuccino przygotowują i podają Cinzia i Alberto.'};document.querySelector('#detail-text').textContent=breakfastInfo[selected]||breakfastInfo.it;
+ }
  const links=document.querySelector('#detail-links');links.replaceChildren();
  if(index===0) addLink(links,t.map,'https://www.google.com/maps/search/?api=1&query=Lungomare+Italia+70+Marzocca+di+Senigallia',true);
  if([2,4,11].includes(index)) addLink(links,t.contact,'mailto:info@lungomare70.it');
