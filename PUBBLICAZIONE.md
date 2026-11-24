@@ -279,3 +279,7 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 ### Sfondo unico dietro ai tasti — 24 novembre 2026
 - Eliminata la seconda copia dell’immagine dal contenitore del menu: sfondo trasparente, bordo trasparente e nessuna ombra del riquadro. Resta lo sfondo generale della pagina.
 - Conservati spaziatura e dimensioni del contenitore, effetto vetro dei pulsanti, titoli, font, contenuti e personalizzazioni.
+
+### 24 novembre 2026 — vetro leggermente meno trasparente
+
+Opacità dei tasti dal 34% al 40%, ingresso dal 45% al 51%, titoli dal 48% al 54%. Colori, riflessi, incisione, spessore e sfondo unico invariati. Aggiornati i riferimenti delle risorse per il rinnovo della cache. Verificato il contenuto dei cinque file al commit prima della pubblicazione.
