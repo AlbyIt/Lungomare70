@@ -274,3 +274,8 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Titoli in vetro resi predefiniti su tutti i link, senza necessità del parametro titoli=vetro. Per tornare ai titoli semplici resta disponibile titoli=classici.
 - Tinta di tasti e titoli spostata dall’acquamarina al celeste/azzurro (RGB 43/121/169), con bordi e ombre coordinati. Conservati trasparenza, rilievo, incisione e lettere naturali; nessuna modifica al beige dello sfondo.
 - L’anteprima Lora/Source Sans 3 resta indipendente tramite font=lora.
+
+
+### Sfondo unico dietro ai tasti — 24 novembre 2026
+- Eliminata la seconda copia dell’immagine dal contenitore del menu: sfondo trasparente, bordo trasparente e nessuna ombra del riquadro. Resta lo sfondo generale della pagina.
+- Conservati spaziatura e dimensioni del contenitore, effetto vetro dei pulsanti, titoli, font, contenuti e personalizzazioni.

@@ -3,7 +3,7 @@ body{background:#e8dfd0 url("assets/marine-background.jpg") center top/600px aut
 .topbar{background:rgba(255,250,241,.94);backdrop-filter:blur(8px)}
 .brand>img{display:block;width:44px;height:38px;object-fit:contain;flex-shrink:0}
 .welcome{background:rgba(255,252,246,.94);border-color:#e2c9aa}
-.guide{background:url("assets/marine-background.jpg") center top/100% auto repeat-y;border:1px solid #d4c5ac;border-radius:18px;padding-top:12px;padding-bottom:20px;box-shadow:0 4px 18px #514d4220}
+.guide{background:transparent;border:1px solid transparent;border-radius:18px;padding-top:12px;padding-bottom:20px;box-shadow:none}
 .section-heading h2{background:rgba(255,252,246,.94);border-radius:6px;padding:4px 8px}
 .section-heading>span{background:rgba(255,252,246,.94);border-radius:6px;padding:4px 8px}
 .card,.card:nth-child(1),.card:nth-child(2),.card:nth-child(3){background:rgba(255,253,248,.42);border-color:#ddcbb6;box-shadow:0 3px 10px #52402b22}
