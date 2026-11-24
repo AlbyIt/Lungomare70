@@ -242,3 +242,8 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Effetto materico approvato applicato al solo menu: bordo luminoso, riflesso sottile, lieve sfocatura del fondale e ombra di spessore. Le tinte trasparenti restano ai valori approvati (0,42 tasti normali; 0,55 accesso).
 - Conservati dimensioni, ordine, icone, colori dei testi, accento dell’accesso, centraggio Contatti e indicatore di focus. Pressione al tocco e movimento ridotto rispettato; nessuna animazione continua.
 - `crystal-buttons.css` è condiviso dalle due pagine e compatibile con l’anteprima font `font=lora`, che rimane facoltativa.
+
+
+### Riflessi e scritte incise — 24 novembre 2026
+- Accentuati i riflessi con due fasce di luce diagonali, luminosità superiore e bisello interno. Restano invariati i riempimenti trasparenti di base.
+- Etichette dei tasti con effetto inciso: sottile ombra sul bordo superiore e luce sul bordo inferiore, mantenendo il testo originale accessibile e la tinta verde. Nessun testo convertito in immagini; escluse le targhe delle camere.
