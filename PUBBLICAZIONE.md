@@ -236,3 +236,9 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Il parametro di query `font=lora` abilita un confronto reversibile: Lora nei titoli e nella scritta del nome della struttura, Source Sans 3 nei testi e nei tasti. L’immagine del logo rimane originale. Gli altri collegamenti mantengono i caratteri approvati precedenti.
 - Font variabili WOFF2 locali, pesi 400–600, sottoinsiemi latini ed estesi e cirillici per le lingue supportate; per il giapponese restano disponibili i caratteri di sistema. Licenze OFL in `assets/fonts/`. Nessuna richiesta a Google Fonts dal browser degli ospiti.
 - Solo caratteri e peso dei testi nell’anteprima: ordine, dimensioni dei tasti, contenuti, personalizzazioni e centraggio Contatti restano quelli correnti.
+
+
+### Tasti cristallo satinato — 24 novembre 2026
+- Effetto materico approvato applicato al solo menu: bordo luminoso, riflesso sottile, lieve sfocatura del fondale e ombra di spessore. Le tinte trasparenti restano ai valori approvati (0,42 tasti normali; 0,55 accesso).
+- Conservati dimensioni, ordine, icone, colori dei testi, accento dell’accesso, centraggio Contatti e indicatore di focus. Pressione al tocco e movimento ridotto rispettato; nessuna animazione continua.
+- `crystal-buttons.css` è condiviso dalle due pagine e compatibile con l’anteprima font `font=lora`, che rimane facoltativa.
