@@ -172,3 +172,11 @@ Procedura approvata da Alberto. Il controllo riguarda tutti i dati della guida e
 8. Se un dato indispensabile manca o è incoerente, risolverlo dalle fonti disponibili o chiedere ad Alberto; non dichiarare verifiche mai eseguite. Ripetere i controlli interessati dopo ogni modifica della prenotazione o del programma.
 
 La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valutare: non è approvata né implementata.
+
+
+### Lingua rumena — 24 novembre 2026
+- Aggiunta Română – RO al selettore, con traduzioni di tutte le sezioni, schede locali, regolamento, accesso, dotazioni, date, pulizie e check-out.
+- Per gli ospiti rumeni preparare il link personale con `lingua=ro`; `nazionalita=RO` seleziona il rumeno quando non è indicata una lingua esplicita. Una preferenza linguistica esplicita prevale sulla nazionalità.
+- La lingua iniziale del link prevale sulla lingua precedentemente salvata nel browser; l'ospite può cambiare lingua dal selettore.
+- Le traduzioni rumene sono in `romanian.js`, caricato dopo i dati delle sezioni e prima di `app.js` in entrambe le pagine della guida. I testi delle altre sette lingue, gli stili e le immagini restano invariati.
+- I dati degli ospiti e i codici restano esclusivamente nel frammento del link personale. Non salvarli in repository o pagine di simulazione pubbliche.
