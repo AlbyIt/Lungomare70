@@ -258,3 +258,8 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 ### Acquamarina e scritte naturali — 24 novembre 2026
 - Vetro orientato verso il turchese/acquamarina: RGB 24/102/103, mantenendo trasparenza, rilievo, riflessi e comportamento.
 - Lettere color avorio-salvia `#d4ddcd`, icone coordinate `#c3d9cb` e luce dell’incisione attenuata per eliminare il bianco acceso.
+
+
+### Vetro più trasparente e incisione salvia — 24 novembre 2026
+- Riempimento dei tasti ridotto da 0,42 a 0,34 e accesso da 0,55 a 0,45; fondale più luminoso (0,74) e meno sfocato (1,25 px). Spessore e riflessi conservati.
+- Lettere salvia naturale `#b6c8b6`, incisione con bordo superiore più netto e bordo luminoso inferiore attenuato; icone coordinate.
