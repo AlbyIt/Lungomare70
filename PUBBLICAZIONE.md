@@ -226,3 +226,7 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 
 ### Titoli sezioni approvati — 24 novembre 2026
 - Rinominati Cosa vedere in Da visitare ed Eventi del tuo soggiorno in Eventi e spettacoli, nei tasti e nei titoli interni, con traduzioni nelle dodici lingue. Date del soggiorno, ordine, contenuti e filtro linguistico invariati.
+
+
+### Ultimo tasto del menu — 24 novembre 2026
+- Su telefono il tasto finale, attualmente Contatti, è centrato automaticamente quando il numero di tasti è dispari, mantenendo la stessa larghezza degli altri. Quando il numero torna pari i tasti restano appaiati. Nessuna modifica a contenuti o azioni.

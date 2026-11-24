@@ -60,3 +60,10 @@ footer{background:rgba(255,250,242,.94)}
  .brand small{font-size:.52rem}
  .brand>img{width:40px;height:34px}
 }
+
+/* Keep the final unpaired menu button centered on the two-column phone layout. */
+@media(max-width:600px){
+ .cards:has(>.card:last-child:nth-child(odd)){grid-template-columns:repeat(4,minmax(0,1fr))}
+ .cards:has(>.card:last-child:nth-child(odd))>.card{grid-column:span 2}
+ .cards>.card:last-child:nth-child(odd){grid-column:2 / span 2}
+}
