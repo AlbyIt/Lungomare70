@@ -200,3 +200,11 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Per gli ospiti giapponesi usare `lingua=ja`; in assenza di preferenza esplicita `nazionalita=JP` (anche JPN) seleziona il giapponese. L'ospite può cambiare lingua.
 - Dodici lingue nel selettore, con nomi originali: alfabeto latino, poi cirillico, poi giapponese. Conservati il logo bianco, le immagini e tutti gli undici dizionari precedenti.
 - Il check-out giapponese gestisce il separatore di frase giapponese per conservare integralmente le istruzioni dopo la data personale.
+
+
+### Eventi durante il soggiorno — esperimento 24 novembre 2026
+- Aggiunta la voce Eventi del tuo soggiorno nello stile esistente, disponibile in tutte le dodici lingue.
+- `stay-events.js` contiene esclusivamente eventi pubblici selezionati da fonti ufficiali con data di verifica. Non è un calendario aggiornato automaticamente. Verificare fonti e disponibilità prima di preparare ogni guida e aggiornare selezione e data soltanto dopo un controllo reale.
+- Il filtro usa arrivo e partenza del link personale: include gli eventi che si sovrappongono al soggiorno, esclude quelli che iniziano nel giorno del check-out. Le rassegne riportano l’intero periodo e rimandano al programma per i singoli appuntamenti; non implicano attività quotidiane.
+- Per periodi senza eventi selezionati mostrare il messaggio esplicito e il calendario ufficiale, senza dichiarare che non esistano eventi. Non dedurre edizioni future da programmi passati. Priorità Marzocca e Senigallia, poi dintorni; località più lontane soltanto per eventi importanti verificati.
+- Simulazioni senza registrazioni nei calendari, senza invii agli ospiti e senza salvare nomi, date personali o codici nel repository.
