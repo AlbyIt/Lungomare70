@@ -15,20 +15,115 @@ const STAY_EVENTS_UI = {
  bg:['Събития по време на престоя','Събития по време на твоя престой','Подбрани събития в Сенигалия и околностите през твоята почивка.','Твоят престой','Официална програма','Как да стигнеш','Още събития в Сенигалия','Все още не сме подбрали потвърдени събития за тези дати. Провери официалния календар или попитай Чинция и Алберто.','За избора на събития са необходими датите на пристигане и заминаване в личния линк.','Подборът е проверен на','Преди да тръгнеш, провери официалната програма: часовете, билетите и наличността може да се променят.','Датите и часовете на отделните събития са в официалната програма.','Необходим е билет; провери наличността в официалната програма.','Исторически център и други места · Сенигалия','Коледни светлини, базари и инициативи в града.','Агата Кристи с Клаудио „Грег“ Грегори. Спектакъл на италиански.','I Virtuosi Italiani отбелязват тридесет години от повторното отваряне на театъра.','Номерирано място: 10 €.'],
  ja:['滞在中のイベント','滞在中のイベント','ご滞在の日程に合わせたセニガッリアと近郊のイベントをご紹介します。','ご滞在期間','公式プログラム','アクセス','セニガッリアのその他のイベント','この日程の開催が確認されたイベントは、まだ掲載していません。公式カレンダーをご覧になるか、チンツィアとアルベルトにお尋ねください。','イベントの表示には、個人用リンクに到着日と出発日が必要です。','掲載情報の確認日','お出かけ前に公式プログラムをご確認ください。時間、チケット、空席状況は変更される場合があります。','各催しの開催日と時間は公式プログラムをご確認ください。','チケットが必要です。販売状況は公式プログラムをご確認ください。','旧市街ほか · セニガッリア','街を彩るクリスマスのイルミネーション、マーケット、催し。','クラウディオ・「グレッグ」・グレゴーリ出演のアガサ・クリスティ作品。イタリア語上演。','劇場再開30周年を祝うイ・ヴィルトゥオージ・イタリアーニの演奏会。','全席指定：10ユーロ。']
 };
+const STAY_EVENTS_NEARBY_TEXT = {
+ "it": [
+  "Luci e allestimenti natalizi nel centro di Ancona.",
+  "Mercatini, luci e pista di pattinaggio nel centro di Fano.",
+  "Mercatini natalizi e allestimenti nel borgo di Corinaldo.",
+  "Mercatini al chiostro e presepi nel borgo di Mondolfo.",
+  "Il borgo di Candelara si illumina con le candele: mercatini e atmosfera natalizia."
+ ],
+ "en": [
+  "Christmas lights and displays in central Ancona.",
+  "Christmas markets, lights and ice skating in central Fano.",
+  "Christmas markets and decorations in the historic village of Corinaldo.",
+  "Markets in the cloister and nativity displays in Mondolfo.",
+  "Candelara lights up with candles, Christmas markets and a festive atmosphere."
+ ],
+ "de": [
+  "Weihnachtsbeleuchtung und Installationen im Zentrum von Ancona.",
+  "Weihnachtsmärkte, Lichter und Eisbahn im Zentrum von Fano.",
+  "Weihnachtsmärkte und Dekorationen im historischen Corinaldo.",
+  "Märkte im Kreuzgang und Krippen in Mondolfo.",
+  "Kerzenlicht, Weihnachtsmärkte und festliche Stimmung im Dorf Candelara."
+ ],
+ "fr": [
+  "Illuminations et installations de Noël dans le centre d’Ancône.",
+  "Marchés de Noël, illuminations et patinoire dans le centre de Fano.",
+  "Marchés et décorations de Noël dans le bourg de Corinaldo.",
+  "Marchés dans le cloître et crèches à Mondolfo.",
+  "Candelara s’illumine à la bougie entre marchés et ambiance de Noël."
+ ],
+ "es": [
+  "Luces y decoraciones navideñas en el centro de Ancona.",
+  "Mercados navideños, luces y pista de patinaje en el centro de Fano.",
+  "Mercados y decoraciones navideñas en el pueblo de Corinaldo.",
+  "Mercados en el claustro y belenes en Mondolfo.",
+  "Candelara se ilumina con velas entre mercados y ambiente navideño."
+ ],
+ "nl": [
+  "Kerstverlichting en versieringen in het centrum van Ancona.",
+  "Kerstmarkten, verlichting en ijsbaan in het centrum van Fano.",
+  "Kerstmarkten en versieringen in het historische Corinaldo.",
+  "Markten in de kloostergang en kerststallen in Mondolfo.",
+  "Kaarslicht, kerstmarkten en kerstsfeer in het dorp Candelara."
+ ],
+ "pl": [
+  "Świąteczne iluminacje i dekoracje w centrum Ankony.",
+  "Jarmarki świąteczne, iluminacje i lodowisko w centrum Fano.",
+  "Jarmarki i dekoracje świąteczne w zabytkowym Corinaldo.",
+  "Jarmarki w krużganku i szopki w Mondolfo.",
+  "Candelara rozświetlona świecami, jarmarki i świąteczna atmosfera."
+ ],
+ "ro": [
+  "Lumini și decorațiuni de Crăciun în centrul Anconei.",
+  "Târguri de Crăciun, lumini și patinoar în centrul orașului Fano.",
+  "Târguri și decorațiuni de Crăciun în satul istoric Corinaldo.",
+  "Târguri în claustru și scene ale Nașterii Domnului în Mondolfo.",
+  "Candelara se luminează cu lumânări, târguri și atmosferă de Crăciun."
+ ],
+ "cs": [
+  "Vánoční osvětlení a výzdoba v centru Ancony.",
+  "Vánoční trhy, světla a kluziště v centru Fana.",
+  "Vánoční trhy a výzdoba v historickém Corinaldu.",
+  "Trhy v klášterním ambitu a betlémy v Mondolfu.",
+  "Candelara osvětlená svíčkami, vánoční trhy a sváteční atmosféra."
+ ],
+ "hu": [
+  "Karácsonyi fények és díszítések Ancona központjában.",
+  "Karácsonyi vásárok, fények és korcsolyapálya Fano központjában.",
+  "Karácsonyi vásárok és díszítések Corinaldo történelmi városában.",
+  "Vásárok a kolostor kerengőjében és betlehemek Mondolfóban.",
+  "Gyertyafény, karácsonyi vásárok és ünnepi hangulat Candelarában."
+ ],
+ "bg": [
+  "Коледни светлини и украса в центъра на Анкона.",
+  "Коледни базари, светлини и ледена пързалка в центъра на Фано.",
+  "Коледни базари и украса в историческото Кориналдо.",
+  "Базари в манастирския двор и рождественски сцени в Мондолфо.",
+  "Свещи, коледни базари и празнична атмосфера в Канделара."
+ ],
+ "ja": [
+  "アンコーナ中心部のクリスマスイルミネーションと装飾。",
+  "ファーノ中心部のクリスマスマーケット、イルミネーション、スケートリンク。",
+  "歴史あるコリナルドのクリスマスマーケットと装飾。",
+  "モンドルフォの回廊のマーケットとキリスト降誕の展示。",
+  "キャンドルに照らされるカンデラーラの村とクリスマスマーケット。"
+ ]
+};
 const STAY_EVENTS = [
  {id:'natale-2026',image:'assets/events/natale-senigallia-2026.jpg',imageSource:'https://www.feelsenigallia.it/wp-content/uploads/2026/11/FeelSenigallia-brochure.pdf',credit:'Feel Senigallia · Comune di Senigallia',start:'2026-11-28',end:'2027-01-06',title:'Vivi la magia del Natale a Senigallia',description:14,venue:13,source:'https://www.feelsenigallia.it/eventi/vivi-la-magia-del-natale-a-senigallia/',query:'Piazza Roma Senigallia'},
- {id:'orient-express-2026',image:'assets/events/orient-express-2026.jpg',imageSource:'https://www.feelsenigallia.it/wp-content/uploads/2026/09/2-ASSASSINIO-SULL_ORIENT-EXPRESS_Greg-2-Media.jpg',credit:'AMAT · Feel Senigallia',start:'2026-12-04',end:'2026-12-04',time:'21:00',title:'Assassinio sull’Orient Express',description:15,venue:'Teatro La Fenice · Via Cesare Battisti, 30 · Senigallia',source:'https://www.feelsenigallia.it/eventi/assassinio-sullorient-express/',query:'Teatro La Fenice Senigallia'},
- {id:'fenice-30-2026',image:'assets/events/fenice-30-2026.jpg',imageSource:'https://www.feelsenigallia.it/wp-content/uploads/2026/11/Fenice30_Carlino_PaginaIntera_2651x4035mm_CMYK300-scaled.jpg',credit:'Feel Senigallia · Teatro La Fenice',start:'2026-12-05',end:'2026-12-05',time:'18:00',title:'I Virtuosi Italiani · 30° Teatro La Fenice',description:16,price:17,venue:'Teatro La Fenice · Via Cesare Battisti, 30 · Senigallia',source:'https://www.feelsenigallia.it/eventi/30-anniversario-della-riapertura-del-teatro-la-fenice/',query:'Teatro La Fenice Senigallia'}
+ {id:'orient-express-2026',requiredLanguages:['it'],image:'assets/events/orient-express-2026.jpg',imageSource:'https://www.feelsenigallia.it/wp-content/uploads/2026/09/2-ASSASSINIO-SULL_ORIENT-EXPRESS_Greg-2-Media.jpg',credit:'AMAT · Feel Senigallia',start:'2026-12-04',end:'2026-12-04',time:'21:00',title:'Assassinio sull’Orient Express',description:15,venue:'Teatro La Fenice · Via Cesare Battisti, 30 · Senigallia',source:'https://www.feelsenigallia.it/eventi/assassinio-sullorient-express/',query:'Teatro La Fenice Senigallia'},
+ {id:'fenice-30-2026',image:'assets/events/fenice-30-2026.jpg',imageSource:'https://www.feelsenigallia.it/wp-content/uploads/2026/11/Fenice30_Carlino_PaginaIntera_2651x4035mm_CMYK300-scaled.jpg',credit:'Feel Senigallia · Teatro La Fenice',start:'2026-12-05',end:'2026-12-05',time:'18:00',title:'I Virtuosi Italiani · 30° Teatro La Fenice',description:16,price:17,venue:'Teatro La Fenice · Via Cesare Battisti, 30 · Senigallia',source:'https://www.feelsenigallia.it/eventi/30-anniversario-della-riapertura-del-teatro-la-fenice/',query:'Teatro La Fenice Senigallia'},
+ {"id": "ancona-natale-2026", "area": "Ancona", "rank": 1, "start": "2026-11-28", "end": "2027-01-08", "title": "Ancona che brilla", "nearbyDescription": 0, "venue": "Piazza della Repubblica e centro · Ancona", "source": "https://www.comune.ancona.it/it/news/ancona-che-brilla?type=1", "query": "Piazza della Repubblica Ancona", "image": "assets/events/ancona-natale-2026.png", "imageSource": "https://www.comune.ancona.it/s3/223/media/copertina_sito_577x324.png", "credit": "Comune di Ancona"},
+ {"id": "fano-natale-2026", "area": "Fano", "rank": 1, "start": "2026-11-28", "end": "2027-01-06", "title": "Fano, un Natale da Favola", "nearbyDescription": 1, "venue": "Centro storico · Fano", "source": "https://visitfano.info/fano-un-natale-da-favola-2026/", "query": "Piazza XX Settembre Fano", "image": "https://visitfano.info/wp-content/uploads/2026/11/LOCANDINA-ORIZZONTALE-WEB.png", "credit": "Visit Fano"},
+ {"id": "corinaldo-natale-2026", "area": "Corinaldo", "rank": 1, "start": "2026-12-06", "end": "2026-12-20", "dates": ["2026-12-06", "2026-12-07", "2026-12-08", "2026-12-13", "2026-12-20"], "title": "Il Gran Natale di Corinaldo", "nearbyDescription": 2, "venue": "Via del Corso e centro storico · Corinaldo", "source": "https://www.visitcorinaldo.it/il-gran-natale-di-corinaldo/", "query": "Via del Corso Corinaldo", "image": "https://www.visitcorinaldo.it/site/wp-content/uploads/2026/10/Natale2026-manifsto.jpg", "credit": "Visit Corinaldo · Ufficio IAT"},
+ {"id": "mondolfo-natale-2026", "area": "Mondolfo", "rank": 1, "start": "2026-11-29", "end": "2026-12-13", "dates": ["2026-11-29", "2026-12-06", "2026-12-13"], "title": "Natale tra borgo e Mare · Mondolfo", "nearbyDescription": 3, "venue": "Chiostro e centro storico · Mondolfo", "source": "https://comune.mondolfo.pu.it/notizie/3682120/natale-2026", "query": "Chiostro Sant Agostino Mondolfo", "image": "https://mycity.s3.sbg.io.cloud.ovh.net/5432409/Locandina-Eventi-Natalizi-2026.jpg", "credit": "Comune di Mondolfo"},
+ {"id": "candelara-2026", "area": "Pesaro · Candelara", "rank": 2, "major": true, "start": "2026-11-28", "end": "2026-12-20", "dates": ["2026-11-28", "2026-11-29", "2026-12-05", "2026-12-06", "2026-12-07", "2026-12-08", "2026-12-12", "2026-12-13", "2026-12-19", "2026-12-20"], "title": "Candele a Candelara", "nearbyDescription": 4, "venue": "Borgo di Candelara · Pesaro", "source": "https://www.candelara.it/", "query": "Candelara Pesaro", "credit": "Pro Loco di Candelara"}
 ];
 function validStayEventDate(value){
  if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
  const date=new Date(value+'T12:00:00Z');
  return !Number.isNaN(date.getTime())&&date.toISOString().slice(0,10)===value;
 }
-function eventsForStay(arrival,departure){
+function eventsForStay(arrival,departure,lang='it'){
  if(!validStayEventDate(arrival)||!validStayEventDate(departure)||arrival>=departure)return [];
  // Departure is before 10:00: do not suggest events starting on departure day.
- return STAY_EVENTS.filter(event=>event.start<departure&&event.end>=arrival).sort((a,b)=>a.start.localeCompare(b.start));
+ return STAY_EVENTS.filter(event=>event.start<departure&&event.end>=arrival
+  && (!event.dates||event.dates.some(date=>date>=arrival&&date<departure))
+  && (!event.requiredLanguages||event.requiredLanguages.includes(lang))
+  && ((event.rank||0)<2||event.major===true)
+ ).sort((a,b)=>(a.rank||0)-(b.rank||0)||a.start.localeCompare(b.start));
 }
 function stayEventDate(value,lang,weekday=false){
  return new Intl.DateTimeFormat(lang,{timeZone:'Europe/Rome',...(weekday?{weekday:'long'}:{}),day:'numeric',month:'long',year:'numeric'}).format(new Date(value+'T12:00:00Z'));
@@ -46,22 +141,22 @@ function renderStayEventsSection(index,lang){
  if(hasDates){
   const rangeFormat=new Intl.DateTimeFormat(lang,{timeZone:'Europe/Rome',day:'numeric',month:'long',...(guest.arrival.slice(0,4)!==guest.departure.slice(0,4)?{year:'numeric'}:{})});
   panel.append(paragraph(rangeFormat.format(new Date(guest.arrival+'T12:00:00Z'))+' – '+rangeFormat.format(new Date(guest.departure+'T12:00:00Z')),'stay-events-dates'));
-  const events=eventsForStay(guest.arrival,guest.departure);
+  const events=eventsForStay(guest.arrival,guest.departure,lang);
   if(!events.length)panel.append(paragraph(t[7]));
   for(const event of events){
    const article=document.createElement('article');article.className='place-item';
    const heading=document.createElement('h3');heading.textContent=event.title;
-   const dates=stayEventDate(event.start,lang,true)+(event.end!==event.start?' – '+stayEventDate(event.end,lang):'')+(event.time?' · '+event.time:'');
+   const dates=event.dates?event.dates.filter(date=>date>=guest.arrival&&date<guest.departure).map(date=>stayEventDate(date,lang)).join(' · '):stayEventDate(event.start,lang,true)+(event.end!==event.start?' – '+stayEventDate(event.end,lang):'')+(event.time?' · '+event.time:'');
    const dateLine=paragraph(dates);const strong=document.createElement('strong');strong.textContent=dates;dateLine.replaceChildren(strong);
    if(event.image){
     const figure=document.createElement('figure');figure.className='stay-event-image';
     const imageLink=document.createElement('a');imageLink.href=event.image;imageLink.target='_blank';imageLink.rel='noopener noreferrer';
-    const image=document.createElement('img');image.src=event.image;image.alt=event.title;image.loading='lazy';image.decoding='async';
+    const image=document.createElement('img');image.src=event.image;image.alt=event.title;image.loading='lazy';image.decoding='async';image.referrerPolicy='no-referrer';
     image.addEventListener('error',()=>figure.remove(),{once:true});imageLink.append(image);
-    const credit=document.createElement('figcaption');addLink(credit,event.credit,event.imageSource,true);
+    const credit=document.createElement('figcaption');addLink(credit,event.credit,event.imageSource||event.source,true);
     figure.append(imageLink,credit);article.append(figure);
    }
-   article.append(heading,dateLine,paragraph(typeof event.venue==='number'?t[event.venue]:event.venue,'place-address'),paragraph(t[event.description]),paragraph(t[event.price??(event.time?12:11)]));
+   article.append(heading,dateLine,paragraph(typeof event.venue==='number'?t[event.venue]:event.venue,'place-address'),paragraph(event.nearbyDescription!==undefined?STAY_EVENTS_NEARBY_TEXT[lang][event.nearbyDescription]:t[event.description]),paragraph(t[event.price??(event.time?12:11)]));
    const links=document.createElement('div');links.className='place-links';
    addLink(links,t[4],event.source,true);
    addLink(links,t[5],'https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent('Lungomare Italia 70, Marzocca di Senigallia')+'&destination='+encodeURIComponent(event.query),true);

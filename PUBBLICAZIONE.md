@@ -214,3 +214,11 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Intestazione compatta: titolo ridotto, solo date del soggiorno, eliminata l’introduzione ripetitiva in tutte le lingue. Stili circoscritti al pannello eventi.
 - Aggiunte immagini promozionali ufficiali nelle tre schede, con fonte e apertura dell’immagine completa. La grafica natalizia è la copertina del pieghevole ufficiale 2026–27, resa dal relativo pannello PDF; foto dello spettacolo e locandina del concerto da Feel Senigallia. File in `assets/events/`.
 - Immagini caricate solo all’apertura della sezione, con caricamento differito; eventuali immagini mancanti non impediscono di leggere gli eventi.
+
+
+### Area eventi e lingua — 24 novembre 2026
+- Menu: riga Cosa vedere / Eventi dopo Dove mangiare / Servizi utili su telefono.
+- Area di ricerca: prima Marzocca e Senigallia, poi Ancona, Fano, Corinaldo, Mondolfo e altri borghi dell’entroterra; Pesaro solo per appuntamenti di particolare rilievo. La selezione di prova include le iniziative natalizie confermate e Candele a Candelara.
+- Gli eventi che richiedono una lingua dichiarano `requiredLanguages`; la prosa italiana non viene mostrata se la lingua corrente della guida non è italiano. Verificare la fruibilità reale: mercatini e allestimenti si possono proporre senza italiano; visite guidate, conferenze, cinema, prosa e comicità soltanto quando la lingua è adatta o ci sono traduzioni/sottotitoli verificati. Non classificare un’intera rassegna come adatta se dipende dal parlato: selezionare soltanto le attività accessibili.
+- Per feste in giorni distinti usare `dates`: filtro e visualizzazione mostrano solo le giornate effettive nel soggiorno, mai i giorni intermedi di chiusura. `rank:2` richiede `major:true` e viene ordinato dopo le proposte vicine.
+- Nuove immagini dai siti ufficiali, fonte visibile, caricamento differito senza referrer; se non disponibili la scheda resta leggibile. Ricerca e aggiornamento del catalogo rimangono manuali e verificati.
