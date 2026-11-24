@@ -222,3 +222,7 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Gli eventi che richiedono una lingua dichiarano `requiredLanguages`; la prosa italiana non viene mostrata se la lingua corrente della guida non è italiano. Verificare la fruibilità reale: mercatini e allestimenti si possono proporre senza italiano; visite guidate, conferenze, cinema, prosa e comicità soltanto quando la lingua è adatta o ci sono traduzioni/sottotitoli verificati. Non classificare un’intera rassegna come adatta se dipende dal parlato: selezionare soltanto le attività accessibili.
 - Per feste in giorni distinti usare `dates`: filtro e visualizzazione mostrano solo le giornate effettive nel soggiorno, mai i giorni intermedi di chiusura. `rank:2` richiede `major:true` e viene ordinato dopo le proposte vicine.
 - Nuove immagini dai siti ufficiali, fonte visibile, caricamento differito senza referrer; se non disponibili la scheda resta leggibile. Ricerca e aggiornamento del catalogo rimangono manuali e verificati.
+
+
+### Titoli sezioni approvati — 24 novembre 2026
+- Rinominati Cosa vedere in Da visitare ed Eventi del tuo soggiorno in Eventi e spettacoli, nei tasti e nei titoli interni, con traduzioni nelle dodici lingue. Date del soggiorno, ordine, contenuti e filtro linguistico invariati.
