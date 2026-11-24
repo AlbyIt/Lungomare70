@@ -25,12 +25,12 @@ function readPersonalLink(hash) {
  if (!name || name.length>100 || !/^[1-4]$/.test(room) || (gate && !/^\d{6}$/.test(gate)) || (safe && !/^\d{4}$/.test(safe))) return {invalid:true};
  const rooms=(p.get('camere')||'').split(',').filter(Boolean).map(Number);
  if(rooms.length && (rooms.some(n=>![1,2,3,4].includes(n)) || !rooms.includes(Number(room)) || new Set(rooms).size!==rooms.length)) return {invalid:true};
- return {name, room:Number(room), rooms:rooms.length?rooms:[Number(room)], gate, safe, lang:p.get('lingua') || (/^(ro|romania|românia)$/i.test(p.get('nazionalita')||'')?'ro':null), arrival:p.get('arrivo')||'', gender:p.get('genere')||'', cleaning:p.get('pulizie')||'', departure:p.get('partenza')||'', demo:p.get('prova')==='1'};
+ return {name, room:Number(room), rooms:rooms.length?rooms:[Number(room)], gate, safe, lang:p.get('lingua') || (/^(ro|romania|românia)$/i.test(p.get('nazionalita')||'')?'ro':/^(cz|cze)$/i.test(p.get('nazionalita')||'')?'cs':null), arrival:p.get('arrivo')||'', gender:p.get('genere')||'', cleaning:p.get('pulizie')||'', departure:p.get('partenza')||'', demo:p.get('prova')==='1'};
 }
 let guest = readPersonalLink(location.hash);
 function personalLabel(index, label, lang) {
  if (!guest || guest.invalid) return label;
- return index===3 ? (guest.rooms.length>1 ? ({ro:ROMANIAN.rooms,it:'Le nostre camere',en:'Our rooms',de:'Unsere Zimmer',fr:'Nos chambres',es:'Nuestras habitaciones',nl:'Onze kamers',pl:'Nasze pokoje'}[lang]||'Le nostre camere') : PERSONAL_TEXT[lang].room) : index===0 ? PERSONAL_TEXT[lang].entry : label;
+ return index===3 ? (guest.rooms.length>1 ? ({cs:CZECH.rooms,ro:ROMANIAN.rooms,it:'Le nostre camere',en:'Our rooms',de:'Unsere Zimmer',fr:'Nos chambres',es:'Nuestras habitaciones',nl:'Onze kamers',pl:'Nasze pokoje'}[lang]||'Le nostre camere') : PERSONAL_TEXT[lang].room) : index===0 ? PERSONAL_TEXT[lang].entry : label;
 }
 function renderPersonalHeader(lang) {
  document.body.classList.toggle('personal-mode',Boolean(guest && !guest.invalid));
@@ -42,7 +42,7 @@ function renderPersonalHeader(lang) {
   document.getElementById('cards').replaceChildren();
   return;
  }
- const welcome=guest.gender==='p'?({ro:ROMANIAN.pluralWelcome,it:'Benvenuti, {name}!',es:'¡Bienvenidos, {name}!',pl:'Witajcie, {name}!'}[lang]||t.welcome):guest.gender==='f'&&lang==='it'?'Benvenuta, {name}!':guest.gender==='f'&&lang==='es'?'¡Bienvenida, {name}!':t.welcome;
+ const welcome=guest.gender==='p'?({cs:CZECH.pluralWelcome,ro:ROMANIAN.pluralWelcome,it:'Benvenuti, {name}!',es:'¡Bienvenidos, {name}!',pl:'Witajcie, {name}!'}[lang]||t.welcome):guest.gender==='f'&&lang==='it'?'Benvenuta, {name}!':guest.gender==='f'&&lang==='es'?'¡Bienvenida, {name}!':t.welcome;
  document.getElementById('welcome').textContent=welcome.replace('{name}',guest.name);
  const title=document.getElementById('hero-title');
  const [greeting,ending]=welcome.split('{name}');
@@ -66,12 +66,12 @@ function renderPersonalSection(index,lang) {
   const section=document.createElement('section');section.id='room-amenities';
   const heading=document.createElement('h3');heading.textContent=amenities.title;
   const list=document.createElement('ul');list.className='room-amenities-list';
-  for(const item of amenities.items){const li=document.createElement('li');const terms=['toaletă cu funcție de bideu','water-bidet','bidet toilet','WC mit Bidetfunktion','WC-bidet','WC-bidé','bidettoilet','WC z funkcją bidetu'];const term=terms.find(x=>item.toLocaleLowerCase().includes(x.toLocaleLowerCase()));if(term){const at=item.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());li.append(document.createTextNode(item.slice(0,at)));const link=document.createElement('button');link.type='button';link.className='inline-bidet-link';link.textContent=item.slice(at,at+term.length);link.addEventListener('click',()=>{openSection(6);document.getElementById('detail').scrollTop=0;});li.append(link,document.createTextNode(item.slice(at+term.length)));}else li.textContent=item;list.append(li);}
+  for(const item of amenities.items){const li=document.createElement('li');const terms=['toaletou s bidetovou funkcí','toaletă cu funcție de bideu','water-bidet','bidet toilet','WC mit Bidetfunktion','WC-bidet','WC-bidé','bidettoilet','WC z funkcją bidetu'];const term=terms.find(x=>item.toLocaleLowerCase().includes(x.toLocaleLowerCase()));if(term){const at=item.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());li.append(document.createTextNode(item.slice(0,at)));const link=document.createElement('button');link.type='button';link.className='inline-bidet-link';link.textContent=item.slice(at,at+term.length);link.addEventListener('click',()=>{openSection(6);document.getElementById('detail').scrollTop=0;});li.append(link,document.createTextNode(item.slice(at+term.length)));}else li.textContent=item;list.append(li);}
   section.append(heading,list);document.getElementById('detail-text').after(section);
  }
  if(index===4){
   const labels={
-   ro:ROMANIAN.cleaning,
+   cs:CZECH.cleaning,ro:ROMANIAN.cleaning,
    it:{title:'Pulizie programmate',pulire:'Pulizia del pavimento e del bagno, con cambio degli asciugamani',rifare:'Pulizia totale della camera con cambio delle lenzuola e degli asciugamani',towels:'Se hai bisogno di asciugamani puliti, puoi richiederne il cambio in qualsiasi momento.'},
    de:{title:'Geplante Zimmerreinigung',pulire:'Reinigung von Boden und Bad sowie Handtuchwechsel',rifare:'Reinigung des gesamten Zimmers mit Wechsel der Bettwäsche und Handtücher',towels:'Wenn du frische Handtücher brauchst, kannst du jederzeit um einen Wechsel bitten.'},
    en:{title:'Scheduled room cleaning',pulire:'Floor and bathroom cleaning, with fresh towels',rifare:'Cleaning of the entire room, with a change of bed linen and towels',towels:'You can request fresh towels at any time.'},
@@ -80,7 +80,7 @@ function renderPersonalSection(index,lang) {
    nl:{title:'Geplande schoonmaak',pulire:'Reiniging van vloer en badkamer, met schone handdoeken',rifare:'Schoonmaak van de hele kamer met verschoning van beddengoed en handdoeken',towels:'Je kunt op elk moment schone handdoeken vragen.'},
    pl:{title:'Planowane sprzątanie',pulire:'Mycie podłogi i łazienki oraz wymiana ręczników',rifare:'Sprzątanie całego pokoju z wymianą pościeli i ręczników',towels:'W każdej chwili możesz poprosić o wymianę ręczników.'}
   };
-  const cleaningNames={ro:ROMANIAN.cleaningNames,"it":{"pulire":"Pulizia standard","rifare":"Pulizia completa"},"de":{"pulire":"Standardreinigung","rifare":"Komplettreinigung"},"en":{"pulire":"Standard cleaning","rifare":"Full cleaning"},"fr":{"pulire":"Ménage standard","rifare":"Ménage complet"},"es":{"pulire":"Limpieza estándar","rifare":"Limpieza completa"},"nl":{"pulire":"Standaardschoonmaak","rifare":"Volledige schoonmaak"},"pl":{"pulire":"Sprzątanie standardowe","rifare":"Pełne sprzątanie"}};
+  const cleaningNames={cs:CZECH.cleaningNames,ro:ROMANIAN.cleaningNames,"it":{"pulire":"Pulizia standard","rifare":"Pulizia completa"},"de":{"pulire":"Standardreinigung","rifare":"Komplettreinigung"},"en":{"pulire":"Standard cleaning","rifare":"Full cleaning"},"fr":{"pulire":"Ménage standard","rifare":"Ménage complet"},"es":{"pulire":"Limpieza estándar","rifare":"Limpieza completa"},"nl":{"pulire":"Standaardschoonmaak","rifare":"Volledige schoonmaak"},"pl":{"pulire":"Sprzątanie standardowe","rifare":"Pełne sprzątanie"}};
   const tr=labels[lang]||labels.it;
   const items=guest.cleaning.split(',').map(x=>x.split(':')).filter(x=>x.length===2&&/^\d{4}-\d{2}-\d{2}$/.test(x[0])&&['pulire','rifare'].includes(x[1]));
   const section=document.createElement('section');section.className='personal-cleaning';
@@ -90,7 +90,7 @@ function renderPersonalSection(index,lang) {
    const start=guest.arrival?new Date(guest.arrival+'T12:00:00'):null;
    const end=guest.departure?new Date(guest.departure+'T12:00:00'):null;
    const nights=start&&end?Math.round((end-start)/86400000):null;
-   const shortStay={ro:ROMANIAN.shortStay,
+   const shortStay={cs:CZECH.shortStay,ro:ROMANIAN.shortStay,
     it:'Per un soggiorno di quattro notti non è prevista una pulizia intermedia. Se avete bisogno del cambio degli asciugamani, non esitate a chiederlo.',
     de:'Bei einem Aufenthalt von vier Nächten ist keine Zwischenreinigung vorgesehen. Wenn ihr frische Handtücher braucht, fragt uns bitte jederzeit danach.',
     en:'For a four-night stay, no intermediate cleaning is scheduled. If you need fresh towels, please do not hesitate to ask.',
@@ -99,7 +99,7 @@ function renderPersonalSection(index,lang) {
     nl:'Bij een verblijf van vier nachten is er geen tussentijdse schoonmaak gepland. Hebben jullie schone handdoeken nodig, vraag er dan gerust om.',
     pl:'Przy pobycie na cztery noce nie przewidujemy sprzątania w trakcie pobytu. Jeśli potrzebujecie świeżych ręczników, śmiało poproście.'
    };
-   const general={ro:ROMANIAN.noCleaning,it:'Non sono previste pulizie intermedie durante il soggiorno.',de:'Während eures Aufenthalts ist keine Zwischenreinigung vorgesehen.',en:'No intermediate cleaning is scheduled during your stay.',fr:'Aucun ménage intermédiaire n’est prévu pendant votre séjour.',es:'No hay limpieza intermedia programada durante vuestra estancia.',nl:'Er is geen tussentijdse schoonmaak gepland tijdens jullie verblijf.',pl:'Podczas pobytu nie zaplanowano sprzątania pośredniego.'};
+   const general={cs:CZECH.noCleaning,ro:ROMANIAN.noCleaning,it:'Non sono previste pulizie intermedie durante il soggiorno.',de:'Während eures Aufenthalts ist keine Zwischenreinigung vorgesehen.',en:'No intermediate cleaning is scheduled during your stay.',fr:'Aucun ménage intermédiaire n’est prévu pendant votre séjour.',es:'No hay limpieza intermedia programada durante vuestra estancia.',nl:'Er is geen tussentijdse schoonmaak gepland tijdens jullie verblijf.',pl:'Podczas pobytu nie zaplanowano sprzątania pośredniego.'};
    note.textContent=nights===4?(shortStay[lang]||shortStay.it):(general[lang]||general.it);
    section.append(note);
   }
@@ -115,8 +115,8 @@ function renderPersonalSection(index,lang) {
   if(!Number.isNaN(date.getTime())){
    const arrival=document.createElement('p');arrival.className='personal-arrival';
    const formatted=new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(date);
-   const prefix={ro:ROMANIAN.arrivalPrefix,it:'Ti aspettiamo',en:'We look forward to welcoming you',de:'Wir erwarten dich',fr:'Nous t’attendons',es:'Te esperamos',nl:'We verwachten je',pl:'Czekamy na Ciebie'}[lang]||'Ti aspettiamo';
-   const timeWord={ro:ROMANIAN.arrivalTime,it:'a partire dalle ore',en:'at',de:'um',fr:'à',es:'a las',nl:'om',pl:'o godzinie'}[lang]||'alle ore';
+   const prefix={cs:CZECH.arrivalPrefix,ro:ROMANIAN.arrivalPrefix,it:'Ti aspettiamo',en:'We look forward to welcoming you',de:'Wir erwarten dich',fr:'Nous t’attendons',es:'Te esperamos',nl:'We verwachten je',pl:'Czekamy na Ciebie'}[lang]||'Ti aspettiamo';
+   const timeWord={cs:CZECH.arrivalTime,ro:ROMANIAN.arrivalTime,it:'a partire dalle ore',en:'at',de:'um',fr:'à',es:'a las',nl:'om',pl:'o godzinie'}[lang]||'alle ore';
    arrival.textContent=prefix+' '+formatted+' '+timeWord+' 15:00';
    const detail=document.getElementById('detail-text');
    detail.textContent=arrival.textContent+'.\nLungomare ITALIA, 70 – Marzocca di Senigallia.';
@@ -124,7 +124,7 @@ function renderPersonalSection(index,lang) {
   }
  }
  // Put the map action inside the entry panel, before either access code.
- const mapLabels={ro:ROMANIAN.map,it:'Apri la mappa',en:'Open map',de:'Karte öffnen',fr:'Ouvrir la carte',es:'Abrir mapa',nl:'Open de kaart',pl:'Otwórz mapę'};
+ const mapLabels={cs:CZECH.map,ro:ROMANIAN.map,it:'Apri la mappa',en:'Open map',de:'Karte öffnen',fr:'Ouvrir la carte',es:'Abrir mapa',nl:'Open de kaart',pl:'Otwórz mapę'};
  const mapLink=document.createElement('a');
  mapLink.className='entry-map-button';
  mapLink.href='https://www.google.com/maps/search/?api=1&query=Lungomare+Italia+70+Marzocca+di+Senigallia';
@@ -145,7 +145,7 @@ function renderPersonalSection(index,lang) {
    const roomList=guest.rooms.slice().sort((a,b)=>a-b).map(n=>n+' – '+ROOM_NAMES[n-1]);
    const roomsText=new Intl.ListFormat(lang,{style:'long',type:'conjunction'}).format(roomList);
    const intro={
-    ro:ROMANIAN.safeIntro(multi,roomsText),
+    cs:CZECH.safeIntro(multi,roomsText),ro:ROMANIAN.safeIntro(multi,roomsText),
     it:multi?'La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Aprila con il codice indicato e ritira i portachiavi delle camere '+roomsText+'. Ogni portachiavi contiene:':'La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Aprila con il codice indicato e ritira il portachiavi della camera. Contiene:',
     de:multi?'Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Öffnet ihn mit dem angegebenen Code und nehmt die Schlüsselbunde für die Zimmer '+roomsText+'. Jeder Schlüsselbund enthält:':'Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Öffnet ihn mit dem angegebenen Code und nehmt den Schlüsselbund für euer Zimmer. Er enthält:',
     en:multi?'The key safe is to the right of the glass entrance door. Open it with the code shown and take the key rings for rooms '+roomsText+'. Each key ring contains:':'The key safe is to the right of the glass entrance door. Open it with the code shown and take your room key ring. It contains:',
@@ -155,7 +155,7 @@ function renderPersonalSection(index,lang) {
     pl:multi?'Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Otwórzcie go podanym kodem i zabierzcie komplety kluczy do pokoi '+roomsText+'. Każdy komplet zawiera:':'Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Otwórzcie go podanym kodem i zabierzcie komplet kluczy do swojego pokoju. Zawiera:'
    };
    const items={
-    ro:ROMANIAN.keys,
+    cs:CZECH.keys,ro:ROMANIAN.keys,
     it:['La chiave della camera','La chiave della vetrata d’ingresso','Il mini-telecomando del cancello'],
     de:['Den Zimmerschlüssel','Den Schlüssel zur verglasten Eingangstür','Die kleine Fernbedienung für das Tor'],
     en:['The room key','The glass entrance door key','The small gate remote'],
@@ -165,7 +165,7 @@ function renderPersonalSection(index,lang) {
     pl:['Klucz do pokoju','Klucz do przeszklonych drzwi wejściowych','Mały pilot do bramy']
    };
    const remote={
-    ro:ROMANIAN.remote,
+    cs:CZECH.remote,ro:ROMANIAN.remote,
     it:'Per aprire il cancello, basta avvicinare il mini-telecomando alla tastiera.',
     de:'Um das Tor zu öffnen, haltet die kleine Fernbedienung einfach an das Tastenfeld.',
     en:'To open the gate, simply hold the small remote close to the keypad.',

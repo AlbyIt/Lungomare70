@@ -180,3 +180,9 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - La lingua iniziale del link prevale sulla lingua precedentemente salvata nel browser; l'ospite può cambiare lingua dal selettore.
 - Le traduzioni rumene sono in `romanian.js`, caricato dopo i dati delle sezioni e prima di `app.js` in entrambe le pagine della guida. I testi delle altre sette lingue, gli stili e le immagini restano invariati.
 - I dati degli ospiti e i codici restano esclusivamente nel frammento del link personale. Non salvarli in repository o pagine di simulazione pubbliche.
+
+
+### Lingua ceca — 24 novembre 2026
+- Aggiunta Čeština – CS, con traduzioni complete in `czech.js`, caricato prima di `app.js`.
+- Per gli ospiti cechi usare `lingua=cs`; `nazionalita=CZ` seleziona il ceco se non è indicata una lingua esplicita. L'ospite può scegliere un'altra lingua dal selettore.
+- Conservati gli altri otto dizionari, le personalizzazioni e il logo originale su sfondo bianco.
