@@ -287,3 +287,7 @@ Opacità dei tasti dal 34% al 40%, ingresso dal 45% al 51%, titoli dal 48% al 54
 ### 24 novembre 2026 — marchio nelle sezioni
 
 Intestazione delle schede con piccolo logo ufficiale su fondo bianco e nome con lo stesso stile tipografico della home, senza sottotitolo aggiunto. Marchio non interattivo, dimensioni compatte su mobile e pulsante di chiusura preservato. Titoli in vetro, contenuti e personalizzazioni invariati. Verificata corrispondenza dei tre file al commit.
+
+### 25 novembre 2026 — nuova scheda Colazione
+
+Applicata solo alla colazione l’impaginazione editoriale approvata: titolo semplice, foto reale assets/buffet.jpg per intero, orario 7:30–9:30, testo «Ti aspettiamo al piano terra. Scegli dal buffet: alle bevande calde pensiamo noi.» e firma Cinzia & Alberto. Traduzioni in tutte le 12 lingue. Rimosso dalla scheda il secondo scatto della veranda per dare risalto alla foto del buffet. Menu e altre sezioni mantengono lo stile attuale. Controllata sintassi JavaScript e corrispondenza dei quattro file al commit.
