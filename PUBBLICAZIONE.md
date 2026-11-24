@@ -230,3 +230,9 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 
 ### Ultimo tasto del menu — 24 novembre 2026
 - Su telefono il tasto finale, attualmente Contatti, è centrato automaticamente quando il numero di tasti è dispari, mantenendo la stessa larghezza degli altri. Quando il numero torna pari i tasti restano appaiati. Nessuna modifica a contenuti o azioni.
+
+
+### Anteprima caratteri — 24 novembre 2026
+- Il parametro di query `font=lora` abilita un confronto reversibile: Lora nei titoli e nella scritta del nome della struttura, Source Sans 3 nei testi e nei tasti. L’immagine del logo rimane originale. Gli altri collegamenti mantengono i caratteri approvati precedenti.
+- Font variabili WOFF2 locali, pesi 400–600, sottoinsiemi latini ed estesi e cirillici per le lingue supportate; per il giapponese restano disponibili i caratteri di sistema. Licenze OFL in `assets/fonts/`. Nessuna richiesta a Google Fonts dal browser degli ospiti.
+- Solo caratteri e peso dei testi nell’anteprima: ordine, dimensioni dei tasti, contenuti, personalizzazioni e centraggio Contatti restano quelli correnti.
