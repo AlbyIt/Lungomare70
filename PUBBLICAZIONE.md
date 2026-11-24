@@ -263,3 +263,8 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 ### Vetro più trasparente e incisione salvia — 24 novembre 2026
 - Riempimento dei tasti ridotto da 0,42 a 0,34 e accesso da 0,55 a 0,45; fondale più luminoso (0,74) e meno sfocato (1,25 px). Spessore e riflessi conservati.
 - Lettere salvia naturale `#b6c8b6`, incisione con bordo superiore più netto e bordo luminoso inferiore attenuato; icone coordinate.
+
+
+### Prova titoli in vetro — 24 novembre 2026
+- Il parametro `titoli=vetro` abilita una fascia acquamarina con scritta incisa per i titoli principali delle schede. Rilievo ridotto a 2 px e nessun comportamento da pulsante. Corpo delle schede, fotografie, targhe camere e titoli secondari conservati.
+- Anteprima reversibile: senza questo parametro i titoli rimangono quelli precedenti. Compatibile con `font=lora`; la scelta dei font è indipendente. Nessuna sostituzione definitiva approvata.
