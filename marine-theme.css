@@ -3,6 +3,7 @@ body{background:#e8dfd0 url("assets/marine-background.jpg") center top/600px aut
 .topbar{background:rgba(255,250,241,.94);backdrop-filter:blur(8px)}
 .brand>img{display:block;width:44px;height:38px;object-fit:contain;flex-shrink:0}
 .welcome{background:rgba(255,252,246,.94);border-color:#e2c9aa}
+/* The body owns the only background image; keep the menu frame transparent. */
 .guide{background:transparent;border:1px solid transparent;border-radius:18px;padding-top:12px;padding-bottom:20px;box-shadow:none}
 .section-heading h2{background:rgba(255,252,246,.94);border-radius:6px;padding:4px 8px}
 .section-heading>span{background:rgba(255,252,246,.94);border-radius:6px;padding:4px 8px}
