@@ -1,0 +1,14 @@
+/* Breakfast only: editorial layout with the property's real buffet photograph. */
+#detail.breakfast-section .dialog-body{display:flex;flex-direction:column;padding:26px 28px 30px;gap:22px}
+#detail.breakfast-section #detail-icon,#detail.breakfast-section #detail-links{display:none}
+#detail.breakfast-section #breakfast-eyebrow{order:0;text-align:center;font-size:.75rem;font-weight:600;letter-spacing:.18em;line-height:1.4;color:#517c91;margin:0}
+#detail.breakfast-section #detail-title{order:1;align-self:center;position:static;isolation:auto;background:none;border:0;border-bottom:1px solid #b58c61;border-radius:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0 12px 14px;margin:0;color:#244b59;font-family:'Lora',Georgia,serif;font-size:clamp(2rem,6vw,2.8rem);font-style:italic;font-weight:400;line-height:1.25;text-align:center;text-shadow:none;-webkit-text-stroke:0}
+#detail.breakfast-section #detail-title::before,#detail.breakfast-section #detail-title::after{display:none}
+#detail.breakfast-section #detail-photos{order:2;display:block;margin:0}
+#detail.breakfast-section #detail-photos img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:12px}
+#detail.breakfast-section #detail-photos figcaption{display:none}
+#detail.breakfast-section #breakfast-hours{order:3;display:flex;align-items:center;justify-content:center;gap:14px;background:#d3e4ed;color:#244b59;border-radius:10px;padding:14px 18px;font-size:1.5rem;line-height:1.2}
+#breakfast-hours svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+#detail.breakfast-section #detail-text{order:4;margin:0;white-space:normal!important;font-size:1.12rem;line-height:1.65;color:#344e54}
+#detail.breakfast-section #breakfast-signature{order:5;align-self:center;margin:4px 0 0;padding:18px 12px 0;border-top:1px solid #b58c61;font-family:'Lora',Georgia,serif;font-size:1.4rem;font-style:italic;line-height:1.4;text-align:center;color:#244b59}
+@media(max-width:600px){#detail.breakfast-section .dialog-body{padding:24px 20px 28px;gap:20px}#detail.breakfast-section #detail-title{font-size:2.15rem}#detail.breakfast-section #detail-text{font-size:1.06rem}#detail.breakfast-section #breakfast-hours{font-size:1.4rem}}

@@ -18,7 +18,7 @@ icons.push('<rect x="3" y="2" width="18" height="20" rx="2"/><path d="M9 18V6h4a
 icons.push(icons[7]);
 icons.push('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h2M14 14h2M8 18h2"/>');
 icons[7]='<ellipse cx="9" cy="8" rx="5" ry="7" transform="rotate(35 9 8)"/><path d="m6 14-4 7M5 6l6 5M6 3l7 6M4 10l5-6"/><circle cx="19" cy="18" r="3"/>';
-const photos = {0:['esterno'],1:['buffet','veranda'],3:['stella','duna','onda','perla'],6:['bagno'],15:['spiaggia-attrezzata','spiaggia-marzocca'],8:['sala','veranda'],9:['balcone']};
+const photos = {0:['esterno'],1:['buffet'],3:['stella','duna','onda','perla'],6:['bagno'],15:['spiaggia-attrezzata','spiaggia-marzocca'],8:['sala','veranda'],9:['balcone']};
 PHOTO_ASSETS.buffet='assets/buffet.jpg';
 PHOTO_ASSETS['spiaggia-attrezzata']='assets/spiaggia-attrezzata-marzocca.jpg';
 PHOTO_ASSETS['spiaggia-marzocca']='assets/spiaggia-marzocca-veduta-diurna.jpg';
@@ -81,6 +81,34 @@ function renderDepartureSection(lang){
  text.replaceChildren(document.createTextNode(before),emphasized,document.createTextNode(after+'\n\n'+rest+'\n\n'+farewell));
  text.style.whiteSpace='pre-line';
 }
+
+function renderBreakfastSection(index,lang){
+ dialog.classList.toggle('breakfast-section',index===1);
+ for(const id of ['breakfast-eyebrow','breakfast-hours','breakfast-signature'])document.getElementById(id)?.remove();
+ if(index!==1)return;
+ const copy={
+ it:['LA TUA GUIDA','Ti aspettiamo al piano terra. Scegli dal buffet: alle bevande calde pensiamo noi.'],
+ en:['YOUR GUIDE','Join us on the ground floor. Help yourself to the buffet: we’ll take care of the hot drinks.'],
+ de:['DEIN REISEBEGLEITER','Wir erwarten dich im Erdgeschoss. Bediene dich am Buffet: Um die heißen Getränke kümmern wir uns.'],
+ fr:['TON GUIDE','Nous t’attendons au rez-de-chaussée. Sers-toi au buffet : nous nous occupons des boissons chaudes.'],
+ es:['TU GUÍA','Te esperamos en la planta baja. Sírvete del bufé: nosotros nos encargamos de las bebidas calientes.'],
+ nl:['JOUW GIDS','We verwelkomen je op de begane grond. Kies van het buffet: wij zorgen voor de warme dranken.'],
+ pl:['TWÓJ PRZEWODNIK','Czekamy na Ciebie na parterze. Wybierz coś z bufetu, a my zajmiemy się ciepłymi napojami.'],
+ ro:['GHIDUL TĂU','Te așteptăm la parter. Alege ce îți place de la bufet: de băuturile calde ne ocupăm noi.'],
+ cs:['TVŮJ PRŮVODCE','Těšíme se na tebe v přízemí. Vyber si z bufetu: o teplé nápoje se postaráme my.'],
+ hu:['A TE ÚTMUTATÓD','A földszinten várunk. Válassz a büfé kínálatából, a meleg italokról pedig mi gondoskodunk.'],
+ bg:['ТВОЯТ ПЪТЕВОДИТЕЛ','Очакваме те на приземния етаж. Избери си от бюфета, а за топлите напитки ще се погрижим ние.'],
+ ja:['ご滞在ガイド','朝食は地上階でお待ちしています。ビュッフェからお好きなものをどうぞ。温かいお飲み物は私たちがお持ちします。']
+ }[lang]||null;
+ if(!copy)return;
+ const body=document.querySelector('.dialog-body');
+ const eyebrow=document.createElement('p');eyebrow.id='breakfast-eyebrow';eyebrow.textContent=copy[0];body.append(eyebrow);
+ const hours=document.createElement('div');hours.id='breakfast-hours';
+ hours.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg><span>7:30 – 9:30</span>';body.append(hours);
+ document.getElementById('detail-text').textContent=copy[1];
+ const signature=document.createElement('p');signature.id='breakfast-signature';signature.textContent='Cinzia & Alberto';body.append(signature);
+}
+
 function openSection(index) {
  if(guest?.invalid) return;
  activeSection = index;
@@ -89,11 +117,6 @@ function openSection(index) {
  detailIcon.innerHTML=index===3 && guest && !guest.invalid ? '' : svg(index);
  document.querySelector('#detail-title').textContent=index===3 && guest?.rooms?.length>1 ? personalLabel(index,t.labels[index]||'',selected) : areaLabel(index,t.labels[index]||'',selected);
  document.querySelector('#detail-text').textContent=t.text[index]||'';
- if(index===1){const breakfastInfo={ja:JAPANESE.breakfast,hu:HUNGARIAN.breakfast,bg:BULGARIAN.breakfast,cs:CZECH.breakfast,ro:ROMANIAN.breakfast,"it": "La colazione è servita al piano terra dalle ore 7:30 alle 9:30.\n\nPuoi scegliere liberamente dal buffet.\n\nLe bevande calde vi saranno servite da Cinzia e Alberto.", "en": "Breakfast is served on the ground floor from 7:30 to 9:30 am.\n\nHelp yourself to the buffet.\n\nHot drinks will be served by Cinzia and Alberto.", "de": "Das Frühstück wird im Erdgeschoss von 7:30 bis 9:30 Uhr serviert.\n\nBediene dich am Buffet.\n\nHeiße Getränke werden euch von Cinzia und Alberto serviert.", "fr": "Le petit-déjeuner est servi au rez-de-chaussée de 7 h 30 à 9 h 30.\n\nSers-toi librement au buffet.\n\nLes boissons chaudes vous seront servies par Cinzia et Alberto.", "es": "El desayuno se sirve en la planta baja de 7:30 a 9:30.\n\nPuedes servirte libremente del bufé.\n\nCinzia y Alberto os servirán las bebidas calientes.", "nl": "Het ontbijt wordt op de begane grond geserveerd van 7.30 tot 9.30 uur.\n\nJe kunt zelf kiezen van het buffet.\n\nWarme dranken worden door Cinzia en Alberto geserveerd.", "pl": "Śniadanie serwowane jest na parterze od 7:30 do 9:30.\n\nMożesz swobodnie korzystać z bufetu.\n\nCiepłe napoje podadzą Wam Cinzia i Alberto."};
-  const text=document.querySelector('#detail-text');
-  text.textContent=breakfastInfo[selected]||breakfastInfo.it;
-  text.style.whiteSpace='pre-line';
- }
  if(index===2){const wifiInfo={ja:JAPANESE.wifi,hu:HUNGARIAN.wifi,bg:BULGARIAN.wifi,cs:CZECH.wifi,ro:ROMANIAN.wifi,"it": "Il Wi-Fi è gratuito e disponibile in tutta la struttura. Non è richiesta alcuna password.\n\nChiedi a Cinzia e Alberto il nome della rete a cui collegarti.", "en": "Wi-Fi is free and available throughout the property. No password is required.\n\nAsk Cinzia and Alberto which network to connect to.", "de": "WLAN ist kostenlos und in der gesamten Unterkunft verfügbar. Es ist kein Passwort erforderlich.\n\nFrag Cinzia und Alberto nach dem Namen des Netzwerks, mit dem du dich verbinden kannst.", "fr": "Le Wi-Fi est gratuit et disponible dans tout l’établissement. Aucun mot de passe n’est nécessaire.\n\nDemande à Cinzia et Alberto le nom du réseau auquel te connecter.", "es": "El Wi-Fi es gratuito y está disponible en todo el alojamiento. No se necesita contraseña.\n\nPregunta a Cinzia y Alberto el nombre de la red a la que puedes conectarte.", "nl": "Wifi is gratis en beschikbaar in de hele accommodatie. Er is geen wachtwoord nodig.\n\nVraag Cinzia en Alberto met welk netwerk je verbinding kunt maken.", "pl": "Wi-Fi jest bezpłatne i dostępne w całym obiekcie. Hasło nie jest wymagane.\n\nZapytaj Cinzię i Alberta o nazwę sieci, z którą możesz się połączyć."};
   const text=document.querySelector('#detail-text');
   text.textContent=wifiInfo[selected]||wifiInfo.it;
@@ -112,6 +135,7 @@ function openSection(index) {
  renderAreaSection(index,selected);
  renderStayEventsSection(index,selected);
  if(index===10)renderDepartureSection(selected);
+ renderBreakfastSection(index,selected);
  const detailTitle=document.querySelector('#detail-title');
  detailTitle.classList.toggle('room-title',index===3 && Boolean(guest && !guest.invalid));
  if(index===3 && guest && !guest.invalid)detailTitle.append(createRoomSigns('room-title-signs'));
