@@ -4,7 +4,7 @@
  position:relative;
  isolation:isolate;
  color:#b6c8b6;
- background:rgba(43,121,169,.34);
+ background:rgba(43,121,169,.40);
  border-color:rgba(183,220,239,.66);
  box-shadow:0 1px 0 rgba(197,230,247,.72),0 3px 0 rgba(67,139,177,.78),0 6px 0 rgba(37,104,144,.72),0 8px 1px rgba(24,74,108,.35),0 12px 17px rgba(31,69,95,.23),inset 0 1px 0 rgba(239,250,255,.84),inset 1px 0 0 rgba(220,240,251,.42),inset 0 -2px 3px rgba(16,61,91,.38);
  -webkit-backdrop-filter:blur(1.25px) brightness(.74) saturate(.9);
@@ -43,7 +43,7 @@
  filter:drop-shadow(0 -1px .4px rgba(14,60,87,.75)) drop-shadow(0 .5px 0 rgba(216,230,232,.30));
 }
 #cards>.card.entry-card{
- background:rgba(49,121,161,.45);
+ background:rgba(49,121,161,.51);
  border-color:#b58c61;
 }
 @media(hover:hover){
