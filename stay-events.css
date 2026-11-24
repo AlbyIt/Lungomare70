@@ -1,0 +1,12 @@
+/* Scoped to the events panel: preserve all existing guide sections. */
+#detail.stay-events-dialog #detail-icon{display:none}
+#detail.stay-events-dialog #detail-title{font-size:1.5rem;line-height:1.25;margin:0 0 10px}
+#detail.stay-events-dialog #detail-text:empty{display:none}
+#stay-events .stay-events-dates{margin:0 0 16px;line-height:1.45}
+#stay-events .place-item{margin:14px 0}
+#stay-events .stay-event-image{margin:0 0 12px}
+#stay-events .stay-event-image>a{display:block;background:#f2eee7;border-radius:8px;overflow:hidden}
+#stay-events .stay-event-image img{display:block;width:100%;height:180px;object-fit:contain}
+#stay-events .stay-event-image figcaption{font-size:.75rem;line-height:1.3;color:var(--muted);margin-top:5px}
+#stay-events .stay-event-image figcaption a{text-underline-offset:3px}
+@media(max-width:600px){#detail.stay-events-dialog #detail-title{font-size:1.15rem}#detail.stay-events-dialog .dialog-body{padding-top:18px}#stay-events .stay-event-image img{height:150px}}

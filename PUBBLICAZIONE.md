@@ -208,3 +208,9 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Il filtro usa arrivo e partenza del link personale: include gli eventi che si sovrappongono al soggiorno, esclude quelli che iniziano nel giorno del check-out. Le rassegne riportano l’intero periodo e rimandano al programma per i singoli appuntamenti; non implicano attività quotidiane.
 - Per periodi senza eventi selezionati mostrare il messaggio esplicito e il calendario ufficiale, senza dichiarare che non esistano eventi. Non dedurre edizioni future da programmi passati. Priorità Marzocca e Senigallia, poi dintorni; località più lontane soltanto per eventi importanti verificati.
 - Simulazioni senza registrazioni nei calendari, senza invii agli ospiti e senza salvare nomi, date personali o codici nel repository.
+
+
+### Presentazione eventi — 24 novembre 2026
+- Intestazione compatta: titolo ridotto, solo date del soggiorno, eliminata l’introduzione ripetitiva in tutte le lingue. Stili circoscritti al pannello eventi.
+- Aggiunte immagini promozionali ufficiali nelle tre schede, con fonte e apertura dell’immagine completa. La grafica natalizia è la copertina del pieghevole ufficiale 2026–27, resa dal relativo pannello PDF; foto dello spettacolo e locandina del concerto da Feel Senigallia. File in `assets/events/`.
+- Immagini caricate solo all’apertura della sezione, con caricamento differito; eventuali immagini mancanti non impediscono di leggere gli eventi.

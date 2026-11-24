@@ -16,9 +16,9 @@ const STAY_EVENTS_UI = {
  ja:['滞在中のイベント','滞在中のイベント','ご滞在の日程に合わせたセニガッリアと近郊のイベントをご紹介します。','ご滞在期間','公式プログラム','アクセス','セニガッリアのその他のイベント','この日程の開催が確認されたイベントは、まだ掲載していません。公式カレンダーをご覧になるか、チンツィアとアルベルトにお尋ねください。','イベントの表示には、個人用リンクに到着日と出発日が必要です。','掲載情報の確認日','お出かけ前に公式プログラムをご確認ください。時間、チケット、空席状況は変更される場合があります。','各催しの開催日と時間は公式プログラムをご確認ください。','チケットが必要です。販売状況は公式プログラムをご確認ください。','旧市街ほか · セニガッリア','街を彩るクリスマスのイルミネーション、マーケット、催し。','クラウディオ・「グレッグ」・グレゴーリ出演のアガサ・クリスティ作品。イタリア語上演。','劇場再開30周年を祝うイ・ヴィルトゥオージ・イタリアーニの演奏会。','全席指定：10ユーロ。']
 };
 const STAY_EVENTS = [
- {id:'natale-2026',start:'2026-11-28',end:'2027-01-06',title:'Vivi la magia del Natale a Senigallia',description:14,venue:13,source:'https://www.feelsenigallia.it/eventi/vivi-la-magia-del-natale-a-senigallia/',query:'Piazza Roma Senigallia'},
- {id:'orient-express-2026',start:'2026-12-04',end:'2026-12-04',time:'21:00',title:'Assassinio sull’Orient Express',description:15,venue:'Teatro La Fenice · Via Cesare Battisti, 30 · Senigallia',source:'https://www.feelsenigallia.it/eventi/assassinio-sullorient-express/',query:'Teatro La Fenice Senigallia'},
- {id:'fenice-30-2026',start:'2026-12-05',end:'2026-12-05',time:'18:00',title:'I Virtuosi Italiani · 30° Teatro La Fenice',description:16,price:17,venue:'Teatro La Fenice · Via Cesare Battisti, 30 · Senigallia',source:'https://www.feelsenigallia.it/eventi/30-anniversario-della-riapertura-del-teatro-la-fenice/',query:'Teatro La Fenice Senigallia'}
+ {id:'natale-2026',image:'assets/events/natale-senigallia-2026.jpg',imageSource:'https://www.feelsenigallia.it/wp-content/uploads/2026/11/FeelSenigallia-brochure.pdf',credit:'Feel Senigallia · Comune di Senigallia',start:'2026-11-28',end:'2027-01-06',title:'Vivi la magia del Natale a Senigallia',description:14,venue:13,source:'https://www.feelsenigallia.it/eventi/vivi-la-magia-del-natale-a-senigallia/',query:'Piazza Roma Senigallia'},
+ {id:'orient-express-2026',image:'assets/events/orient-express-2026.jpg',imageSource:'https://www.feelsenigallia.it/wp-content/uploads/2026/09/2-ASSASSINIO-SULL_ORIENT-EXPRESS_Greg-2-Media.jpg',credit:'AMAT · Feel Senigallia',start:'2026-12-04',end:'2026-12-04',time:'21:00',title:'Assassinio sull’Orient Express',description:15,venue:'Teatro La Fenice · Via Cesare Battisti, 30 · Senigallia',source:'https://www.feelsenigallia.it/eventi/assassinio-sullorient-express/',query:'Teatro La Fenice Senigallia'},
+ {id:'fenice-30-2026',image:'assets/events/fenice-30-2026.jpg',imageSource:'https://www.feelsenigallia.it/wp-content/uploads/2026/11/Fenice30_Carlino_PaginaIntera_2651x4035mm_CMYK300-scaled.jpg',credit:'Feel Senigallia · Teatro La Fenice',start:'2026-12-05',end:'2026-12-05',time:'18:00',title:'I Virtuosi Italiani · 30° Teatro La Fenice',description:16,price:17,venue:'Teatro La Fenice · Via Cesare Battisti, 30 · Senigallia',source:'https://www.feelsenigallia.it/eventi/30-anniversario-della-riapertura-del-teatro-la-fenice/',query:'Teatro La Fenice Senigallia'}
 ];
 function validStayEventDate(value){
  if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
@@ -35,15 +35,17 @@ function stayEventDate(value,lang,weekday=false){
 }
 function renderStayEventsSection(index,lang){
  document.getElementById('stay-events')?.remove();
+ document.getElementById('detail').classList.toggle('stay-events-dialog',index===16);
  if(index!==16)return;
  const t=STAY_EVENTS_UI[lang]||STAY_EVENTS_UI.it;
  document.getElementById('detail-title').textContent=t[1];
  const hasDates=validStayEventDate(guest?.arrival)&&validStayEventDate(guest?.departure)&&guest.arrival<guest.departure;
- document.getElementById('detail-text').textContent=hasDates?t[2]:t[8];
+ document.getElementById('detail-text').textContent=hasDates?'':t[8];
  const panel=document.createElement('section');panel.id='stay-events';
  const paragraph=(text,className)=>{const p=document.createElement('p');p.textContent=text;if(className)p.className=className;return p;};
  if(hasDates){
-  panel.append(paragraph(t[3]+': '+stayEventDate(guest.arrival,lang)+' – '+stayEventDate(guest.departure,lang)));
+  const rangeFormat=new Intl.DateTimeFormat(lang,{timeZone:'Europe/Rome',day:'numeric',month:'long',...(guest.arrival.slice(0,4)!==guest.departure.slice(0,4)?{year:'numeric'}:{})});
+  panel.append(paragraph(rangeFormat.format(new Date(guest.arrival+'T12:00:00Z'))+' – '+rangeFormat.format(new Date(guest.departure+'T12:00:00Z')),'stay-events-dates'));
   const events=eventsForStay(guest.arrival,guest.departure);
   if(!events.length)panel.append(paragraph(t[7]));
   for(const event of events){
@@ -51,6 +53,14 @@ function renderStayEventsSection(index,lang){
    const heading=document.createElement('h3');heading.textContent=event.title;
    const dates=stayEventDate(event.start,lang,true)+(event.end!==event.start?' – '+stayEventDate(event.end,lang):'')+(event.time?' · '+event.time:'');
    const dateLine=paragraph(dates);const strong=document.createElement('strong');strong.textContent=dates;dateLine.replaceChildren(strong);
+   if(event.image){
+    const figure=document.createElement('figure');figure.className='stay-event-image';
+    const imageLink=document.createElement('a');imageLink.href=event.image;imageLink.target='_blank';imageLink.rel='noopener noreferrer';
+    const image=document.createElement('img');image.src=event.image;image.alt=event.title;image.loading='lazy';image.decoding='async';
+    image.addEventListener('error',()=>figure.remove(),{once:true});imageLink.append(image);
+    const credit=document.createElement('figcaption');addLink(credit,event.credit,event.imageSource,true);
+    figure.append(imageLink,credit);article.append(figure);
+   }
    article.append(heading,dateLine,paragraph(typeof event.venue==='number'?t[event.venue]:event.venue,'place-address'),paragraph(t[event.description]),paragraph(t[event.price??(event.time?12:11)]));
    const links=document.createElement('div');links.className='place-links';
    addLink(links,t[4],event.source,true);
