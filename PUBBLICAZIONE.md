@@ -186,3 +186,10 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Aggiunta Čeština – CS, con traduzioni complete in `czech.js`, caricato prima di `app.js`.
 - Per gli ospiti cechi usare `lingua=cs`; `nazionalita=CZ` seleziona il ceco se non è indicata una lingua esplicita. L'ospite può scegliere un'altra lingua dal selettore.
 - Conservati gli altri otto dizionari, le personalizzazioni e il logo originale su sfondo bianco.
+
+
+### Ungherese, bulgaro e ordine delle lingue — 24 novembre 2026
+- Aggiunte esclusivamente Magyar – HU e Български – BG, con traduzioni complete delle sezioni e delle personalizzazioni in `hungarian-bulgarian.js`.
+- I parametri `lingua=hu` e `lingua=bg` impostano la lingua iniziale; in assenza di una lingua esplicita, le nazionalità HU e BG la selezionano automaticamente. Una preferenza esplicita prevale sempre.
+- Le undici opzioni sono ordinate alfabeticamente per il nome originale della lingua, ignorando gli accenti; l'alfabeto latino precede il cirillico. L'ordinamento è identico in entrambe le pagine della guida e non modifica la lingua iniziale dell'ospite.
+- Non aggiunte le altre cinque lingue individuate nell'analisi dello storico. Conservati i nove dizionari precedenti, le immagini e il logo bianco.
