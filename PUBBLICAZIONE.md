@@ -193,3 +193,10 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - I parametri `lingua=hu` e `lingua=bg` impostano la lingua iniziale; in assenza di una lingua esplicita, le nazionalità HU e BG la selezionano automaticamente. Una preferenza esplicita prevale sempre.
 - Le undici opzioni sono ordinate alfabeticamente per il nome originale della lingua, ignorando gli accenti; l'alfabeto latino precede il cirillico. L'ordinamento è identico in entrambe le pagine della guida e non modifica la lingua iniziale dell'ospite.
 - Non aggiunte le altre cinque lingue individuate nell'analisi dello storico. Conservati i nove dizionari precedenti, le immagini e il logo bianco.
+
+
+### Giapponese — 24 novembre 2026
+- Aggiunto 日本語 – JA, con traduzioni complete in `japanese.js`, comprese date, accesso, pulizie, dotazioni, bagno, regolamento e guida locale.
+- Per gli ospiti giapponesi usare `lingua=ja`; in assenza di preferenza esplicita `nazionalita=JP` (anche JPN) seleziona il giapponese. L'ospite può cambiare lingua.
+- Dodici lingue nel selettore, con nomi originali: alfabeto latino, poi cirillico, poi giapponese. Conservati il logo bianco, le immagini e tutti gli undici dizionari precedenti.
+- Il check-out giapponese gestisce il separatore di frase giapponese per conservare integralmente le istruzioni dopo la data personale.

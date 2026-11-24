@@ -116,4 +116,4 @@ const ROMANIAN_PLACE_NAMES = {
  'Noleggio biciclette · Camping Cortina':'Închiriere de biciclete · Camping Cortina',
  'Aeroporto delle Marche · Ancona':'Aeroportul Marche · Ancona'
 };
-function localizedPlaceName(place,lang){return ['hu','bg'].includes(lang)?(EXTRA_LANGUAGES[lang].placeNames[place.name]||place.name):lang==='cs'?(CZECH_PLACE_NAMES[place.name]||place.name):lang==='ro'?(ROMANIAN_PLACE_NAMES[place.name]||place.name):place.name;}
+function localizedPlaceName(place,lang){return lang==='ja'?(JAPANESE_PLACE_NAMES[place.name]||place.name):['hu','bg'].includes(lang)?(EXTRA_LANGUAGES[lang].placeNames[place.name]||place.name):lang==='cs'?(CZECH_PLACE_NAMES[place.name]||place.name):lang==='ro'?(ROMANIAN_PLACE_NAMES[place.name]||place.name):place.name;}
