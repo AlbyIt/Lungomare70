@@ -71,3 +71,15 @@ footer{background:rgba(255,250,242,.94)}
   justify-self:center;
  }
 }
+
+/* Compact, non-interactive brand in section headers; keep the close button clear. */
+.dialog-bar>.section-brand{min-width:0;gap:8px;font-size:1.05rem;letter-spacing:.09em;line-height:1.2}
+.dialog-bar>.section-brand>img{width:36px;height:32px;object-fit:contain;flex-shrink:0}
+.dialog-bar>.section-brand>span{white-space:nowrap}
+.dialog-bar>.section-brand b{font-size:1.25rem;font-weight:400}
+.dialog-bar>button{flex-shrink:0;margin-left:12px}
+@media(max-width:600px){
+ .dialog-bar>.section-brand{gap:6px;font-size:.88rem;letter-spacing:.07em}
+ .dialog-bar>.section-brand>img{width:32px;height:28px}
+ .dialog-bar>.section-brand b{font-size:1.08rem}
+}
