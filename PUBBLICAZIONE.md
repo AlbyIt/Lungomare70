@@ -268,3 +268,9 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 ### Prova titoli in vetro — 24 novembre 2026
 - Il parametro `titoli=vetro` abilita una fascia acquamarina con scritta incisa per i titoli principali delle schede. Rilievo ridotto a 2 px e nessun comportamento da pulsante. Corpo delle schede, fotografie, targhe camere e titoli secondari conservati.
 - Anteprima reversibile: senza questo parametro i titoli rimangono quelli precedenti. Compatibile con `font=lora`; la scelta dei font è indipendente. Nessuna sostituzione definitiva approvata.
+
+
+### Titoli in vetro approvati e tinta azzurra — 24 novembre 2026
+- Titoli in vetro resi predefiniti su tutti i link, senza necessità del parametro titoli=vetro. Per tornare ai titoli semplici resta disponibile titoli=classici.
+- Tinta di tasti e titoli spostata dall’acquamarina al celeste/azzurro (RGB 43/121/169), con bordi e ombre coordinati. Conservati trasparenza, rilievo, incisione e lettere naturali; nessuna modifica al beige dello sfondo.
+- L’anteprima Lora/Source Sans 3 resta indipendente tramite font=lora.
