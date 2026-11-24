@@ -283,3 +283,7 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 ### 24 novembre 2026 — vetro leggermente meno trasparente
 
 Opacità dei tasti dal 34% al 40%, ingresso dal 45% al 51%, titoli dal 48% al 54%. Colori, riflessi, incisione, spessore e sfondo unico invariati. Aggiornati i riferimenti delle risorse per il rinnovo della cache. Verificato il contenuto dei cinque file al commit prima della pubblicazione.
+
+### 24 novembre 2026 — marchio nelle sezioni
+
+Intestazione delle schede con piccolo logo ufficiale su fondo bianco e nome con lo stesso stile tipografico della home, senza sottotitolo aggiunto. Marchio non interattivo, dimensioni compatte su mobile e pulsante di chiusura preservato. Titoli in vetro, contenuti e personalizzazioni invariati. Verificata corrispondenza dei tre file al commit.
