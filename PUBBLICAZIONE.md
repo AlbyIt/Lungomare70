@@ -253,3 +253,8 @@ La proposta di mostrare importi o stato del saldo agli ospiti è ancora da valut
 - Sostituito il velo bianco con una tinta verde mare e riflessi stretti. Mantenuta l’opacità base 0,42/0,55 con fondale attenuato; fallback più scuro per browser senza backdrop-filter, per conservare la leggibilità.
 - Etichette chiare smerigliate e bordo inciso; icone coordinate. Accento dorato dell’accesso e targhe delle camere conservati.
 - Spessore inferiore di 6 px con bordo di luce, ombra di appoggio e spazio tra le righe portato a 13 px; dimensione dei tasti e distanza tra colonne invariati. Pressione di 4 px, disattivata per movimento ridotto.
+
+
+### Acquamarina e scritte naturali — 24 novembre 2026
+- Vetro orientato verso il turchese/acquamarina: RGB 24/102/103, mantenendo trasparenza, rilievo, riflessi e comportamento.
+- Lettere color avorio-salvia `#d4ddcd`, icone coordinate `#c3d9cb` e luce dell’incisione attenuata per eliminare il bianco acceso.
