@@ -30,3 +30,9 @@ Selezionato **Presepe Ilari · Chiaravalle**, periodo 8 dicembre 2026–6 gennai
 Date e sede riscontrate il 25/11/2026; giorni e orari di apertura, ingresso e immagine specifica ancora da verificare. La scheda della prova esplicita il limite e non presume la gratuità.
 
 Il cartellone AMAT indica Luca Bizzarri il 12 dicembre 2026: escluso dalla prova Lucio perché successivo alla partenza dell’11 dicembre.
+
+## Scadenza automatica degli eventi — 26 novembre 2026
+
+Gli eventi conclusi devono sparire automaticamente dalla guida, mantenendo lo stesso link e senza richiedere di ricaricare la pagina. Usare sempre il fuso Europe/Rome. In assenza di un orario finale verificato, conservare l'evento fino alla fine dell'ultima giornata; se disponibile, registrare `endsAt` come data e ora ISO con offset esplicito, gestendo anche la fine dopo mezzanotte. Per eventi con singole date ripetute mostrare soltanto quelle non passate comprese nel soggiorno, escludendo il giorno del check-out; rimuovere la scheda quando non ne resta nessuna. Mantenere il filtro obbligatorio per lingua.
+
+Controllare la scadenza all'apertura della sezione, ogni 30 secondi mentre è aperta e quando la pagina torna visibile o riacquista il focus. Aggiornare la sezione soltanto quando cambia la selezione, conservando la posizione di scorrimento. Sui dispositivi che sospendono le pagine in background, aggiornare al ritorno alla guida.
