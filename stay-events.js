@@ -173,11 +173,31 @@ function validStayEventDate(value){
  const date=new Date(value+'T12:00:00Z');
  return !Number.isNaN(date.getTime())&&date.toISOString().slice(0,10)===value;
 }
-function eventsForStay(arrival,departure,lang='it'){
+// Use the venue's calendar date even when the guest's device uses another timezone.
+function stayEventsToday(now=new Date()){
+ const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);
+ const part=type=>parts.find(p=>p.type===type).value;
+ return part('year')+'-'+part('month')+'-'+part('day');
+}
+function remainingStayEventDates(event,arrival,departure,now=new Date()){
+ const today=stayEventsToday(now);
+ return (event.dates||[]).filter(date=>date>=arrival&&date<departure&&date>=today);
+}
+function stayEventIsUpcoming(event,arrival,departure,now=new Date()){
+ // endsAt is optional: record only verified end times with an explicit UTC offset.
+ if(event.endsAt&&/T.*(?:Z|[+-]\d{2}:\d{2})$/.test(event.endsAt)){
+  const end=Date.parse(event.endsAt);
+  if(Number.isFinite(end))return now.getTime()<end&&(!event.dates||remainingStayEventDates(event,arrival,departure,now).length>0);
+ }
+ if(event.end<stayEventsToday(now))return false;
+ return !event.dates||remainingStayEventDates(event,arrival,departure,now).length>0;
+}
+function eventsForStay(arrival,departure,lang='it',now=new Date()){
  if(!validStayEventDate(arrival)||!validStayEventDate(departure)||arrival>=departure)return [];
  // Departure is before 10:00: do not suggest events starting on departure day.
  return STAY_EVENTS.filter(event=>event.start<departure&&event.end>=arrival
   && (!event.dates||event.dates.some(date=>date>=arrival&&date<departure))
+  && stayEventIsUpcoming(event,arrival,departure,now)
   && (!event.requiredLanguages||event.requiredLanguages.includes(lang))
   && ((event.rank||0)<2||event.major===true)
  ).sort((a,b)=>(a.rank||0)-(b.rank||0)||a.start.localeCompare(b.start));
@@ -185,7 +205,12 @@ function eventsForStay(arrival,departure,lang='it'){
 function stayEventDate(value,lang,weekday=false){
  return new Intl.DateTimeFormat(lang,{timeZone:'Europe/Rome',...(weekday?{weekday:'long'}:{}),day:'numeric',month:'long',year:'numeric'}).format(new Date(value+'T12:00:00Z'));
 }
+let stayEventsRenderKey='';
+function stayEventsKey(lang){
+ return JSON.stringify([lang,guest?.arrival,guest?.departure,stayEventsToday(),eventsForStay(guest?.arrival,guest?.departure,lang).map(event=>event.id)]);
+}
 function renderStayEventsSection(index,lang){
+ if(index===16)stayEventsRenderKey=stayEventsKey(lang);
  document.getElementById('stay-events')?.remove();
  document.getElementById('detail').classList.toggle('stay-events-dialog',index===16);
  if(index!==16)return;
@@ -203,7 +228,7 @@ function renderStayEventsSection(index,lang){
   for(const event of events){
    const article=document.createElement('article');article.className='place-item';
    const heading=document.createElement('h3');heading.textContent=event.title;
-   const dates=event.dates?event.dates.filter(date=>date>=guest.arrival&&date<guest.departure).map(date=>stayEventDate(date,lang)).join(' · '):stayEventDate(event.start,lang,true)+(event.end!==event.start?' – '+stayEventDate(event.end,lang):'')+(event.time?' · '+event.time:'');
+   const dates=event.dates?remainingStayEventDates(event,guest.arrival,guest.departure).map(date=>stayEventDate(date,lang)).join(' · '):stayEventDate(event.start,lang,true)+(event.end!==event.start?' – '+stayEventDate(event.end,lang):'')+(event.time?' · '+event.time:'');
    const dateLine=paragraph(dates);const strong=document.createElement('strong');strong.textContent=dates;dateLine.replaceChildren(strong);
    if(event.image){
     const figure=document.createElement('figure');figure.className='stay-event-image';
@@ -224,3 +249,20 @@ function renderStayEventsSection(index,lang){
  const more=document.createElement('div');more.className='place-links-subtle';addLink(more,t[6],'https://www.feelsenigallia.it/eventi/',true);panel.append(more);
  document.getElementById('detail-text').after(panel);
 }
+
+ // Refresh only when the visible selection changes, preserving focus between checks.
+function refreshOpenStayEvents(){
+ const detail=document.getElementById('detail');
+ if(!detail?.open||!document.getElementById('stay-events'))return;
+ const lang=document.documentElement.lang||'it';
+ if(stayEventsKey(lang)===stayEventsRenderKey)return;
+ const scrollTop=detail.scrollTop;
+ renderStayEventsSection(16,lang);
+ detail.scrollTop=scrollTop;
+}
+setInterval(refreshOpenStayEvents,30000);
+document.addEventListener('visibilitychange',()=>{
+ if(document.visibilityState==='visible')refreshOpenStayEvents();
+});
+window.addEventListener('focus',refreshOpenStayEvents);
+window.addEventListener('pageshow',refreshOpenStayEvents);
