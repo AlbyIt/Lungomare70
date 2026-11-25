@@ -50,5 +50,8 @@
   }
  }
  new MutationObserver(formatEventRows).observe(document.querySelector('.dialog-body'),{childList:true,subtree:true});
+ // Official organizer photograph, also shown in the expanded event with its source credit.
+ const candelara=STAY_EVENTS.find(event=>event.id==='candelara-2026');
+ if(candelara){candelara.image='assets/events/candelara-candele.jpg';candelara.imageSource='https://www.candelara.it/';candelara.credit='Pro Loco di Candelara · candelara.it';}
  render();
 })();
