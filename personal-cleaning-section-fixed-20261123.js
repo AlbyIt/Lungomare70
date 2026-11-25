@@ -32,6 +32,36 @@ function personalLabel(index, label, lang) {
  if (!guest || guest.invalid) return label;
  return index===3 ? (guest.rooms.length>1 ? ({ja:JAPANESE.rooms,hu:HUNGARIAN.rooms,bg:BULGARIAN.rooms,cs:CZECH.rooms,ro:ROMANIAN.rooms,it:'Le nostre camere',en:'Our rooms',de:'Unsere Zimmer',fr:'Nos chambres',es:'Nuestras habitaciones',nl:'Onze kamers',pl:'Nasze pokoje'}[lang]||'Le nostre camere') : PERSONAL_TEXT[lang].room) : index===0 ? PERSONAL_TEXT[lang].entry : label;
 }
+
+const PERSONAL_GREETING_TEXT = {
+ it:['Buongiorno, {name}!','Buonasera, {name}!','Ti aspettiamo a Lungomare 70','Vi aspettiamo a Lungomare 70'],
+ en:['Good morning, {name}!','Good evening, {name}!','We look forward to welcoming you to Lungomare 70','We look forward to welcoming you to Lungomare 70'],
+ de:['Guten Morgen, {name}!','Guten Abend, {name}!','Wir freuen uns auf dich bei Lungomare 70','Wir freuen uns auf euch bei Lungomare 70'],
+ fr:['Bonjour, {name} !','Bonsoir, {name} !','Nous t’attendons à Lungomare 70','Nous vous attendons à Lungomare 70'],
+ es:['¡Buenos días, {name}!','¡Buenas tardes, {name}!','Te esperamos en Lungomare 70','Os esperamos en Lungomare 70'],
+ nl:['Goedemorgen, {name}!','Goedenavond, {name}!','We kijken uit naar je komst bij Lungomare 70','We kijken uit naar jullie komst bij Lungomare 70'],
+ pl:['Dzień dobry, {name}!','Dobry wieczór, {name}!','Czekamy na Ciebie w Lungomare 70','Czekamy na Was w Lungomare 70'],
+ ro:['Bună dimineața, {name}!','Bună seara, {name}!','Te așteptăm la Lungomare 70','Vă așteptăm la Lungomare 70'],
+ cs:['Dobré ráno, {name}!','Dobrý večer, {name}!','Těšíme se na tebe v Lungomare 70','Těšíme se na vás v Lungomare 70'],
+ hu:['Jó reggelt, {name}!','Jó estét, {name}!','Várunk a Lungomare 70-ben','Várunk benneteket a Lungomare 70-ben'],
+ bg:['Добро утро, {name}!','Добър вечер, {name}!','Очакваме те в Lungomare 70','Очакваме ви в Lungomare 70'],
+ ja:['{name}さん、おはようございます！','{name}さん、こんばんは！','Lungomare 70でお待ちしています','Lungomare 70で皆さまをお待ちしています']
+};
+// Morning, daytime and evening forms; use local convention for each language.
+const PERSONAL_DAY_GREETING = {it:'Buongiorno, {name}!',en:'Good afternoon, {name}!',de:'Guten Tag, {name}!',fr:'Bonjour, {name} !',es:'¡Buenas tardes, {name}!',nl:'Goedemiddag, {name}!',pl:'Dzień dobry, {name}!',ro:'Bună ziua, {name}!',cs:'Dobrý den, {name}!',hu:'Jó napot, {name}!',bg:'Добър ден, {name}!',ja:'{name}さん、こんにちは！'};
+function personalGreetingState(g,lang,welcome,now=new Date()){
+ const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',hourCycle:'h23'}).formatToParts(now);
+ const part=type=>parts.find(p=>p.type===type).value;
+ const today=part('year')+'-'+part('month')+'-'+part('day'),hour=Number(part('hour'));
+ const arrival=g.arrival;
+ const valid=typeof arrival==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(arrival)&&!Number.isNaN(Date.parse(arrival+'T12:00:00Z'))&&new Date(arrival+'T12:00:00Z').toISOString().slice(0,10)===arrival;
+ if(!valid||today===arrival)return {greeting:welcome,awaiting:''};
+ const t=PERSONAL_GREETING_TEXT[lang]||PERSONAL_GREETING_TEXT.it;
+ const greeting=hour>=18||hour<6?t[1]:hour<12?t[0]:(PERSONAL_DAY_GREETING[lang]||PERSONAL_DAY_GREETING.it);
+ const plural=g.gender==='p'||g.rooms?.length>1;
+ return {greeting,awaiting:today<arrival?t[plural?3:2]:''};
+}
+
 function renderPersonalHeader(lang) {
  document.body.classList.toggle('personal-mode',Boolean(guest && !guest.invalid));
  if (!guest) return;
@@ -42,12 +72,19 @@ function renderPersonalHeader(lang) {
   document.getElementById('cards').replaceChildren();
   return;
  }
- const welcome=guest.gender==='p'?({ja:JAPANESE.pluralWelcome,hu:HUNGARIAN.pluralWelcome,bg:BULGARIAN.pluralWelcome,cs:CZECH.pluralWelcome,ro:ROMANIAN.pluralWelcome,it:'Benvenuti, {name}!',es:'¡Bienvenidos, {name}!',pl:'Witajcie, {name}!'}[lang]||t.welcome):guest.gender==='f'&&lang==='bg'?'Добре дошла, {name}!':guest.gender==='f'&&lang==='it'?'Benvenuta, {name}!':guest.gender==='f'&&lang==='es'?'¡Bienvenida, {name}!':t.welcome;
+ let welcome=guest.gender==='p'?({ja:JAPANESE.pluralWelcome,hu:HUNGARIAN.pluralWelcome,bg:BULGARIAN.pluralWelcome,cs:CZECH.pluralWelcome,ro:ROMANIAN.pluralWelcome,it:'Benvenuti, {name}!',es:'¡Bienvenidos, {name}!',pl:'Witajcie, {name}!'}[lang]||t.welcome):guest.gender==='f'&&lang==='bg'?'Добре дошла, {name}!':guest.gender==='f'&&lang==='it'?'Benvenuta, {name}!':guest.gender==='f'&&lang==='es'?'¡Bienvenida, {name}!':t.welcome;
+ const greetingState=personalGreetingState(guest,lang,welcome);
+ welcome=greetingState.greeting;
  document.getElementById('welcome').textContent=welcome.replace('{name}',guest.name);
  const title=document.getElementById('hero-title');
  const [greeting,ending]=welcome.split('{name}');
  const name=document.createElement('span');name.className='guest-name';name.textContent=guest.name+ending;
  title.replaceChildren(document.createTextNode(greeting.trim()),name);
+ let awaiting=document.getElementById('personal-awaiting');
+ if(greetingState.awaiting){
+  if(!awaiting){awaiting=document.createElement('p');awaiting.id='personal-awaiting';awaiting.style.cssText='font-size:clamp(.8rem,2.5vw,1rem);font-weight:400;line-height:1.35;margin:.4rem 0;';title.after(awaiting);}
+  awaiting.textContent=greetingState.awaiting;
+ }else awaiting?.remove();
  document.getElementById('intro').textContent=`${t.room}: ${guest.rooms.map(n=>n+' · '+ROOM_NAMES[n-1]).join(' / ')}`;
  if(guest.demo) document.getElementById('subtitle').textContent=t.demo.replace('{room}',guest.room);
 }
@@ -193,3 +230,23 @@ function renderPersonalSection(index,lang) {
  document.getElementById('detail-text').after(panel);
 
 }
+
+function refreshPersonalGreeting(){
+ if(!guest||guest.invalid)return;
+ const lang=document.documentElement.lang||'it';
+ const t=PERSONAL_TEXT[lang];
+ if(!t)return;
+ const state=personalGreetingState(guest,lang,t.welcome);
+ const expected=state.greeting.replace('{name}',guest.name);
+ // Arrival-day welcome may be gendered: its existing renderer owns that choice.
+ if(state.greeting===t.welcome&&state.awaiting===''){
+  const arrivalDay=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome'}).format(new Date());
+  if(arrivalDay===guest.arrival&&document.getElementById('personal-awaiting'))renderPersonalHeader(lang);
+  return;
+ }
+ if(document.getElementById('welcome')?.textContent!==expected||(document.getElementById('personal-awaiting')?.textContent||'')!==state.awaiting)renderPersonalHeader(lang);
+}
+setInterval(refreshPersonalGreeting,30000);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')refreshPersonalGreeting();});
+window.addEventListener('focus',refreshPersonalGreeting);
+window.addEventListener('pageshow',refreshPersonalGreeting);
