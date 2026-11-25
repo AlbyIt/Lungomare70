@@ -33,3 +33,11 @@ html.wood-preview .stay-event-date{font-size:.875rem;font-weight:600;line-height
 html.wood-preview .stay-event-venue{font-size:.875rem;line-height:1.4;color:#53696d}
 html.wood-preview #stay-events .stay-event-disclosure .place-expanded{padding-bottom:18px}
 @media(max-width:600px){html.wood-preview #stay-events .stay-event-summary{grid-template-columns:48px minmax(0,1fr) 12px;gap:9px}html.wood-preview .stay-event-thumbnail{width:48px;height:54px}}
+/* Image and title form the first line; dates and venue span the full row below. */
+html.wood-preview #stay-events .stay-event-summary{grid-template-columns:40px minmax(0,1fr) 12px;column-gap:10px;row-gap:5px;align-items:center;padding:11px 0;min-height:0}
+html.wood-preview #stay-events .stay-event-summary-copy{display:contents}
+html.wood-preview #stay-events .stay-event-thumbnail{grid-column:1;grid-row:1;align-self:start;width:40px;height:40px}
+html.wood-preview #stay-events .stay-event-name{grid-column:2;grid-row:1;min-width:0}
+html.wood-preview #stay-events .stay-event-summary::after{grid-column:3;grid-row:1;align-self:center}
+html.wood-preview #stay-events .stay-event-date{grid-column:1/-1;grid-row:2}
+html.wood-preview #stay-events .stay-event-venue{grid-column:1/-1;grid-row:3}
