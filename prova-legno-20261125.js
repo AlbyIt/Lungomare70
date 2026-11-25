@@ -30,6 +30,19 @@
  }
  new MutationObserver(decorateTitle).observe(title,{childList:true});
  decorateTitle();
+ // Keep the farewell on two lines in every language, with both names together.
+ const farewell=document.getElementById('footer');
+ function formatFarewell(){
+  if(farewell.querySelector('.signature-names'))return;
+  const text=farewell.textContent;
+  const start=text.indexOf('Cinzia');
+  if(start<0)return;
+  const intro=document.createElement('span');intro.className='signature-intro';intro.textContent=text.slice(0,start).replace(/[,，\s]+$/u,'');
+  const names=document.createElement('span');names.className='signature-names';names.textContent=text.slice(start);
+  farewell.replaceChildren(intro,names);
+ }
+ new MutationObserver(formatFarewell).observe(farewell,{childList:true});
+ formatFarewell();
  const balcony=typeof PHOTO_ASSETS!=='undefined' && PHOTO_ASSETS.balcone;
  if(balcony)document.querySelector('.hero>img').src=balcony;
  document.querySelector('.topbar>.brand').addEventListener('click',event=>{event.preventDefault();document.getElementById('detail').close();window.scrollTo({top:0,behavior:'smooth'});});

@@ -103,3 +103,10 @@ html.wood-preview .coastal-signature>span{font-size:.875rem;line-height:1.4;marg
  html.wood-preview .guide>.coastal-signature{margin-right:-13px;margin-left:-13px;padding:18px 26%;gap:8px}
  html.wood-preview .coastal-signature>p{font-size:1.125rem}
 }
+
+/* Two-line signature; the final address sits beneath the decorative fish and shells. */
+html.wood-preview .guide>.coastal-signature{position:relative;min-height:clamp(200px,34vw,350px);padding:22px 26% 50px;background-position:center,center calc(100% - 30px)}
+html.wood-preview .coastal-signature .signature-intro,html.wood-preview .coastal-signature .signature-names{display:block}
+html.wood-preview .coastal-signature .signature-names{white-space:nowrap}
+html.wood-preview .coastal-signature>span{position:absolute;bottom:9px;left:0;right:0;width:100%;max-width:none;padding:0 8px;white-space:nowrap;font-size:.875rem;line-height:1.3}
+@media(max-width:600px){html.wood-preview .coastal-signature>span{font-size:.8125rem}}
