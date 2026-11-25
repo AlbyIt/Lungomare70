@@ -93,3 +93,7 @@ html.wood-preview #detail #detail-title .room-title-signs img{max-width:100%}
  html.wood-preview #detail #detail-title .room-title-signs img{width:42px}
  html.wood-preview #detail #detail-title .room-title-signs:has(img:nth-child(2)) img{width:30px}
 }
+/* Reserve a visible decorative area below Contact, so the menu cannot cover the fish and shells. */
+html.wood-preview .guide,html.wood-preview .personal-mode .guide{padding-bottom:0}
+html.wood-preview .guide::after{content:'';display:block;height:clamp(120px,30vw,300px);margin:0 -40px;background:url('assets/coastal-plaster-20261125.webp') center bottom/100% auto no-repeat;pointer-events:none;mask-image:linear-gradient(to bottom,transparent,#000 18%);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 18%);filter:contrast(1.12) saturate(1.12)}
+@media(max-width:600px){html.wood-preview .guide::after{margin-right:-13px;margin-left:-13px}}
