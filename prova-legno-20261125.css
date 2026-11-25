@@ -93,7 +93,13 @@ html.wood-preview #detail #detail-title .room-title-signs img{max-width:100%}
  html.wood-preview #detail #detail-title .room-title-signs img{width:42px}
  html.wood-preview #detail #detail-title .room-title-signs:has(img:nth-child(2)) img{width:30px}
 }
-/* Reserve a visible decorative area below Contact, so the menu cannot cover the fish and shells. */
+/* The page ends with a discreet signature within the fish-and-shell background. */
 html.wood-preview .guide,html.wood-preview .personal-mode .guide{padding-bottom:0}
-html.wood-preview .guide::after{content:'';display:block;height:clamp(120px,30vw,300px);margin:0 -40px;background:url('assets/coastal-plaster-20261125.webp') center bottom/100% auto no-repeat;pointer-events:none;mask-image:linear-gradient(to bottom,transparent,#000 18%);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 18%);filter:contrast(1.12) saturate(1.12)}
-@media(max-width:600px){html.wood-preview .guide::after{margin-right:-13px;margin-left:-13px}}
+html.wood-preview .guide::after{display:none}
+html.wood-preview .guide>.coastal-signature{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:clamp(165px,32vw,320px);margin:0 -40px;padding:20px 28%;background:radial-gradient(ellipse at center,#fffaf250,transparent 65%),url('assets/coastal-plaster-20261125.webp') center bottom/100% auto no-repeat;color:#4d6264;text-align:center;text-shadow:0 1px 2px #fffaf2;line-height:1.4}
+html.wood-preview .coastal-signature>p{font:italic 1.3rem/1.3 Georgia,serif;margin:0;color:#38535c}
+html.wood-preview .coastal-signature>span{font-size:.875rem;line-height:1.4;margin:0;max-width:280px}
+@media(max-width:600px){
+ html.wood-preview .guide>.coastal-signature{margin-right:-13px;margin-left:-13px;padding:18px 26%;gap:8px}
+ html.wood-preview .coastal-signature>p{font-size:1.125rem}
+}
