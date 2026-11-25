@@ -1,0 +1,11 @@
+/* Separate variant: dominant entry action and a handwritten farewell. */
+@font-face{font-family:'Caveat';src:url('assets/fonts/caveat-handwriting.ttf') format('truetype');font-weight:400 700;font-style:normal;font-display:swap}
+html.wood-preview #cards>.card.entry-card{grid-column:1/-1;justify-content:center}
+html.wood-preview #cards>.card.entry-card>span:not(.wood-icon){font-size:1.85rem}
+html.wood-preview #cards>.card:last-child:nth-child(odd){grid-column:auto;width:auto;justify-self:stretch;justify-content:flex-start}
+html.wood-preview .coastal-signature>p{font-family:'Caveat','Segoe Print',cursive;font-style:normal;font-weight:500;font-size:1.9rem;line-height:1.05}
+html.wood-preview .coastal-signature .signature-names{font-size:1.05em}
+@media(max-width:600px){
+ html.wood-preview #cards>.card.entry-card>span:not(.wood-icon){font-size:1.3rem}
+ html.wood-preview .coastal-signature>p{font-size:1.6rem}
+}
