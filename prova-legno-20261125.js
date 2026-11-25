@@ -15,6 +15,21 @@
   }
  }
  decorate();new MutationObserver(decorate).observe(cards,{childList:true});
+ // Keep the section icon within the wooden heading, including after language changes.
+ const title=document.getElementById('detail-title');
+ function decorateTitle(){
+  if(!title.textContent.trim() || title.querySelector('.section-title-label'))return;
+  const signs=title.querySelector('.room-title-signs');
+  const label=document.createElement('span');label.className='section-title-label';
+  label.textContent=[...title.childNodes].filter(n=>n!==signs).map(n=>n.textContent).join('');
+  const icon=document.createElement('span');icon.className='section-title-icon';icon.setAttribute('aria-hidden','true');
+  const source=document.querySelector('#detail-icon svg');
+  if(source)icon.append(source.cloneNode(true));
+  else if(signs)icon.innerHTML=svg(3);
+  title.replaceChildren(...(icon.firstChild?[icon]:[]),label,...(signs?[signs]:[]));
+ }
+ new MutationObserver(decorateTitle).observe(title,{childList:true});
+ decorateTitle();
  const balcony=typeof PHOTO_ASSETS!=='undefined' && PHOTO_ASSETS.balcone;
  if(balcony)document.querySelector('.hero>img').src=balcony;
  document.querySelector('.topbar>.brand').addEventListener('click',event=>{event.preventDefault();document.getElementById('detail').close();window.scrollTo({top:0,behavior:'smooth'});});
