@@ -1,0 +1,78 @@
+/* Isolated coastal wood trial. The production entry point never loads this file. */
+html.wood-preview{--ink:#123e57;--sea:#185873;--paper:#fffaf2;--line:#d7c9b5;--wood:url('assets/wood-grain-20261125.svg');background:#eee9df}
+html.wood-preview body{background:#eee9df url('assets/coastal-plaster-20261125.webp') center top / 100% auto repeat-y;color:var(--ink)}
+html.wood-preview .topbar{max-width:1024px;min-height:105px;padding:16px 28px;background:transparent;backdrop-filter:none;gap:16px}
+html.wood-preview .brand{color:#12374f;font-family:Georgia,serif;font-size:clamp(1rem,3.5vw,2rem);letter-spacing:.035em;gap:12px}
+html.wood-preview .brand b{font-size:1.35em}
+html.wood-preview .brand small{font-family:Georgia,serif;color:#745a34;font-size:.47em;letter-spacing:.16em;text-align:center;margin-top:6px}
+html.wood-preview .brand>img{width:76px;height:64px;object-fit:contain;mix-blend-mode:multiply}
+html.wood-preview .header-actions{gap:14px}
+html.wood-preview .header-actions .language,html.wood-preview .map-shortcut{background:var(--wood) center/cover;border:1px solid #fff9ee;box-shadow:inset 0 0 0 2px #d9c5ab,0 3px 4px #27485642;border-radius:20px;height:64px;width:78px}
+html.wood-preview .header-actions .language{width:96px}
+html.wood-preview #language-flag{font-size:2rem}
+html.wood-preview .map-shortcut svg{width:36px;height:36px;stroke:#164d69}
+html.wood-preview main{max-width:1024px;margin:auto}
+html.wood-preview .hero,html.wood-preview .personal-mode .hero{width:100%;height:350px;min-height:350px;border-radius:0;background:transparent;mask-image:linear-gradient(transparent,#000 8%,#000 85%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 8%,#000 85%,transparent)}
+html.wood-preview .hero>img{position:absolute;inset:0;object-position:50% 47%;object-fit:cover}
+html.wood-preview .hero-shade,html.wood-preview .personal-mode .hero-shade{background:linear-gradient(90deg,#12465be8 0%,#15526db8 27%,#15526d00 63%)}
+html.wood-preview .hero-text,html.wood-preview .personal-mode .hero-text{position:relative;top:auto;left:auto;padding:34px 5%;max-width:65%;color:#fffcf4}
+html.wood-preview .hero h1,html.wood-preview .personal-mode .hero h1{font:500 clamp(2rem,6.9vw,4.4rem)/1.02 Georgia,serif;margin:0 0 14px;text-shadow:0 2px 3px #092d3b66;overflow-wrap:anywhere}
+html.wood-preview .hero .guest-name{font-weight:500}
+html.wood-preview .hero-text>p:last-child{font:italic clamp(1rem,3.3vw,1.9rem)/1.15 Georgia,serif;max-width:270px;letter-spacing:0}
+html.wood-preview .hero-text::after{content:'';display:block;width:150px;height:16px;margin-top:14px;border-bottom:3px solid #e5f5f5;border-radius:50%;transform:rotate(-5deg)}
+html.wood-preview .hero-stamp,html.wood-preview .photo-strip,html.wood-preview .welcome{display:none}
+html.wood-preview .guide,html.wood-preview .personal-mode .guide{width:100%;margin:4px auto 0;padding:8px 40px 90px;background:transparent;border:0;box-shadow:none}
+html.wood-preview #cards.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));height:auto;grid-template-rows:none;grid-auto-rows:minmax(88px,auto);gap:14px 24px;background:transparent}
+html.wood-preview #cards>.card,html.wood-preview #detail-title{color:#123e57;background:var(--wood) center/cover;border:1px solid #fffaf2;box-shadow:inset 0 0 0 2px #d7c0a2,inset 0 3px 3px #ffffffcc,0 4px 2px #b49e8244,0 7px 9px #29455538;border-radius:30px;text-shadow:0 1px #fff9eb;backdrop-filter:none;-webkit-backdrop-filter:none}
+html.wood-preview #cards>.card{position:relative;min-height:88px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:18px;padding:9px 18px;isolation:isolate}
+html.wood-preview #cards>.card::before,html.wood-preview #cards>.card::after,html.wood-preview #detail-title::before,html.wood-preview #detail-title::after{display:none}
+html.wood-preview #cards>.card>span:not(.room-button-signs){font:500 1.65rem/1.08 Georgia,serif;color:#123e57;text-shadow:0 1px #fff9eb;-webkit-text-stroke:0;overflow-wrap:normal;word-break:normal;min-width:0}
+html.wood-preview .wood-icon{display:grid;place-items:center;flex-shrink:0;width:66px;height:66px;border-radius:16px;background:var(--wood) center/cover;border:1px solid #fff7e4;box-shadow:inset 0 0 0 1px #cdb28c,0 3px 5px #64553a55}
+html.wood-preview #cards .wood-icon svg{width:43px;height:43px;fill:none;stroke:#14516a;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+html.wood-preview #cards .room-button-signs{margin-left:auto;max-width:29%;gap:2px}
+html.wood-preview #cards .room-button-signs img{width:64px;max-width:100%;height:auto;filter:drop-shadow(0 2px 2px #493b2555)}
+html.wood-preview #cards .room-button-signs:has(img:nth-child(2)) img{width:28px}
+html.wood-preview #cards>.card:last-child:nth-child(odd){grid-column:1/-1;width:54%;justify-self:center;justify-content:center}
+html.wood-preview #cards>.card:hover{transform:translateY(-1px);filter:brightness(1.025)}
+html.wood-preview #cards>.card:active{transform:translateY(2px)}
+html.wood-preview footer{background:#fffaf2b8;padding-top:20px}
+html.wood-preview dialog{background:#fffaf4;max-width:760px}
+html.wood-preview .dialog-bar{background:#f9f2e8;border-bottom-color:#d7c4aa}
+html.wood-preview .dialog-bar .section-brand{font-size:1rem}
+html.wood-preview .dialog-bar .section-brand>img{width:40px;height:34px}
+html.wood-preview #detail-title{font:500 1.65rem/1.2 Georgia,serif;padding:18px 22px;margin:16px 0 22px;-webkit-text-stroke:0;overflow-wrap:anywhere}
+html.wood-preview .detail-icon>svg{stroke:#175571}
+html.wood-preview .dialog-bar #close{background:var(--wood) center/cover;color:#123e57;border:1px solid #d0b995}
+html.wood-preview .brand:focus-visible,html.wood-preview .card:focus-visible{outline:3px solid #175571;outline-offset:4px}
+@media(max-width:600px){
+ html.wood-preview .topbar{min-height:72px;padding:10px 12px;gap:8px}
+ html.wood-preview .brand{font-size:1.02rem;gap:5px;letter-spacing:0}
+ html.wood-preview .brand>img{width:43px;height:41px}
+ html.wood-preview .brand small{font-size:.48em}
+ html.wood-preview .header-actions{gap:8px}
+ html.wood-preview .header-actions .language,html.wood-preview .map-shortcut{width:46px;height:44px;border-radius:13px}
+ html.wood-preview .header-actions .language{width:57px}
+ html.wood-preview #language-flag{font-size:1.55rem}
+ html.wood-preview .map-shortcut svg{width:25px;height:25px}
+ html.wood-preview .hero,html.wood-preview .personal-mode .hero{height:200px;min-height:200px}
+ html.wood-preview .hero-text,html.wood-preview .personal-mode .hero-text{padding:22px 5%;max-width:75%}
+ html.wood-preview .hero h1,html.wood-preview .personal-mode .hero h1{font-size:2.25rem;margin-bottom:9px}
+ html.wood-preview .hero-text>p:last-child{font-size:1.1rem;max-width:165px}
+ html.wood-preview .hero-text::after{width:100px;height:9px;margin-top:8px;border-width:2px}
+ html.wood-preview .guide,html.wood-preview .personal-mode .guide{padding:3px 13px 65px;margin-top:2px}
+ html.wood-preview #cards.cards{gap:9px 10px;grid-auto-rows:minmax(62px,auto)}
+ html.wood-preview #cards>.card{padding:7px 8px;gap:7px;min-height:62px;border-radius:20px}
+ html.wood-preview #cards>.card>span:not(.room-button-signs){font-size:1rem;line-height:1.08}
+ html.wood-preview .wood-icon{width:36px;height:40px;border-radius:10px}
+ html.wood-preview #cards .wood-icon svg{width:28px;height:28px}
+ html.wood-preview #cards .room-button-signs img{width:35px}
+ html.wood-preview #cards>.card:has(.room-button-signs){gap:4px}
+ html.wood-preview #cards>.card:has(.room-button-signs)>span:not(.room-button-signs){font-size:.94rem}
+ html.wood-preview #cards>.card:last-child:nth-child(odd){width:56%}
+ html.wood-preview #detail-title{font-size:1.4rem;padding:14px 16px;border-radius:22px}
+}
+@media(max-width:360px){html.wood-preview #cards>.card{gap:5px;padding:6px}html.wood-preview .wood-icon{width:30px}html.wood-preview #cards>.card>span:not(.room-button-signs){font-size:.92rem}html.wood-preview .brand{font-size:.86rem}}
+/* Section-specific layouts retain their content, while every title uses the trial wood. */
+html.wood-preview #detail #detail-title{background:var(--wood) center/cover;color:#123e57;border:1px solid #fffaf2;border-radius:26px;box-shadow:inset 0 0 0 2px #d7c0a2,inset 0 3px 3px #ffffffcc,0 4px 2px #b49e8244,0 7px 9px #29455538;padding:16px 20px;margin:12px 0 22px;font:500 1.65rem/1.2 Georgia,serif;text-shadow:0 1px #fff9eb}
+html.wood-preview #detail.breakfast-section #detail-title{align-self:stretch;text-align:center;margin:0}
+@media(max-width:600px){html.wood-preview #detail #detail-title{font-size:1.4rem;padding:14px 16px;border-radius:22px}}
