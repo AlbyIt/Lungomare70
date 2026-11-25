@@ -28,6 +28,7 @@
    const dateLine=heading?.nextElementSibling;
    const venue=article.querySelector(':scope > .place-address');
    if(!heading || !dateLine || !venue)continue;
+   if(heading.textContent==='Presepe Ilari · Chiaravalle'){const source=article.querySelector('.place-links a');if(source)source.textContent='Comune di Chiaravalle';}
    const row=document.createElement('details');row.className='place-disclosure stay-event-disclosure';
    const summary=document.createElement('summary');summary.className='stay-event-summary';
    const thumbnail=document.createElement('span');thumbnail.className='stay-event-thumbnail';thumbnail.setAttribute('aria-hidden','true');
@@ -53,5 +54,31 @@
  // Official organizer photograph, also shown in the expanded event with its source credit.
  const candelara=STAY_EVENTS.find(event=>event.id==='candelara-2026');
  if(candelara){candelara.image='assets/events/candelara-candele.jpg';candelara.imageSource='https://www.candelara.it/2018/wp-content/uploads/2018/10/campanile-tre-candele.jpg';candelara.credit='Pro Loco di Candelara · candelara.it';}
+ // Chiaravalle (AN) is part of the event research area: see EVENTI.md.
+ // Dates and venue: Comune di Chiaravalle, Giunta 158/2026, published 18 November.
+ // Daily opening hours and admission conditions have not yet been published in that source.
+ const chiaravalleCopy={
+  it:['Mostra del Presepe Ilari nel plesso scolastico di viale Marconi, a Chiaravalle.','Giorni e orari di apertura e condizioni d’ingresso da verificare prima della visita.'],
+  en:['The Presepe Ilari nativity exhibition at the school on Viale Marconi in Chiaravalle.','Check opening days, times and admission arrangements before visiting.'],
+  de:['Krippenausstellung Presepe Ilari im Schulgebäude an der Viale Marconi in Chiaravalle.','Öffnungstage, Uhrzeiten und Eintrittsbedingungen vor dem Besuch prüfen.'],
+  fr:['Exposition de la crèche Presepe Ilari dans l’école de viale Marconi à Chiaravalle.','Vérifie les jours, horaires et conditions d’entrée avant la visite.'],
+  es:['Exposición del belén Presepe Ilari en la escuela de viale Marconi, en Chiaravalle.','Comprueba los días, horarios y condiciones de entrada antes de la visita.'],
+  nl:['De kerststallententoonstelling Presepe Ilari in het schoolgebouw aan Viale Marconi in Chiaravalle.','Controleer openingsdagen, tijden en toegangsvoorwaarden voor je bezoek.'],
+  pl:['Wystawa szopki Presepe Ilari w szkole przy viale Marconi w Chiaravalle.','Przed wizytą sprawdź dni i godziny otwarcia oraz warunki wstępu.'],
+  ro:['Expoziția de Crăciun Presepe Ilari la școala de pe viale Marconi, în Chiaravalle.','Verifică zilele, orele de deschidere și condițiile de acces înainte de vizită.'],
+  cs:['Výstava betléma Presepe Ilari ve škole na viale Marconi v Chiaravalle.','Před návštěvou si ověř otevírací dny, časy a podmínky vstupu.'],
+  hu:['A Presepe Ilari betlehemkiállítás Chiaravalléban, a viale Marconi iskolájában.','Látogatás előtt ellenőrizd a nyitvatartási napokat, időpontokat és belépési feltételeket.'],
+  bg:['Изложба на рождественската сцена Presepe Ilari в училището на viale Marconi в Киаравале.','Преди посещение провери дните, часовете на отваряне и условията за вход.'],
+  ja:['キアラヴァッレのヴィアーレ・マルコーニ校舎で開催される、キリスト降誕場面の展示「Presepe Ilari」。','訪問前に開館日、時間、入場条件をご確認ください。']
+ };
+ const chiaravalleDescription=STAY_EVENTS_UI.it.length;
+ for(const [lang,copy] of Object.entries(chiaravalleCopy))STAY_EVENTS_UI[lang].push(...copy);
+ if(!STAY_EVENTS.some(event=>event.id==='chiaravalle-presepe-ilari-2026'))STAY_EVENTS.push({
+  id:'chiaravalle-presepe-ilari-2026',area:'Chiaravalle (AN)',rank:1,start:'2026-12-08',end:'2027-01-06',
+  title:'Presepe Ilari · Chiaravalle',description:chiaravalleDescription,price:chiaravalleDescription+1,
+  venue:'I.C. Montessori–Levi Montalcini · plesso di viale Marconi, aula 3 · Chiaravalle (AN)',
+  source:'https://portale.comune.chiaravalle.an.it/cmschiaravalle/portale/albopretorio/albopretorioconsultazione.aspx?P=8600',
+  query:'Istituto Montessori Levi Montalcini Viale Marconi Chiaravalle AN',verified:'2026-11-25'
+ });
  render();
 })();
