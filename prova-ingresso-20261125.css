@@ -22,3 +22,14 @@ html.wood-preview .visit-with-thumbnail .place-name{min-width:0}
  html.wood-preview #area-content .place-disclosure.visit-with-thumbnail>summary{grid-template-columns:48px minmax(0,1fr) auto 12px;gap:8px;min-height:66px}
  html.wood-preview .visit-thumbnail{width:48px;height:40px}
 }
+/* Compact event rows: photograph, title, date and venue remain visible when collapsed. */
+html.wood-preview #stay-events .stay-event-summary{grid-template-columns:56px minmax(0,1fr) 12px;gap:12px;align-items:center;padding:14px 0;min-height:96px}
+html.wood-preview .stay-event-thumbnail{display:grid;place-items:center;width:56px;height:60px;border-radius:7px;overflow:hidden;background:#e7eef0;color:#557d91}
+html.wood-preview .stay-event-thumbnail>img{display:block;width:100%;height:100%;object-fit:cover}
+html.wood-preview .stay-event-thumbnail>svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+html.wood-preview .stay-event-summary-copy{display:grid;gap:4px;min-width:0}
+html.wood-preview .stay-event-name{font-size:1rem;font-weight:600;line-height:1.3;color:#244e60}
+html.wood-preview .stay-event-date{font-size:.875rem;font-weight:600;line-height:1.4;color:#3d6e81}
+html.wood-preview .stay-event-venue{font-size:.875rem;line-height:1.4;color:#53696d}
+html.wood-preview #stay-events .stay-event-disclosure .place-expanded{padding-bottom:18px}
+@media(max-width:600px){html.wood-preview #stay-events .stay-event-summary{grid-template-columns:48px minmax(0,1fr) 12px;gap:9px}html.wood-preview .stay-event-thumbnail{width:48px;height:54px}}

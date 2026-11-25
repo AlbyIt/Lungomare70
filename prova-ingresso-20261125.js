@@ -18,5 +18,37 @@
   }
  }
  new MutationObserver(addVisitThumbnails).observe(document.querySelector('.dialog-body'),{childList:true,subtree:true});
+ // Present the existing stay-filtered events as collapsible rows, without changing event data.
+ function formatEventRows(){
+  if(activeSection!==16)return;
+  const panel=document.getElementById('stay-events');
+  if(!panel)return;
+  for(const article of panel.querySelectorAll(':scope > article.place-item')){
+   const heading=article.querySelector(':scope > h3');
+   const dateLine=heading?.nextElementSibling;
+   const venue=article.querySelector(':scope > .place-address');
+   if(!heading || !dateLine || !venue)continue;
+   const row=document.createElement('details');row.className='place-disclosure stay-event-disclosure';
+   const summary=document.createElement('summary');summary.className='stay-event-summary';
+   const thumbnail=document.createElement('span');thumbnail.className='stay-event-thumbnail';thumbnail.setAttribute('aria-hidden','true');
+   const fallback=()=>{thumbnail.innerHTML=svg(16);};
+   const photo=article.querySelector('.stay-event-image img');
+   if(photo){
+    const image=document.createElement('img');image.src=photo.src;image.alt='';image.loading='lazy';image.decoding='async';image.referrerPolicy='no-referrer';image.width=56;image.height=60;
+    image.addEventListener('error',fallback,{once:true});thumbnail.append(image);
+   }else fallback();
+   const copy=document.createElement('span');copy.className='stay-event-summary-copy';
+   for(const [className,text] of [['stay-event-name',heading.textContent],['stay-event-date',dateLine.textContent],['stay-event-venue',venue.textContent]]){
+    const line=document.createElement('span');line.className=className;line.textContent=text;copy.append(line);
+   }
+   summary.append(thumbnail,copy);
+   const expanded=document.createElement('div');expanded.className='place-expanded';
+   heading.remove();dateLine.remove();venue.remove();
+   expanded.append(...article.childNodes);row.append(summary,expanded);
+   row.addEventListener('toggle',()=>{if(row.open)for(const sibling of panel.querySelectorAll('.stay-event-disclosure'))if(sibling!==row)sibling.open=false;});
+   article.replaceWith(row);
+  }
+ }
+ new MutationObserver(formatEventRows).observe(document.querySelector('.dialog-body'),{childList:true,subtree:true});
  render();
 })();
