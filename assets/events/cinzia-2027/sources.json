@@ -1,0 +1,92 @@
+{
+  "schiaccianoci": {
+    "path": "assets/events/cinzia-2027/schiaccianoci.webp",
+    "source": "https://www.amatmarche.net/lo-schiaccianoci-balletto-di-mosca/",
+    "original": "https://www.amatmarche.net/wp-content/uploads/2024/09/Nutcracker_04-1024x684.jpg",
+    "credit": "AMAT · Russian Classical Ballet",
+    "size": [
+      800,
+      534
+    ]
+  },
+  "gruffalo": {
+    "path": "assets/events/cinzia-2027/gruffalo.webp",
+    "source": "https://www.amatmarche.net/il-gruffalo-2/",
+    "original": "https://www.amatmarche.net/wp-content/uploads/2024/10/Il_Gruffalo_EleonoraGusi06-1024x682.jpeg",
+    "credit": "AMAT · Eleonora Gusi",
+    "size": [
+      800,
+      533
+    ]
+  },
+  "incompatibili": {
+    "path": "assets/events/cinzia-2027/incompatibili.webp",
+    "source": "https://www.marcheteatro.it/totalmente-incompatibili/",
+    "original": "https://www.marcheteatro.it/wp-content/uploads/2026/04/05-TOTALMENTE-INCOMPATIBILI-Maria-Di-Biase_Corrado-Nuzzo_Totalmente-Incompatibili_DSC1242PColdHR_%C2%A9RiccardoGhilardi_4mb.jpg",
+    "credit": "Marche Teatro · Riccardo Ghilardi",
+    "size": [
+      800,
+      534
+    ]
+  },
+  "pivetti": {
+    "path": "assets/events/cinzia-2027/pivetti.webp",
+    "source": "https://www.amatmarche.net/linferiorita-mentale-della-donna/",
+    "original": "https://www.amatmarche.net/wp-content/uploads/2025/10/PIVETTI_Foto-di-scena_4-1024x683.jpg",
+    "credit": "AMAT · A.ArtistiAssociati",
+    "size": [
+      800,
+      534
+    ]
+  },
+  "giochiamo": {
+    "path": "assets/events/cinzia-2027/giochiamo.webp",
+    "source": "https://lannuttiecorbo.com/",
+    "original": "https://lannuttiecorbo.com/wp-content/uploads/2025/10/to-play-or-not-to-play-compagnia-lannutti-corbo.jpg",
+    "credit": "Compagnia Lannutti & Corbo · To Play or Not To Play",
+    "size": [
+      800,
+      292
+    ]
+  },
+  "mortorio": {
+    "path": "assets/events/cinzia-2027/mortorio.webp",
+    "source": "https://pesaronotizie.com/2026/04/25/mortorio-il-rito-tragicomico-di-romina-antonelli-in-scena-al-pac-di-pesaro/",
+    "original": "https://pesaronotizie.com/wp-content/uploads/2026/04/mortorio-rominaantonell-mortorio-ph-silviaborroni.jpg",
+    "credit": "Silvia Borroni · PesaroNotizie · Mortorio",
+    "size": [
+      774,
+      800
+    ]
+  },
+  "cigni": {
+    "path": "assets/events/cinzia-2027/cigni.webp",
+    "source": "https://www.amatmarche.net/pesaro-danza-2026-27/",
+    "original": "https://www.amatmarche.net/wp-content/uploads/2026/07/TR_Manifesto-Pesaro-Danza-26_27-stampa-28luglio-706x1024.jpg",
+    "credit": "AMAT · locandina Pesaro Danza 2026/27",
+    "size": [
+      552,
+      800
+    ]
+  },
+  "motta": {
+    "path": "assets/events/cinzia-2027/motta.webp",
+    "source": "https://www.amatmarche.net/motta-piano-solo/",
+    "original": "https://www.amatmarche.net/wp-content/uploads/2026/10/MOTTA.jpg",
+    "credit": "AMAT · Motta",
+    "size": [
+      600,
+      402
+    ]
+  },
+  "ilari": {
+    "path": "assets/events/cinzia-2027/ilari.webp",
+    "source": "https://www.laltrogiornale.it/2018/12/02/a-chiaravalle-un-gioiello-che-riproduce-la-magia-della-nativita/",
+    "original": "https://i0.wp.com/www.laltrogiornale.it/wp-content/uploads/2018/12/CHIARAVALLE-presepio-ilari2018-12-02-x0-5.jpg?fit=912%2C456&ssl=1",
+    "credit": "L’altrogiornale · Presepe Ilari, foto d’archivio 2018",
+    "size": [
+      800,
+      400
+    ]
+  }
+}

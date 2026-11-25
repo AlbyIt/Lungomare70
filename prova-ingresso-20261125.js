@@ -102,5 +102,58 @@
   const photo=januaryPhotos[event.id];if(photo){data.image=photo[0];data.imageSource=event.source;data.credit=photo[1];}
   if(!STAY_EVENTS.some(item=>item.id===event.id))STAY_EVENTS.push({...data,description,price:12,source:event.source||'https://www.amatmarche.net/platea-delle-marche-3/',verified:'2026-11-25'});
  }
+ // Verified local images: photographs, official poster, and labelled archival Presepe photo.
+ const verifiedEventImages={
+  "schiaccianoci-senigallia-2027": {
+    "image": "assets/events/cinzia-2027/schiaccianoci.webp",
+    "imageSource": "https://www.amatmarche.net/lo-schiaccianoci-balletto-di-mosca/",
+    "credit": "AMAT · Russian Classical Ballet"
+  },
+  "gruffalo-senigallia-2027": {
+    "image": "assets/events/cinzia-2027/gruffalo.webp",
+    "imageSource": "https://www.amatmarche.net/il-gruffalo-2/",
+    "credit": "AMAT · Eleonora Gusi"
+  },
+  "incompatibili-ancona-2027": {
+    "image": "assets/events/cinzia-2027/incompatibili.webp",
+    "imageSource": "https://www.marcheteatro.it/totalmente-incompatibili/",
+    "credit": "Marche Teatro · Riccardo Ghilardi"
+  },
+  "pivetti-fano-2027": {
+    "image": "assets/events/cinzia-2027/pivetti.webp",
+    "imageSource": "https://www.amatmarche.net/linferiorita-mentale-della-donna/",
+    "credit": "AMAT · A.ArtistiAssociati"
+  },
+  "giochiamo-ancona-2027": {
+    "image": "assets/events/cinzia-2027/giochiamo.webp",
+    "imageSource": "https://lannuttiecorbo.com/",
+    "credit": "Compagnia Lannutti & Corbo · To Play or Not To Play"
+  },
+  "mortorio-ancona-2027": {
+    "image": "assets/events/cinzia-2027/mortorio.webp",
+    "imageSource": "https://pesaronotizie.com/2026/04/25/mortorio-il-rito-tragicomico-di-romina-antonelli-in-scena-al-pac-di-pesaro/",
+    "credit": "Silvia Borroni · PesaroNotizie · Mortorio"
+  },
+  "cigni-pesaro-2027": {
+    "image": "assets/events/cinzia-2027/cigni.webp",
+    "imageSource": "https://www.amatmarche.net/pesaro-danza-2026-27/",
+    "credit": "AMAT · locandina Pesaro Danza 2026/27"
+  },
+  "motta-pesaro-2027": {
+    "image": "assets/events/cinzia-2027/motta.webp",
+    "imageSource": "https://www.amatmarche.net/motta-piano-solo/",
+    "credit": "AMAT · Motta"
+  },
+  "chiaravalle-presepe-ilari-2026": {
+    "image": "assets/events/cinzia-2027/ilari.webp",
+    "imageSource": "https://www.laltrogiornale.it/2018/12/02/a-chiaravalle-un-gioiello-che-riproduce-la-magia-della-nativita/",
+    "credit": "L’altrogiornale · Presepe Ilari, foto d’archivio 2018"
+  }
+};
+ for(const [id,image] of Object.entries(verifiedEventImages)){
+  const event=STAY_EVENTS.find(item=>item.id===id);if(event)Object.assign(event,image);
+ }
+ const fanoPivetti=STAY_EVENTS.find(event=>event.id==='pivetti-fano-2027');
+ if(fanoPivetti){fanoPivetti.time='21:00 (7–9/01) · 17:00 (10/01)';fanoPivetti.source='https://www.amatmarche.net/linferiorita-mentale-della-donna/';}
  render();
 })();
