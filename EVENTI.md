@@ -14,7 +14,7 @@ Regola richiesta da Alberto il 25 novembre 2026: includere sempre nella ricerca 
 
 1. Verificare anno, data, giorno della settimana, sede, orario, costo/prenotazione e fonte.
 2. Selezionare solo eventi sovrapposti alle date della guida; escludere quelli che iniziano il giorno del check-out. Per appuntamenti su più date controllare le singole giornate.
-3. Usare fotografie pertinenti con fonte/credito; mantenere il simbolo calendario se non c’è una foto verificata. Non usare immagini di altri eventi.
+3. Ogni evento deve avere un’immagine. Cercare obbligatoriamente fotografie o locandine pertinenti nelle fonti dell’organizzatore e indicare fonte/credito. Se non reperibili, cercare immagini pertinenti del luogo o del protagonista con descrizione corretta; se necessario ricreare un’illustrazione dichiarata tale, senza spacciarla per fotografia autentica dell’evento né inventare dettagli. Lasciare senza immagine solo nel caso estremo in cui tutti questi tentativi non consentano di reperirla o ricrearla; il simbolo calendario è soltanto l’ultima soluzione. Non usare immagini di altri eventi. Verificare caricamento, miniatura e immagine nella scheda.
 4. Mostrare titolo, data, eventuale orario e località già nell’elenco. Nei dettagli conservare descrizione, fonte, credito e percorso.
 5. Se mancano dettagli, dichiarare esattamente quelli da verificare; non trasformare un periodo autorizzato in un calendario di apertura quotidiana.
 6. Verificare il filtro con le date effettive del soggiorno e con un periodo che non comprende l’evento.
