@@ -19,6 +19,10 @@ Regola richiesta da Alberto il 25 novembre 2026: includere sempre nella ricerca 
 5. Se mancano dettagli, dichiarare esattamente quelli da verificare; non trasformare un periodo autorizzato in un calendario di apertura quotidiana.
 6. Verificare il filtro con le date effettive del soggiorno e con un periodo che non comprende l’evento.
 
+## Filtro obbligatorio per lingua
+
+Gli eventi che richiedono la comprensione dell’italiano devono comparire soltanto quando la lingua selezionata nella guida è l’italiano e sparire interamente dall’elenco in tutte le lingue straniere, anche quando si cambia lingua dopo aver aperto la guida. Durante la preparazione classificare sempre la dipendenza linguistica: prosa, monologhi, comicità parlata e spettacoli narrativi/musical per bambini in italiano vanno marcati `requiredLanguages: ['it']`; per spettacoli misti verificare quanto sia necessario capire i dialoghi. Conservare nelle altre lingue danza, esposizioni, mercatini e musica fruibili senza comprendere l’italiano; il solo titolo italiano o la presenza di canzoni italiane non basta a escluderli. Verificare il filtro per tutte le lingue disponibili.
+
 ## Prova Lucio: 1–11 dicembre 2026
 
 Selezionato **Presepe Ilari · Chiaravalle**, periodo 8 dicembre 2026–6 gennaio 2027; I.C. Montessori–Levi Montalcini, plesso di viale Marconi, aula 3. Fonte: Comune di Chiaravalle, deliberazione di Giunta n.158 del 16/11/2026, registro 38899, pubblicata il 18/11/2026: https://portale.comune.chiaravalle.an.it/cmschiaravalle/portale/albopretorio/albopretorioconsultazione.aspx?P=8600
