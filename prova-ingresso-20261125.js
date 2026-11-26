@@ -642,6 +642,7 @@ const ITALIAN_OCCUPANCY_COPY = [
  ['LA TUA GUIDA','LA VOSTRA GUIDA'],
  ['La tua guida','La vostra guida'],
  ['la tua vacanza','la vostra vacanza'],
+ ['alla tua vacanza','alla vostra vacanza'],
  ['Il tuo soggiorno','Il vostro soggiorno'],
  ['il tuo soggiorno','il vostro soggiorno'],
  ['del tuo soggiorno','del vostro soggiorno'],
