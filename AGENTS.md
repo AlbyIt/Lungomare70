@@ -20,7 +20,7 @@ La versione corrente concordata è `prova-ingresso-20261125.html`, con lo stile 
 
 - Nel banner mantenere il saluto con il nome secondo l'ora italiana prima e durante il soggiorno; il giorno dell'arrivo mostrare Benvenuto/Benvenuta/Benvenuti secondo la personalizzazione.
 - Nel banner mostrare la frase corrente approvata nella sezione «Slogan breve» in fondo a queste istruzioni, con dimensioni nettamente inferiori al saluto. Non mostrare «Ti/Vi aspettiamo» nel banner.
-- Nella firma in fondo: prima dell'arrivo «Vi aspettiamo»; dall'arrivo e durante il soggiorno «Siamo felici di accogliervi»; dal giorno del check-out «Vi auguriamo un buon rientro». Firma sempre «Cinzia e Alberto». Non ripetere il nome della struttura in queste frasi.
+- Nella firma in fondo: prima dell'arrivo «Vi aspettiamo»; dall'arrivo e durante il soggiorno «Siamo felici di accogliervi»; durante tutta la giornata del check-out «Vi auguriamo un buon rientro». Firma sempre «Cinzia e Alberto». Non ripetere il nome della struttura in queste frasi.
 - Usare il singolare soltanto quando è verificato che la prenotazione è per una persona sola: «Ti aspettiamo», «Siamo felici di accoglierti», «Ti auguriamo un buon rientro». In assenza del numero di ospiti usare il plurale. Non dedurre il numero dal nome, dal genere o dalla capienza. Nei link di prova `persone=1` (anche `ospiti=1`) oppure `adulti=1&bambini=0` indica esplicitamente un ospite solo; non aggiungerlo senza dati verificati.
 - Conservare caratteri, posizione, sfondo, nomi e indirizzo della firma. Non modificare le altre disposizioni.
 - Dentro ogni sezione eliminare il marchio ripetuto «Lungomare 70» con il logo dalla barra superiore. Al suo posto mantenere il titolo della sezione in legno, con le icone e le eventuali targhe camera, sempre visibile durante lo scorrimento. Conservare la chiusura accessibile.
@@ -58,3 +58,19 @@ Aggiunte piccole icone decorative davanti alle quattro regole esistenti: luna pe
 ## Versione superata ritirata — 26 novembre 2026
 
 Su richiesta esplicita di Alberto, index.html, anteprima-mare-20261123.html e prova-legno-20261125.html rimandano alla versione corrente prova-ingresso-20261125.html, conservando query e frammento con i dati personali. Non ripristinare la guida con i tasti in vetro. Nei link consegnati usare direttamente la pagina corrente con tutte le personalizzazioni note. La miniatura della Taverna dei Guelfi raffigura una bistecca grigliata con centro rosato; la scheda della Madonnina del Pescatore evidenzia due stelle MICHELIN, alta cucina e fascia di prezzo elevata in tutte le lingue, senza prezzo fisso.
+
+## Regole temporali permanenti — fine soggiorno, approvato il 26 novembre 2026
+
+Questa regola integra quelle su saluti, giorno di arrivo, soggiorno, partenza ed eventi/spettacoli; non sostituisce i relativi filtri.
+- Prima dell'arrivo, giorno d'arrivo e durante il soggiorno: mantenere i comportamenti e i saluti già approvati.
+- Per l'intera giornata del check-out, fino alle 23:59:59 Europe/Rome, mantenere la guida attiva al 100%, tutte le sezioni e l'augurio «Vi auguriamo un buon rientro!» («Ti auguriamo...» solo per un ospite solo verificato). Non disattivarla alle 10.
+- Dalla mezzanotte italiana del giorno successivo al check-out: non mostrare più banner, menu, tasti di sezione o contenuti operativi; chiudere una scheda eventualmente aperta e impedirne la riapertura. Mostrare soltanto un ringraziamento personalizzato e l'invito a ritornare, con firma «Cinzia e Alberto».
+- Testo italiano: «Grazie, {nome}, per aver soggiornato con noi! Saremo felici di accogliervi di nuovo, quando vorrete!». Solo per occupazione totale verificata di una persona: «accoglierti ... quando vorrai». Non dedurre il singolare dal nome, dal genere o dalla camera. In mancanza del numero verificato usare il plurale.
+- Il messaggio finale resta disponibile senza una scadenza aggiuntiva, salvo una futura scelta esplicita di Alberto.
+- Nel messaggio finale mantenere due azioni immediate: **Chiama** al numero già approvato della struttura (+39 335 7739549) e **Scrivici** via email a info@lungomare70.it. Questi sono contatti diretti, non la riattivazione delle sezioni.
+- Applicare il comportamento nelle dodici lingue, al cambio lingua, al rientro nella pagina e a pagina già aperta. Con date mancanti/non valide o prenotazione non valida non inventare la fase né disattivare arbitrariamente la guida.
+- Questa è una disattivazione dell'interfaccia della guida; non dichiarare revocati i codici reali del cancello né cancellati i dati dal frammento del collegamento. La revoca lato server richiede la futura gestione tramite token.
+
+## Fotografie e marchio Michelin — scelta conclusiva del 26 novembre 2026
+
+Nella miniatura della Taverna usare la fotografia reale della carne del suo sito ufficiale, non la bistecca disegnata. Per La Bilancia è stata scelta una fotografia luminosa di un piatto dal sito ufficiale. Per la Madonnina mantenere le due rosette originali usate da guide.michelin.com, nella lista e nella scheda, e il logotipo originale MICHELIN GUIDE. Sotto il marchio scrivere soltanto «Alta cucina · Fascia di prezzo elevata», senza ripetere «Due stelle MICHELIN». Conservare i collegamenti alle fonti e le traduzioni.

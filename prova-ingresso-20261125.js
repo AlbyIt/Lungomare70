@@ -188,7 +188,7 @@ function woodStayDate(value){
 function woodStayPhase(g,now=new Date()){
  const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
  if(!woodStayDate(g?.arrival)||!woodStayDate(g?.departure)||g.arrival>=g.departure)return null;
- return today<g.arrival?'before':today>=g.departure?'departure':'during';
+ return today<g.arrival?'before':today>g.departure?'after':today===g.departure?'departure':'during';
 }
 function woodKnownSolo(g,hash=location.hash){
  // Default to plural. A name, gender or room capacity does not establish occupancy.
@@ -212,14 +212,49 @@ function woodFarewellExclamation(text,lang){
  return text.replace(/[.!！。\s]+$/u,'')+(lang==='ja'?'！':lang==='fr'?' !':'!');
 }
 
+
+const WOOD_POST_STAY_COPY={"it":{"thanks":"Grazie, {name}, per aver soggiornato con noi!","generic":"Grazie per aver soggiornato con noi!","invite":["Saremo felici di accogliervi di nuovo, quando vorrete!","Saremo felici di accoglierti di nuovo, quando vorrai!"],"call":"Chiama","write":"Scrivici"},"en":{"thanks":"Thank you, {name}, for staying with us!","generic":"Thank you for staying with us!","invite":["We’d be happy to welcome you back whenever you wish!","We’d be happy to welcome you back whenever you wish!"],"call":"Call","write":"Write to us"},"de":{"thanks":"Danke, {name}, für euren Aufenthalt bei uns!","soloThanks":"Danke, {name}, für deinen Aufenthalt bei uns!","generic":"Vielen Dank für den Aufenthalt bei uns!","invite":["Wir freuen uns, euch jederzeit wieder begrüßen zu dürfen!","Wir freuen uns, dich jederzeit wieder begrüßen zu dürfen!"],"call":"Anrufen","write":"Schreibt uns","soloWrite":"Schreib uns"},"fr":{"thanks":"Merci, {name}, d’avoir séjourné chez nous !","generic":"Merci d’avoir séjourné chez nous !","invite":["Nous serons heureux de vous accueillir à nouveau, quand vous le souhaiterez !","Nous serons heureux de t’accueillir à nouveau, quand tu le souhaiteras !"],"call":"Appeler","write":"Écrivez-nous","soloWrite":"Écris-nous"},"es":{"thanks":"¡Gracias, {name}, por alojaros con nosotros!","soloThanks":"¡Gracias, {name}, por alojarte con nosotros!","generic":"¡Gracias por vuestra estancia!","soloGeneric":"¡Gracias por tu estancia!","invite":["¡Estaremos encantados de recibiros de nuevo cuando queráis!","¡Estaremos encantados de recibirte de nuevo cuando quieras!"],"call":"Llamar","write":"Escribidnos","soloWrite":"Escríbenos"},"nl":{"thanks":"Bedankt, {name}, voor jullie verblijf bij ons!","soloThanks":"Bedankt, {name}, voor je verblijf bij ons!","generic":"Bedankt voor het verblijf bij ons!","invite":["We verwelkomen jullie graag opnieuw, wanneer jullie maar willen!","We verwelkomen je graag opnieuw, wanneer je maar wilt!"],"call":"Bellen","write":"Schrijf ons"},"pl":{"thanks":"Dziękujemy, {name}, za pobyt u nas!","generic":"Dziękujemy za pobyt u nas!","invite":["Z przyjemnością ugościmy Was ponownie, kiedy tylko zechcecie!","Z przyjemnością ugościmy Cię ponownie, kiedy tylko zechcesz!"],"call":"Zadzwoń","write":"Napisz do nas"},"ro":{"thanks":"Mulțumim, {name}, că ați stat la noi!","soloThanks":"Mulțumim, {name}, că ai stat la noi!","generic":"Vă mulțumim că ați stat la noi!","soloGeneric":"Îți mulțumim că ai stat la noi!","invite":["Ne vom bucura să vă primim din nou, oricând doriți!","Ne vom bucura să te primim din nou, oricând dorești!"],"call":"Sună","write":"Scrie-ne"},"cs":{"thanks":"Děkujeme, {name}, za váš pobyt u nás!","soloThanks":"Děkujeme, {name}, za tvůj pobyt u nás!","generic":"Děkujeme za pobyt u nás!","invite":["Rádi vás znovu přivítáme, kdykoli budete chtít!","Rádi tě znovu přivítáme, kdykoli budeš chtít!"],"call":"Zavolat","write":"Napište nám","soloWrite":"Napiš nám"},"hu":{"thanks":"Köszönjük, {name}, hogy nálunk szálltatok meg!","soloThanks":"Köszönjük, {name}, hogy nálunk szálltál meg!","generic":"Köszönjük, hogy nálunk szálltatok meg!","soloGeneric":"Köszönjük, hogy nálunk szálltál meg!","invite":["Örömmel várunk vissza benneteket, amikor csak szeretnétek!","Örömmel várunk vissza, amikor csak szeretnéd!"],"call":"Hívás","write":"Írjatok nekünk","soloWrite":"Írj nekünk"},"bg":{"thanks":"Благодарим, {name}, че бяхте наши гости!","soloThanks":"Благодарим, {name}, че беше наш гост!","generic":"Благодарим, че бяхте наши гости!","soloGeneric":"Благодарим, че беше наш гост!","invite":["Ще се радваме да ви посрещнем отново, когато пожелаете!","Ще се радваме да те посрещнем отново, когато пожелаеш!"],"call":"Обади се","write":"Пишете ни","soloWrite":"Пиши ни"},"ja":{"thanks":"{name}様、ご宿泊ありがとうございました！","generic":"ご宿泊ありがとうございました！","invite":["皆さまをまたお迎えできる日を楽しみにしています。いつでもお越しください！","またお迎えできる日を楽しみにしています。いつでもお越しください！"],"call":"電話する","write":"メールする"}};
+function woodPostStayText(g,lang,hash=location.hash){
+ const copy=WOOD_POST_STAY_COPY[lang]||WOOD_POST_STAY_COPY.it;
+ const solo=woodKnownSolo(g,hash),name=String(g?.name||'').trim();
+ const thanks=name?(solo&&copy.soloThanks?copy.soloThanks:copy.thanks).replace('{name}',name):(solo&&copy.soloGeneric?copy.soloGeneric:copy.generic);
+ return {thanks,invite:copy.invite[solo?1:0],call:copy.call,write:solo&&copy.soloWrite?copy.soloWrite:copy.write};
+}
+function renderWoodPostStay(lang,phase){
+ const ended=phase==='after';
+ document.documentElement.classList.toggle('post-stay',ended);
+ let panel=document.getElementById('post-stay-message');
+ if(!ended){panel?.remove();return;}
+ const dialog=document.getElementById('detail');
+ if(dialog?.open){dialog.close();activeSection=null;}
+ // Clear any open operational details before showing the farewell.
+ for(const id of ['detail-text','detail-links','detail-photos'])document.getElementById(id)?.replaceChildren();
+ if(!panel){
+  panel=document.createElement('section');panel.id='post-stay-message';panel.setAttribute('aria-labelledby','post-stay-title');panel.setAttribute('aria-live','polite');
+  const title=document.createElement('h1');title.id='post-stay-title';
+  const invite=document.createElement('p');invite.className='post-stay-invite';
+  const signature=document.createElement('p');signature.className='post-stay-signature';signature.textContent='Cinzia e Alberto';
+  const contacts=document.createElement('nav');contacts.className='post-stay-contacts';
+  const call=document.createElement('a');call.href='tel:+393357739549';call.className='post-stay-call';
+  const write=document.createElement('a');write.href='mailto:info@lungomare70.it';write.className='post-stay-write';
+  contacts.append(call,write);panel.append(title,invite,signature,contacts);document.querySelector('main').append(panel);
+ }
+ const text=woodPostStayText(guest,lang);
+ for(const [selector,value] of [['h1',text.thanks],['.post-stay-invite',text.invite],['.post-stay-call',text.call],['.post-stay-write',text.write]]){
+  const el=panel.querySelector(selector);if(el.textContent!==value)el.textContent=value;
+ }
+ panel.querySelector('nav').setAttribute('aria-label',GUIDE[lang]?.contact||GUIDE.it.contact);
+}
+
 function renderWoodStayCopy(lang){
- if(!guest||guest.invalid)return;
+ if(!guest||guest.invalid){renderWoodPostStay(lang,null);return;}
  const copy=WOOD_STAY_COPY[lang]||WOOD_STAY_COPY.it;
  document.getElementById('personal-awaiting')?.remove();
  const subtitle=document.getElementById('subtitle');
  renderWoodSubtitle(subtitle,lang);
  const phase=woodStayPhase(guest);
- if(!phase)return;
+ renderWoodPostStay(lang,phase);
+ if(!phase||phase==='after')return;
  const text=woodFarewellExclamation(copy[phase][woodKnownSolo(guest)?1:0],lang);
  const farewell=document.getElementById('footer');
  // Preserve the approved handwriting, two lines, names, address and background.
@@ -265,6 +300,7 @@ function decorateHouseRules(){
  // Move room signs from the fixed heading into the room-name row; menu signs stay intact.
  const previousOpenSection=openSection;
  openSection=function(index){
+  if(guest&&!guest.invalid&&woodStayPhase(guest)==='after'){renderWoodStayCopy(document.documentElement.lang||'it');return;}
   previousOpenSection(index);
   if(index===5)decorateHouseRules();
   if(index===13){

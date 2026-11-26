@@ -132,3 +132,14 @@ html.wood-preview #area-content .house-rule-icon svg{
  display:block;width:23px;height:23px;fill:none;stroke:currentColor;
  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
 }
+
+/* Full guide through checkout day; farewell and direct contacts from next Rome day. */
+#post-stay-message{display:none}
+html.post-stay main>:not(#post-stay-message),html.post-stay body>footer,html.post-stay .map-shortcut,html.post-stay #detail{display:none!important}
+html.post-stay main>#post-stay-message{display:block;margin:clamp(2rem,8vh,5rem) auto;max-width:640px;padding:clamp(1.5rem,5vw,3rem);background:#fffaf2eb;border:1px solid #e2d4bd;border-radius:22px;box-shadow:0 8px 30px #193f4a15;text-align:center;color:#244e60}
+html.post-stay #post-stay-title{font-family:'Caveat','Segoe Print',cursive;font-size:clamp(2rem,6vw,2.8rem);font-weight:500;line-height:1.15;margin:0 0 1.25rem}
+html.post-stay .post-stay-invite{font-size:1.1rem;line-height:1.65;margin:0 0 1.5rem}
+html.post-stay .post-stay-signature{font-family:'Caveat','Segoe Print',cursive;font-size:1.8rem;margin:0 0 1.5rem}
+html.post-stay .post-stay-contacts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+html.post-stay .post-stay-contacts a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:120px;padding:.65rem 1.2rem;border-radius:12px;border:1px solid #c9d9dc;color:#174e67;background:#edf3f1;text-decoration:none;font-size:1rem;font-weight:600}
+html.post-stay .post-stay-contacts a:focus-visible{outline:3px solid #bc8543;outline-offset:3px}
