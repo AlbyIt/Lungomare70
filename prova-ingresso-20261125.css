@@ -152,3 +152,9 @@ html.wood-preview.post-stay main>#post-stay-message{margin:0 auto;padding:clamp(
 
 /* Same slogan font and size; allow the two operational reminders to wrap. */
 html.wood-preview .hero>#subtitle.stay-day-reminder{white-space:normal;text-wrap:balance}
+
+/* Farewell contact actions use the guide's approved wooden buttons. */
+html.wood-preview.post-stay .post-stay-contacts a{gap:10px;min-width:145px;background:var(--wood) center/cover;color:#123e57;border:1px solid #fffaf2;border-radius:22px;box-shadow:inset 0 0 0 2px #d7c0a2,inset 0 3px 3px #ffffffcc,0 4px 2px #b49e8244,0 7px 9px #29455538;font:500 1.15rem/1.2 Georgia,serif;text-shadow:0 1px #fff9eb}
+html.wood-preview.post-stay .post-contact-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 25px}
+html.wood-preview.post-stay .post-contact-icon svg{display:block;width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+html.wood-preview.post-stay .post-stay-contacts a:hover{filter:brightness(1.025)}
