@@ -162,7 +162,7 @@ html.wood-preview.post-stay .post-stay-contacts a:hover{filter:brightness(1.025)
 /* Header initial: original logo pixels, clipped without modifying the source image. */
 html.wood-preview .topbar .brand-logo-initial{
  display:inline-block;width:1.38em;height:1.38em;vertical-align:-.32em;
- margin-left:-.1em;margin-right:-.24em;overflow:hidden;mix-blend-mode:multiply;
+ margin-left:-.1em;margin-right:-.32em;overflow:hidden;mix-blend-mode:multiply;
 }
 
 /* Header 70: the original blue lettering from the same official logo. */
@@ -174,3 +174,6 @@ html.wood-preview .topbar .brand-logo-number{
 
 /* Joined Lungomare70 wordmark; zero is 88% of the original digit in the SVG. */
 html.wood-preview .topbar .brand-number{margin-left:-.05em;letter-spacing:0}
+
+/* Keep the tagline closer to the wordmark. */
+html.wood-preview .topbar .brand small{margin-top:2px}
