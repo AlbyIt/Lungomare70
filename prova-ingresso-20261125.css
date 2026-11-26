@@ -69,3 +69,29 @@ html.wood-preview #detail>.dialog-bar>#close{flex:0 0 44px;margin-left:0}
  html.wood-preview #detail>.dialog-bar .section-title-icon{flex-basis:24px}
  html.wood-preview #detail>.dialog-bar .section-title-icon svg{width:24px;height:24px}
 }
+
+/* Small refinements requested 26 November; only the banner tries a new font. */
+@font-face{font-family:'Patrick Hand';src:url('assets/fonts/patrick-hand-regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+html.wood-preview .hero-text>#subtitle{
+ font-family:'Patrick Hand','Caveat','Segoe Print',cursive;
+ font-size:clamp(1.1rem,3.8vw,1.65rem);line-height:1.12;
+}
+html.wood-preview .hero-text>#subtitle .stay-subtitle-line{display:block}
+html.wood-preview:lang(it) .hero-text>#subtitle .stay-subtitle-line{white-space:nowrap}
+html.wood-preview .guide>.coastal-signature{padding-top:20px}
+html.wood-preview #detail .room-identity-row{
+ display:flex;align-items:center;gap:12px;margin:0 0 10px;line-height:1.3;
+}
+html.wood-preview #detail .room-identity-row>strong{font-weight:700;font-size:1.05rem}
+html.wood-preview #detail .room-identity-sign{
+ display:block;flex:0 0 auto;width:64px;height:58px;object-fit:contain;
+}
+html.wood-preview #detail .partner-legend{
+ font-size:.83rem!important;line-height:1.35;gap:.4rem!important;
+}
+html.wood-preview #detail .partner-legend .partner-shell{width:20px!important;height:20px!important}
+html.wood-preview #detail>.dialog-bar{
+ background-color:#f9f2e8;
+ background-image:linear-gradient(#fffaf2c9,#fffaf2c9),url('assets/coastal-plaster-20261125.webp');
+ background-position:center,center bottom;background-size:auto,100% auto;background-repeat:no-repeat;
+}

@@ -199,15 +199,42 @@ function woodKnownSolo(g,hash=location.hash){
  const adults=g?.adults??p.get('adulti'),children=g?.children??p.get('bambini');
  return String(adults)==='1'&&String(children)==='0';
 }
+
+const WOOD_SUBTITLE_LINES={
+ it:['La guida su misura','per la tua vacanza'],
+ en:['A tailor-made guide','for your holiday'],
+ de:['Der maßgeschneiderte Begleiter','für deinen Urlaub'],
+ fr:['Le guide sur mesure','pour tes vacances'],
+ es:['La guía a medida','para tus vacaciones'],
+ nl:['De gids op maat','voor jouw vakantie'],
+ pl:['Przewodnik dopasowany','do Twoich wakacji'],
+ ro:['Ghidul creat special','pentru vacanța ta'],
+ cs:['Průvodce na míru','pro tvou dovolenou'],
+ hu:['Személyre szabott útmutató','a nyaralásodhoz'],
+ bg:['Пътеводител, създаден','за твоята почивка'],
+ ja:['あなたの休暇に合わせた','専用ガイド']
+};
+function renderWoodSubtitle(subtitle,lang){
+ const lines=WOOD_SUBTITLE_LINES[lang]||WOOD_SUBTITLE_LINES.it;
+ const key=lang+':'+lines.join('|');
+ if(subtitle.dataset.lines===key&&subtitle.children.length===2)return;
+ subtitle.dataset.lines=key;
+ const spans=lines.map(text=>{const span=document.createElement('span');span.className='stay-subtitle-line';span.textContent=text;return span;});
+ subtitle.replaceChildren(spans[0],document.createTextNode(' '),spans[1]);
+}
+function woodFarewellExclamation(text,lang){
+ return text.replace(/[.!！。\s]+$/u,'')+(lang==='ja'?'！':lang==='fr'?' !':'!');
+}
+
 function renderWoodStayCopy(lang){
  if(!guest||guest.invalid)return;
  const copy=WOOD_STAY_COPY[lang]||WOOD_STAY_COPY.it;
  document.getElementById('personal-awaiting')?.remove();
  const subtitle=document.getElementById('subtitle');
- if(subtitle.textContent!==copy.subtitle)subtitle.textContent=copy.subtitle;
+ renderWoodSubtitle(subtitle,lang);
  const phase=woodStayPhase(guest);
  if(!phase)return;
- const text=copy[phase][woodKnownSolo(guest)?1:0];
+ const text=woodFarewellExclamation(copy[phase][woodKnownSolo(guest)?1:0],lang);
  const farewell=document.getElementById('footer');
  // Preserve the approved handwriting, two lines, names, address and background.
  const intro=farewell.querySelector('.signature-intro');
@@ -224,6 +251,28 @@ function renderWoodStayCopy(lang){
  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')refresh();});
  window.addEventListener('focus',refresh);
  window.addEventListener('pageshow',refresh);
+
+ // Move room signs from the fixed heading into the room-name row; menu signs stay intact.
+ const previousOpenSection=openSection;
+ openSection=function(index){
+  previousOpenSection(index);
+  if(index!==3||!guest||guest.invalid)return;
+  const title=document.getElementById('detail-title');
+  const signs=title.querySelector('.room-title-signs');
+  const pictures=signs?[...signs.querySelectorAll('img')]:[];
+  signs?.remove();
+  document.getElementById('detail-icon').innerHTML=svg(3);
+  const rows=guest.rooms.map((room,i)=>{
+   const row=document.createElement('span');row.className='room-identity-row';
+   const picture=pictures[i]||document.createElement('img');
+   picture.src='assets/room-'+room+'-sign.png';picture.alt='';picture.width=64;picture.height=58;
+   picture.className='room-identity-sign';
+   const name=document.createElement('strong');name.textContent=room+' · '+ROOM_NAMES[room-1];
+   row.append(picture,name);return row;
+  });
+  document.getElementById('detail-text').replaceChildren(...rows);
+ };
+
  // Reuse each destination's existing, credited photograph in its collapsed row.
  function addVisitThumbnails(){
   if(activeSection!==9)return;

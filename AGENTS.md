@@ -25,3 +25,12 @@ La versione corrente concordata è `prova-ingresso-20261125.html`, con lo stile 
 - Conservare caratteri, posizione, sfondo, nomi e indirizzo della firma. Non modificare le altre disposizioni.
 - Dentro ogni sezione eliminare il marchio ripetuto «Lungomare 70» con il logo dalla barra superiore. Al suo posto mantenere il titolo della sezione in legno, con le icone e le eventuali targhe camera, sempre visibile durante lo scorrimento. Conservare la chiusura accessibile.
 - Usare Europe/Rome per date e orari; aggiornare anche senza ricaricare e quando si torna alla pagina. Con date mancanti o non valide non inventare la fase del soggiorno. Nessun contatore dei giorni approvato.
+
+## Rifiniture richieste il 26 novembre 2026
+
+- Banner italiano su due righe esatte: «La guida su misura» / «per la tua vacanza». Prova del font manoscritto Patrick Hand solo per questa frase; conservare Caveat per la firma finale e poter ripristinarlo nel banner. Mantenere il senso nelle altre lingue.
+- Ogni messaggio finale termina con un punto esclamativo, sia al plurale sia al singolare, in tutte le fasi del soggiorno. Firma «Cinzia e Alberto» separata sotto.
+- Abbassare appena saluto e firma: 8 px in più di distanza dai tasti, senza spostare l'indirizzo o cambiare lo sfondo, rimanendo nello spazio tra pesci e conchiglie.
+- Dentro La mia camera/Le nostre camere, spostare le targhette delle camere dal titolo fisso alla riga del numero e nome della camera, es. **1 · Stella**, in grassetto. Per più camere associare ogni targhetta al rispettivo nome. Titolo fisso semplice come nelle altre sezioni. Non cambiare il tasto della camera nel menu principale.
+- Ridurre leggermente il carattere della legenda della conchiglia in Dove mangiare, mantenendone il testo e la leggibilità.
+- Prova discreta di un richiamo allo stesso sfondo di pesci e conchiglie della home dietro il titolo fisso in legno, attenuato per conservare il contrasto.
