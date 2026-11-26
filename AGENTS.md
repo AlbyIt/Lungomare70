@@ -54,3 +54,7 @@ Ultima rifinitura dello slogan, 26 novembre 2026: «… la tua vacanza su misura
 ## Icone nelle Regole della casa — 26 novembre 2026
 
 Aggiunte piccole icone decorative davanti alle quattro regole esistenti: luna per la quiete, zampa barrata per gli animali non ammessi, asciugamano per il rientro asciutti dalla spiaggia e sigaretta barrata per il divieto di fumo. Icone sobrie in blu e fondo chiaro, coerenti con la guida; stessi significati in tutte le dodici lingue. Conservare integralmente testi, ordine, titolo fisso, contatti e apertura di una regola alla volta. Le icone non sostituiscono le etichette e sono escluse dalla lettura assistita.
+
+## Versione superata ritirata — 26 novembre 2026
+
+Su richiesta esplicita di Alberto, index.html, anteprima-mare-20261123.html e prova-legno-20261125.html rimandano alla versione corrente prova-ingresso-20261125.html, conservando query e frammento con i dati personali. Non ripristinare la guida con i tasti in vetro. Nei link consegnati usare direttamente la pagina corrente con tutte le personalizzazioni note. La miniatura della Taverna dei Guelfi raffigura una bistecca grigliata con centro rosato; la scheda della Madonnina del Pescatore evidenzia due stelle MICHELIN, alta cucina e fascia di prezzo elevata in tutte le lingue, senza prezzo fisso.
