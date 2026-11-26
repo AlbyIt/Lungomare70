@@ -19,7 +19,7 @@ Gli eventi che richiedono la comprensione dell’italiano devono comparire solta
 La versione corrente concordata è `prova-ingresso-20261125.html`, con lo stile legno. Nei link delle prove usare questa pagina, senza tornare alla vecchia pagina principale con i tasti in vetro. Le vecchie prove non sono la versione da consegnare. Non cancellare file storici o condivisi senza verificare le dipendenze.
 
 - Nel banner mantenere il saluto con il nome secondo l'ora italiana prima e durante il soggiorno; il giorno dell'arrivo mostrare Benvenuto/Benvenuta/Benvenuti secondo la personalizzazione.
-- Sotto il saluto, sempre dentro la fotografia, mostrare «La guida su misura per la tua vacanza», con lo stesso carattere manoscritto Caveat del messaggio finale, più piccolo del saluto. Tradurre nelle dodici lingue. Non mostrare «Ti/Vi aspettiamo» nel banner.
+- Nel banner mostrare la frase corrente approvata nella sezione «Slogan breve» in fondo a queste istruzioni, con dimensioni nettamente inferiori al saluto. Non mostrare «Ti/Vi aspettiamo» nel banner.
 - Nella firma in fondo: prima dell'arrivo «Vi aspettiamo»; dall'arrivo e durante il soggiorno «Siamo felici di accogliervi»; dal giorno del check-out «Vi auguriamo un buon rientro». Firma sempre «Cinzia e Alberto». Non ripetere il nome della struttura in queste frasi.
 - Usare il singolare soltanto quando è verificato che la prenotazione è per una persona sola: «Ti aspettiamo», «Siamo felici di accoglierti», «Ti auguriamo un buon rientro». In assenza del numero di ospiti usare il plurale. Non dedurre il numero dal nome, dal genere o dalla capienza. Nei link di prova `persone=1` (anche `ospiti=1`) oppure `adulti=1&bambini=0` indica esplicitamente un ospite solo; non aggiungerlo senza dati verificati.
 - Conservare caratteri, posizione, sfondo, nomi e indirizzo della firma. Non modificare le altre disposizioni.
@@ -28,7 +28,7 @@ La versione corrente concordata è `prova-ingresso-20261125.html`, con lo stile 
 
 ## Rifiniture richieste il 26 novembre 2026
 
-- Banner italiano su due righe esatte: «La guida su misura» / «per la tua vacanza». Prova del font manoscritto Patrick Hand solo per questa frase; conservare Caveat per la firma finale e poter ripristinarlo nel banner. Mantenere il senso nelle altre lingue.
+- Il precedente banner su due righe è superato dallo «Slogan breve» concordato sotto. Conservare Patrick Hand per il banner e Caveat per la firma finale.
 - Ogni messaggio finale termina con un punto esclamativo, sia al plurale sia al singolare, in tutte le fasi del soggiorno. Firma «Cinzia e Alberto» separata sotto.
 - Abbassare appena saluto e firma: 8 px in più di distanza dai tasti, senza spostare l'indirizzo o cambiare lo sfondo, rimanendo nello spazio tra pesci e conchiglie.
 - Dentro La mia camera/Le nostre camere, spostare le targhette delle camere dal titolo fisso alla riga del numero e nome della camera, es. **1 · Stella**, in grassetto. Per più camere associare ogni targhetta al rispettivo nome. Titolo fisso semplice come nelle altre sezioni. Non cambiare il tasto della camera nel menu principale.
@@ -42,3 +42,7 @@ In Dove mangiare mostrare una piccola foto quadrata prima del nome di ogni local
 ## Servizi utili — introduzione su due righe
 
 Mostrare «Riferimenti utili a Marzocca e Senigallia.» e a capo «Apri la mappa per il percorso.», mantenendo il testo e inserendo il salto riga tra le due frasi. Applicare la stessa separazione alle traduzioni quando possibile. I colori delle icone distinguono le categorie di servizi; il verde della farmacia non indica una convenzione. Le convenzioni sono segnalate dalla conchiglia.
+
+## Slogan breve — ultima scelta del 26 novembre 2026
+
+«La tua vacanza su misura», senza puntini di sospensione e senza aggiungere «la guida». Una sola riga nella parte bassa della fotografia del banner, sfruttandone la larghezza. Scritta discreta e piuttosto piccola, nettamente più piccola del saluto con il nome; conservare il font Patrick Hand. Su telefono mantenere la leggibilità. Tradurre con lo stesso significato nelle dodici lingue. Saluto, nome, resto della pagina e firma finale rimangono come concordato. Questa scelta sostituisce tutte le precedenti formulazioni del sottotitolo.

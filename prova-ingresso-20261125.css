@@ -100,3 +100,15 @@ html.wood-preview #detail>.dialog-bar{
 html.wood-preview #area-content .food-with-thumbnail>summary{align-items:center}
 html.wood-preview #area-content .restaurant-thumbnail{width:56px;height:56px;object-fit:cover;object-position:center}
 @media(max-width:600px){html.wood-preview #area-content .restaurant-thumbnail{width:48px;height:48px}}
+
+/* Approved short holiday slogan: small single line at the bottom of the photograph. */
+html.wood-preview .hero>#subtitle{
+ position:absolute;left:5%;right:5%;bottom:16%;z-index:2;
+ width:90%;max-width:none;margin:0;padding:0;
+ font:400 clamp(.85rem,2.7vw,1.15rem)/1.2 'Patrick Hand','Caveat','Segoe Print',cursive;
+ color:#fffaf2;letter-spacing:0;white-space:nowrap;text-align:left;
+ text-shadow:0 1px 4px #092d3bcc;
+}
+html.wood-preview .hero-shade,html.wood-preview .personal-mode .hero-shade{
+ background:linear-gradient(0deg,#092f4673 0%,#092f4600 35%),linear-gradient(90deg,#12465be8 0%,#15526db8 27%,#15526d00 63%);
+}

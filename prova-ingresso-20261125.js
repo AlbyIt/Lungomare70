@@ -200,27 +200,13 @@ function woodKnownSolo(g,hash=location.hash){
  return String(adults)==='1'&&String(children)==='0';
 }
 
-const WOOD_SUBTITLE_LINES={
- it:['La guida su misura','per la tua vacanza'],
- en:['A tailor-made guide','for your holiday'],
- de:['Der maßgeschneiderte Begleiter','für deinen Urlaub'],
- fr:['Le guide sur mesure','pour tes vacances'],
- es:['La guía a medida','para tus vacaciones'],
- nl:['De gids op maat','voor jouw vakantie'],
- pl:['Przewodnik dopasowany','do Twoich wakacji'],
- ro:['Ghidul creat special','pentru vacanța ta'],
- cs:['Průvodce na míru','pro tvou dovolenou'],
- hu:['Személyre szabott útmutató','a nyaralásodhoz'],
- bg:['Пътеводител, създаден','за твоята почивка'],
- ja:['あなたの休暇に合わせた','専用ガイド']
-};
+const WOOD_HOLIDAY_SLOGAN={"it":"La tua vacanza su misura","en":"Your tailor-made holiday","de":"Dein Urlaub nach Maß","fr":"Tes vacances sur mesure","es":"Tus vacaciones a medida","nl":"Jouw vakantie op maat","pl":"Twoje wakacje na miarę","ro":"Vacanța ta pe măsura ta","cs":"Tvá dovolená na míru","hu":"A rád szabott nyaralás","bg":"Твоята почивка по мярка","ja":"あなたに合わせた休暇"};
 function renderWoodSubtitle(subtitle,lang){
- const lines=WOOD_SUBTITLE_LINES[lang]||WOOD_SUBTITLE_LINES.it;
- const key=lang+':'+lines.join('|');
- if(subtitle.dataset.lines===key&&subtitle.children.length===2)return;
- subtitle.dataset.lines=key;
- const spans=lines.map(text=>{const span=document.createElement('span');span.className='stay-subtitle-line';span.textContent=text;return span;});
- subtitle.replaceChildren(spans[0],document.createTextNode(' '),spans[1]);
+ const text=WOOD_HOLIDAY_SLOGAN[lang]||WOOD_HOLIDAY_SLOGAN.it;
+ if(subtitle.textContent!==text)subtitle.textContent=text;
+ // Use the full photo width rather than the narrower greeting column.
+ const hero=document.querySelector('.hero');
+ if(hero&&subtitle.parentElement!==hero)hero.append(subtitle);
 }
 function woodFarewellExclamation(text,lang){
  return text.replace(/[.!！。\s]+$/u,'')+(lang==='ja'?'！':lang==='fr'?' !':'!');
