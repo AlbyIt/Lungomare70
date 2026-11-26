@@ -95,3 +95,8 @@ html.wood-preview #detail>.dialog-bar{
  background-image:linear-gradient(#fffaf2c9,#fffaf2c9),url('assets/coastal-plaster-20261125.webp');
  background-position:center,center bottom;background-size:auto,100% auto;background-repeat:no-repeat;
 }
+
+/* Restaurant previews use their own existing credited photo, leaving expanded figures intact. */
+html.wood-preview #area-content .food-with-thumbnail>summary{align-items:center}
+html.wood-preview #area-content .restaurant-thumbnail{width:56px;height:56px;object-fit:cover;object-position:center}
+@media(max-width:600px){html.wood-preview #area-content .restaurant-thumbnail{width:48px;height:48px}}

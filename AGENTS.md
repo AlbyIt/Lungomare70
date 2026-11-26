@@ -34,3 +34,7 @@ La versione corrente concordata è `prova-ingresso-20261125.html`, con lo stile 
 - Dentro La mia camera/Le nostre camere, spostare le targhette delle camere dal titolo fisso alla riga del numero e nome della camera, es. **1 · Stella**, in grassetto. Per più camere associare ogni targhetta al rispettivo nome. Titolo fisso semplice come nelle altre sezioni. Non cambiare il tasto della camera nel menu principale.
 - Ridurre leggermente il carattere della legenda della conchiglia in Dove mangiare, mantenendone il testo e la leggibilità.
 - Prova discreta di un richiamo allo stesso sfondo di pesci e conchiglie della home dietro il titolo fisso in legno, attenuato per conservare il contrasto.
+
+## Miniature dei ristoranti — 26 novembre 2026
+
+In Dove mangiare mostrare una piccola foto quadrata prima del nome di ogni locale nell'elenco chiuso, con lo stesso schema dei luoghi da visitare. Riutilizzare la fotografia pertinente già presente nella scheda e i suoi crediti: preferire ambiente, esterno, insegna o terrazza riconoscibile; un piatto solo quando la foto dell'ambiente non è adatta. La miniatura può essere ritagliata in visualizzazione con object-fit; conservare la fotografia completa e i collegamenti nella scheda aperta. Mantenere distanza, conchiglia delle convenzioni, apertura della scheda e lingue. Non modificare altre sezioni.

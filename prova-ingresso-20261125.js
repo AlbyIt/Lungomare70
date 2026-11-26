@@ -275,16 +275,19 @@ function renderWoodStayCopy(lang){
 
  // Reuse each destination's existing, credited photograph in its collapsed row.
  function addVisitThumbnails(){
-  if(activeSection!==9)return;
+  if(![9,12].includes(activeSection))return;
+  const isFood=activeSection===12;
   for(const row of document.querySelectorAll('#area-content .place-disclosure')){
    const summary=row.querySelector('summary');
    const photo=row.querySelector('.place-photo img');
    if(!summary || !photo || summary.querySelector('.visit-thumbnail') || row.dataset.thumbnailFailed)continue;
-   const thumbnail=document.createElement('img');thumbnail.className='visit-thumbnail';
+   const thumbnail=document.createElement('img');thumbnail.className='visit-thumbnail'+(isFood?' restaurant-thumbnail':'');
    thumbnail.src=photo.src;thumbnail.alt='';thumbnail.setAttribute('aria-hidden','true');
    thumbnail.width=56;thumbnail.height=46;thumbnail.loading='lazy';thumbnail.decoding='async';thumbnail.referrerPolicy='no-referrer';
    thumbnail.addEventListener('error',()=>{row.dataset.thumbnailFailed='true';thumbnail.remove();row.classList.remove('visit-with-thumbnail');},{once:true});
-   row.classList.add('visit-with-thumbnail');summary.prepend(thumbnail);
+   row.classList.add('visit-with-thumbnail');
+   if(isFood)row.classList.add('food-with-thumbnail');
+   summary.prepend(thumbnail);
   }
  }
  new MutationObserver(addVisitThumbnails).observe(document.querySelector('.dialog-body'),{childList:true,subtree:true});
