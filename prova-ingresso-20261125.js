@@ -634,6 +634,53 @@ function decorateHouseRules(){
 })();
 
 'use strict';
+// Semantic equivalents of the current Italian copy: solo, group.
+const STAY_TRANSLATION_PARITY={
+ en:[['A tailor-made guide to your holiday','A tailor-made guide to your holiday'],['In front of the B&B, you can enjoy a long stretch of public beach.','In front of the B&B, you can enjoy a long stretch of public beach.'],['On request, we will provide fresh towels at any time.','On request, we will provide fresh towels at any time.']],
+ de:[['Der Reiseführer für deinen Urlaub nach Maß','Der Reiseführer für euren Urlaub nach Maß'],['Direkt vor dem B&B kannst du einen langen, frei zugänglichen Strandabschnitt genießen.','Direkt vor dem B&B könnt ihr einen langen, frei zugänglichen Strandabschnitt genießen.'],['Auf Wunsch stellen wir dir jederzeit frische Handtücher zur Verfügung.','Auf Wunsch stellen wir euch jederzeit frische Handtücher zur Verfügung.']],
+ fr:[['Le guide de tes vacances sur mesure','Le guide de vos vacances sur mesure'],['Devant le B&B, tu peux profiter d’une longue plage en accès libre.','Devant le B&B, vous pouvez profiter d’une longue plage en accès libre.'],['Sur demande, nous te fournirons des serviettes propres à tout moment.','Sur demande, nous vous fournirons des serviettes propres à tout moment.']],
+ es:[['La guía para tus vacaciones a medida','La guía para vuestras vacaciones a medida'],['Frente al B&B puedes disfrutar de un largo tramo de playa de acceso libre.','Frente al B&B podéis disfrutar de un largo tramo de playa de acceso libre.'],['Si lo solicitas, te proporcionaremos toallas limpias en cualquier momento.','Si lo solicitáis, os proporcionaremos toallas limpias en cualquier momento.']],
+ nl:[['De gids voor jouw vakantie op maat','De gids voor jullie vakantie op maat'],['Voor de B&B kun je genieten van een lang stuk vrij toegankelijk strand.','Voor de B&B kunnen jullie genieten van een lang stuk vrij toegankelijk strand.'],['Op verzoek geven we je op elk moment schone handdoeken.','Op verzoek geven we jullie op elk moment schone handdoeken.']],
+ pl:[['Przewodnik po wakacjach dopasowanych do Ciebie','Przewodnik po wakacjach dopasowanych do Was'],['Przed B&B możesz korzystać z długiego odcinka ogólnodostępnej plaży.','Przed B&B możecie korzystać z długiego odcinka ogólnodostępnej plaży.'],['Na życzenie zapewnimy Ci świeże ręczniki w dowolnym momencie.','Na życzenie zapewnimy Wam świeże ręczniki w dowolnym momencie.']],
+ ro:[['Ghidul pentru vacanța ta pe măsură','Ghidul pentru vacanța voastră pe măsură'],['În fața B&B-ului te poți bucura de o porțiune lungă de plajă cu acces liber.','În fața B&B-ului vă puteți bucura de o porțiune lungă de plajă cu acces liber.'],['La cerere, îți vom oferi prosoape curate în orice moment.','La cerere, vă vom oferi prosoape curate în orice moment.']],
+ cs:[['Průvodce tvou dovolenou na míru','Průvodce vaší dovolenou na míru'],['Před B&B si můžeš užít dlouhý úsek volně přístupné pláže.','Před B&B si můžete užít dlouhý úsek volně přístupné pláže.'],['Na požádání ti kdykoli poskytneme čisté ručníky.','Na požádání vám kdykoli poskytneme čisté ručníky.']],
+ hu:[['Útmutató a személyre szabott nyaralásodhoz','Útmutató a személyre szabott nyaralásotokhoz'],['A B&B előtt hosszú, szabadon látogatható partszakaszt élvezhetsz.','A B&B előtt hosszú, szabadon látogatható partszakaszt élvezhettek.'],['Kérésre bármikor biztosítunk neked tiszta törölközőt.','Kérésre bármikor biztosítunk nektek tiszta törölközőt.']],
+ bg:[['Пътеводител за твоята почивка по мярка','Пътеводител за вашата почивка по мярка'],['Пред B&B можеш да се насладиш на дълга ивица плаж със свободен достъп.','Пред B&B можете да се насладите на дълга ивица плаж със свободен достъп.'],['При поискване ще ти предоставим чисти кърпи по всяко време.','При поискване ще ви предоставим чисти кърпи по всяко време.']],
+ ja:[['あなたの希望に合わせた休暇ガイド','皆さまの希望に合わせた休暇ガイド'],['B&Bの目の前には、自由に利用できる長い海岸が広がっています。','B&Bの目の前には、自由に利用できる長い海岸が広がっています。'],['ご希望に応じて、いつでも清潔なタオルをご用意します。','ご希望に応じて、いつでも清潔なタオルをご用意します。']]
+};
+for(const [lang,copy] of Object.entries(STAY_TRANSLATION_PARITY)){
+ WOOD_HOLIDAY_SLOGAN[lang]=copy[0][0];
+ BEACH_GUIDE_TEXT[lang].parts[0][1]=copy[1][0];
+ CLEANING_TIME_COPY[lang][4]=copy[2][1];
+ CLEANING_TIME_COPY[lang][5]=copy[2][0];
+}
+const LANGUAGE_GUEST_COPY={
+ en:[],
+ de:[['Dein Zimmer','Euer Zimmer'],['dir heute','euch heute'],['Bitte verlasse','Bitte verlasst'],['Mein Zimmer','Unser Zimmer'],['Deine Zimmerausstattung','Eure Zimmerausstattung'],['DEIN REISEBEGLEITER','EUER REISEBEGLEITER'],['Wir erwarten dich','Wir erwarten euch'],['Bediene dich am Buffet','Bedient euch am Buffet'],['Frag Cinzia','Fragt Cinzia'],['Gib die 6 Ziffern','Gebt die 6 Ziffern'],['dein Zimmer','euer Zimmer'],['deine Zimmer','eure Zimmer'],['deines Aufenthalts','eures Aufenthalts'],['Wenn du frische Handtücher brauchst','Wenn ihr frische Handtücher braucht']],
+ fr:[['Ma chambre','Notre chambre'],['Les équipements de ta chambre','Les équipements de votre chambre'],['TON GUIDE','VOTRE GUIDE'],['Nous t’attendons','Nous vous attendons'],['Sers-toi au buffet','Servez-vous au buffet'],['Demande à Cinzia','Demandez à Cinzia'],['tes chambres','vos chambres'],['ta chambre','votre chambre'],['ton séjour','votre séjour'],['ton départ','votre départ'],['tes vacances','vos vacances'],['tu pourras','vous pourrez'],['Tu pourras','Vous pourrez']],
+ es:[['deberás dejar','deberéis dejar'],['Mi habitación','Nuestra habitación'],['El equipamiento de tu habitación','El equipamiento de vuestra habitación'],['TU GUÍA','VUESTRA GUÍA'],['Te esperamos','Os esperamos'],['Sírvete del bufé','Servíos del bufé'],['Pregunta a Cinzia','Preguntad a Cinzia'],['tu habitación','vuestra habitación'],['tus habitaciones','vuestras habitaciones'],['tu estancia','vuestra estancia'],['Deberás dejar','Deberéis dejar'],['Podrás entrar','Podréis entrar']],
+ nl:[['Je kunt vandaag','Jullie kunnen vandaag'],['je kunt','jullie kunnen'],['Mijn kamer','Onze kamer'],['De voorzieningen in je kamer','De voorzieningen in jullie kamer'],['JOUW GIDS','JULLIE GIDS'],['je kamer','jullie kamer'],['je kamers','jullie kamers'],['je verblijf','jullie verblijf'],['je vakantie','jullie vakantie']],
+ pl:[['Możesz','Możecie'],['opuść pokój','opuśćcie pokój'],['Mój pokój','Nasz pokój'],['Wyposażenie Twojego pokoju','Wyposażenie Waszego pokoju'],['TWÓJ PRZEWODNIK','WASZ PRZEWODNIK'],['Twojego pobytu','Waszego pobytu'],['Twoich wakacji','Waszych wakacji']],
+ ro:[['Camera mea','Camera noastră'],['GHIDUL TĂU','GHIDUL VOSTRU'],['Te așteptăm','Vă așteptăm'],['Alege ce îți place','Alegeți ce vă place'],['Vei putea intra','Veți putea intra'],['va trebui să eliberezi camera','va trebui să eliberați camera'],['sejurului tău','sejurului vostru']],
+ cs:[['Můj pokoj','Náš pokoj'],['TVŮJ PRŮVODCE','VÁŠ PRŮVODCE'],['Těšíme se na tebe','Těšíme se na vás'],['Vyber si z bufetu','Vyberte si z bufetu'],['můžeš vstoupit','můžete vstoupit'],['pokoj prosím opusť','pokoj prosím opusťte']],
+ hu:[['foglalhatod el','foglalhatjátok el'],['elhagynod','elhagynotok'],['A szobám','A szobánk'],['A TE ÚTMUTATÓD','A TI ÚTMUTATÓTOK'],['Válassz a büfé kínálatából','Válasszatok a büfé kínálatából'],['a nyaralásodhoz','a nyaralásotokhoz'],['a tartózkodásod','a tartózkodásotok']],
+ bg:[['Моята стая','Нашата стая'],['ТВОЯТ ПЪТЕВОДИТЕЛ','ВАШИЯТ ПЪТЕВОДИТЕЛ'],['Очакваме те','Очакваме ви'],['Избери си от бюфета','Изберете си от бюфета'],['Можеш да влезеш','Можете да влезете'],['трябва да освободиш стаята','трябва да освободите стаята']],
+ ja:[['私の部屋','私たちの部屋']]
+};
+for(const [lang,copy] of Object.entries(STAY_TRANSLATION_PARITY))LANGUAGE_GUEST_COPY[lang].push(...copy);
+const languageCopyMatchers={};
+function localizedOccupancyText(text,solo,lang){
+ if(lang==='it')return italianOccupancyText(text,solo);
+ const pairs=LANGUAGE_GUEST_COPY[lang]||[];
+ if(!languageCopyMatchers[lang]){
+  const lookup=new Map();for(const pair of pairs)for(const form of pair)lookup.set(form,pair);
+  const keys=[...lookup.keys()].sort((a,b)=>b.length-a.length);
+  languageCopyMatchers[lang]={lookup,pattern:keys.length?new RegExp(keys.map(italianCopyEscape).join('|'),'gu'):null};
+ }
+ const {lookup,pattern}=languageCopyMatchers[lang];
+ return pattern?text.replace(pattern,match=>lookup.get(match)[solo?0:1]):text;
+}
+
 // Reviewed Italian copy pairs. Guest count and room count are independent.
 const ITALIAN_OCCUPANCY_COPY = [
  ['Di fronte al B&B puoi godere di un lungo tratto di spiaggia libera.','Di fronte al B&B potete godere di un lungo tratto di spiaggia libera.'],
@@ -731,7 +778,7 @@ function italianOccupancyText(text,solo){
  return text.replace(italianCopyPattern,match=>italianCopyLookup.get(match)[solo?0:1]);
 }
 function applyItalianOccupancy(root){
- if(!root||!guest||guest.invalid||(document.documentElement.lang||'it')!=='it')return;
+ if(!root||!guest||guest.invalid)return;
  const solo=guestKnownSolo(guest);
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
@@ -739,11 +786,11 @@ function applyItalianOccupancy(root){
   // Names, addresses, credits and photographs are source data, not guest instructions.
   if(node.parentElement?.closest('.guest-name,.place-name,.place-address,figcaption,script,style'))continue;
   if(node.textContent.trim()===guest.name)continue;
-  const next=italianOccupancyText(node.textContent,solo);
+  const next=localizedOccupancyText(node.textContent,solo,document.documentElement.lang||'it');
   if(next!==node.textContent)node.textContent=next;
  }
  const amenities=root.querySelector?.('#room-amenities h3');
- if(amenities&&guest.rooms.length>1)amenities.textContent=solo?'Le dotazioni delle tue camere':'Le dotazioni delle vostre camere';
+ if(amenities&&guest.rooms.length>1&&document.documentElement.lang==='it')amenities.textContent=solo?'Le dotazioni delle tue camere':'Le dotazioni delle vostre camere';
 }
 // Apply after each complete render, preserving emphasis, buttons and photographs.
 // Direct refreshes are used by the date/cleaning timers as well as by openSection.
