@@ -227,6 +227,30 @@ function renderWoodStayCopy(lang){
  if(intro){if(intro.textContent!==text)intro.textContent=text;}
  else farewell.textContent=text+', Cinzia e Alberto';
 }
+
+const WOOD_HOUSE_RULE_ICONS=[
+ // Quiet: moon. Pets: barred paw. Beach return: drying towel. Smoking: barred cigarette.
+ '<path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/>',
+ '<ellipse cx="7" cy="7.5" rx="1.5" ry="2"/><ellipse cx="12" cy="5.5" rx="1.5" ry="2"/><ellipse cx="17" cy="7.5" rx="1.5" ry="2"/><path d="M8 13c-2 2-3 5-1 6 2 1 3-1 5-1s3 2 5 1c2-1 1-4-1-6-2-3-6-3-8 0Z"/><path d="m3 3 18 18"/>',
+ '<path d="M5 5h12v15H5zM8 5V3h12v14h-3M5 16h12M8 20v1m3-1v1m3-1v1"/><path d="M2 9c2-2 2-2 0-4m20 9c-2-2-2-2 0-4"/>',
+ '<path d="M3 14h15v4H3zM15 14v4M20 14v4M21 11c2-4-4-3-2-7M16 10c2-3-3-3-2-6M3 3l18 18"/>'
+];
+function decorateHouseRules(){
+ const panel=document.getElementById('area-content');
+ if(!panel)return;
+ [...panel.querySelectorAll(':scope > details')].forEach((row,index)=>{
+  const path=WOOD_HOUSE_RULE_ICONS[index],summary=row.querySelector('summary');
+  if(!path||!summary||summary.querySelector('.house-rule-icon'))return;
+  const label=document.createElement('span');label.className='house-rule-label';
+  label.append(...summary.childNodes);
+  const icon=document.createElement('span');icon.className='house-rule-icon';icon.setAttribute('aria-hidden','true');
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('focusable','false');
+  svg.innerHTML=path;icon.append(svg);
+  summary.classList.add('house-rule-summary');summary.replaceChildren(icon,label);
+ });
+}
+
 (() => {
  const previousGreetingState=personalGreetingState;
  personalGreetingState=function(...args){return {...previousGreetingState(...args),awaiting:''};};
@@ -242,6 +266,7 @@ function renderWoodStayCopy(lang){
  const previousOpenSection=openSection;
  openSection=function(index){
   previousOpenSection(index);
+  if(index===5)decorateHouseRules();
   if(index===13){
    const text=document.getElementById('detail-text');
    text.textContent=text.textContent.replace(/([.。])\s*/, '$1\n');

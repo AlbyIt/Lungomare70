@@ -112,3 +112,23 @@ html.wood-preview .hero>#subtitle{
 html.wood-preview .hero-shade,html.wood-preview .personal-mode .hero-shade{
  background:linear-gradient(0deg,#092f4673 0%,#092f4600 35%),linear-gradient(90deg,#12465be8 0%,#15526db8 27%,#15526d00 63%);
 }
+
+/* Small, decorative house-rule icons; rules and accordion behavior stay unchanged. */
+html.wood-preview #area-content .house-rule-summary{
+ display:flex;align-items:center;gap:10px;list-style:none;
+}
+html.wood-preview #area-content .house-rule-summary::-webkit-details-marker{display:none}
+html.wood-preview #area-content .house-rule-summary::marker{content:''}
+html.wood-preview #area-content .house-rule-summary::after{
+ content:'+';margin-left:auto;color:#53696d;font-weight:400;flex-shrink:0;
+}
+html.wood-preview #area-content details[open]>.house-rule-summary::after{content:'−'}
+html.wood-preview #area-content .house-rule-label{flex:1;min-width:0}
+html.wood-preview #area-content .house-rule-icon{
+ display:inline-flex;align-items:center;justify-content:center;flex:0 0 32px;
+ width:32px;height:32px;border-radius:9px;background:#eaf0ee;color:#185873;
+}
+html.wood-preview #area-content .house-rule-icon svg{
+ display:block;width:23px;height:23px;fill:none;stroke:currentColor;
+ stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+}

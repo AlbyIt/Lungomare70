@@ -50,3 +50,7 @@ Mostrare «Riferimenti utili a Marzocca e Senigallia.» e a capo «Apri la mappa
 Aggiornamento della prova slogan: puntini iniziali, font Caveat, dimensione clamp(1rem,3.1vw,1.35rem). Posizione invariata al 16% dal bordo inferiore del banner. Confermato il 26 novembre 2026; ripristinabile dalla cronologia.
 
 Ultima rifinitura dello slogan, 26 novembre 2026: «… la tua vacanza su misura», con la l iniziale minuscola, senza punto esclamativo finale. Font Caveat aumentato solo di circa il 5% rispetto alla prima prova con puntini (clamp(1.05rem,3.25vw,1.42rem)); posizione invariata. Questa indicazione prevale sulla precedente iniziale maiuscola.
+
+## Icone nelle Regole della casa — 26 novembre 2026
+
+Aggiunte piccole icone decorative davanti alle quattro regole esistenti: luna per la quiete, zampa barrata per gli animali non ammessi, asciugamano per il rientro asciutti dalla spiaggia e sigaretta barrata per il divieto di fumo. Icone sobrie in blu e fondo chiaro, coerenti con la guida; stessi significati in tutte le dodici lingue. Conservare integralmente testi, ordine, titolo fisso, contatti e apertura di una regola alla volta. Le icone non sostituiscono le etichette e sono escluse dalla lettura assistita.
