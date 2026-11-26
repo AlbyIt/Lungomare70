@@ -45,4 +45,6 @@ Mostrare «Riferimenti utili a Marzocca e Senigallia.» e a capo «Apri la mappa
 
 ## Slogan breve — ultima scelta del 26 novembre 2026
 
-«La tua vacanza su misura», senza puntini di sospensione e senza aggiungere «la guida». Una sola riga nella parte bassa della fotografia del banner, sfruttandone la larghezza. Scritta discreta e piuttosto piccola, nettamente più piccola del saluto con il nome; conservare il font Patrick Hand. Su telefono mantenere la leggibilità. Tradurre con lo stesso significato nelle dodici lingue. Saluto, nome, resto della pagina e firma finale rimangono come concordato. Questa scelta sostituisce tutte le precedenti formulazioni del sottotitolo.
+«… La tua vacanza su misura», con puntini di sospensione iniziali e senza aggiungere «la guida». Una sola riga nella parte bassa della fotografia del banner, sfruttandone la larghezza. Scritta discreta e piuttosto piccola, nettamente più piccola del saluto con il nome; usare Caveat, lo stesso font manoscritto della firma finale, leggermente più grande della prova Patrick Hand ma sempre nettamente più piccolo del saluto. Su telefono mantenere la leggibilità. Tradurre con lo stesso significato nelle dodici lingue. Saluto, nome, resto della pagina e firma finale rimangono come concordato. Questa scelta sostituisce tutte le precedenti formulazioni del sottotitolo.
+
+Aggiornamento della prova slogan: puntini iniziali, font Caveat, dimensione clamp(1rem,3.1vw,1.35rem). Posizione invariata al 16% dal bordo inferiore del banner. Confermato il 26 novembre 2026; ripristinabile dalla cronologia.

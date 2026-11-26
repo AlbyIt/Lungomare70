@@ -202,7 +202,7 @@ function woodKnownSolo(g,hash=location.hash){
 
 const WOOD_HOLIDAY_SLOGAN={"it":"La tua vacanza su misura","en":"Your tailor-made holiday","de":"Dein Urlaub nach Maß","fr":"Tes vacances sur mesure","es":"Tus vacaciones a medida","nl":"Jouw vakantie op maat","pl":"Twoje wakacje na miarę","ro":"Vacanța ta pe măsura ta","cs":"Tvá dovolená na míru","hu":"A rád szabott nyaralás","bg":"Твоята почивка по мярка","ja":"あなたに合わせた休暇"};
 function renderWoodSubtitle(subtitle,lang){
- const text=WOOD_HOLIDAY_SLOGAN[lang]||WOOD_HOLIDAY_SLOGAN.it;
+ const text='… '+(WOOD_HOLIDAY_SLOGAN[lang]||WOOD_HOLIDAY_SLOGAN.it);
  if(subtitle.textContent!==text)subtitle.textContent=text;
  // Use the full photo width rather than the narrower greeting column.
  const hero=document.querySelector('.hero');
