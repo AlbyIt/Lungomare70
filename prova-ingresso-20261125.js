@@ -398,6 +398,7 @@ function decorateHouseRules(){
   const lang=document.documentElement.lang||'it';
   renderPersonalHeader(lang);
   if(dialog.open&&activeSection===10)renderDepartureSection(lang);
+  if(dialog.open&&activeSection===4)renderPersonalSection(4,lang);
  };
  setInterval(refresh,30000);
  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')refresh();});
