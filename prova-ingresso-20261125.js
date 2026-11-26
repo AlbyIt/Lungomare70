@@ -295,6 +295,11 @@ function decorateHouseRules(){
   const isFood=activeSection===12;
   for(const row of document.querySelectorAll('#area-content .place-disclosure')){
    const summary=row.querySelector('summary');
+   const placeName=summary?.querySelector('.place-name');
+   if(isFood&&placeName?.textContent.trim()==='Madonnina del Pescatore'&&!placeName.querySelector('.michelin-list-stars')){
+    const stars=document.createElement('span');stars.className='michelin-list-stars';stars.setAttribute('aria-label','2 MICHELIN');stars.style.cssText='display:inline-flex;vertical-align:middle;gap:2px;margin-left:.4rem';
+    for(let count=0;count<2;count++){const star=document.createElement('img');star.src='https://guide.michelin.com/assets/images/icons/michelin-star_8519-e01f8a46cd78113499b826a74e01e7ac.svg';star.alt='';star.width=18;star.height=18;star.referrerPolicy='no-referrer';star.style.cssText='width:18px;height:18px;object-fit:contain';stars.append(star);}placeName.append(stars);
+   }
    const photo=row.querySelector('.place-photo img');
    if(!summary || !photo || summary.querySelector('.visit-thumbnail') || row.dataset.thumbnailFailed)continue;
    const thumbnail=document.createElement('img');thumbnail.className='visit-thumbnail'+(isFood?' restaurant-thumbnail':'');
