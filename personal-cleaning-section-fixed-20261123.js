@@ -97,8 +97,8 @@ const CLEANING_TIME_COPY={
   "Prossime pulizie",
   "Non sono previste altre pulizie durante il vostro soggiorno.",
   "Non sono previste altre pulizie durante il tuo soggiorno.",
-  "Se avete bisogno di asciugamani puliti, potete chiederceli in qualsiasi momento.",
-  "Se hai bisogno di asciugamani puliti, puoi chiederceli in qualsiasi momento."
+  "Su richiesta, vi forniremo asciugamani puliti in qualsiasi momento.",
+  "Su richiesta, ti forniremo asciugamani puliti in qualsiasi momento."
  ],
  "en": [
   "Next cleaning",
