@@ -155,6 +155,8 @@ function renderAreaSection(index,lang){
    }
   }else{const heading=document.createElement('h3');heading.textContent=localizedPlaceName(place,lang);content.append(heading);}
   if(kind==='services')content.prepend(serviceBadge(place.name,true));
+  if(kind==='food'&&place.name==='Madonnina del Pescatore'){const distinction=document.createElement('p');distinction.className='restaurant-distinction';distinction.style.cssText='padding:.75rem 1rem;border-left:3px solid #9c443d;background:#faf3ec;color:#59392e;font-weight:700;line-height:1.5';distinction.textContent=({"it":"Due stelle MICHELIN · Alta cucina · Fascia di prezzo elevata","en":"Two MICHELIN stars · Fine dining · High price range","de":"Zwei MICHELIN-Sterne · Spitzenküche · Gehobene Preisklasse","fr":"Deux étoiles MICHELIN · Haute gastronomie · Prix élevés","es":"Dos estrellas MICHELIN · Alta cocina · Precios elevados","nl":"Twee MICHELIN-sterren · Gastronomisch restaurant · Hoge prijsklasse","pl":"Dwie gwiazdki MICHELIN · Wykwintna kuchnia · Wysokie ceny","ro":"Două stele MICHELIN · Gastronomie rafinată · Prețuri ridicate","cs":"Dvě hvězdy MICHELIN · Špičková gastronomie · Vysoká cenová kategorie","hu":"Két MICHELIN-csillag · Csúcsgasztronómia · Magas árkategória","bg":"Две звезди MICHELIN · Висша кухня · Висок ценови клас","ja":"ミシュラン二つ星 · 高級料理 · 高価格帯"})[lang]||"Two MICHELIN stars · Fine dining · High price range";content.prepend(distinction);}
+
   const address=document.createElement('p');address.className='place-address';address.textContent=place.address;
   const description=document.createElement('p');description.textContent=place.description[lang];
   const links=document.createElement('div');links.className=preview?'place-links-subtle':'place-links';
