@@ -298,7 +298,7 @@ function decorateHouseRules(){
    const placeName=summary?.querySelector('.place-name');
    if(isFood&&placeName?.textContent.trim()==='Madonnina del Pescatore'&&!placeName.querySelector('.michelin-list-stars')){
     const stars=document.createElement('span');stars.className='michelin-list-stars';stars.setAttribute('aria-label','2 MICHELIN');stars.style.cssText='display:inline-flex;vertical-align:middle;gap:2px;margin-left:.4rem';
-    const pair=document.createElement('span');pair.setAttribute('aria-hidden','true');pair.style.cssText="display:inline-block;width:54px;height:27px;background-color:white;background-image:url('https://www.imperialtreasure.com/resources/ck/files/Awards/2-Star-Michelin.jpg');background-size:140px 122.5px;background-repeat:no-repeat;background-position:center -31px;border-radius:2px";stars.append(pair);placeName.append(stars);
+    for(let count=0;count<2;count++){const star=document.createElement('img');star.src='https://guide.michelin.com/assets/images/icons/michelin-star_8519-e01f8a46cd78113499b826a74e01e7ac.svg';star.alt='';star.width=18;star.height=18;star.referrerPolicy='no-referrer';star.style.cssText='width:18px;height:18px;object-fit:contain';stars.append(star);}placeName.append(stars);
    }
    const photo=row.querySelector('.place-photo img');
    if(!summary || !photo || summary.querySelector('.visit-thumbnail') || row.dataset.thumbnailFailed)continue;
