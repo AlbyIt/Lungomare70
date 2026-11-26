@@ -1,5 +1,19 @@
 # Lungomare 70 — istruzioni operative per la guida
 
+
+## Tutte le lingue a ogni modifica — regola permanente obbligatoria, 26 novembre 2026
+
+Questa procedura va applicata autonomamente, senza attendere richiami o nuove richieste di Alberto. Ogni modifica, aggiunta, correzione o variazione della guida deve essere estesa contestualmente a tutte le lingue effettivamente disponibili. È parte della stessa modifica, non un intervento facoltativo successivo.
+
+- Prima di intervenire, individuare le lingue disponibili nel selettore e nelle risorse correnti; non limitarsi a un elenco storico. Attualmente: italiano, inglese, tedesco, francese, spagnolo, neerlandese, polacco, rumeno, ceco, ungherese, bulgaro e giapponese. Includere automaticamente ogni lingua aggiunta in futuro.
+- L'italiano approvato da Alberto è il riferimento per contenuti e significato. Tradurre integralmente anche titoli, sottotitoli, slogan, pulsanti, note, didascalie, istruzioni, messaggi di errore e testi generati dinamicamente. Usare formulazioni naturali con lo stesso significato, senza omissioni, aggiunte arbitrarie o vecchie versioni residue.
+- Estendere anche le modifiche non testuali: impaginazione, fotografie e relativa posizione, icone, collegamenti, funzioni, orari, date, filtri, personalizzazioni e comportamento della guida. Conservare le differenze linguistiche intenzionali già approvate, come il filtro degli spettacoli che richiedono la comprensione dell'italiano.
+- Verificare singolare/plurale in base al totale verificato degli ospiti, genere del destinatario quando pertinente, camera/camere in base alle camere assegnate e le rispettive forme naturali in ogni lingua. Non confondere il saluto individuale con le istruzioni al gruppo.
+- Controllare ogni stato interessato: prima dell'arrivo, arrivo, soggiorno, pulizie future/esaurite, check-out e messaggio dal giorno successivo; verificare anche il cambio lingua e il rientro nella pagina.
+- Prima di dichiarare conclusa una modifica, confrontare le versioni con l'italiano approvato e verificare tutte le lingue interessate, la leggibilità e il funzionamento. La sola apertura delle schede o un test senza errori non dimostra l'equivalenza linguistica: controllare anche significato, dati e concordanze.
+- Se una traduzione o una verifica resta incompleta, segnalarlo chiaramente e non dichiarare completato l'allineamento di tutte le lingue. Proseguire il lavoro autorizzato senza chiedere ad Alberto di ricordare questa procedura.
+- Conservare integralmente le altre istruzioni operative. Questa regola vale per ogni sezione, pagina attiva, guida personalizzata e prova richiesta; non autorizza a ripubblicare prove grafiche non approvate.
+
 Prima di cercare o aggiornare gli eventi delle guide personalizzate, leggere [EVENTI.md](EVENTI.md).
 Includere sempre nella ricerca Chiaravalle (AN), oltre a Senigallia e dintorni. Selezionare solo appuntamenti significativi e verificati nelle date del soggiorno, senza aggiungere un evento soltanto per rappresentare una località.
 Le prove grafiche rimangono separate dalla guida principale finché Alberto non ne approva l’applicazione.
