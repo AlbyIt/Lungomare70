@@ -84,3 +84,14 @@ Nella miniatura della Taverna usare la fotografia reale della carne del suo sito
 - Nel giorno del check-out mostrare «Arrivederci, {nome}!»; sostituire lo slogan con «Oggi è il giorno della partenza: vi preghiamo di lasciare la camera entro le 10:00 di questa mattina.» Per un ospite solo verificato usare «ti preghiamo». Usare la stessa formulazione gentile nella sezione Check-out, conservando tutte le altre istruzioni. Evitare «dovrai/dovrete lasciare».
 - Mantenere font e dimensioni dello slogan nei promemoria, consentendo di andare a capo. Negli altri giorni mantenere il comportamento approvato. Applicare la corretta concordanza anche nelle traduzioni.
 - Queste regole prevalgono sulle precedenti formulazioni dei saluti e dei promemoria in conflitto. Conservare la possibilità di ripristinare la versione precedente dalla cronologia.
+
+
+## Pulizie nel tempo — approvato il 26 novembre 2026
+
+- Prima dell'arrivo mostrare il programma completo delle pulizie. Dall'arrivo mostrare soltanto interventi di oggi e futuri, ordinati per data, con titolo «Prossima pulizia» o «Prossime pulizie» secondo quanti ne rimangono.
+- Una pulizia resta visibile per l'intera data programmata in Europe/Rome e scompare dalla mezzanotte del giorno successivo. Il filtro non certifica l'esecuzione: si basa sul programma concordato.
+- Dopo l'ultima pulizia mostrare «Non sono previste altre pulizie durante il vostro soggiorno. Se avete bisogno di asciugamani puliti, potete chiederceli in qualsiasi momento.» Per un ospite solo verificato: «durante il tuo soggiorno» e «Se hai bisogno ... puoi chiederceli».
+- Conservare tipo e descrizione degli interventi rimanenti, tutte le lingue e il comportamento per soggiorni senza pulizie intermedie. Non modificare i calendari applicando il filtro visivo.
+- Aggiornare anche una scheda già aperta, al rientro nella pagina e al cambio lingua. Con date mancanti o non valide non presumere il trascorrere del soggiorno.
+- Quando Alberto comunica cambiamenti al programma, aggiornare la guida con i dati verificati. Finché i dati sono nel frammento URL, la modifica richiede un link aggiornato: non promettere che un link già inviato si aggiorni da solo. L'aggiornamento centralizzato dello stesso link dipende dalla futura gestione tramite token.
+- In italiano mantenere Buongiorno/Buonasera, con passaggio serale alle 18; nelle altre lingue rispettare i saluti naturali della lingua, compreso il pomeriggio dove appropriato. Restano prioritari Benvenuto all'arrivo e Arrivederci alla partenza.
