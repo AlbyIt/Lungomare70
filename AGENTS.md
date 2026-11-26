@@ -74,3 +74,13 @@ Questa regola integra quelle su saluti, giorno di arrivo, soggiorno, partenza ed
 ## Fotografie e marchio Michelin — scelta conclusiva del 26 novembre 2026
 
 Nella miniatura della Taverna usare la fotografia reale della carne del suo sito ufficiale, non la bistecca disegnata. Per La Bilancia è stata scelta una fotografia luminosa di un piatto dal sito ufficiale. Per la Madonnina mantenere le due rosette originali usate da guide.michelin.com, nella lista e nella scheda, e il logotipo originale MICHELIN GUIDE. Sotto il marchio scrivere soltanto «Alta cucina · Fascia di prezzo elevata», senza ripetere «Due stelle MICHELIN». Conservare i collegamenti alle fonti e le traduzioni.
+
+
+## Saluti individuali e numero ospiti — regola fondamentale, 26 novembre 2026
+
+- Controllare sempre singolare e plurale senza attendere richiami di Alberto, in ogni guida, prova e messaggio. Il saluto con il nome è rivolto al destinatario: «Benvenuto, Lucio!» oppure «Benvenuta» secondo il destinatario, anche quando viaggia con altri; «Arrivederci, Lucio!» alla partenza. Non trasformare automaticamente il saluto individuale in «Benvenuti» perché la prenotazione comprende due persone. Usare il saluto plurale solo se indirizzato esplicitamente a più destinatari.
+- Istruzioni e frasi rivolte al gruppo seguono il numero totale verificato degli ospiti, indipendentemente dal numero di camere. Singolare solo per un ospite solo verificato; con numero non disponibile mantenere il plurale senza inventare il dato.
+- Nel giorno del check-in sostituire lo slogan con «Potrai entrare in camera a partire dalle 15:00 di oggi.» per una persona e «Potrete entrare in camera a partire dalle 15:00 di oggi.» per più persone; adattare camera/camere al numero di camere.
+- Nel giorno del check-out mostrare «Arrivederci, {nome}!»; sostituire lo slogan con «Oggi è il giorno della partenza: vi preghiamo di lasciare la camera entro le 10:00 di questa mattina.» Per un ospite solo verificato usare «ti preghiamo». Usare la stessa formulazione gentile nella sezione Check-out, conservando tutte le altre istruzioni. Evitare «dovrai/dovrete lasciare».
+- Mantenere font e dimensioni dello slogan nei promemoria, consentendo di andare a capo. Negli altri giorni mantenere il comportamento approvato. Applicare la corretta concordanza anche nelle traduzioni.
+- Queste regole prevalgono sulle precedenti formulazioni dei saluti e dei promemoria in conflitto. Conservare la possibilità di ripristinare la versione precedente dalla cronologia.
