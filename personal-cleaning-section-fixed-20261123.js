@@ -89,6 +89,124 @@ function renderPersonalHeader(lang) {
  if(guest.demo) document.getElementById('subtitle').textContent=t.demo.replace('{room}',guest.room);
 }
 function pendingSafes(g){const p=new URLSearchParams(location.hash.replace(/^#/,''));return g.rooms.map(n=>{const c=n===g.room?g.safe:(p.get('cassaforte'+n)||'');return c&&/^\d{4}$/.test(c)?n+' · '+ROOM_NAMES[n-1]+': '+c:'';}).filter(Boolean).join(' | ');}
+
+// Cleaning dates are a guest-facing schedule, not confirmation of completed work.
+const CLEANING_TIME_COPY={
+ "it": [
+  "Prossima pulizia",
+  "Prossime pulizie",
+  "Non sono previste altre pulizie durante il vostro soggiorno.",
+  "Non sono previste altre pulizie durante il tuo soggiorno.",
+  "Se avete bisogno di asciugamani puliti, potete chiederceli in qualsiasi momento.",
+  "Se hai bisogno di asciugamani puliti, puoi chiederceli in qualsiasi momento."
+ ],
+ "en": [
+  "Next cleaning",
+  "Upcoming cleanings",
+  "No further cleaning is scheduled during your stay.",
+  "No further cleaning is scheduled during your stay.",
+  "If you need fresh towels, you can ask us at any time.",
+  "If you need fresh towels, you can ask us at any time."
+ ],
+ "de": [
+  "Nächste Reinigung",
+  "Nächste Reinigungen",
+  "Während eures Aufenthalts sind keine weiteren Reinigungen vorgesehen.",
+  "Während deines Aufenthalts sind keine weiteren Reinigungen vorgesehen.",
+  "Wenn ihr frische Handtücher braucht, könnt ihr uns jederzeit fragen.",
+  "Wenn du frische Handtücher brauchst, kannst du uns jederzeit fragen."
+ ],
+ "fr": [
+  "Prochain ménage",
+  "Prochains ménages",
+  "Aucun autre ménage n’est prévu pendant votre séjour.",
+  "Aucun autre ménage n’est prévu pendant ton séjour.",
+  "Si vous avez besoin de serviettes propres, vous pouvez nous en demander à tout moment.",
+  "Si tu as besoin de serviettes propres, tu peux nous en demander à tout moment."
+ ],
+ "es": [
+  "Próxima limpieza",
+  "Próximas limpiezas",
+  "No hay más limpiezas previstas durante vuestra estancia.",
+  "No hay más limpiezas previstas durante tu estancia.",
+  "Si necesitáis toallas limpias, podéis pedírnoslas en cualquier momento.",
+  "Si necesitas toallas limpias, puedes pedírnoslas en cualquier momento."
+ ],
+ "nl": [
+  "Volgende schoonmaak",
+  "Komende schoonmaakbeurten",
+  "Er is geen verdere schoonmaak gepland tijdens jullie verblijf.",
+  "Er is geen verdere schoonmaak gepland tijdens je verblijf.",
+  "Als jullie schone handdoeken nodig hebben, kunnen jullie het ons altijd vragen.",
+  "Als je schone handdoeken nodig hebt, kun je het ons altijd vragen."
+ ],
+ "pl": [
+  "Następne sprzątanie",
+  "Najbliższe sprzątania",
+  "Podczas Waszego pobytu nie zaplanowano już kolejnego sprzątania.",
+  "Podczas Twojego pobytu nie zaplanowano już kolejnego sprzątania.",
+  "Jeśli potrzebujecie świeżych ręczników, możecie poprosić nas o nie w każdej chwili.",
+  "Jeśli potrzebujesz świeżych ręczników, możesz poprosić nas o nie w każdej chwili."
+ ],
+ "ro": [
+  "Următoarea curățenie",
+  "Următoarele curățenii",
+  "Nu mai sunt prevăzute alte curățenii pe durata sejurului vostru.",
+  "Nu mai sunt prevăzute alte curățenii pe durata sejurului tău.",
+  "Dacă aveți nevoie de prosoape curate, ni le puteți cere oricând.",
+  "Dacă ai nevoie de prosoape curate, ni le poți cere oricând."
+ ],
+ "cs": [
+  "Příští úklid",
+  "Nadcházející úklidy",
+  "Během vašeho pobytu již není naplánován další úklid.",
+  "Během tvého pobytu již není naplánován další úklid.",
+  "Pokud potřebujete čisté ručníky, můžete nás o ně kdykoli požádat.",
+  "Pokud potřebuješ čisté ručníky, můžeš nás o ně kdykoli požádat."
+ ],
+ "hu": [
+  "Következő takarítás",
+  "Következő takarítások",
+  "A tartózkodásotok alatt további takarítás nincs betervezve.",
+  "A tartózkodásod alatt további takarítás nincs betervezve.",
+  "Ha tiszta törölközőre van szükségetek, bármikor kérhettek tőlünk.",
+  "Ha tiszta törölközőre van szükséged, bármikor kérhetsz tőlünk."
+ ],
+ "bg": [
+  "Следващо почистване",
+  "Предстоящи почиствания",
+  "Не са предвидени други почиствания по време на престоя ви.",
+  "Не са предвидени други почиствания по време на престоя ти.",
+  "Ако имате нужда от чисти кърпи, можете да ни помолите по всяко време.",
+  "Ако имаш нужда от чисти кърпи, можеш да ни помолиш по всяко време."
+ ],
+ "ja": [
+  "次回の清掃",
+  "今後の清掃予定",
+  "ご滞在中、これ以降の清掃予定はありません。",
+  "ご滞在中、これ以降の清掃予定はありません。",
+  "新しいタオルが必要な場合は、いつでもお申し付けください。",
+  "新しいタオルが必要な場合は、いつでもお申し付けください。"
+ ]
+};
+function cleaningValidDate(value){
+ return typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&!Number.isNaN(Date.parse(value+'T12:00:00Z'))&&new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
+}
+function cleaningScheduleState(g,now=new Date()){
+ const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
+ const all=String(g?.cleaning||'').split(',').map(x=>x.split(':')).filter(x=>x.length===2&&cleaningValidDate(x[0])&&['pulire','rifare'].includes(x[1])).sort((a,b)=>a[0].localeCompare(b[0]));
+ const dated=cleaningValidDate(g?.arrival)&&cleaningValidDate(g?.departure)&&g.arrival<g.departure;
+ const started=dated&&today>=g.arrival;
+ return {all,items:started?all.filter(([day])=>day>=today):all,started,today};
+}
+function cleaningKnownSolo(g,hash=location.hash){
+ if(typeof woodKnownSolo==='function')return woodKnownSolo(g,hash);
+ const p=new URLSearchParams(hash.replace(/^#/,''));
+ const total=g?.people??g?.guestCount??p.get('persone')??p.get('ospiti');
+ if(total!==null&&total!==undefined&&/^[1-9]\d*$/.test(String(total)))return Number(total)===1;
+ return String(g?.adults??p.get('adulti'))==='1'&&String(g?.children??p.get('bambini'))==='0';
+}
+
 function renderPersonalSection(index,lang) {
  document.getElementById('room-amenities')?.remove();
  document.querySelector('.personal-cleaning')?.remove();
@@ -119,10 +237,16 @@ function renderPersonalSection(index,lang) {
   };
   const cleaningNames={ja:JAPANESE.cleaningNames,hu:HUNGARIAN.cleaningNames,bg:BULGARIAN.cleaningNames,cs:CZECH.cleaningNames,ro:ROMANIAN.cleaningNames,"it":{"pulire":"Pulizia standard","rifare":"Pulizia completa"},"de":{"pulire":"Standardreinigung","rifare":"Komplettreinigung"},"en":{"pulire":"Standard cleaning","rifare":"Full cleaning"},"fr":{"pulire":"Ménage standard","rifare":"Ménage complet"},"es":{"pulire":"Limpieza estándar","rifare":"Limpieza completa"},"nl":{"pulire":"Standaardschoonmaak","rifare":"Volledige schoonmaak"},"pl":{"pulire":"Sprzątanie standardowe","rifare":"Pełne sprzątanie"}};
   const tr=labels[lang]||labels.it;
-  const items=guest.cleaning.split(',').map(x=>x.split(':')).filter(x=>x.length===2&&/^\d{4}-\d{2}-\d{2}$/.test(x[0])&&['pulire','rifare'].includes(x[1]));
+  const schedule=cleaningScheduleState(guest);
+  const items=schedule.items;
+  const timeCopy=CLEANING_TIME_COPY[lang]||CLEANING_TIME_COPY.it;
+  const solo=cleaningKnownSolo(guest);
   const section=document.createElement('section');section.className='personal-cleaning';
-  const heading=document.createElement('h3');heading.textContent=tr.title;section.append(heading);
-  if(!items.length){
+  const heading=document.createElement('h3');heading.textContent=schedule.started&&items.length?timeCopy[items.length===1?0:1]:tr.title;section.append(heading);
+  if(!items.length&&schedule.all.length){
+   const note=document.createElement('p');note.textContent=timeCopy[solo?3:2];section.append(note);
+  }
+  if(!items.length&&!schedule.all.length){
    const note=document.createElement('p');
    const start=guest.arrival?new Date(guest.arrival+'T12:00:00'):null;
    const end=guest.departure?new Date(guest.departure+'T12:00:00'):null;
@@ -138,10 +262,11 @@ function renderPersonalSection(index,lang) {
    };
    const general={ja:JAPANESE.noCleaning,hu:HUNGARIAN.noCleaning,bg:BULGARIAN.noCleaning,cs:CZECH.noCleaning,ro:ROMANIAN.noCleaning,it:'Non sono previste pulizie intermedie durante il soggiorno.',de:'Während eures Aufenthalts ist keine Zwischenreinigung vorgesehen.',en:'No intermediate cleaning is scheduled during your stay.',fr:'Aucun ménage intermédiaire n’est prévu pendant votre séjour.',es:'No hay limpieza intermedia programada durante vuestra estancia.',nl:'Er is geen tussentijdse schoonmaak gepland tijdens jullie verblijf.',pl:'Podczas pobytu nie zaplanowano sprzątania pośredniego.'};
    note.textContent=nights===4?(shortStay[lang]||shortStay.it):(general[lang]||general.it);
+   if(lang==='it'&&solo)note.textContent=note.textContent.replace('Se avete bisogno','Se hai bisogno').replace('non esitate a chiederlo','non esitare a chiederlo');
    section.append(note);
   }
-  if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');const date=document.createElement('strong');date.textContent=lang==='ja'?japaneseDate(d):new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);date.textContent+=' — '+cleaningNames[lang][kind];const description=document.createElement('p');description.textContent=tr[kind];li.append(date,description);list.append(li);}section.append(list);}
-  if(items.length || !(guest.arrival&&guest.departure&&Math.round((new Date(guest.departure+'T12:00:00')-new Date(guest.arrival+'T12:00:00'))/86400000)===4)){const towels=document.createElement('p');towels.textContent=tr.towels;section.append(towels);}
+  if(items.length){const list=document.createElement('ul');for(const [day,kind] of items){const d=new Date(day+'T12:00:00');if(Number.isNaN(d.getTime()))continue;const li=document.createElement('li');const date=document.createElement('strong');date.textContent=lang==='ja'?japaneseDate(d):new Intl.DateTimeFormat(lang,{timeZone:'Europe/Rome',weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);date.textContent+=' — '+cleaningNames[lang][kind];const description=document.createElement('p');description.textContent=tr[kind];li.append(date,description);list.append(li);}section.append(list);}
+  if(schedule.all.length || !(guest.arrival&&guest.departure&&Math.round((new Date(guest.departure+'T12:00:00')-new Date(guest.arrival+'T12:00:00'))/86400000)===4)){const towels=document.createElement('p');towels.textContent=timeCopy[solo?5:4];section.append(towels);}
   document.getElementById('detail-text').textContent='';
   document.getElementById('detail-text').after(section);
  }
