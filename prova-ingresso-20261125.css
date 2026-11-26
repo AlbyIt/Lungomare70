@@ -171,3 +171,6 @@ html.wood-preview .topbar .brand-logo-number{
  transform:skewX(-8deg);transform-origin:50% 75%;
  overflow:hidden;mix-blend-mode:multiply;
 }
+
+/* Joined Lungomare70 wordmark; zero is 88% of the original digit in the SVG. */
+html.wood-preview .topbar .brand-number{margin-left:-.05em;letter-spacing:0}
