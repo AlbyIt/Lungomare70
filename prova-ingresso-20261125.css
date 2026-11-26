@@ -149,3 +149,6 @@ html.wood-preview.post-stay body{min-height:100vh;min-height:100svh;display:bloc
 html.wood-preview.post-stay .topbar{margin:0 auto;background:transparent}
 html.wood-preview.post-stay main{width:100%;margin:0 auto;padding:0 0 clamp(120px,25vw,220px)}
 html.wood-preview.post-stay main>#post-stay-message{margin:0 auto;padding:clamp(20px,4vh,36px) clamp(24px,5vw,48px) 20px}
+
+/* Same slogan font and size; allow the two operational reminders to wrap. */
+html.wood-preview .hero>#subtitle.stay-day-reminder{white-space:normal;text-wrap:balance}
