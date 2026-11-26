@@ -205,9 +205,9 @@ const WOOD_HOLIDAY_SLOGAN={"it":"guida alla tua vacanza su misura","en":"Your ta
 const WOOD_DAY_REMINDERS={
  "it": [
   "Potrai entrare in camera a partire dalle 15:00 di oggi.",
-  "Oggi è il giorno della partenza: dovrai lasciare la camera entro le 10:00 di questa mattina.",
+  "Oggi è il giorno della partenza: ti preghiamo di lasciare la camera entro le 10:00 di questa mattina.",
   "Potrai entrare nelle camere a partire dalle 15:00 di oggi.",
-  "Oggi è il giorno della partenza: dovrai lasciare le camere entro le 10:00 di questa mattina.",
+  "Oggi è il giorno della partenza: ti preghiamo di lasciare le camere entro le 10:00 di questa mattina.",
   "Arrivederci, {name}!"
  ],
  "en": [
@@ -296,7 +296,7 @@ function woodDayReminder(g,lang,now=new Date()){
  const offset=g.rooms?.length>1?2:0;
  let text=phase==='departure'?copy[offset+1]:today===g.arrival?copy[offset]:'';
  // Occupancy determines the Italian verb; room count only determines camera/camere.
- if(lang==='it'&&!woodKnownSolo(g))text=text.replace('Potrai','Potrete').replace('dovrai','dovrete');
+ if(lang==='it'&&!woodKnownSolo(g))text=text.replace('Potrai','Potrete').replace('ti preghiamo','vi preghiamo');
  return text;
 }
 function renderWoodSubtitle(subtitle,lang){
