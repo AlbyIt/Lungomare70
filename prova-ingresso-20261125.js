@@ -299,8 +299,8 @@ function decorateHouseRules(){
    if(!summary || !photo || summary.querySelector('.visit-thumbnail') || row.dataset.thumbnailFailed)continue;
    const thumbnail=document.createElement('img');thumbnail.className='visit-thumbnail'+(isFood?' restaurant-thumbnail':'');
    const isGuelfi=isFood&&summary.querySelector('.place-name')?.textContent.trim()==='Taverna dei Guelfi';
-   thumbnail.src=isGuelfi?"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20d%3D%22M8%2025C7%2011%2023%207%2037%2011c11%203%2021%2012%2020%2023-1%2012-12%2019-27%2018C16%2051%208%2042%208%2025Z%22%20fill%3D%22%2382452d%22%20stroke%3D%22%23583120%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M12%2025c-1-10%2012-13%2024-10%2010%203%2018%2010%2017%2018-1%209-11%2015-23%2014-12-1-17-9-18-22Z%22%20fill%3D%22%23b66b3f%22%2F%3E%3Cpath%20d%3D%22m19%2017%206%2023m6-24%206%2026m5-20%206%2015%22%20fill%3D%22none%22%20stroke%3D%22%23573522%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M15%2041c11%208%2026%209%2038-6l-1%2011c-10%2012-27%2012-37%204Z%22%20fill%3D%22%23f1c0a0%22%20stroke%3D%22%2382452d%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M19%2044c10%206%2021%205%2030-3l-1%204c-8%208-19%209-29%203Z%22%20fill%3D%22%23c64f61%22%2F%3E%3C%2Fsvg%3E":photo.src;thumbnail.alt='';thumbnail.setAttribute('aria-hidden','true');
-   if(isGuelfi)summary.querySelector('.place-name > svg')?.remove();
+   thumbnail.src=isGuelfi?'https://tavernadeiguelfi.com/wp-content/uploads/2020/01/IMG_1981.jpg':photo.src;thumbnail.alt='';thumbnail.setAttribute('aria-hidden','true');
+   if(isGuelfi){summary.querySelector('.place-name > svg')?.remove();thumbnail.title='Foto: Taverna dei Guelfi · sito ufficiale';}
    thumbnail.width=56;thumbnail.height=46;thumbnail.loading='lazy';thumbnail.decoding='async';thumbnail.referrerPolicy='no-referrer';
    thumbnail.addEventListener('error',()=>{row.dataset.thumbnailFailed='true';thumbnail.remove();row.classList.remove('visit-with-thumbnail');},{once:true});
    row.classList.add('visit-with-thumbnail');
@@ -465,6 +465,14 @@ function decorateHouseRules(){
    sourceUrl:'https://www.tripadvisor.it/Restaurant_Review-g194914-d8547232-Reviews-Sloppy_Joe-Senigallia_Province_of_Ancona_Marche.html'
   });
  }
+
+
+ // Official venue photograph: brighter replacement for La Bilancia, including its credit.
+ const bilanciaIndex=AREA_PLACES.food.findIndex(place=>place.name==='La Bilancia');
+ if(bilanciaIndex>=0)Object.assign(PLACE_PREVIEW.food[bilanciaIndex],{
+  photo:'https://d3e7ilti5q92ri.cloudfront.net/16_a62f937b90.jpg?width=1200',
+  credit:'Ristorante La Bilancia · sito ufficiale',sourceUrl:'https://www.ristorantelabilancia.com/'
+ });
 
  render();
 })();
