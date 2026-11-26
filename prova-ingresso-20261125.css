@@ -41,3 +41,31 @@ html.wood-preview #stay-events .stay-event-name{grid-column:2;grid-row:1;min-wid
 html.wood-preview #stay-events .stay-event-summary::after{grid-column:3;grid-row:1;align-self:center}
 html.wood-preview #stay-events .stay-event-date{grid-column:1/-1;grid-row:2}
 html.wood-preview #stay-events .stay-event-venue{grid-column:1/-1;grid-row:3}
+
+/* Approved 26 November: subtitle in the existing signature's handwriting. */
+html.wood-preview .hero-text>#subtitle{
+ font-family:'Caveat','Segoe Print',cursive;font-style:normal;font-weight:400;
+ font-size:clamp(1.1rem,4.1vw,1.75rem);line-height:1.12;letter-spacing:0;
+ max-width:100%;margin:.5rem 0 0;overflow-wrap:normal;
+}
+/* The wooden section heading replaces the brand in the existing sticky bar. */
+html.wood-preview .coastal-signature .signature-intro{white-space:normal;text-wrap:balance}
+html.wood-preview #detail{overflow-y:auto;overscroll-behavior:contain}
+html.wood-preview #detail>.dialog-bar{
+ position:sticky;top:0;z-index:5;gap:12px;padding:10px 14px;
+ background:#f9f2e8;align-items:center;
+}
+html.wood-preview #detail>.dialog-bar>#detail-title,
+html.wood-preview #detail.breakfast-section>.dialog-bar>#detail-title{
+ flex:1;min-width:0;margin:0;font-size:1.4rem;padding:12px 16px;
+}
+html.wood-preview #detail>.dialog-bar>#close{flex:0 0 44px;margin-left:0}
+@media(max-width:600px){
+ html.wood-preview #detail>.dialog-bar{gap:8px;padding:8px 10px}
+ html.wood-preview #detail>.dialog-bar>#detail-title,
+ html.wood-preview #detail.breakfast-section>.dialog-bar>#detail-title{
+  font-size:1.12rem;padding:10px 12px;gap:8px;
+ }
+ html.wood-preview #detail>.dialog-bar .section-title-icon{flex-basis:24px}
+ html.wood-preview #detail>.dialog-bar .section-title-icon svg{width:24px;height:24px}
+}

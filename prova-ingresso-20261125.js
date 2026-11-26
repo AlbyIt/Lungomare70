@@ -1,8 +1,229 @@
 'use strict';
-// This copy changes only this variant's farewell; the original trial remains available.
+// Approved wood variant: greetings and signature depend on the stay, in Europe/Rome.
+const WOOD_STAY_COPY = {
+ "it": {
+  "subtitle": "La guida su misura per la tua vacanza",
+  "before": [
+   "Vi aspettiamo",
+   "Ti aspettiamo"
+  ],
+  "during": [
+   "Siamo felici di accogliervi",
+   "Siamo felici di accoglierti"
+  ],
+  "departure": [
+   "Vi auguriamo un buon rientro",
+   "Ti auguriamo un buon rientro"
+  ]
+ },
+ "en": {
+  "subtitle": "A tailor-made guide for your holiday",
+  "before": [
+   "We look forward to welcoming you",
+   "We look forward to welcoming you"
+  ],
+  "during": [
+   "We’re happy to welcome you",
+   "We’re happy to welcome you"
+  ],
+  "departure": [
+   "We wish you a pleasant journey home",
+   "We wish you a pleasant journey home"
+  ]
+ },
+ "de": {
+  "subtitle": "Der maßgeschneiderte Begleiter für deinen Urlaub",
+  "before": [
+   "Wir freuen uns auf euch",
+   "Wir freuen uns auf dich"
+  ],
+  "during": [
+   "Wir freuen uns, euch begrüßen zu dürfen",
+   "Wir freuen uns, dich begrüßen zu dürfen"
+  ],
+  "departure": [
+   "Wir wünschen euch eine gute Heimreise",
+   "Wir wünschen dir eine gute Heimreise"
+  ]
+ },
+ "fr": {
+  "subtitle": "Le guide sur mesure pour tes vacances",
+  "before": [
+   "Nous vous attendons",
+   "Nous t’attendons"
+  ],
+  "during": [
+   "Nous sommes heureux de vous accueillir",
+   "Nous sommes heureux de t’accueillir"
+  ],
+  "departure": [
+   "Nous vous souhaitons un bon retour",
+   "Nous te souhaitons un bon retour"
+  ]
+ },
+ "es": {
+  "subtitle": "La guía a medida para tus vacaciones",
+  "before": [
+   "Os esperamos",
+   "Te esperamos"
+  ],
+  "during": [
+   "Nos alegra recibiros",
+   "Nos alegra recibirte"
+  ],
+  "departure": [
+   "Os deseamos un buen viaje de vuelta",
+   "Te deseamos un buen viaje de vuelta"
+  ]
+ },
+ "nl": {
+  "subtitle": "De gids op maat voor jouw vakantie",
+  "before": [
+   "We kijken uit naar jullie komst",
+   "We kijken uit naar je komst"
+  ],
+  "during": [
+   "We zijn blij jullie te mogen verwelkomen",
+   "We zijn blij je te mogen verwelkomen"
+  ],
+  "departure": [
+   "We wensen jullie een goede reis naar huis",
+   "We wensen je een goede reis naar huis"
+  ]
+ },
+ "pl": {
+  "subtitle": "Przewodnik dopasowany do Twoich wakacji",
+  "before": [
+   "Czekamy na Was",
+   "Czekamy na Ciebie"
+  ],
+  "during": [
+   "Cieszymy się, że możemy Was gościć",
+   "Cieszymy się, że możemy Cię gościć"
+  ],
+  "departure": [
+   "Życzymy Wam szczęśliwego powrotu",
+   "Życzymy Ci szczęśliwego powrotu"
+  ]
+ },
+ "ro": {
+  "subtitle": "Ghidul creat special pentru vacanța ta",
+  "before": [
+   "Vă așteptăm",
+   "Te așteptăm"
+  ],
+  "during": [
+   "Ne bucurăm să vă primim",
+   "Ne bucurăm să te primim"
+  ],
+  "departure": [
+   "Vă dorim drum bun spre casă",
+   "Îți dorim drum bun spre casă"
+  ]
+ },
+ "cs": {
+  "subtitle": "Průvodce na míru pro tvou dovolenou",
+  "before": [
+   "Těšíme se na vás",
+   "Těšíme se na tebe"
+  ],
+  "during": [
+   "Jsme rádi, že vás můžeme přivítat",
+   "Jsme rádi, že tě můžeme přivítat"
+  ],
+  "departure": [
+   "Přejeme vám šťastnou cestu domů",
+   "Přejeme ti šťastnou cestu domů"
+  ]
+ },
+ "hu": {
+  "subtitle": "Személyre szabott útmutató a nyaralásodhoz",
+  "before": [
+   "Várunk benneteket",
+   "Várunk téged"
+  ],
+  "during": [
+   "Örülünk, hogy vendégül láthatunk benneteket",
+   "Örülünk, hogy vendégül láthatunk"
+  ],
+  "departure": [
+   "Jó hazautat kívánunk nektek",
+   "Jó hazautat kívánunk neked"
+  ]
+ },
+ "bg": {
+  "subtitle": "Пътеводител, създаден за твоята почивка",
+  "before": [
+   "Очакваме ви",
+   "Очакваме те"
+  ],
+  "during": [
+   "Радваме се да ви посрещнем",
+   "Радваме се да те посрещнем"
+  ],
+  "departure": [
+   "Желаем ви приятно пътуване към дома",
+   "Желаем ти приятно пътуване към дома"
+  ]
+ },
+ "ja": {
+  "subtitle": "あなたの休暇に合わせた専用ガイド",
+  "before": [
+   "皆さまのお越しをお待ちしています",
+   "お越しをお待ちしています"
+  ],
+  "during": [
+   "皆さまをお迎えできてうれしいです",
+   "お迎えできてうれしいです"
+  ],
+  "departure": [
+   "皆さま、どうぞお気をつけてお帰りください",
+   "どうぞお気をつけてお帰りください"
+  ]
+ }
+};
+function woodStayDate(value){
+ return typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&!Number.isNaN(Date.parse(value+'T12:00:00Z'))&&new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
+}
+function woodStayPhase(g,now=new Date()){
+ const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
+ if(!woodStayDate(g?.arrival)||!woodStayDate(g?.departure)||g.arrival>=g.departure)return null;
+ return today<g.arrival?'before':today>=g.departure?'departure':'during';
+}
+function woodKnownSolo(g,hash=location.hash){
+ // Default to plural. A name, gender or room capacity does not establish occupancy.
+ if(g?.gender==='p'||g?.rooms?.length>1)return false;
+ const p=new URLSearchParams(hash.replace(/^#/,''));
+ const total=g?.people??g?.guestCount??p.get('persone')??p.get('ospiti');
+ if(total!==null&&total!==undefined&&/^[1-9]\d*$/.test(String(total)))return Number(total)===1;
+ const adults=g?.adults??p.get('adulti'),children=g?.children??p.get('bambini');
+ return String(adults)==='1'&&String(children)==='0';
+}
+function renderWoodStayCopy(lang){
+ if(!guest||guest.invalid)return;
+ const copy=WOOD_STAY_COPY[lang]||WOOD_STAY_COPY.it;
+ document.getElementById('personal-awaiting')?.remove();
+ const subtitle=document.getElementById('subtitle');
+ if(subtitle.textContent!==copy.subtitle)subtitle.textContent=copy.subtitle;
+ const phase=woodStayPhase(guest);
+ if(!phase)return;
+ const text=copy[phase][woodKnownSolo(guest)?1:0];
+ const farewell=document.getElementById('footer');
+ // Preserve the approved handwriting, two lines, names, address and background.
+ const intro=farewell.querySelector('.signature-intro');
+ if(intro){if(intro.textContent!==text)intro.textContent=text;}
+ else farewell.textContent=text+', Cinzia e Alberto';
+}
 (() => {
- const farewells={it:'Felici di averti qui',en:'So glad you’re here',de:'Schön, dass du da bist',fr:'Heureux de t’accueillir',es:'Qué alegría tenerte aquí',nl:'Fijn dat je er bent',pl:'Miło Cię gościć',ro:'Ne bucurăm că ești aici',cs:'Jsme rádi, že jsi tady',hu:'Örülünk, hogy itt vagy',bg:'Радваме се, че си тук',ja:'お迎えできてうれしいです'};
- for(const [lang,text] of Object.entries(farewells))if(GUIDE[lang])GUIDE[lang].footer=text+', Cinzia e Alberto';
+ const previousGreetingState=personalGreetingState;
+ personalGreetingState=function(...args){return {...previousGreetingState(...args),awaiting:''};};
+ const previousHeader=renderPersonalHeader;
+ renderPersonalHeader=function(lang){previousHeader(lang);renderWoodStayCopy(lang);};
+ const refresh=()=>renderWoodStayCopy(document.documentElement.lang||'it');
+ setInterval(refresh,30000);
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')refresh();});
+ window.addEventListener('focus',refresh);
+ window.addEventListener('pageshow',refresh);
  // Reuse each destination's existing, credited photograph in its collapsed row.
  function addVisitThumbnails(){
   if(activeSection!==9)return;
