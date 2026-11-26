@@ -144,6 +144,8 @@ html.post-stay .post-stay-contacts{display:flex;justify-content:center;flex-wrap
 html.post-stay .post-stay-contacts a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:120px;padding:.65rem 1.2rem;border-radius:12px;border:1px solid #c9d9dc;color:#174e67;background:#edf3f1;text-decoration:none;font-size:1rem;font-weight:600}
 html.post-stay .post-stay-contacts a:focus-visible{outline:3px solid #bc8543;outline-offset:3px}
 
-/* Farewell directly on the original background, with fish and shells visible below. */
-html.wood-preview.post-stay body{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;background-position:center bottom;background-repeat:no-repeat;background-size:100% auto}
-html.wood-preview.post-stay main{flex:1;width:100%;padding-bottom:clamp(160px,28vw,300px)}
+/* Continuous full-page farewell background and compact spacing. */
+html.wood-preview.post-stay body{min-height:100vh;min-height:100svh;display:block;background-position:center top;background-repeat:no-repeat;background-size:100% 100%}
+html.wood-preview.post-stay .topbar{margin:0 auto;background:transparent}
+html.wood-preview.post-stay main{width:100%;margin:0 auto;padding:0 0 clamp(120px,25vw,220px)}
+html.wood-preview.post-stay main>#post-stay-message{margin:0 auto;padding:clamp(20px,4vh,36px) clamp(24px,5vw,48px) 20px}
