@@ -38,3 +38,7 @@ La versione corrente concordata è `prova-ingresso-20261125.html`, con lo stile 
 ## Miniature dei ristoranti — 26 novembre 2026
 
 In Dove mangiare mostrare una piccola foto quadrata prima del nome di ogni locale nell'elenco chiuso, con lo stesso schema dei luoghi da visitare. Riutilizzare la fotografia pertinente già presente nella scheda e i suoi crediti: preferire ambiente, esterno, insegna o terrazza riconoscibile; un piatto solo quando la foto dell'ambiente non è adatta. La miniatura può essere ritagliata in visualizzazione con object-fit; conservare la fotografia completa e i collegamenti nella scheda aperta. Mantenere distanza, conchiglia delle convenzioni, apertura della scheda e lingue. Non modificare altre sezioni.
+
+## Servizi utili — introduzione su due righe
+
+Mostrare «Riferimenti utili a Marzocca e Senigallia.» e a capo «Apri la mappa per il percorso.», mantenendo il testo e inserendo il salto riga tra le due frasi. Applicare la stessa separazione alle traduzioni quando possibile. I colori delle icone distinguono le categorie di servizi; il verde della farmacia non indica una convenzione. Le convenzioni sono segnalate dalla conchiglia.

@@ -256,6 +256,11 @@ function renderWoodStayCopy(lang){
  const previousOpenSection=openSection;
  openSection=function(index){
   previousOpenSection(index);
+  if(index===13){
+   const text=document.getElementById('detail-text');
+   text.textContent=text.textContent.replace(/([.。])\s*/, '$1\n');
+   text.style.whiteSpace='pre-line';
+  }
   if(index!==3||!guest||guest.invalid)return;
   const title=document.getElementById('detail-title');
   const signs=title.querySelector('.room-title-signs');
@@ -428,5 +433,25 @@ function renderWoodStayCopy(lang){
  }
  const fanoPivetti=STAY_EVENTS.find(event=>event.id==='pivetti-fano-2027');
  if(fanoPivetti){fanoPivetti.time='21:00 (7–9/01) · 17:00 (10/01)';fanoPivetti.source='https://www.amatmarche.net/linferiorita-mentale-della-donna/';}
+
+ // Sloppy Joe confirmed by Alberto; address/photo: venue-managed Tripadvisor listing.
+ if(!AREA_PLACES.food.some(place=>place.name==='Sloppy Joe')){
+  AREA_PLACES.food.push({
+   name:'Sloppy Joe',address:'Lungomare Italia 53, Marzocca di Senigallia',
+   query:'Sloppy Joe Lungomare Italia 53 Marzocca Senigallia',
+   source:'https://www.tripadvisor.it/Restaurant_Review-g194914-d8547232-Reviews-Sloppy_Joe-Senigallia_Province_of_Ancona_Marche.html',
+   description:{"it":"Pizzeria sul lungomare di Marzocca, con posti a sedere e servizio da asporto. Contatta il locale per aperture e prenotazioni.","en":"Pizzeria on the Marzocca seafront, with seating and takeaway. Contact the venue for opening times and bookings.","de":"Pizzeria an der Strandpromenade von Marzocca, mit Sitzplätzen und Speisen zum Mitnehmen. Öffnungszeiten und Reservierungen direkt erfragen.","fr":"Pizzeria sur le front de mer de Marzocca, avec places assises et vente à emporter. Contacte le restaurant pour les horaires et les réservations.","es":"Pizzería en el paseo marítimo de Marzocca, con mesas y comida para llevar. Contacta con el local para horarios y reservas.","nl":"Pizzeria aan de boulevard van Marzocca, met zitplaatsen en afhaalservice. Neem contact op voor openingstijden en reserveringen.","pl":"Pizzeria przy promenadzie w Marzocca, z miejscami siedzącymi i pizzą na wynos. O godziny otwarcia i rezerwacje zapytaj bezpośrednio.","ro":"Pizzerie pe faleza din Marzocca, cu locuri la masă și servire la pachet. Contactează localul pentru program și rezervări.","cs":"Pizzerie na pobřežní promenádě v Marzocce, s posezením a jídlem s sebou. Otevírací dobu a rezervace ověř přímo v podniku.","hu":"Pizzéria Marzocca tengerparti sétányán, ülőhelyekkel és elviteli lehetőséggel. Nyitvatartásért és foglalásért keresd a helyet.","bg":"Пицария на крайбрежната алея в Марцока, с места за сядане и храна за вкъщи. Свържи се със заведението за работно време и резервации.","ja":"マルツォッカの海沿いにあるピッツェリア。店内でのお食事とテイクアウトに対応しています。営業時間と予約はお店にご確認ください。"},
+   extraLinks:[
+    {label:{"it":"Telefono · 071 698451","en":"Phone · 071 698451","de":"Telefon · 071 698451","fr":"Téléphone · 071 698451","es":"Teléfono · 071 698451","nl":"Telefoon · 071 698451","pl":"Telefon · 071 698451","ro":"Telefon · 071 698451","cs":"Telefon · 071 698451","hu":"Telefon · 071 698451","bg":"Телефон · 071 698451","ja":"電話 · 071 698451"},url:'tel:+39071698451'},
+    {label:{"it":"Cellulare · 338 8645959","en":"Mobile · 338 8645959","de":"Mobil · 338 8645959","fr":"Portable · 338 8645959","es":"Móvil · 338 8645959","nl":"Mobiel · 338 8645959","pl":"Telefon komórkowy · 338 8645959","ro":"Mobil · 338 8645959","cs":"Mobil · 338 8645959","hu":"Mobil · 338 8645959","bg":"Мобилен · 338 8645959","ja":"携帯電話 · 338 8645959"},url:'tel:+393388645959'}
+   ]
+  });
+  PLACE_PREVIEW.food.push({
+   meters:275.7,coords:[13.286694,43.67822],mode:'walking',
+   photo:'assets/restaurants/sloppy-joe.jpg',credit:'Tripadvisor · Sloppy Joe',
+   sourceUrl:'https://www.tripadvisor.it/Restaurant_Review-g194914-d8547232-Reviews-Sloppy_Joe-Senigallia_Province_of_Ancona_Marche.html'
+  });
+ }
+
  render();
 })();
