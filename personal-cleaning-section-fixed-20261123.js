@@ -15,6 +15,15 @@ const ROOM_KEYS = ['stella','duna','onda','perla'];
 const ROOM_NAMES = ['Stella','Duna','Onda','Perla'];
 // Add only the owner's actual access photographs here when supplied.
 const ACCESS_PHOTOS = {gate:[],safe:[]};
+function guestKnownSolo(g,hash=location.hash){
+ const params=new URLSearchParams(hash.replace(/^#/,''));
+ const count=value=>value!==null&&value!==undefined&&/^\d+$/.test(String(value))?Number(value):null;
+ const total=count(g?.people??g?.guestCount??params.get('persone')??params.get('ospiti'));
+ if(total!==null&&total>0)return total===1;
+ const adults=count(g?.adults??params.get('adulti')),children=count(g?.children??params.get('bambini'));
+ if(adults!==null&&adults>0&&children!==null)return adults+children===1;
+ return false;
+}
 function readPersonalLink(hash) {
  const p = new URLSearchParams(hash.replace(/^#/, ''));
  if (!p.has('nome') && !p.has('camera')) return null;
@@ -58,7 +67,7 @@ function personalGreetingState(g,lang,welcome,now=new Date()){
  if(!valid||today===arrival)return {greeting:welcome,awaiting:''};
  const t=PERSONAL_GREETING_TEXT[lang]||PERSONAL_GREETING_TEXT.it;
  const greeting=hour>=18||hour<6?t[1]:hour<12?t[0]:(PERSONAL_DAY_GREETING[lang]||PERSONAL_DAY_GREETING.it);
- const plural=g.gender==='p'||g.rooms?.length>1;
+ const plural=!guestKnownSolo(g);
  return {greeting,awaiting:today<arrival?t[plural?3:2]:''};
 }
 
@@ -72,7 +81,7 @@ function renderPersonalHeader(lang) {
   document.getElementById('cards').replaceChildren();
   return;
  }
- let welcome=guest.gender==='p'?({ja:JAPANESE.pluralWelcome,hu:HUNGARIAN.pluralWelcome,bg:BULGARIAN.pluralWelcome,cs:CZECH.pluralWelcome,ro:ROMANIAN.pluralWelcome,it:'Benvenuti, {name}!',es:'¡Bienvenidos, {name}!',pl:'Witajcie, {name}!'}[lang]||t.welcome):guest.gender==='f'&&lang==='bg'?'Добре дошла, {name}!':guest.gender==='f'&&lang==='it'?'Benvenuta, {name}!':guest.gender==='f'&&lang==='es'?'¡Bienvenida, {name}!':t.welcome;
+ let welcome=!guestKnownSolo(guest)?({ja:JAPANESE.pluralWelcome,hu:HUNGARIAN.pluralWelcome,bg:BULGARIAN.pluralWelcome,cs:CZECH.pluralWelcome,ro:ROMANIAN.pluralWelcome,it:'Benvenuti, {name}!',es:'¡Bienvenidos, {name}!',pl:'Witajcie, {name}!'}[lang]||t.welcome):guest.gender==='f'&&lang==='bg'?'Добре дошла, {name}!':guest.gender==='f'&&lang==='it'?'Benvenuta, {name}!':guest.gender==='f'&&lang==='es'?'¡Bienvenida, {name}!':t.welcome;
  const greetingState=personalGreetingState(guest,lang,welcome);
  welcome=greetingState.greeting;
  document.getElementById('welcome').textContent=welcome.replace('{name}',guest.name);
@@ -252,7 +261,7 @@ function renderPersonalSection(index,lang) {
    const end=guest.departure?new Date(guest.departure+'T12:00:00'):null;
    const nights=start&&end?Math.round((end-start)/86400000):null;
    const shortStay={ja:JAPANESE.shortStay,hu:HUNGARIAN.shortStay,bg:BULGARIAN.shortStay,cs:CZECH.shortStay,ro:ROMANIAN.shortStay,
-    it:'Per un soggiorno di quattro notti non è prevista una pulizia intermedia. Se avete bisogno del cambio degli asciugamani, non esitate a chiederlo.',
+    it:'Per un soggiorno di quattro notti non è prevista una pulizia intermedia. Su richiesta, vi forniremo asciugamani puliti in qualsiasi momento.',
     de:'Bei einem Aufenthalt von vier Nächten ist keine Zwischenreinigung vorgesehen. Wenn ihr frische Handtücher braucht, fragt uns bitte jederzeit danach.',
     en:'For a four-night stay, no intermediate cleaning is scheduled. If you need fresh towels, please do not hesitate to ask.',
     fr:'Pour un séjour de quatre nuits, aucun ménage intermédiaire n’est prévu. Si vous avez besoin de serviettes propres, n’hésitez pas à nous en demander.',

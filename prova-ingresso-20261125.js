@@ -190,15 +190,7 @@ function woodStayPhase(g,now=new Date()){
  if(!woodStayDate(g?.arrival)||!woodStayDate(g?.departure)||g.arrival>=g.departure)return null;
  return today<g.arrival?'before':today>g.departure?'after':today===g.departure?'departure':'during';
 }
-function woodKnownSolo(g,hash=location.hash){
- // Default to plural. A name, gender or room capacity does not establish occupancy.
- if(g?.gender==='p'||g?.rooms?.length>1)return false;
- const p=new URLSearchParams(hash.replace(/^#/,''));
- const total=g?.people??g?.guestCount??p.get('persone')??p.get('ospiti');
- if(total!==null&&total!==undefined&&/^[1-9]\d*$/.test(String(total)))return Number(total)===1;
- const adults=g?.adults??p.get('adulti'),children=g?.children??p.get('bambini');
- return String(adults)==='1'&&String(children)==='0';
-}
+function woodKnownSolo(g,hash=location.hash){return guestKnownSolo(g,hash);}
 
 const WOOD_HOLIDAY_SLOGAN={"it":"guida alla tua vacanza su misura","en":"Your tailor-made holiday","de":"Dein Urlaub nach Maß","fr":"Tes vacances sur mesure","es":"Tus vacaciones a medida","nl":"Jouw vakantie op maat","pl":"Twoje wakacje na miarę","ro":"Vacanța ta pe măsura ta","cs":"Tvá dovolená na míru","hu":"A rád szabott nyaralás","bg":"Твоята почивка по мярка","ja":"あなたに合わせた休暇"};
 // Arrival/departure reminders replace only the holiday slogan, preserving its typography.
@@ -638,5 +630,135 @@ function decorateHouseRules(){
   credit:'Ristorante La Bilancia · sito ufficiale',sourceUrl:'https://www.ristorantelabilancia.com/'
  });
 
+ render();
+})();
+
+'use strict';
+// Reviewed Italian copy pairs. Guest count and room count are independent.
+const ITALIAN_OCCUPANCY_COPY = [
+ ['Di fronte al B&B puoi godere di un lungo tratto di spiaggia libera.','Di fronte al B&B potete godere di un lungo tratto di spiaggia libera.'],
+ ['La mia camera','La nostra camera'],
+ ['Le dotazioni della tua camera','Le dotazioni della vostra camera'],
+ ['LA TUA GUIDA','LA VOSTRA GUIDA'],
+ ['La tua guida','La vostra guida'],
+ ['la tua vacanza','la vostra vacanza'],
+ ['Il tuo soggiorno','Il vostro soggiorno'],
+ ['il tuo soggiorno','il vostro soggiorno'],
+ ['del tuo soggiorno','del vostro soggiorno'],
+ ['i tuoi gusti','i vostri gusti'],
+ ['ai tuoi programmi','ai vostri programmi'],
+ ['a casa tua','a casa vostra'],
+ ['Ti aspettiamo','Vi aspettiamo'],
+ ['Ti auguriamo','Vi auguriamo'],
+ ['ti preghiamo','vi preghiamo'],
+ ['Siamo felici di accoglierti','Siamo felici di accogliervi'],
+ ['Saremo felici di accoglierti di nuovo, quando vorrai!','Saremo felici di accogliervi di nuovo, quando vorrete!'],
+ ['Su richiesta, ti forniremo asciugamani puliti in qualsiasi momento.','Su richiesta, vi forniremo asciugamani puliti in qualsiasi momento.'],
+ ['Se hai bisogno','Se avete bisogno'],
+ ['Se hai un saldo','Se avete un saldo'],
+ ['Se non riconosci il comando o vuoi una dimostrazione','Se non riconoscete il comando o volete una dimostrazione'],
+ ['non esitare a chiederlo','non esitate a chiederlo'],
+ ['Ci auguriamo che tu abbia trascorso un piacevole soggiorno!','Ci auguriamo che abbiate trascorso un piacevole soggiorno!'],
+ ['speriamo di rivederti presto!','speriamo di rivedervi presto!'],
+ ['Saremo felici di aiutarti.','Saremo felici di aiutarvi.'],
+ ['Per organizzarti','Per organizzarvi'],
+ ['ti metteranno in contatto','vi metteranno in contatto'],
+ ['prima di recarti in sede','prima di recarvi in sede'],
+ ['restando seduto sul WC','restando seduti sul WC'],
+ ['Il tuo WC','Il vostro WC'],
+ ['a cui collegarti','a cui collegarvi'],
+ ['Ci trovi anche','Ci trovate anche'],
+ ['prenota la visita','prenotate la visita'],
+ ['Ti chiediamo','Vi chiediamo'],
+ ['non entrare bagnato','non entrate bagnati'],
+ ['Goditi il giardino','Godetevi il giardino'],
+ ['Mantieni gli spazi','Mantenete gli spazi'],
+ ['rispetta il riposo','rispettate il riposo'],
+ ['Puoi partire','Potete partire'],
+ ['Usa la mappa per orientarti','Usate la mappa per orientarvi'],
+ ['Se hai dubbi','Se avete dubbi'],
+ ['Mantieni un tono','Mantenete un tono'],
+ ['Tieni basso','Tenete basso'],
+ ['Asciugati prima','Asciugatevi prima'],
+ ['Dovrai lasciare','Dovrete lasciare'],
+ ['Potrai entrare','Potrete entrare'],
+ ['Puoi parcheggiare','Potete parcheggiare'],
+ ['puoi usare','potete usare'],
+ ['Scegli dal buffet','Scegliete dal buffet'],
+ ['Digita le 6 cifre','Digitate le 6 cifre'],
+ ['Aprila con il codice','Apritela con il codice'],
+ ['ritira il portachiavi','ritirate il portachiavi'],
+ ['ritira i portachiavi','ritirate i portachiavi'],
+ ['Apri gradualmente','Aprite gradualmente'],
+ ['regola temperatura','regolate temperatura'],
+ ['chiudi completamente','chiudete completamente'],
+ ['Usa il getto','Usate il getto'],
+ ['segui via','seguite via'],
+ ['Gira a sinistra','Girate a sinistra'],
+ ['gira a destra','girate a destra'],
+ ['attraversa il sottopassaggio','attraversate il sottopassaggio'],
+ ['lascia le chiavi','lasciate le chiavi'],
+ ['scrivi a info@lungomare70.it','scrivete a info@lungomare70.it'],
+ ['Chiedi a','Chiedete a'],
+ ['chiedi a','chiedete a'],
+ ['Chiedici','Chiedeteci'],
+ ['chiedici','chiedeteci'],
+ ['Contatta','Contattate'],
+ ['contatta','contattate'],
+ ['Controlla','Controllate'],
+ ['controlla','controllate'],
+ ['Consulta','Consultate'],
+ ['consulta','consultate'],
+ ['Verifica','Verificate'],
+ ['verifica','verificate'],
+ ['Passeggia nel borgo','Passeggiate nel borgo'],
+ ['Visita l’Abbazia','Visitate l’Abbazia'],
+ ['Apri la','Aprite la'],
+ ['Apri il','Aprite il'],
+ ['Apri un','Aprite un'],
+ ['Apri le','Aprite le'],
+ ['Chiama','Chiamate'],
+ ['chiama','chiamate'],
+ ['Chiamaci','Chiamateci'],
+ ['Scrivici','Scriveteci']
+];
+const italianCopyEscape = value => value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const italianCopyLookup = new Map();
+for(const pair of ITALIAN_OCCUPANCY_COPY)for(const form of pair)italianCopyLookup.set(form,pair);
+const italianCopyPattern = new RegExp('(?<![\\p{L}])(?:'+[...italianCopyLookup.keys()].sort((a,b)=>b.length-a.length).map(italianCopyEscape).join('|')+')(?![\\p{L}])','gu');
+function italianOccupancyText(text,solo){
+ return text.replace(italianCopyPattern,match=>italianCopyLookup.get(match)[solo?0:1]);
+}
+function applyItalianOccupancy(root){
+ if(!root||!guest||guest.invalid||(document.documentElement.lang||'it')!=='it')return;
+ const solo=guestKnownSolo(guest);
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+ const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ for(const node of nodes){
+  // Names, addresses, credits and photographs are source data, not guest instructions.
+  if(node.parentElement?.closest('.guest-name,.place-name,.place-address,figcaption,script,style'))continue;
+  if(node.textContent.trim()===guest.name)continue;
+  const next=italianOccupancyText(node.textContent,solo);
+  if(next!==node.textContent)node.textContent=next;
+ }
+ const amenities=root.querySelector?.('#room-amenities h3');
+ if(amenities&&guest.rooms.length>1)amenities.textContent=solo?'Le dotazioni delle tue camere':'Le dotazioni delle vostre camere';
+}
+// Apply after each complete render, preserving emphasis, buttons and photographs.
+// Direct refreshes are used by the date/cleaning timers as well as by openSection.
+(() => {
+ const previousOpen=openSection;
+ openSection=function(index){previousOpen(index);applyItalianOccupancy(document.getElementById('detail'));};
+ const previousHeader=renderPersonalHeader;
+ renderPersonalHeader=function(lang){
+  previousHeader(lang);
+  for(const selector of ['.hero','#cards','#footer','#post-stay-message','.topbar'])applyItalianOccupancy(document.querySelector(selector));
+ };
+ const previousPersonal=renderPersonalSection;
+ renderPersonalSection=function(index,lang){previousPersonal(index,lang);applyItalianOccupancy(document.getElementById('detail'));};
+ const previousDeparture=renderDepartureSection;
+ renderDepartureSection=function(lang){previousDeparture(lang);applyItalianOccupancy(document.getElementById('detail'));};
+ const previousEvents=renderStayEventsSection;
+ renderStayEventsSection=function(index,lang){previousEvents(index,lang);applyItalianOccupancy(document.getElementById('detail'));};
  render();
 })();
