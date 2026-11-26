@@ -158,3 +158,9 @@ html.wood-preview.post-stay .post-stay-contacts a{gap:10px;min-width:145px;backg
 html.wood-preview.post-stay .post-contact-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 25px}
 html.wood-preview.post-stay .post-contact-icon svg{display:block;width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 html.wood-preview.post-stay .post-stay-contacts a:hover{filter:brightness(1.025)}
+
+/* Header initial: original logo pixels, clipped without modifying the source image. */
+html.wood-preview .topbar .brand-logo-initial{
+ display:inline-block;width:1.38em;height:1.38em;vertical-align:-.32em;
+ margin-left:-.1em;margin-right:-.24em;overflow:hidden;mix-blend-mode:multiply;
+}
