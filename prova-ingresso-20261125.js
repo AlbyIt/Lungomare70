@@ -294,7 +294,10 @@ function woodDayReminder(g,lang,now=new Date()){
  const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
  const copy=WOOD_DAY_REMINDERS[lang]||WOOD_DAY_REMINDERS.it;
  const offset=g.rooms?.length>1?2:0;
- return phase==='departure'?copy[offset+1]:today===g.arrival?copy[offset]:'';
+ let text=phase==='departure'?copy[offset+1]:today===g.arrival?copy[offset]:'';
+ // Occupancy determines the Italian verb; room count only determines camera/camere.
+ if(lang==='it'&&!woodKnownSolo(g))text=text.replace('Potrai','Potrete').replace('dovrai','dovrete');
+ return text;
 }
 function renderWoodSubtitle(subtitle,lang){
  const reminder=woodDayReminder(guest,lang);
