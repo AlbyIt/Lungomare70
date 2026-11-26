@@ -201,8 +201,105 @@ function woodKnownSolo(g,hash=location.hash){
 }
 
 const WOOD_HOLIDAY_SLOGAN={"it":"guida alla tua vacanza su misura","en":"Your tailor-made holiday","de":"Dein Urlaub nach Maß","fr":"Tes vacances sur mesure","es":"Tus vacaciones a medida","nl":"Jouw vakantie op maat","pl":"Twoje wakacje na miarę","ro":"Vacanța ta pe măsura ta","cs":"Tvá dovolená na míru","hu":"A rád szabott nyaralás","bg":"Твоята почивка по мярка","ja":"あなたに合わせた休暇"};
+// Arrival/departure reminders replace only the holiday slogan, preserving its typography.
+const WOOD_DAY_REMINDERS={
+ "it": [
+  "Potrai entrare in camera a partire dalle 15:00 di oggi.",
+  "Oggi è il giorno della partenza: dovrai lasciare la camera entro le 10:00 di questa mattina.",
+  "Potrai entrare nelle camere a partire dalle 15:00 di oggi.",
+  "Oggi è il giorno della partenza: dovrai lasciare le camere entro le 10:00 di questa mattina.",
+  "Arrivederci, {name}!"
+ ],
+ "en": [
+  "You can access your room from 3:00 pm today.",
+  "Today is departure day: please vacate your room by 10:00 this morning.",
+  "You can access your rooms from 3:00 pm today.",
+  "Today is departure day: please vacate your rooms by 10:00 this morning.",
+  "Goodbye, {name}!"
+ ],
+ "de": [
+  "Dein Zimmer steht dir heute ab 15:00 Uhr zur Verfügung.",
+  "Heute ist Abreisetag: Bitte verlasse dein Zimmer bis 10:00 Uhr heute Morgen.",
+  "Eure Zimmer stehen euch heute ab 15:00 Uhr zur Verfügung.",
+  "Heute ist Abreisetag: Bitte verlasst eure Zimmer bis 10:00 Uhr heute Morgen.",
+  "Auf Wiedersehen, {name}!"
+ ],
+ "fr": [
+  "Tu pourras accéder à ta chambre à partir de 15 h aujourd’hui.",
+  "Aujourd’hui, c’est le jour du départ : merci de libérer ta chambre avant 10 h ce matin.",
+  "Vous pourrez accéder à vos chambres à partir de 15 h aujourd’hui.",
+  "Aujourd’hui, c’est le jour du départ : merci de libérer vos chambres avant 10 h ce matin.",
+  "Au revoir, {name} !"
+ ],
+ "es": [
+  "Podrás entrar en tu habitación a partir de las 15:00 de hoy.",
+  "Hoy es el día de salida: deberás dejar la habitación antes de las 10:00 de esta mañana.",
+  "Podréis entrar en las habitaciones a partir de las 15:00 de hoy.",
+  "Hoy es el día de salida: deberéis dejar las habitaciones antes de las 10:00 de esta mañana.",
+  "¡Hasta pronto, {name}!"
+ ],
+ "nl": [
+  "Je kunt vandaag vanaf 15:00 uur je kamer in.",
+  "Vandaag is de vertrekdag: verlaat je kamer uiterlijk om 10:00 uur vanochtend.",
+  "Jullie kunnen vandaag vanaf 15:00 uur de kamers in.",
+  "Vandaag is de vertrekdag: verlaat de kamers uiterlijk om 10:00 uur vanochtend.",
+  "Tot ziens, {name}!"
+ ],
+ "pl": [
+  "Możesz wejść do pokoju dzisiaj od godziny 15:00.",
+  "Dziś jest dzień wyjazdu: opuść pokój do godziny 10:00 dzisiejszego ranka.",
+  "Możecie wejść do pokoi dzisiaj od godziny 15:00.",
+  "Dziś jest dzień wyjazdu: opuśćcie pokoje do godziny 10:00 dzisiejszego ranka.",
+  "Do zobaczenia, {name}!"
+ ],
+ "ro": [
+  "Vei putea intra în cameră începând de astăzi de la ora 15:00.",
+  "Astăzi este ziua plecării: va trebui să eliberezi camera până la ora 10:00 în această dimineață.",
+  "Veți putea intra în camere începând de astăzi de la ora 15:00.",
+  "Astăzi este ziua plecării: va trebui să eliberați camerele până la ora 10:00 în această dimineață.",
+  "La revedere, {name}!"
+ ],
+ "cs": [
+  "Do pokoje můžeš vstoupit dnes od 15:00.",
+  "Dnes je den odjezdu: pokoj prosím opusť do 10:00 dnes dopoledne.",
+  "Do pokojů můžete vstoupit dnes od 15:00.",
+  "Dnes je den odjezdu: pokoje prosím opusťte do 10:00 dnes dopoledne.",
+  "Na shledanou, {name}!"
+ ],
+ "hu": [
+  "A szobát ma 15:00 órától foglalhatod el.",
+  "Ma van az elutazás napja: a szobát ma délelőtt 10:00 óráig kell elhagynod.",
+  "A szobákat ma 15:00 órától foglalhatjátok el.",
+  "Ma van az elutazás napja: a szobákat ma délelőtt 10:00 óráig kell elhagynotok.",
+  "Viszontlátásra, {name}!"
+ ],
+ "bg": [
+  "Можеш да влезеш в стаята днес след 15:00 ч.",
+  "Днес е денят на заминаване: трябва да освободиш стаята до 10:00 ч. тази сутрин.",
+  "Можете да влезете в стаите днес след 15:00 ч.",
+  "Днес е денят на заминаване: трябва да освободите стаите до 10:00 ч. тази сутрин.",
+  "Довиждане, {name}!"
+ ],
+ "ja": [
+  "本日は15:00からお部屋をご利用いただけます。",
+  "本日はご出発日です。今朝10:00までにお部屋をお空けください。",
+  "本日は15:00から各お部屋をご利用いただけます。",
+  "本日はご出発日です。今朝10:00までに各お部屋をお空けください。",
+  "{name}様、またのお越しを！"
+ ]
+};
+function woodDayReminder(g,lang,now=new Date()){
+ const phase=woodStayPhase(g,now);
+ if(!phase||phase==='before'||phase==='after')return '';
+ const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
+ const copy=WOOD_DAY_REMINDERS[lang]||WOOD_DAY_REMINDERS.it;
+ const offset=g.rooms?.length>1?2:0;
+ return phase==='departure'?copy[offset+1]:today===g.arrival?copy[offset]:'';
+}
 function renderWoodSubtitle(subtitle,lang){
- const text='… '+(WOOD_HOLIDAY_SLOGAN[lang]||WOOD_HOLIDAY_SLOGAN.it);
+ const reminder=woodDayReminder(guest,lang);
+ const text=reminder||'… '+(WOOD_HOLIDAY_SLOGAN[lang]||WOOD_HOLIDAY_SLOGAN.it);
+ subtitle.classList.toggle('stay-day-reminder',Boolean(reminder));
  if(subtitle.textContent!==text)subtitle.textContent=text;
  // Use the full photo width rather than the narrower greeting column.
  const hero=document.querySelector('.hero');
@@ -288,14 +385,32 @@ function decorateHouseRules(){
 
 (() => {
  const previousGreetingState=personalGreetingState;
- personalGreetingState=function(...args){return {...previousGreetingState(...args),awaiting:''};};
+ personalGreetingState=function(g,lang,welcome,now=new Date()){
+  const state=previousGreetingState(g,lang,welcome,now);
+  return {...state,greeting:woodStayPhase(g,now)==='departure'?(WOOD_DAY_REMINDERS[lang]||WOOD_DAY_REMINDERS.it)[4]:state.greeting,awaiting:''};
+ };
  const previousHeader=renderPersonalHeader;
  renderPersonalHeader=function(lang){previousHeader(lang);renderWoodStayCopy(lang);};
- const refresh=()=>renderWoodStayCopy(document.documentElement.lang||'it');
+ const refresh=()=>{
+  const lang=document.documentElement.lang||'it';
+  renderPersonalHeader(lang);
+  if(dialog.open&&activeSection===10)renderDepartureSection(lang);
+ };
  setInterval(refresh,30000);
  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')refresh();});
  window.addEventListener('focus',refresh);
  window.addEventListener('pageshow',refresh);
+
+ // On departure day, use the same today's reminder in the checkout section.
+ const previousDepartureSection=renderDepartureSection;
+ renderDepartureSection=function(lang){
+  previousDepartureSection(lang);
+  if(!guest||guest.invalid||woodStayPhase(guest)!=='departure')return;
+  const text=document.getElementById('detail-text');
+  const paragraphs=text.textContent.split('\n\n');
+  paragraphs[0]=woodDayReminder(guest,lang);
+  text.textContent=paragraphs.join('\n\n');
+ };
 
  // Move room signs from the fixed heading into the room-name row; menu signs stay intact.
  const previousOpenSection=openSection;
