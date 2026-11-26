@@ -164,3 +164,9 @@ html.wood-preview .topbar .brand-logo-initial{
  display:inline-block;width:1.38em;height:1.38em;vertical-align:-.32em;
  margin-left:-.1em;margin-right:-.24em;overflow:hidden;mix-blend-mode:multiply;
 }
+
+/* Header 70: the original blue lettering from the same official logo. */
+html.wood-preview .topbar .brand-logo-number{
+ display:inline-block;width:1.18em;height:.93em;vertical-align:-.08em;
+ overflow:hidden;mix-blend-mode:multiply;
+}
