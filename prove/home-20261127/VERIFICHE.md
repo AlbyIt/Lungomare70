@@ -61,3 +61,19 @@ Per ogni riga registrare modello, versione iOS/Android, browser e versione, app 
 Sequenza per ogni canale: 1) prima apertura Alfa; 2) aggiunta manuale o nativa; 3) chiusura e primo avvio dall'icona; 4) verifica Alfa/camera 1; 5) riapertura dello stesso link da ciascun canale, verificando assenza dell'invito; 6) chiusura completa e ripetizione; 7) prova indipendente Beta/camera 2; 8) «Non ora» in un contesto pulito; 9) annullamento dell'aggiunta in un contesto pulito; 10) due icone distinte senza sostituzione della prima. Pulire soltanto i dati di prova quando necessario, mai quelli della guida reale.
 
 **Accettazione finale:** tutte le righe eseguite con esito positivo, nessuna perdita di personalizzazione, nessuna ricomparsa nei percorsi richiesti, quindi decisione esplicita di Alberto prima di modificare la guida definitiva.
+
+## Aggiornamento — istruzioni visive del 27 novembre 2026
+
+La prova di apertura della condivisione da `share-test.html` è stata effettuata da Alberto sul suo iPhone: il pannello si apre, ma «Aggiungi alla schermata Home» non compare nemmeno in «Modifica azioni». Questo percorso non risolve l'aggiunta dell'icona nel contesto provato. Non estendere il risultato a ogni browser o dispositivo.
+
+Nelle sole copie Alfa/Beta:
+- Aiuto in tre passaggi con simboli, contenuti distinti per iPhone/iPad e Android.
+- Riconoscimento indicativo del sistema con scelta manuale sempre correggibile; non certifica il modello, la versione, il browser o l'app di provenienza.
+- Aiuto sempre recuperabile tramite «Salva la guida sul telefono», anche dopo il primo invito o «Non ora», salvo modalità Home o frammento non corrispondente.
+- Istruzioni per uscire dal browser interno sotto «Non trovo questi tasti», senza presumere che ogni app abbia lo stesso menu.
+- Link personale e copia disponibili soltanto in quell'approfondimento; conferma di copia e selezione manuale se la copia non riesce. Nessuna copia implica installazione.
+- Tutte le dodici lingue; stessa struttura e significato delle istruzioni.
+- Nessun cambiamento alla logica di soppressione dell'invito: restano i limiti tra archivi separati già descritti. Nessun nuovo stato server e nessuna garanzia di riconoscimento universale.
+- La guida definitiva e le sue risorse esistenti non sono modificate.
+
+`node prove/home-20261127/home-steps.test.cjs`: verifica simulata di selezione iPhone/Android/iPad/sistema ignoto, dodici lingue, tre passi, aiuto recuperabile dopo il rifiuto, approfondimento inizialmente chiuso, copia integrale del link personale, soppressione in Home e blocco per frammento estraneo. Non sostituisce le prove reali del flusso aggiornato, ancora da eseguire su iPhone e Android.
