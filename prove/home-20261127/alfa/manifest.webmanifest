@@ -1,0 +1,26 @@
+{
+  "name": "Guida Lungomare 70",
+  "short_name": "Guida L70",
+  "id": "./index.html",
+  "start_url": "./index.html#nome=Ospite%20Prova%20Alfa&camera=1&lingua=it&persone=2&prova=1",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#123f4a",
+  "icons": [
+    {
+      "src": "../icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "manifest.webmanifest",
+      "id": "./index.html"
+    }
+  ],
+  "prefer_related_applications": false
+}
