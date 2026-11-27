@@ -3,7 +3,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 class Element{
  constructor(tag){this.tag=tag;this.children=[];this.attrs={};this.handlers={};this.hidden=false;this.open=false;this.textContent='';this.dataset={};}
  append(...items){this.children.push(...items);} prepend(x){this.children.unshift(x);} get firstChild(){return this.children[0];}
- replaceChildren(...items){this.children=items;}setAttribute(k,v){this.attrs[k]=v;}removeAttribute(k){delete this.attrs[k];}
+ replaceChildren(...items){this.children=items;}setAttribute(k,v){this.attrs[k]=v;}removeAttribute(k){delete this.attrs[k];} getAttribute(k){return this.attrs[k]??null;}
  addEventListener(k,v){this.handlers[k]=v;} showModal(){this.open=true;} close(){this.open=false;}focus(){}select(){}
  all(){return [this,...this.children.flatMap(x=>x.all())];}
 }
@@ -11,14 +11,14 @@ const base=process.argv[2]||__dirname;
 const main=fs.readFileSync(base+'/home.js','utf8'),copy=fs.readFileSync(base+'/home-copy.js','utf8');
 function page(ua,options={}){
  const body=new Element('body'),html=new Element('html');html.lang='it';body.dataset={homeFixture:'alfa',homeFragment:'nome=Ospite%20Prova%20Alfa&camera=1&lingua=it&persone=2&prova=1'};
- const brand=new Element('a'),manifest=new Element('link'),storage=new Map(options.stored?[['l70-home-proof-v1:alfa','dismissed']]:[]);
- let observer;const winHandlers={};const nav={userAgent:ua,platform:options.platform||'',maxTouchPoints:options.touch||0,standalone:options.standalone||false,clipboard:{writeText:async text=>{nav.copied=text;}}};
+ const brand=new Element('a'),manifest=new Element('link'),storage=new Map(options.installed?[['l70-home-proof-v1:alfa','installed']]:options.stored?[['l70-home-proof-v1:alfa','dismissed']]:[]);
+ const sign=new Element('img');sign.setAttribute('src','assets/room-1-sign.png');let observer;const winHandlers={};const nav={userAgent:ua,platform:options.platform||'',maxTouchPoints:options.touch||0,standalone:options.standalone||false,clipboard:{writeText:async text=>{nav.copied=text;}}};
  const location=new URL('https://albyit.github.io/Lungomare70/prove/home-20261127/alfa/index.html#'+body.dataset.homeFragment);
- const document={body,documentElement:html,readyState:'complete',createElement:t=>new Element(t),createElementNS:(ns,t)=>new Element(t),getElementById:()=>manifest,querySelector:()=>brand,addEventListener(){}};
+ const document={body,documentElement:html,readyState:'complete',createElement:t=>new Element(t),createElementNS:(ns,t)=>new Element(t),getElementById:()=>manifest,querySelector:()=>brand,querySelectorAll:()=>[sign],addEventListener(){}};
  const ctx=vm.createContext({document,navigator:nav,location,URL,localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},matchMedia:()=>({matches:false,addEventListener(){}}),window:{addEventListener:(n,f)=>winHandlers[n]=f},MutationObserver:class{constructor(f){observer=f;}observe(){}}});
  vm.runInContext(copy+'\n'+main,ctx);
  const find=cls=>body.all().find(x=>x.className===cls),help=find('home-help'),save=find('home-save'),cards=find('home-steps'),devices=find('home-device-choice');
- return {body,html,help,save,cards,devices,brand,location,nav,storage,winHandlers,translate:()=>observer(),find};
+ return {sign,body,html,help,save,cards,devices,brand,location,nav,storage,winHandlers,translate:()=>observer(),find};
 }
 (async()=>{
  const ios=page('Mozilla/5.0 (iPhone; CPU iPhone OS 26_3 like Mac OS X)');ios.save.handlers.click();
@@ -34,7 +34,12 @@ function page(ua,options={}){
  const unknown=page('desktop');unknown.save.handlers.click();assert.equal(unknown.cards.children.length,0);unknown.devices.children[0].handlers.click();assert.equal(unknown.cards.children.length,3);
  const ipad=page('Macintosh',{platform:'MacIntel',touch:5});ipad.save.handlers.click();assert.equal(ipad.cards.children.length,3);
  for(const lang of ['it','en','de','fr','es','nl','pl','ro','cs','hu','bg','ja']){ios.html.lang=lang;ios.translate();assert.equal(ios.cards.children.length,3);assert.ok(ios.save.textContent);for(const row of ios.cards.children)assert.ok(row.children[1].children[1].textContent);}
+ const known=page('iPhone',{installed:true});assert.equal(known.save.hidden,true);known.translate();assert.equal(known.save.hidden,true);
+ const sameBrowser=page('iPhone');sameBrowser.save.handlers.click();sameBrowser.winHandlers.appinstalled();assert.equal(sameBrowser.save.hidden,true);assert.equal(sameBrowser.help.open,false);
+ const live=page('iPhone');live.storage.set('l70-home-proof-v1:alfa','installed');live.winHandlers.storage({key:'l70-home-proof-v1:alfa',newValue:'installed'});assert.equal(live.save.hidden,true);
+ const isolatedBrowser=page('iPhone',{stored:true});assert.equal(isolatedBrowser.save.hidden,false);
+ assert.equal(ios.sign.getAttribute('src'),'https://albyit.github.io/Lungomare70/assets/room-1-sign.png');
  const home=page('iPhone',{standalone:true});assert.equal(home.save.hidden,true);assert.equal(home.find('home-invite').hidden,true);
  ios.location.hash='nome=Different';await ios.winHandlers.hashchange();assert.equal(ios.save.hidden,true);assert.equal(ios.help.open,false);
- console.log('Passed: iPhone/Android/iPad/unknown selection, 12 languages, three visual steps, recoverable help after dismissal, collapsed fallback, exact personal link copy, Home suppression and mismatched-fragment lock.');
+ console.log('Passed: known installation hides button, appinstalled and storage events, isolated-storage limitation reproduced, correct room image path; iPhone/Android/iPad/unknown selection, 12 languages, three visual steps, recoverable help after dismissal, collapsed fallback, exact personal link copy, Home suppression and mismatched-fragment lock.');
 })();

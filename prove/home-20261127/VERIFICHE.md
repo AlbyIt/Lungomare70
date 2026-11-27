@@ -77,3 +77,18 @@ Nelle sole copie Alfa/Beta:
 - La guida definitiva e le sue risorse esistenti non sono modificate.
 
 `node prove/home-20261127/home-steps.test.cjs`: verifica simulata di selezione iPhone/Android/iPad/sistema ignoto, dodici lingue, tre passi, aiuto recuperabile dopo il rifiuto, approfondimento inizialmente chiuso, copia integrale del link personale, soppressione in Home e blocco per frammento estraneo. Non sostituisce le prove reali del flusso aggiornato, ancora da eseguire su iPhone e Android.
+
+## Risultati riferiti da Alberto e correzione successiva
+
+Prova reale sul suo iPhone, 27 novembre 2026:
+- Link della prova Alfa inviato da Alberto su WhatsApp: apertura riferita in Safari, passaggio tramite tre puntini → Condividi → Aggiungi alla schermata Home disponibile.
+- Icona aggiunta con «Apri come app web»; apertura dall'icona conserva Ospite Prova Alfa e camera 1 Stella. Il tasto Salva non compare in questa apertura.
+- Riapertura dello stesso link da WhatsApp: finestra automatica non comparsa né alla prima apertura di questo percorso né alla successiva; resta visibile il tasto Salva. Non registrare questo come riconoscimento positivo dell'installazione.
+- Alberto richiede che dopo l'installazione spariscano sia finestra sia tasto, anche riaprendo il link. Decisione su finestra automatica iniziale o solo pulsante rinviata. Restano da verificare altri telefoni, email e app Booking lato ospite.
+- Targhette camera non caricate sia nel menu sia nella scheda. Causa verificata: il renderer condiviso usa `assets/room-N-sign.png` relativo alla pagina, mentre le copie si trovano tre livelli sotto la radice. Le quattro immagini esistono in `assets/`. La correzione è limitata alle copie tramite normalizzazione dei soli quattro percorsi delle targhette, anche dopo rigenerazione della scheda.
+
+Correzione della visibilità: il tasto ora rispetta lo stato locale `installed` (anche al cambio lingua, agli eventi appinstalled/storage e al rientro). «shown», «requested» e «dismissed» non sono equiparati a installazione. L'API di app correlate, se disponibile, viene controllata anche dopo che l'invito è già stato mostrato. Questa correzione NON sincronizza archivi separati iOS: il requisito complessivo resta NON superato.
+
+La documentazione WebKit conferma che, dopo la creazione dell'app Home, gli ulteriori dati non sono condivisi con il browser: https://webkit.org/blog/14787/webkit-features-in-safari-17-2/ . Non dichiarare risolto il ritorno da WhatsApp solo grazie a uno stato salvato nell'app Home. Un eventuale stato condiviso sul server richiede un progetto separato: uno stato per link può sopprimere il tasto anche sui telefoni degli accompagnatori e non dimostra l'installazione su ciascun telefono. Non è stato introdotto.
+
+Test simulati estesi: stato installato nasconde tasto, appinstalled, evento storage, cambio lingua, conservazione dell'aiuto dopo rifiuto, percorso delle targhette corretto. Il test di due memorie separate riproduce esplicitamente il limite, senza presentarlo come successo.
