@@ -192,7 +192,7 @@ function woodStayPhase(g,now=new Date()){
 }
 function woodKnownSolo(g,hash=location.hash){return guestKnownSolo(g,hash);}
 
-const WOOD_HOLIDAY_SLOGAN={"it":"guida alla tua vacanza su misura","en":"Your tailor-made holiday","de":"Dein Urlaub nach Maß","fr":"Tes vacances sur mesure","es":"Tus vacaciones a medida","nl":"Jouw vakantie op maat","pl":"Twoje wakacje na miarę","ro":"Vacanța ta pe măsura ta","cs":"Tvá dovolená na míru","hu":"A rád szabott nyaralás","bg":"Твоята почивка по мярка","ja":"あなたに合わせた休暇"};
+const WOOD_HOLIDAY_SLOGAN={"it":"La guida alla tua vacanza su misura","en":"Your tailor-made holiday","de":"Dein Urlaub nach Maß","fr":"Tes vacances sur mesure","es":"Tus vacaciones a medida","nl":"Jouw vakantie op maat","pl":"Twoje wakacje na miarę","ro":"Vacanța ta pe măsura ta","cs":"Tvá dovolená na míru","hu":"A rád szabott nyaralás","bg":"Твоята почивка по мярка","ja":"あなたに合わせた休暇"};
 // Arrival/departure reminders replace only the holiday slogan, preserving its typography.
 const WOOD_DAY_REMINDERS={
  "it": [
@@ -293,7 +293,7 @@ function woodDayReminder(g,lang,now=new Date()){
 }
 function renderWoodSubtitle(subtitle,lang){
  const reminder=woodDayReminder(guest,lang);
- const text=reminder||'… '+(WOOD_HOLIDAY_SLOGAN[lang]||WOOD_HOLIDAY_SLOGAN.it);
+ const text=reminder||(WOOD_HOLIDAY_SLOGAN[lang]||WOOD_HOLIDAY_SLOGAN.it);
  subtitle.classList.toggle('stay-day-reminder',Boolean(reminder));
  if(subtitle.textContent!==text)subtitle.textContent=text;
  // Use the full photo width rather than the narrower greeting column.
@@ -636,7 +636,7 @@ function decorateHouseRules(){
 'use strict';
 // Semantic equivalents of the current Italian copy: solo, group.
 const STAY_TRANSLATION_PARITY={
- en:[['A tailor-made guide to your holiday','A tailor-made guide to your holiday'],['In front of the B&B, you can enjoy a long stretch of public beach.','In front of the B&B, you can enjoy a long stretch of public beach.'],['On request, we will provide fresh towels at any time.','On request, we will provide fresh towels at any time.']],
+ en:[['The guide to your tailor-made holiday','The guide to your tailor-made holiday'],['In front of the B&B, you can enjoy a long stretch of public beach.','In front of the B&B, you can enjoy a long stretch of public beach.'],['On request, we will provide fresh towels at any time.','On request, we will provide fresh towels at any time.']],
  de:[['Der Reiseführer für deinen Urlaub nach Maß','Der Reiseführer für euren Urlaub nach Maß'],['Direkt vor dem B&B kannst du einen langen, frei zugänglichen Strandabschnitt genießen.','Direkt vor dem B&B könnt ihr einen langen, frei zugänglichen Strandabschnitt genießen.'],['Auf Wunsch stellen wir dir jederzeit frische Handtücher zur Verfügung.','Auf Wunsch stellen wir euch jederzeit frische Handtücher zur Verfügung.']],
  fr:[['Le guide de tes vacances sur mesure','Le guide de vos vacances sur mesure'],['Devant le B&B, tu peux profiter d’une longue plage en accès libre.','Devant le B&B, vous pouvez profiter d’une longue plage en accès libre.'],['Sur demande, nous te fournirons des serviettes propres à tout moment.','Sur demande, nous vous fournirons des serviettes propres à tout moment.']],
  es:[['La guía para tus vacaciones a medida','La guía para vuestras vacaciones a medida'],['Frente al B&B puedes disfrutar de un largo tramo de playa de acceso libre.','Frente al B&B podéis disfrutar de un largo tramo de playa de acceso libre.'],['Si lo solicitas, te proporcionaremos toallas limpias en cualquier momento.','Si lo solicitáis, os proporcionaremos toallas limpias en cualquier momento.']],

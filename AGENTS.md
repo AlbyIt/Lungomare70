@@ -118,3 +118,8 @@ Mantenere la versione in legno, foto originale, larghezza dei tasti, font e comp
 Come entrare resta in evidenza fino alle 20:59:59 della data di arrivo in Europe/Rome. Dalle 21:00 dello stesso giorno e fino a fine giornata del check-out, nascondere il tasto grande senza lasciare un vuoto e mostrare una piccola targhetta in legno «Entrare e uscire» nella parte bassa destra della fotografia. Dentro mostrare codice cancello, alternativa con mini-telecomando avvicinato alla tastiera e pulsante quadrato di uscita sul lato interno della colonna della veranda. Prima dell’arrivo e nel giorno d’arrivo mantenere anche le istruzioni complete della cassaforte, ricordando di richiuderla dopo il ritiro delle chiavi. Per ora testi senza nuove fotografie o segnaposto; le fotografie verranno fornite da Alberto. Stessi contenuti e comportamento in tutte le dodici lingue, singolare soltanto per occupazione verificata di una persona. Con date invalide non presumere il passaggio.
 
 La copia temporanea backup/legno-prima-compattazione-20261128 serve fino all’approvazione di Alberto; dopo la sua approvazione rimuoverla. I file inutilizzati crystal-buttons.css e title-glass-preview.css/js sono stati rimossi su sua richiesta: non riproporre il vecchio modello in vetro.
+
+
+## Slogan aggiornato — 28 novembre 2026
+
+Sostituire i puntini iniziali con l’articolo: «La guida alla vostra vacanza su misura», oppure «La guida alla tua vacanza su misura» soltanto per un ospite solo verificato. Nessun puntino iniziale né punteggiatura finale. Mantenere posizione, dimensioni e font attuali. Stesso significato nelle dodici lingue. Conservare i promemoria specifici del giorno d’arrivo e del check-out. Questa scelta prevale sulle precedenti versioni dello slogan.
