@@ -213,3 +213,22 @@ html.wood-preview #personal-access .gate-validity-note{font-size:.875rem;line-he
 html.wood-preview #personal-access .entry-keyring-identity{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}
 html.wood-preview #personal-access .entry-keyring-signs{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px}
 html.wood-preview #personal-access .entry-keyring-sign{display:block;width:64px;height:58px;object-fit:contain;margin:0;flex:0 0 auto}
+
+/* Access refinements approved 28 November: secondary remote note and separate help action. */
+html.wood-preview #personal-access .gate-remote-note,
+html.wood-preview #personal-access .entry-remote-note{
+ font-size:.875rem!important;line-height:1.4;hyphens:none;text-wrap:balance;
+}
+html.wood-preview #personal-access .entry-assistance{
+ display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+ gap:10px 14px;margin:18px 0 6px;background:transparent;border:0;box-shadow:none;
+}
+html.wood-preview #personal-access .entry-assistance-prompt{font-size:1rem;line-height:1.4}
+html.wood-preview #personal-access .entry-assistance .entry-call-button{
+ display:inline-flex;align-items:center;justify-content:center;gap:8px;
+ width:auto;min-height:44px;margin:0;padding:10px 16px;
+}
+html.wood-preview #personal-access .entry-call-button svg{
+ width:20px;height:20px;flex:0 0 20px;fill:none;stroke:currentColor;
+ stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
+}

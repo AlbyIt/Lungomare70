@@ -784,7 +784,7 @@ function applyItalianOccupancy(root){
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
  for(const node of nodes){
   // Names, addresses, credits and photographs are source data, not guest instructions.
-  if(node.parentElement?.closest('.guest-name,.place-name,.place-address,figcaption,script,style'))continue;
+  if(node.parentElement?.closest('.guest-name,.place-name,.place-address,figcaption,script,style,[data-access-action]'))continue;
   if(node.textContent.trim()===guest.name)continue;
   const next=localizedOccupancyText(node.textContent,solo,document.documentElement.lang||'it');
   if(next!==node.textContent)node.textContent=next;
@@ -834,15 +834,26 @@ function woodGateCompact(g=guest,now=new Date()){
  const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',hour:'2-digit',hourCycle:'h23'}).format(now));
  return (phase==='during'||phase==='departure')&&(today>g.arrival||(today===g.arrival&&hour>=21));
 }
+// Physical access actions address the person operating the controls, regardless of occupancy.
 function woodGateText(lang){
  const copy=[...(WOOD_GATE_COPY[lang]||WOOD_GATE_COPY.it)];
- if(lang==='it'&&!guestKnownSolo(guest)){copy[3]='Per uscire, premete il pulsante quadrato sul lato interno della colonna della veranda.';copy[4]='Dopo aver ritirato le chiavi, richiudete la cassaforte.';}
- if(guestKnownSolo(guest)){
-  if(lang==='ro'){copy[1]='Introdu cele 6 cifre urmate de #.';copy[3]='Pentru a ieși, apasă butonul pătrat de pe partea interioară a coloanei verandei.';copy[4]='Închide seiful după ridicarea cheilor.';}
-  if(lang==='cs'){copy[1]='Zadej 6 číslic a poté #.';copy[3]='Při odchodu stiskni čtvercové tlačítko na vnitřní straně sloupu verandy.';copy[4]='Po vyzvednutí klíčů schránku opět zavři.';}
-  if(lang==='bg'){copy[1]='Въведи 6-те цифри, последвани от #.';copy[3]='За излизане натисни квадратния бутон от вътрешната страна на колоната на верандата.';copy[4]='След вземане на ключовете затвори сейфа.';}
- }
- return copy.map(text=>localizedOccupancyText(text,guestKnownSolo(guest),lang));
+ const actions={
+  it:['Digita le 6 cifre seguite da #.','Per uscire, premere il pulsante quadrato sul lato interno della colonna della veranda.','Dopo aver ritirato le chiavi, richiudi la cassaforte.'],
+  en:['Enter the 6 digits followed by #.','To exit, press the square button on the inner side of the veranda column.','Close the key safe after collecting the keys.'],
+  de:['Gib die 6 Ziffern ein, gefolgt von #.','Zum Verlassen den quadratischen Knopf an der Innenseite der Verandasäule drücken.','Schließe den Schlüsselsafe nach der Schlüsselentnahme wieder.'],
+  fr:['Saisis les 6 chiffres suivis de #.','Pour sortir, appuyer sur le bouton carré situé sur la face intérieure de la colonne de la véranda.','Referme le coffre à clés après avoir récupéré les clés.'],
+  es:['Introduce las 6 cifras seguidas de #.','Para salir, pulsar el botón cuadrado situado en el lado interior de la columna de la veranda.','Cierra la caja de llaves después de recoger las llaves.'],
+  nl:['Voer de 6 cijfers in, gevolgd door #.','Druk om naar buiten te gaan op de vierkante knop aan de binnenzijde van de verandazuil.','Sluit het sleutelkluisje na het ophalen van de sleutels.'],
+  pl:['Wpisz 6 cyfr, a następnie #.','Aby wyjść, należy nacisnąć kwadratowy przycisk po wewnętrznej stronie kolumny werandy.','Po odebraniu kluczy zamknij sejf na klucze.'],
+  ro:['Introdu cele 6 cifre urmate de #.','Pentru a ieși, se apasă butonul pătrat de pe partea interioară a coloanei verandei.','Închide seiful după ridicarea cheilor.'],
+  cs:['Zadej 6 číslic a poté #.','Při odchodu je třeba stisknout čtvercové tlačítko na vnitřní straně sloupu verandy.','Po vyzvednutí klíčů schránku opět zavři.'],
+  hu:['Írd be a 6 számjegyet, majd a # jelet.','Kifelé menet a veranda oszlopának belső oldalán lévő négyzet alakú gombot kell megnyomni.','A kulcsok átvétele után zárd vissza a kulcsszéfet.'],
+  bg:['Въведи 6-те цифри, последвани от #.','За излизане трябва да се натисне квадратният бутон от вътрешната страна на колоната на верандата.','След вземане на ключовете затвори сейфа.'],
+  ja:['6桁の数字に続けて # を入力してください。','外に出るときは、ベランダの柱の内側にある四角いボタンを押してください。','鍵を取り出した後は、キーボックスを閉めてください。']
+ };
+ const action=actions[lang]||actions.it;
+ [copy[1],copy[3],copy[4]]=action;
+ return copy;
 }
 function renderWoodGateAction(lang){
  const compact=woodGateCompact();
@@ -859,73 +870,73 @@ function renderWoodGateAction(lang){
 }
 const WOOD_ENTRY_DETAILS={
  "it": [
-  "La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Per aprirla, inserire il codice indicato e ruotare il meccanismo di 90°.",
+  "La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Digita il codice indicato e ruota il meccanismo di 90 gradi.",
   "Portachiavi da ritirare",
   "Ogni portachiavi contiene:",
   "Le camere si trovano al piano superiore."
  ],
  "en": [
-  "The key safe is to the right of the glass entrance door. To open it, enter the code shown and turn the mechanism 90°.",
+  "The key safe is to the right of the glass entrance door. Enter the code shown and turn the mechanism 90 degrees.",
   "Key rings to collect",
   "Each key ring contains:",
   "The rooms are upstairs."
  ],
  "de": [
-  "Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Zum Öffnen den angegebenen Code eingeben und den Mechanismus um 90° drehen.",
+  "Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Gib den angegebenen Code ein und drehe den Mechanismus um 90 Grad.",
   "Abzuholende Schlüsselbunde",
   "Jeder Schlüsselbund enthält:",
   "Die Zimmer befinden sich im Obergeschoss."
  ],
  "fr": [
-  "Le coffre à clés se trouve à droite de la porte vitrée d’entrée. Pour l’ouvrir, saisir le code indiqué et tourner le mécanisme de 90°.",
+  "Le coffre à clés se trouve à droite de la porte vitrée d’entrée. Saisis le code indiqué et tourne le mécanisme de 90 degrés.",
   "Trousseaux à récupérer",
   "Chaque trousseau contient :",
   "Les chambres se trouvent à l’étage."
  ],
  "es": [
-  "La caja de llaves está a la derecha de la puerta acristalada de entrada. Para abrirla, introducir el código indicado y girar el mecanismo 90°.",
+  "La caja de llaves está a la derecha de la puerta acristalada de entrada. Introduce el código indicado y gira el mecanismo 90 grados.",
   "Llaveros que se deben recoger",
   "Cada llavero contiene:",
   "Las habitaciones están en la planta superior."
  ],
  "nl": [
-  "De sleutelkluis bevindt zich rechts van de glazen toegangsdeur. Voer de aangegeven code in en draai het mechanisme 90° om de kluis te openen.",
+  "De sleutelkluis bevindt zich rechts van de glazen toegangsdeur. Voer de aangegeven code in en draai het mechanisme 90 graden.",
   "Op te halen sleutelbossen",
   "Elke sleutelbos bevat:",
   "De kamers bevinden zich op de bovenverdieping."
  ],
  "pl": [
-  "Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Aby go otworzyć, należy wpisać podany kod i obrócić mechanizm o 90°.",
+  "Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Wpisz podany kod i obróć mechanizm o 90 stopni.",
   "Komplety kluczy do odebrania",
   "Każdy komplet zawiera:",
   "Pokoje znajdują się na piętrze."
  ],
  "ro": [
-  "Seiful pentru chei se află în dreapta ușii de sticlă de la intrare. Pentru a-l deschide, se introduce codul indicat și se rotește mecanismul cu 90°.",
+  "Seiful pentru chei se află în dreapta ușii de sticlă de la intrare. Introdu codul indicat și rotește mecanismul cu 90 de grade.",
   "Brelocuri cu chei de ridicat",
   "Fiecare breloc conține:",
   "Camerele se află la etaj."
  ],
  "cs": [
-  "Schránka na klíče se nachází vpravo od prosklených vstupních dveří. Pro otevření je třeba zadat uvedený kód a otočit mechanismem o 90°.",
+  "Schránka na klíče se nachází vpravo od prosklených vstupních dveří. Zadej uvedený kód a otoč mechanismem o 90 stupňů.",
   "Svazky klíčů k vyzvednutí",
   "Každý svazek obsahuje:",
   "Pokoje se nacházejí v patře."
  ],
  "hu": [
-  "A kulcsszéf az üveg bejárati ajtótól jobbra található. A kinyitáshoz a megadott kódot kell beírni, majd a mechanizmust 90°-kal elfordítani.",
+  "A kulcsszéf az üveg bejárati ajtótól jobbra található. Írd be a megadott kódot, majd fordítsd el a mechanizmust 90 fokkal.",
   "Átveendő kulcscsomók",
   "Minden kulcscsomó tartalma:",
   "A szobák az emeleten találhatók."
  ],
  "bg": [
-  "Сейфът за ключове се намира вдясно от стъклената входна врата. За отваряне трябва да се въведе посоченият код и механизмът да се завърти на 90°.",
+  "Сейфът за ключове се намира вдясно от стъклената входна врата. Въведи посочения код и завърти механизма на 90 градуса.",
   "Връзки ключове за вземане",
   "Всяка връзка съдържа:",
   "Стаите се намират на горния етаж."
  ],
  "ja": [
-  "キーボックスはガラスの入口ドアの右側にあります。表示された暗証番号を入力し、開閉つまみを90°回すと開きます。",
+  "キーボックスはガラスの入口ドアの右側にあります。表示された暗証番号を入力し、開閉つまみを90度回してください。",
   "お受け取りいただくキーホルダー",
   "各キーホルダーには次のものが付いています。",
   "客室は上の階にあります。"
@@ -958,8 +969,8 @@ function renderWoodGateInstructions(lang){
  const gateCode=gate.querySelector('.access-code');
  if(gateCode&&/^\d{6}$/.test(guest.gate))gateCode.textContent=guest.gate+'#';
  panel.querySelectorAll('.access-photo-pending').forEach(node=>node.remove());
- const help=gate.querySelector('p:not(.access-code):not(.access-missing)');if(help)help.textContent=copy[1];
- for(const index of (woodGateCompact()?[5,2]:[5])){const p=document.createElement('p');p.className=index===5?'gate-instruction gate-validity-note':'gate-instruction';p.textContent=copy[index];gate.append(p);}
+ const help=gate.querySelector('p:not(.access-code):not(.access-missing)');if(help){help.textContent=copy[1];help.dataset.accessAction='';}
+ for(const index of (woodGateCompact()?[5,2]:[5])){const p=document.createElement('p');p.className=index===5?'gate-instruction gate-validity-note':'gate-instruction gate-remote-note';p.textContent=copy[index];gate.append(p);}
  if(woodGateCompact()){
   detail.classList.add('gate-only');safe?.remove();panel.querySelector('.entry-map-button')?.remove();
   const title=document.getElementById('detail-title');const label=title.querySelector('.section-title-label');
@@ -983,7 +994,7 @@ function renderWoodGateInstructions(lang){
   const entryCopy=WOOD_ENTRY_DETAILS[lang]||WOOD_ENTRY_DETAILS.it;
   const intro=safe.querySelector('p:not(.access-code):not(.access-missing)');
   if(intro){
-   intro.textContent=entryCopy[0];
+   intro.textContent=entryCopy[0];intro.dataset.accessAction='';
    const identity=document.createElement('p');identity.className='entry-keyring-identity';
    const keyLabels={"it":["Chiave da ritirare","Chiavi da ritirare"],"en":["Key to collect","Keys to collect"],"de":["Abzuholender Schlüssel","Abzuholende Schlüssel"],"fr":["Clé à récupérer","Clés à récupérer"],"es":["Llave que recoger","Llaves que recoger"],"nl":["Op te halen sleutel","Op te halen sleutels"],"pl":["Klucz do odebrania","Klucze do odebrania"],"ro":["Cheie de ridicat","Chei de ridicat"],"cs":["Klíč k vyzvednutí","Klíče k vyzvednutí"],"hu":["Átveendő kulcs","Átveendő kulcsok"],"bg":["Ключ за вземане","Ключове за вземане"],"ja":["お受け取りいただく鍵","お受け取りいただく鍵"]};
    const rooms=guest.rooms.slice().sort((a,b)=>a-b);
@@ -999,19 +1010,31 @@ function renderWoodGateInstructions(lang){
    const contents=document.createElement('p');contents.textContent=entryCopy[2];
    intro.after(identity,contents);
   }
-  const close=document.createElement('p');close.textContent=copy[4];safe.append(close);
+  const close=document.createElement('p');close.textContent=copy[4];close.dataset.accessAction='';safe.append(close);
+  const remote=safe.querySelector('.remote-note');if(remote){remote.classList.add('entry-remote-note');safe.after(remote);}
   const upstairs=document.createElement('p');upstairs.className='entry-upstairs';upstairs.textContent=entryCopy[3];panel.append(upstairs);
  }
  const exitTitles={it:'Per uscire',en:'To exit',de:'Zum Verlassen',fr:'Pour sortir',es:'Para salir',nl:'Naar buiten',pl:'Wyjście',ro:'Pentru a ieși',cs:'Odchod',hu:'Kijutás',bg:'За излизане',ja:'外に出るとき'};
  const exit=document.createElement('section');exit.className='access-step entry-exit';
  const exitTitle=document.createElement('h3');exitTitle.textContent=exitTitles[lang]||exitTitles.it;
- const exitText=document.createElement('p');exitText.textContent=copy[3];exit.append(exitTitle,exitText);panel.append(exit);
+ const exitText=document.createElement('p');exitText.textContent=copy[3];exitText.dataset.accessAction='';exit.append(exitTitle,exitText);panel.append(exit);
  const entryCopy=WOOD_ENTRY_DETAILS[lang]||WOOD_ENTRY_DETAILS.it;
  const call=document.createElement('a');call.className='entry-map-button entry-call-button';call.href='tel:+393339977248';
- const callLabels={"it": "In caso di difficoltà, chiamaci", "en": "If you have any difficulty, call us", "de": "Bei Schwierigkeiten bitte anrufen", "fr": "En cas de difficulté, appelez-nous", "es": "Si tenéis alguna dificultad, llamadnos", "nl": "Bel ons als er problemen zijn", "pl": "W razie trudności zadzwońcie do nas", "ro": "Dacă întâmpinați dificultăți, sunați-ne", "cs": "V případě potíží nám zavolejte", "hu": "Nehézség esetén hívjanak minket", "bg": "При затруднения ни се обадете", "ja": "お困りの際はお電話ください"};
- const soloCallLabels={"es": "Si tienes alguna dificultad, llámanos", "pl": "W razie trudności zadzwoń do nas", "ro": "Dacă întâmpini dificultăți, sună-ne", "cs": "V případě potíží nám zavolej", "hu": "Nehézség esetén hívj minket", "bg": "При затруднения ни се обади"};
- const callLabel=(guestKnownSolo(guest)&&soloCallLabels[lang])||callLabels[lang]||callLabels.it;
- call.textContent=callLabel;panel.append(call);
+ const assistanceLabels={
+  it:['In caso di difficoltà','Chiamaci'],en:['If you have any difficulty','Call us'],
+  de:['Bei Schwierigkeiten','Ruf uns an'],fr:['En cas de difficulté','Appelle-nous'],
+  es:['En caso de dificultad','Llámanos'],nl:['Bij problemen','Bel ons'],
+  pl:['W razie trudności','Zadzwoń do nas'],ro:['În caz de dificultăți','Sună-ne'],
+  cs:['V případě potíží','Zavolej nám'],hu:['Nehézség esetén','Hívj minket'],
+  bg:['При затруднения','Обади ни се'],ja:['お困りの際は','お電話ください']
+ };
+ const labels=assistanceLabels[lang]||assistanceLabels.it;
+ const assistance=document.createElement('div');assistance.className='entry-assistance';
+ const prompt=document.createElement('span');prompt.className='entry-assistance-prompt';prompt.textContent=labels[0];
+ call.dataset.accessAction='';
+ call.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>';
+ const callText=document.createElement('span');callText.textContent=labels[1];call.append(callText);
+ assistance.append(prompt,call);panel.append(assistance);
 }
 (() => {
  const previousHeader=renderPersonalHeader;

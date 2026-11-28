@@ -154,3 +154,14 @@ In Come entrare evidenziare in grassetto giorno e data di arrivo e l’indirizzo
 Per compattare Come entrare, disporre l’indirizzo in grassetto e il pulsante quadrato Google Maps sulla stessa riga: indirizzo a sinistra, mappa a destra, allineati verticalmente al centro. Non ripetere l’indirizzo nell’introduzione né lasciare una riga vuota per la mappa. Conservare il grassetto della data e la corretta leggibilità nelle dodici lingue.
 
 Nel riquadro Codice del cancello di Come entrare non mostrare la frase In alternativa sul mini-telecomando: al primo accesso l’ospite non lo ha ancora ritirato. Mantenere le istruzioni del mini-telecomando dopo il ritiro delle chiavi e nella sezione compatta Entrare e uscire. La nota sulla validità del codice durante il soggiorno deve essere più piccola (0.875rem), leggibile e secondaria. Applicare a tutte le lingue.
+
+
+## Istruzioni manuali e assistenza separate — ultima scelta del 28 novembre 2026
+
+Queste indicazioni prevalgono sulle precedenti in conflitto e vanno mantenute in tutte le lingue.
+- Saluti di attesa secondo gli ospiti: «Ti aspettiamo» per un ospite solo verificato, altrimenti «Vi aspettiamo». Il soggetto resta Cinzia e Alberto: mai «Vi aspetto».
+- Le manovre sono rivolte sempre alla singola persona che le esegue: «Digita le 6 cifre seguite da #», «Digita il codice indicato e ruota il meccanismo di 90 gradi», «Dopo aver ritirato le chiavi, richiudi la cassaforte». Non anteporre «Per aprirla» e non trasformare queste istruzioni al plurale in base agli ospiti.
+- Per l’uscita usare l’infinito: «Per uscire, premere il pulsante quadrato sul lato interno della colonna della veranda».
+- Lasciare invariata la frase del mini-telecomando, con caratteri più piccoli e ben leggibili, puntando a due righe sul telefono di riferimento senza tagliare il testo. Mantenerla dopo le chiavi nella sezione completa e nella sezione compatta.
+- Assistenza: «In caso di difficoltà» scritto sullo sfondo, fuori dal pulsante; subito dopo pulsante con icona telefono seguita da «Chiamaci». Numero diretto Alberto invariato. Non racchiudere l’intera frase nel pulsante.
+- «Chiave da ritirare» seguita dalla targhetta originale in legno della camera; non ripetere numero e nome già leggibili sulla targhetta. Per più camere mostrare tutte le targhette e usare «Chiavi da ritirare».
