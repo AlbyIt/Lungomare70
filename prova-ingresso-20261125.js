@@ -823,7 +823,7 @@ const WOOD_GATE_COPY={
  pl:['Wejście i wyjście','Należy wpisać 6 cyfr, a następnie #.','Bramę można też otworzyć, zbliżając mały pilot do klawiatury.','Aby wyjść, należy nacisnąć kwadratowy przycisk po wewnętrznej stronie kolumny werandy.','Po odebraniu kluczy należy zamknąć sejf na klucze.','Kod do bramy jest ważny podczas pobytu.'],
  ro:['Intrare și ieșire','Introduceți cele 6 cifre urmate de #.','Poarta se poate deschide și apropiind mica telecomandă de tastatură.','Pentru a ieși, apăsați butonul pătrat de pe partea interioară a coloanei verandei.','Închideți seiful după ridicarea cheilor.','Codul porții este valabil pe durata sejurului.'],
  cs:['Vstup a odchod','Zadejte 6 číslic a poté #.','Bránu lze také otevřít přiložením malého dálkového ovladače ke klávesnici.','Při odchodu stiskněte čtvercové tlačítko na vnitřní straně sloupu verandy.','Po vyzvednutí klíčů schránku opět zavřete.','Kód brány platí po dobu pobytu.'],
- hu:['Be- és kijutás','Adja meg a 6 számjegyet, majd a # jelet.','A kapu a kis távirányító billentyűzethez közelítésével is kinyitható.','Kifelé menet a veranda oszlopának belső oldalán lévő négyzet alakú gombot kell megnyomni.','A kulcsok átvétele után a kulcsszéfet vissza kell zárni.','A kapukód a tartózkodás ideje alatt érvényes.'],
+ hu:['Be- és kijutás','A 6 számjegyet, majd a # jelet kell beírni.','A kapu a kis távirányító billentyűzethez közelítésével is kinyitható.','Kifelé menet a veranda oszlopának belső oldalán lévő négyzet alakú gombot kell megnyomni.','A kulcsok átvétele után a kulcsszéfet vissza kell zárni.','A kapukód a tartózkodás ideje alatt érvényes.'],
  bg:['Влизане и излизане','Въведете 6-те цифри, последвани от #.','Порталът може да се отвори и чрез доближаване на малкото дистанционно до клавиатурата.','За излизане натиснете квадратния бутон от вътрешната страна на колоната на верандата.','След вземане на ключовете затворете сейфа.','Кодът за портала е валиден по време на престоя.'],
  ja:['出入りの方法','6桁の数字に続けて # を入力してください。','小型リモコンをキーパッドに近づけても門を開けられます。','外に出るときは、ベランダの柱の内側にある四角いボタンを押してください。','鍵を取り出した後は、キーボックスを閉めてください。','門の暗証番号は滞在期間中有効です。']
 };
@@ -836,6 +836,7 @@ function woodGateCompact(g=guest,now=new Date()){
 }
 function woodGateText(lang){
  const copy=[...(WOOD_GATE_COPY[lang]||WOOD_GATE_COPY.it)];
+ if(lang==='it'&&!guestKnownSolo(guest)){copy[3]='Per uscire, premete il pulsante quadrato sul lato interno della colonna della veranda.';copy[4]='Dopo aver ritirato le chiavi, richiudete la cassaforte.';}
  if(guestKnownSolo(guest)){
   if(lang==='ro'){copy[1]='Introdu cele 6 cifre urmate de #.';copy[3]='Pentru a ieși, apasă butonul pătrat de pe partea interioară a coloanei verandei.';copy[4]='Închide seiful după ridicarea cheilor.';}
   if(lang==='cs'){copy[1]='Zadej 6 číslic a poté #.';copy[3]='Při odchodu stiskni čtvercové tlačítko na vnitřní straně sloupu verandy.';copy[4]='Po vyzvednutí klíčů schránku opět zavři.';}
