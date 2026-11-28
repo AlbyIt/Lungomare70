@@ -133,3 +133,9 @@ Per la firma di accoglienza eliminare «Siamo»: «Felici di accogliervi!» e, p
 ## Targhetta separata dallo slogan — 28 novembre 2026
 
 Su richiesta di Alberto ridurre ulteriormente la targhetta Entrare e uscire e avvicinarla al bordo destro. Quando presente, tenere lo slogan sopra la targhetta con uno spazio verticale riservato, consentendo il ritorno a capo nelle traduzioni. Conservare una zona di tocco comoda anche con la targhetta visivamente più piccola.
+
+
+## Ingresso completo e assistenza — 28 novembre 2026
+
+Nella sezione Come entrare indicare che, dopo l’inserimento del codice, il meccanismo della cassaforte va ruotato di 90°. Identificare i portachiavi da ritirare con numero e nome di tutte le camere assegnate. Ricordare che le camere si trovano al piano superiore. Aggiungere un pulsante Chiamaci al numero +39 335 7739549, disponibile anche nella sezione compatta Entrare e uscire. Applicare gli stessi contenuti nelle dodici lingue e conservare le distinzioni per numero di ospiti e camere.
+Nel messaggio di accompagnamento con il link alla guida mantenere il P.S. «Per velocizzare la registrazione, vi chiediamo gentilmente di anticiparci i documenti d’identità a info@lungomare70.it.» esclusivamente per prenotazioni Booking; ometterlo per le dirette.
