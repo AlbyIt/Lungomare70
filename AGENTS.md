@@ -123,3 +123,8 @@ La copia temporanea backup/legno-prima-compattazione-20261128 serve fino all’a
 ## Slogan aggiornato — 28 novembre 2026
 
 Sostituire i puntini iniziali con l’articolo: «La guida alla vostra vacanza su misura», oppure «La guida alla tua vacanza su misura» soltanto per un ospite solo verificato. Nessun puntino iniziale né punteggiatura finale. Mantenere posizione, dimensioni e font attuali. Stesso significato nelle dodici lingue. Conservare i promemoria specifici del giorno d’arrivo e del check-out. Questa scelta prevale sulle precedenti versioni dello slogan.
+
+
+## Firma durante il soggiorno — 28 novembre 2026
+
+Per la firma di accoglienza eliminare «Siamo»: «Felici di accogliervi!» e, per un ospite solo verificato, «Felici di accoglierti!». Sotto mantenere «Cinzia e Alberto». Conservare font, colori, posizione, indirizzo e immagini finali. Traduzioni naturali altrettanto brevi nelle dodici lingue, con la distinzione ospite singolo/gruppo dove presente. Restano invariati l’attesa prima dell’arrivo, l’augurio del check-out e il messaggio dopo il soggiorno.

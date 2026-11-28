@@ -8,8 +8,8 @@ const WOOD_STAY_COPY = {
    "Ti aspettiamo"
   ],
   "during": [
-   "Siamo felici di accogliervi",
-   "Siamo felici di accoglierti"
+   "Felici di accogliervi",
+   "Felici di accoglierti"
   ],
   "departure": [
    "Vi auguriamo un buon rientro",
@@ -23,8 +23,8 @@ const WOOD_STAY_COPY = {
    "We look forward to welcoming you"
   ],
   "during": [
-   "We’re happy to welcome you",
-   "We’re happy to welcome you"
+   "Happy to welcome you",
+   "Happy to welcome you"
   ],
   "departure": [
    "We wish you a pleasant journey home",
@@ -38,8 +38,8 @@ const WOOD_STAY_COPY = {
    "Wir freuen uns auf dich"
   ],
   "during": [
-   "Wir freuen uns, euch begrüßen zu dürfen",
-   "Wir freuen uns, dich begrüßen zu dürfen"
+   "Froh, euch begrüßen zu dürfen",
+   "Froh, dich begrüßen zu dürfen"
   ],
   "departure": [
    "Wir wünschen euch eine gute Heimreise",
@@ -53,8 +53,8 @@ const WOOD_STAY_COPY = {
    "Nous t’attendons"
   ],
   "during": [
-   "Nous sommes heureux de vous accueillir",
-   "Nous sommes heureux de t’accueillir"
+   "Heureux de vous accueillir",
+   "Heureux de t’accueillir"
   ],
   "departure": [
    "Nous vous souhaitons un bon retour",
@@ -68,8 +68,8 @@ const WOOD_STAY_COPY = {
    "Te esperamos"
   ],
   "during": [
-   "Nos alegra recibiros",
-   "Nos alegra recibirte"
+   "Encantados de recibiros",
+   "Encantados de recibirte"
   ],
   "departure": [
    "Os deseamos un buen viaje de vuelta",
@@ -83,8 +83,8 @@ const WOOD_STAY_COPY = {
    "We kijken uit naar je komst"
   ],
   "during": [
-   "We zijn blij jullie te mogen verwelkomen",
-   "We zijn blij je te mogen verwelkomen"
+   "Blij jullie te mogen verwelkomen",
+   "Blij je te mogen verwelkomen"
   ],
   "departure": [
    "We wensen jullie een goede reis naar huis",
@@ -98,8 +98,8 @@ const WOOD_STAY_COPY = {
    "Czekamy na Ciebie"
   ],
   "during": [
-   "Cieszymy się, że możemy Was gościć",
-   "Cieszymy się, że możemy Cię gościć"
+   "Miło Was gościć",
+   "Miło Cię gościć"
   ],
   "departure": [
    "Życzymy Wam szczęśliwego powrotu",
@@ -113,8 +113,8 @@ const WOOD_STAY_COPY = {
    "Te așteptăm"
   ],
   "during": [
-   "Ne bucurăm să vă primim",
-   "Ne bucurăm să te primim"
+   "Bucuroși să vă primim",
+   "Bucuroși să te primim"
   ],
   "departure": [
    "Vă dorim drum bun spre casă",
@@ -128,8 +128,8 @@ const WOOD_STAY_COPY = {
    "Těšíme se na tebe"
   ],
   "during": [
-   "Jsme rádi, že vás můžeme přivítat",
-   "Jsme rádi, že tě můžeme přivítat"
+   "Rádi vás vítáme",
+   "Rádi tě vítáme"
   ],
   "departure": [
    "Přejeme vám šťastnou cestu domů",
@@ -143,8 +143,8 @@ const WOOD_STAY_COPY = {
    "Várunk téged"
   ],
   "during": [
-   "Örülünk, hogy vendégül láthatunk benneteket",
-   "Örülünk, hogy vendégül láthatunk"
+   "Örömmel látunk vendégül benneteket",
+   "Örömmel látunk vendégül"
   ],
   "departure": [
    "Jó hazautat kívánunk nektek",
@@ -158,8 +158,8 @@ const WOOD_STAY_COPY = {
    "Очакваме те"
   ],
   "during": [
-   "Радваме се да ви посрещнем",
-   "Радваме се да те посрещнем"
+   "С радост ви посрещаме",
+   "С радост те посрещаме"
   ],
   "departure": [
    "Желаем ви приятно пътуване към дома",
@@ -173,8 +173,8 @@ const WOOD_STAY_COPY = {
    "お越しをお待ちしています"
   ],
   "during": [
-   "皆さまをお迎えできてうれしいです",
-   "お迎えできてうれしいです"
+   "皆さまを心より歓迎します",
+   "心より歓迎します"
   ],
   "departure": [
    "皆さま、どうぞお気をつけてお帰りください",
