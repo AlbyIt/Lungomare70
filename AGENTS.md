@@ -170,8 +170,3 @@ Queste indicazioni prevalgono sulle precedenti in conflitto e vanno mantenute in
 ## Disposizione portachiavi e uscita — ultima scelta del 28 novembre 2026
 
 Nella sezione completa Come entrare, collocare la spiegazione del mini-telecomando, con caratteri più piccoli, dentro il riquadro della cassaforte e immediatamente sotto il relativo punto dell’elenco. Spostare «Dopo aver ritirato le chiavi, richiudi la cassaforte» fuori dal riquadro, prima di «Le camere si trovano al piano superiore». Per l’uscita usare «Per uscire, apri il cancello premendo il pulsante quadrato sul lato interno della colonna della veranda». Questa formulazione prevale sulla precedente all’infinito. Stessa disposizione e significato nelle dodici lingue; mantenere le istruzioni di uscita anche nella sezione compatta. Per la prova mantenere il collegamento Alberto già concordato, senza sostituirlo con Lucio né inventare dati mancanti.
-
-
-## Foto tastierino — 28 novembre 2026
-
-Inserita una sola fotografia reale del tastierino, IMG_4092, in assets/ingresso-tastierino.jpg. Scelta ravvicinata senza mano per la leggibilità di tutte le cifre e di #. Visualizzazione compatta con ritaglio CSS laterale accanto alle istruzioni, originale completo apribile al tocco. Usare la stessa foto in Come entrare prima dell’arrivo e nel giorno d’arrivo, e nella sezione compatta Entrare e uscire; nessuna distinzione di foto tra prima del check-in e giorno del check-in. Layout e descrizioni accessibili nelle dodici lingue. Istruzioni, codici e passaggio temporale già approvati invariati.

@@ -971,14 +971,6 @@ function renderWoodGateInstructions(lang){
  panel.querySelectorAll('.access-photo-pending').forEach(node=>node.remove());
  const help=gate.querySelector('p:not(.access-code):not(.access-missing)');if(help){help.textContent=copy[1];help.dataset.accessAction='';}
  for(const index of (woodGateCompact()?[5,2]:[5])){const p=document.createElement('p');p.className=index===5?'gate-instruction gate-validity-note':'gate-instruction gate-remote-note';p.textContent=copy[index];gate.append(p);}
- // One real keypad photograph, shared by full arrival and compact stay instructions.
- const photoLabels={it:'Tastierino del cancello',en:'Gate keypad',de:'Tastenfeld am Tor',fr:'Clavier du portail',es:'Teclado de la cancela',nl:'Toetsenpaneel van het hek',pl:'Klawiatura przy bramie',ro:'Tastatura porții',cs:'Klávesnice u brány',hu:'A kapu billentyűzete',bg:'Клавиатура на портала',ja:'門の暗証番号キーパッド'};
- const photo=document.createElement('a');photo.className='entry-keypad-photo';
- photo.href='assets/ingresso-tastierino.jpg';photo.target='_blank';photo.rel='noopener';
- const image=document.createElement('img');image.src=photo.href;image.alt=photoLabels[lang]||photoLabels.it;
- image.width=1152;image.height=1536;image.loading='lazy';image.decoding='async';photo.append(image);
- const instructions=document.createElement('div');instructions.className='entry-keypad-instructions';
- instructions.append(...gate.childNodes);gate.classList.add('entry-keypad-step');gate.append(photo,instructions);
  if(woodGateCompact()){
   detail.classList.add('gate-only');safe?.remove();panel.querySelector('.entry-map-button')?.remove();
   const title=document.getElementById('detail-title');const label=title.querySelector('.section-title-label');
