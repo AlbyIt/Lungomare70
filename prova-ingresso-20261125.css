@@ -188,3 +188,10 @@ html.wood-preview .topbar .brand-number{margin-left:-.05em;letter-spacing:0}
 html.wood-preview .topbar .brand small{margin-top:0;position:relative;top:-4px;margin-bottom:-4px}
 
 html.wood-preview .gate-shortcut::before{content:"";position:absolute;inset:-6px 0}
+
+/* Keep the smaller access plaque below the slogan on every screen and language. */
+html.wood-preview .hero>.gate-shortcut{right:2%;bottom:6%;max-width:128px;min-height:26px;gap:4px;padding:3px 6px;border-radius:9px;font-size:.8rem}
+html.wood-preview .gate-shortcut svg{width:14px;height:14px}
+html.wood-preview .gate-shortcut::before{inset:-9px 0}
+html.wood-preview .hero:has(>.gate-shortcut)>#subtitle{bottom:calc(6% + 44px);white-space:normal;text-wrap:balance}
+@media(max-width:600px){html.wood-preview .hero>.gate-shortcut{max-width:112px;font-size:.7rem;gap:3px;padding:3px 5px}}

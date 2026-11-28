@@ -128,3 +128,8 @@ Sostituire i puntini iniziali con l’articolo: «La guida alla vostra vacanza s
 ## Firma durante il soggiorno — 28 novembre 2026
 
 Per la firma di accoglienza eliminare «Siamo»: «Felici di accogliervi!» e, per un ospite solo verificato, «Felici di accoglierti!». Sotto mantenere «Cinzia e Alberto». Conservare font, colori, posizione, indirizzo e immagini finali. Traduzioni naturali altrettanto brevi nelle dodici lingue, con la distinzione ospite singolo/gruppo dove presente. Restano invariati l’attesa prima dell’arrivo, l’augurio del check-out e il messaggio dopo il soggiorno.
+
+
+## Targhetta separata dallo slogan — 28 novembre 2026
+
+Su richiesta di Alberto ridurre ulteriormente la targhetta Entrare e uscire e avvicinarla al bordo destro. Quando presente, tenere lo slogan sopra la targhetta con uno spazio verticale riservato, consentendo il ritorno a capo nelle traduzioni. Conservare una zona di tocco comoda anche con la targhetta visivamente più piccola.
