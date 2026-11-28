@@ -165,3 +165,8 @@ Queste indicazioni prevalgono sulle precedenti in conflitto e vanno mantenute in
 - Lasciare invariata la frase del mini-telecomando, con caratteri più piccoli e ben leggibili, puntando a due righe sul telefono di riferimento senza tagliare il testo. Mantenerla dopo le chiavi nella sezione completa e nella sezione compatta.
 - Assistenza: «In caso di difficoltà» scritto sullo sfondo, fuori dal pulsante; subito dopo pulsante con icona telefono seguita da «Chiamaci». Numero diretto Alberto invariato. Non racchiudere l’intera frase nel pulsante.
 - «Chiave da ritirare» seguita dalla targhetta originale in legno della camera; non ripetere numero e nome già leggibili sulla targhetta. Per più camere mostrare tutte le targhette e usare «Chiavi da ritirare».
+
+
+## Disposizione portachiavi e uscita — ultima scelta del 28 novembre 2026
+
+Nella sezione completa Come entrare, collocare la spiegazione del mini-telecomando, con caratteri più piccoli, dentro il riquadro della cassaforte e immediatamente sotto il relativo punto dell’elenco. Spostare «Dopo aver ritirato le chiavi, richiudi la cassaforte» fuori dal riquadro, prima di «Le camere si trovano al piano superiore». Per l’uscita usare «Per uscire, apri il cancello premendo il pulsante quadrato sul lato interno della colonna della veranda». Questa formulazione prevale sulla precedente all’infinito. Stessa disposizione e significato nelle dodici lingue; mantenere le istruzioni di uscita anche nella sezione compatta. Per la prova mantenere il collegamento Alberto già concordato, senza sostituirlo con Lucio né inventare dati mancanti.
