@@ -1013,12 +1013,9 @@ function renderWoodGateInstructions(lang){
   const close=document.createElement('p');close.textContent=copy[4];close.dataset.accessAction='';safe.after(close);
   const remote=safe.querySelector('.remote-note');if(remote){
    remote.classList.add('entry-remote-note');
-   if(lang==='it'){
-    const text=remote.textContent,split=text.indexOf('il mini-telecomando');
-    if(split>0){const first=document.createElement('span'),second=document.createElement('span');first.textContent=text.slice(0,split);second.textContent=text.slice(split);remote.replaceChildren(first,second);}
-   }
-   const remoteItem=safe.querySelector('.keyring-items li:last-child');
-   if(remoteItem)remoteItem.append(remote);
+   // A separate note shares the full box width and the introduction's left edge.
+   remote.textContent=remote.textContent;
+   safe.append(remote);
   }
   const upstairs=document.createElement('p');upstairs.className='entry-upstairs';upstairs.textContent=entryCopy[3];panel.append(upstairs);
  }
