@@ -969,6 +969,14 @@ function renderWoodGateInstructions(lang){
    const label=map.textContent+' · Google Maps';
    map.className='map-shortcut entry-map-shortcut';map.setAttribute('aria-label',label);map.title=label;
    map.replaceChildren(mapIcon.cloneNode(true));
+   const address=introText?.querySelector('strong:last-of-type');
+   if(address?.textContent==='Lungomare ITALIA, 70 – Marzocca di Senigallia'){
+    const before=address.previousSibling,after=address.nextSibling;
+    if(before?.nodeType===Node.TEXT_NODE)before.textContent=before.textContent.trimEnd();
+    if(after?.nodeType===Node.TEXT_NODE&&after.textContent.trim()==='.')after.remove();
+    const locationRow=document.createElement('div');locationRow.className='entry-location-row';
+    locationRow.append(address,map);panel.prepend(locationRow);
+   }
   }
   const entryCopy=WOOD_ENTRY_DETAILS[lang]||WOOD_ENTRY_DETAILS.it;
   const intro=safe.querySelector('p:not(.access-code):not(.access-missing)');

@@ -200,3 +200,8 @@ html.wood-preview .hero:has(>.gate-shortcut)>#subtitle{bottom:calc(6% + 44px);wh
 html.wood-preview #personal-access .entry-map-shortcut{display:flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;box-sizing:border-box;margin:8px 0 12px auto;padding:0;border-radius:13px}
 html.wood-preview #personal-access .entry-map-shortcut svg{width:25px;height:25px}
 html.wood-preview #personal-access .entry-call-button{max-width:100%;box-sizing:border-box;white-space:normal;text-align:center}
+
+/* Keep the bold address beside the small map action without a separate map row. */
+html.wood-preview #personal-access .entry-location-row{display:flex;align-items:center;gap:12px;margin:6px 0 12px}
+html.wood-preview #personal-access .entry-location-row>strong{flex:1;min-width:0}
+html.wood-preview #personal-access .entry-location-row>.entry-map-shortcut{flex:0 0 44px;margin:0}

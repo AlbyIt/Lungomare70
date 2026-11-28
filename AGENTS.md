@@ -150,3 +150,5 @@ Il pulsante telefonico in fondo alle istruzioni deve dire «In caso di difficolt
 Il pulsante di assistenza per difficoltà di ingresso e cancello deve chiamare direttamente Alberto: +39 333 9977 248 (tel:+393339977248), perché gestisce personalmente l’apertura del cancello. Questa indicazione prevale sul precedente numero per il solo pulsante di assistenza nelle sezioni Come entrare ed Entrare e uscire.
 
 In Come entrare evidenziare in grassetto giorno e data di arrivo e l’indirizzo completo nell’introduzione, in tutte le lingue, conservando i testi e le personalizzazioni.
+
+Per compattare Come entrare, disporre l’indirizzo in grassetto e il pulsante quadrato Google Maps sulla stessa riga: indirizzo a sinistra, mappa a destra, allineati verticalmente al centro. Non ripetere l’indirizzo nell’introduzione né lasciare una riga vuota per la mappa. Conservare il grassetto della data e la corretta leggibilità nelle dodici lingue.
