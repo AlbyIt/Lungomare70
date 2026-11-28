@@ -1056,7 +1056,7 @@ function renderWoodGateInstructions(lang){
   ja:['門の暗証番号キーパッド','キーボックス','出口ボタン']
  };
  const photoLabels=photoNames[lang]||photoNames.it;
- for(const [box,file,index] of [[gate,'ingresso-tastierino.jpg',0],[safe,'ingresso-cassaforte.jpg',1],[exit,'uscita-pulsante-mano-estate.png',2]]){
+ for(const [box,file,index] of [[gate,'ingresso-tastierino.jpg',0],[safe,'ingresso-cassaforte.jpg',1],[exit,'uscita-pulsante-mano-estate.png?v=20261128-exit-context1',2]]){
   if(!box||!panel.contains(box))continue;
   const photo=document.createElement('a');photo.className='access-thumb access-thumb-'+index;
   photo.href='assets/'+file;photo.target='_blank';photo.rel='noopener';
