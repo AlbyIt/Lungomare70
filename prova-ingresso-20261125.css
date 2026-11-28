@@ -233,4 +233,5 @@ html.wood-preview #personal-access .entry-call-button svg{
  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
 }
 
-@media(max-width:600px){html.wood-preview #personal-access .entry-remote-note>span{display:block}}
+/* The remote explanation is a note below the list, aligned with its introduction. */
+html.wood-preview #personal-access .entry-remote-note{margin:12px 0 0;text-align:left}
