@@ -152,3 +152,5 @@ Il pulsante di assistenza per difficoltà di ingresso e cancello deve chiamare d
 In Come entrare evidenziare in grassetto giorno e data di arrivo e l’indirizzo completo nell’introduzione, in tutte le lingue, conservando i testi e le personalizzazioni.
 
 Per compattare Come entrare, disporre l’indirizzo in grassetto e il pulsante quadrato Google Maps sulla stessa riga: indirizzo a sinistra, mappa a destra, allineati verticalmente al centro. Non ripetere l’indirizzo nell’introduzione né lasciare una riga vuota per la mappa. Conservare il grassetto della data e la corretta leggibilità nelle dodici lingue.
+
+Nel riquadro Codice del cancello di Come entrare non mostrare la frase In alternativa sul mini-telecomando: al primo accesso l’ospite non lo ha ancora ritirato. Mantenere le istruzioni del mini-telecomando dopo il ritiro delle chiavi e nella sezione compatta Entrare e uscire. La nota sulla validità del codice durante il soggiorno deve essere più piccola (0.875rem), leggibile e secondaria. Applicare a tutte le lingue.

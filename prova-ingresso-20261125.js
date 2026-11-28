@@ -957,7 +957,7 @@ function renderWoodGateInstructions(lang){
  if(!gate)return;
  panel.querySelectorAll('.access-photo-pending').forEach(node=>node.remove());
  const help=gate.querySelector('p:not(.access-code):not(.access-missing)');if(help)help.textContent=copy[1];
- for(const index of [5,2]){const p=document.createElement('p');p.className='gate-instruction';p.textContent=copy[index];gate.append(p);}
+ for(const index of (woodGateCompact()?[5,2]:[5])){const p=document.createElement('p');p.className=index===5?'gate-instruction gate-validity-note':'gate-instruction';p.textContent=copy[index];gate.append(p);}
  if(woodGateCompact()){
   detail.classList.add('gate-only');safe?.remove();panel.querySelector('.entry-map-button')?.remove();
   const title=document.getElementById('detail-title');const label=title.querySelector('.section-title-label');

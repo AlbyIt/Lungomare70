@@ -205,3 +205,6 @@ html.wood-preview #personal-access .entry-call-button{max-width:100%;box-sizing:
 html.wood-preview #personal-access .entry-location-row{display:flex;align-items:center;gap:12px;margin:6px 0 12px}
 html.wood-preview #personal-access .entry-location-row>strong{flex:1;min-width:0}
 html.wood-preview #personal-access .entry-location-row>.entry-map-shortcut{flex:0 0 44px;margin:0}
+
+/* Gate-code validity is secondary information, below the main entry instruction. */
+html.wood-preview #personal-access .gate-validity-note{font-size:.875rem;line-height:1.45}
