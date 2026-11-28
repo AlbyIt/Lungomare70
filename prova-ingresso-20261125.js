@@ -935,6 +935,23 @@ function renderWoodGateInstructions(lang){
  const detail=document.getElementById('detail');detail.classList.remove('gate-only');
  if(activeSection!==0||!guest||guest.invalid)return;
  const panel=document.getElementById('personal-access');if(!panel)return;
+ const introText=document.getElementById('detail-text');
+ if(introText){
+  const text=introText.textContent;
+  const values=['Lungomare ITALIA, 70 – Marzocca di Senigallia'];
+  if(/^\d{4}-\d{2}-\d{2}$/.test(guest.arrival)){
+   const arrivalDate=new Date(guest.arrival+'T12:00:00');
+   if(!Number.isNaN(arrivalDate.getTime()))values.push(lang==='ja'?japaneseDate(arrivalDate):new Intl.DateTimeFormat(lang,{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(arrivalDate));
+  }
+  const ranges=values.map(value=>({value,start:text.indexOf(value)})).filter(match=>match.start>=0).sort((a,b)=>a.start-b.start);
+  const nodes=[];let offset=0;
+  for(const match of ranges){
+   nodes.push(document.createTextNode(text.slice(offset,match.start)));
+   const strong=document.createElement('strong');strong.textContent=match.value;nodes.push(strong);
+   offset=match.start+match.value.length;
+  }
+  nodes.push(document.createTextNode(text.slice(offset)));introText.replaceChildren(...nodes);
+ }
  const copy=woodGateText(lang);
  const boxes=panel.querySelectorAll('.access-step');const gate=boxes[0];const safe=boxes[1];
  if(!gate)return;

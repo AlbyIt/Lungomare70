@@ -148,3 +148,5 @@ In Come entrare, mettere le istruzioni del pulsante quadrato di uscita in fondo,
 Il pulsante telefonico in fondo alle istruzioni deve dire «In caso di difficoltà, chiamaci», con traduzioni equivalenti in tutte le lingue e forme coerenti con il numero verificato di ospiti. Non usare il solo «Chiamaci». Nella sezione Come entrare sostituire il pulsante testuale grande della mappa con un pulsante quadrato di 44 × 44 px allineato a destra, con la stessa icona di posizione della mappa in Home e stile in legno; conservare collegamento, apertura in nuova scheda, etichetta accessibile e titolo tradotti.
 
 Il pulsante di assistenza per difficoltà di ingresso e cancello deve chiamare direttamente Alberto: +39 333 9977 248 (tel:+393339977248), perché gestisce personalmente l’apertura del cancello. Questa indicazione prevale sul precedente numero per il solo pulsante di assistenza nelle sezioni Come entrare ed Entrare e uscire.
+
+In Come entrare evidenziare in grassetto giorno e data di arrivo e l’indirizzo completo nell’introduzione, in tutte le lingue, conservando i testi e le personalizzazioni.
