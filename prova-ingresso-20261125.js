@@ -811,7 +811,7 @@ function applyItalianOccupancy(root){
  render();
 })();
 
-// Arrival instructions remain prominent through the entire arrival day in Rome.
+// Arrival instructions remain prominent until 21:00 on the arrival day in Rome.
 // All subsequent stay days use the compact wooden gate action within the photograph.
 const WOOD_GATE_COPY={
  it:['Entrare e uscire','Digita le 6 cifre seguite da #.','In alternativa, per aprire il cancello basta avvicinare il mini-telecomando alla tastiera.','Per uscire, premi il pulsante quadrato sul lato interno della colonna della veranda.','Dopo aver ritirato le chiavi, richiudi la cassaforte.','Il codice del cancello è valido durante il soggiorno.'],
@@ -831,7 +831,8 @@ function woodGateCompact(g=guest,now=new Date()){
  if(!g||g.invalid)return false;
  const phase=woodStayPhase(g,now);
  const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome'}).format(now);
- return (phase==='during'||phase==='departure')&&today>g.arrival;
+ const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',hour:'2-digit',hourCycle:'h23'}).format(now));
+ return (phase==='during'||phase==='departure')&&(today>g.arrival||(today===g.arrival&&hour>=21));
 }
 function woodGateText(lang){
  const copy=[...(WOOD_GATE_COPY[lang]||WOOD_GATE_COPY.it)];
