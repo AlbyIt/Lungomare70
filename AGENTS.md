@@ -139,3 +139,5 @@ Su richiesta di Alberto ridurre ulteriormente la targhetta Entrare e uscire e av
 
 Nella sezione Come entrare indicare che, dopo l’inserimento del codice, il meccanismo della cassaforte va ruotato di 90°. Identificare i portachiavi da ritirare con numero e nome di tutte le camere assegnate. Ricordare che le camere si trovano al piano superiore. Aggiungere un pulsante Chiamaci al numero +39 335 7739549, disponibile anche nella sezione compatta Entrare e uscire. Applicare gli stessi contenuti nelle dodici lingue e conservare le distinzioni per numero di ospiti e camere.
 Nel messaggio di accompagnamento con il link alla guida mantenere il P.S. «Per velocizzare la registrazione, vi chiediamo gentilmente di anticiparci i documenti d’identità a info@lungomare70.it.» esclusivamente per prenotazioni Booking; ometterlo per le dirette.
+
+In Come entrare, mettere le istruzioni del pulsante quadrato di uscita in fondo, dopo il ritiro delle chiavi e l’indicazione del piano superiore, sotto il titolo Per uscire e prima di Chiamaci. Mantenerle anche nella sezione compatta Entrare e uscire, nelle dodici lingue.

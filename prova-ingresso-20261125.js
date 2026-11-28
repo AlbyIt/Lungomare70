@@ -952,7 +952,7 @@ function renderWoodGateInstructions(lang){
  if(!gate)return;
  panel.querySelectorAll('.access-photo-pending').forEach(node=>node.remove());
  const help=gate.querySelector('p:not(.access-code):not(.access-missing)');if(help)help.textContent=copy[1];
- for(const index of [5,2,3]){const p=document.createElement('p');p.className='gate-instruction';p.textContent=copy[index];gate.append(p);}
+ for(const index of [5,2]){const p=document.createElement('p');p.className='gate-instruction';p.textContent=copy[index];gate.append(p);}
  if(woodGateCompact()){
   detail.classList.add('gate-only');safe?.remove();panel.querySelector('.entry-map-button')?.remove();
   const title=document.getElementById('detail-title');const label=title.querySelector('.section-title-label');
@@ -973,6 +973,10 @@ function renderWoodGateInstructions(lang){
   const close=document.createElement('p');close.textContent=copy[4];safe.append(close);
   const upstairs=document.createElement('p');upstairs.className='entry-upstairs';upstairs.textContent=entryCopy[3];panel.append(upstairs);
  }
+ const exitTitles={it:'Per uscire',en:'To exit',de:'Zum Verlassen',fr:'Pour sortir',es:'Para salir',nl:'Naar buiten',pl:'Wyjście',ro:'Pentru a ieși',cs:'Odchod',hu:'Kijutás',bg:'За излизане',ja:'外に出るとき'};
+ const exit=document.createElement('section');exit.className='access-step entry-exit';
+ const exitTitle=document.createElement('h3');exitTitle.textContent=exitTitles[lang]||exitTitles.it;
+ const exitText=document.createElement('p');exitText.textContent=copy[3];exit.append(exitTitle,exitText);panel.append(exit);
  const entryCopy=WOOD_ENTRY_DETAILS[lang]||WOOD_ENTRY_DETAILS.it;
  const call=document.createElement('a');call.className='entry-map-button entry-call-button';call.href='tel:+393357739549';
  let callLabel=entryCopy[4];
