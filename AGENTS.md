@@ -141,3 +141,10 @@ Nella sezione Come entrare indicare che, dopo l’inserimento del codice, il mec
 Nel messaggio di accompagnamento con il link alla guida mantenere il P.S. «Per velocizzare la registrazione, vi chiediamo gentilmente di anticiparci i documenti d’identità a info@lungomare70.it.» esclusivamente per prenotazioni Booking; ometterlo per le dirette.
 
 In Come entrare, mettere le istruzioni del pulsante quadrato di uscita in fondo, dopo il ritiro delle chiavi e l’indicazione del piano superiore, sotto il titolo Per uscire e prima di Chiamaci. Mantenerle anche nella sezione compatta Entrare e uscire, nelle dodici lingue.
+
+
+## Assistenza condizionata e mappa compatta — 28 novembre 2026
+
+Il pulsante telefonico in fondo alle istruzioni deve dire «In caso di difficoltà, chiamaci», con traduzioni equivalenti in tutte le lingue e forme coerenti con il numero verificato di ospiti. Non usare il solo «Chiamaci». Nella sezione Come entrare sostituire il pulsante testuale grande della mappa con un pulsante quadrato di 44 × 44 px allineato a destra, con la stessa icona di posizione della mappa in Home e stile in legno; conservare collegamento, apertura in nuova scheda, etichetta accessibile e titolo tradotti.
+
+Il pulsante di assistenza per difficoltà di ingresso e cancello deve chiamare direttamente Alberto: +39 333 9977 248 (tel:+393339977248), perché gestisce personalmente l’apertura del cancello. Questa indicazione prevale sul precedente numero per il solo pulsante di assistenza nelle sezioni Come entrare ed Entrare e uscire.

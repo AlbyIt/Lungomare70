@@ -862,85 +862,73 @@ const WOOD_ENTRY_DETAILS={
   "La cassaforte delle chiavi si trova a destra della vetrata d’ingresso. Per aprirla, inserire il codice indicato e ruotare il meccanismo di 90°.",
   "Portachiavi da ritirare",
   "Ogni portachiavi contiene:",
-  "Le camere si trovano al piano superiore.",
-  "Chiamaci"
+  "Le camere si trovano al piano superiore."
  ],
  "en": [
   "The key safe is to the right of the glass entrance door. To open it, enter the code shown and turn the mechanism 90°.",
   "Key rings to collect",
   "Each key ring contains:",
-  "The rooms are upstairs.",
-  "Call us"
+  "The rooms are upstairs."
  ],
  "de": [
   "Der Schlüsselsafe befindet sich rechts neben der verglasten Eingangstür. Zum Öffnen den angegebenen Code eingeben und den Mechanismus um 90° drehen.",
   "Abzuholende Schlüsselbunde",
   "Jeder Schlüsselbund enthält:",
-  "Die Zimmer befinden sich im Obergeschoss.",
-  "Anrufen"
+  "Die Zimmer befinden sich im Obergeschoss."
  ],
  "fr": [
   "Le coffre à clés se trouve à droite de la porte vitrée d’entrée. Pour l’ouvrir, saisir le code indiqué et tourner le mécanisme de 90°.",
   "Trousseaux à récupérer",
   "Chaque trousseau contient :",
-  "Les chambres se trouvent à l’étage.",
-  "Nous appeler"
+  "Les chambres se trouvent à l’étage."
  ],
  "es": [
   "La caja de llaves está a la derecha de la puerta acristalada de entrada. Para abrirla, introducir el código indicado y girar el mecanismo 90°.",
   "Llaveros que se deben recoger",
   "Cada llavero contiene:",
-  "Las habitaciones están en la planta superior.",
-  "Llámanos"
+  "Las habitaciones están en la planta superior."
  ],
  "nl": [
   "De sleutelkluis bevindt zich rechts van de glazen toegangsdeur. Voer de aangegeven code in en draai het mechanisme 90° om de kluis te openen.",
   "Op te halen sleutelbossen",
   "Elke sleutelbos bevat:",
-  "De kamers bevinden zich op de bovenverdieping.",
-  "Bel ons"
+  "De kamers bevinden zich op de bovenverdieping."
  ],
  "pl": [
   "Sejf na klucze znajduje się po prawej stronie przeszklonych drzwi wejściowych. Aby go otworzyć, należy wpisać podany kod i obrócić mechanizm o 90°.",
   "Komplety kluczy do odebrania",
   "Każdy komplet zawiera:",
-  "Pokoje znajdują się na piętrze.",
-  "Zadzwoń do nas"
+  "Pokoje znajdują się na piętrze."
  ],
  "ro": [
   "Seiful pentru chei se află în dreapta ușii de sticlă de la intrare. Pentru a-l deschide, se introduce codul indicat și se rotește mecanismul cu 90°.",
   "Brelocuri cu chei de ridicat",
   "Fiecare breloc conține:",
-  "Camerele se află la etaj.",
-  "Sunați-ne"
+  "Camerele se află la etaj."
  ],
  "cs": [
   "Schránka na klíče se nachází vpravo od prosklených vstupních dveří. Pro otevření je třeba zadat uvedený kód a otočit mechanismem o 90°.",
   "Svazky klíčů k vyzvednutí",
   "Každý svazek obsahuje:",
-  "Pokoje se nacházejí v patře.",
-  "Zavolejte nám"
+  "Pokoje se nacházejí v patře."
  ],
  "hu": [
   "A kulcsszéf az üveg bejárati ajtótól jobbra található. A kinyitáshoz a megadott kódot kell beírni, majd a mechanizmust 90°-kal elfordítani.",
   "Átveendő kulcscsomók",
   "Minden kulcscsomó tartalma:",
-  "A szobák az emeleten találhatók.",
-  "Hívjon minket"
+  "A szobák az emeleten találhatók."
  ],
  "bg": [
   "Сейфът за ключове се намира вдясно от стъклената входна врата. За отваряне трябва да се въведе посоченият код и механизмът да се завърти на 90°.",
   "Връзки ключове за вземане",
   "Всяка връзка съдържа:",
-  "Стаите се намират на горния етаж.",
-  "Обадете ни се"
+  "Стаите се намират на горния етаж."
  ],
  "ja": [
   "キーボックスはガラスの入口ドアの右側にあります。表示された暗証番号を入力し、開閉つまみを90°回すと開きます。",
   "お受け取りいただくキーホルダー",
   "各キーホルダーには次のものが付いています。",
-  "客室は上の階にあります。",
-  "電話する"
+  "客室は上の階にあります。"
  ]
 };
 function renderWoodGateInstructions(lang){
@@ -958,6 +946,13 @@ function renderWoodGateInstructions(lang){
   const title=document.getElementById('detail-title');const label=title.querySelector('.section-title-label');
   if(label)label.textContent=copy[0];else title.textContent=copy[0];
  }else if(safe){
+  const map=panel.querySelector('.entry-map-button');
+  const mapIcon=document.querySelector('#header-map svg');
+  if(map&&mapIcon){
+   const label=map.textContent+' · Google Maps';
+   map.className='map-shortcut entry-map-shortcut';map.setAttribute('aria-label',label);map.title=label;
+   map.replaceChildren(mapIcon.cloneNode(true));
+  }
   const entryCopy=WOOD_ENTRY_DETAILS[lang]||WOOD_ENTRY_DETAILS.it;
   const intro=safe.querySelector('p:not(.access-code):not(.access-missing)');
   if(intro){
@@ -978,9 +973,10 @@ function renderWoodGateInstructions(lang){
  const exitTitle=document.createElement('h3');exitTitle.textContent=exitTitles[lang]||exitTitles.it;
  const exitText=document.createElement('p');exitText.textContent=copy[3];exit.append(exitTitle,exitText);panel.append(exit);
  const entryCopy=WOOD_ENTRY_DETAILS[lang]||WOOD_ENTRY_DETAILS.it;
- const call=document.createElement('a');call.className='entry-map-button entry-call-button';call.href='tel:+393357739549';
- let callLabel=entryCopy[4];
- if(guestKnownSolo(guest))callLabel=({ro:'Sună-ne',cs:'Zavolej nám',bg:'Обади ни се'})[lang]||callLabel;
+ const call=document.createElement('a');call.className='entry-map-button entry-call-button';call.href='tel:+393339977248';
+ const callLabels={"it": "In caso di difficoltà, chiamaci", "en": "If you have any difficulty, call us", "de": "Bei Schwierigkeiten bitte anrufen", "fr": "En cas de difficulté, appelez-nous", "es": "Si tenéis alguna dificultad, llamadnos", "nl": "Bel ons als er problemen zijn", "pl": "W razie trudności zadzwońcie do nas", "ro": "Dacă întâmpinați dificultăți, sunați-ne", "cs": "V případě potíží nám zavolejte", "hu": "Nehézség esetén hívjanak minket", "bg": "При затруднения ни се обадете", "ja": "お困りの際はお電話ください"};
+ const soloCallLabels={"es": "Si tienes alguna dificultad, llámanos", "pl": "W razie trudności zadzwoń do nas", "ro": "Dacă întâmpini dificultăți, sună-ne", "cs": "V případě potíží nám zavolej", "hu": "Nehézség esetén hívj minket", "bg": "При затруднения ни се обади"};
+ const callLabel=(guestKnownSolo(guest)&&soloCallLabels[lang])||callLabels[lang]||callLabels.it;
  call.textContent=callLabel;panel.append(call);
 }
 (() => {
