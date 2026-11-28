@@ -170,3 +170,8 @@ Queste indicazioni prevalgono sulle precedenti in conflitto e vanno mantenute in
 ## Disposizione portachiavi e uscita — ultima scelta del 28 novembre 2026
 
 Nella sezione completa Come entrare, collocare la spiegazione del mini-telecomando, con caratteri più piccoli, dentro il riquadro della cassaforte e immediatamente sotto il relativo punto dell’elenco. Spostare «Dopo aver ritirato le chiavi, richiudi la cassaforte» fuori dal riquadro, prima di «Le camere si trovano al piano superiore». Per l’uscita usare «Per uscire, apri il cancello premendo il pulsante quadrato sul lato interno della colonna della veranda». Questa formulazione prevale sulla precedente all’infinito. Stessa disposizione e significato nelle dodici lingue; mantenere le istruzioni di uscita anche nella sezione compatta. Per la prova mantenere il collegamento Alberto già concordato, senza sostituirlo con Lucio né inventare dati mancanti.
+
+
+## Tre fotografie di accesso — 28 novembre 2026
+
+Base approvata senza foto: commit 57b699d, ripristinato e riconfermato da Alberto. Aggiungere soltanto una foto piccola del tastierino (IMG_4092), una della cassaforte (IMG_4098) e una del pulsante (IMG_4095), senza riscrivere testi, modificare dimensione dei codici, ordine delle istruzioni o elenchi. Foto tastierino e cassaforte accanto ai rispettivi codici; pulsante dopo la sua istruzione. Originali apribili al tocco; ritaglio soltanto in visualizzazione CSS. Stesso schema nelle dodici lingue. Nella sezione compatta mantenere solo tastierino e pulsante, come le relative istruzioni. Conservare il collegamento Alberto approvato con i parametri presenti: non consegnare link abbreviati che perdono codici e arrivo.

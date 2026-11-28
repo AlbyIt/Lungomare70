@@ -1040,6 +1040,32 @@ function renderWoodGateInstructions(lang){
  call.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>';
  const callText=document.createElement('span');callText.textContent=labels[1];call.append(callText);
  assistance.append(prompt,call);panel.append(assistance);
+ // Add only photographs to the approved access layout; retain every text node.
+ const photoNames={
+  it:['Tastierino del cancello','Cassaforte delle chiavi','Pulsante di uscita'],
+  en:['Gate keypad','Key safe','Exit button'],
+  de:['Tastenfeld am Tor','Schlüsselsafe','Ausgangstaster'],
+  fr:['Clavier du portail','Coffre à clés','Bouton de sortie'],
+  es:['Teclado del portón','Caja de llaves','Botón de salida'],
+  nl:['Toetsenpaneel van het hek','Sleutelkluisje','Uitgangsknop'],
+  pl:['Klawiatura przy bramie','Sejf na klucze','Przycisk wyjścia'],
+  ro:['Tastatura porții','Seiful pentru chei','Buton de ieșire'],
+  cs:['Klávesnice u brány','Schránka na klíče','Odchodové tlačítko'],
+  hu:['A kapu billentyűzete','Kulcsszéf','Kijárati gomb'],
+  bg:['Клавиатура на портала','Сейф за ключове','Бутон за излизане'],
+  ja:['門の暗証番号キーパッド','キーボックス','出口ボタン']
+ };
+ const photoLabels=photoNames[lang]||photoNames.it;
+ for(const [box,file,index] of [[gate,'ingresso-tastierino.jpg',0],[safe,'ingresso-cassaforte.jpg',1],[exit,'uscita-pulsante.jpg',2]]){
+  if(!box||!panel.contains(box))continue;
+  const photo=document.createElement('a');photo.className='access-thumb access-thumb-'+index;
+  photo.href='assets/'+file;photo.target='_blank';photo.rel='noopener';
+  const image=document.createElement('img');image.src=photo.href;image.alt=photoLabels[index];
+  image.width=1152;image.height=1536;image.loading='lazy';image.decoding='async';photo.append(image);
+  const code=box.querySelector('.access-code,.access-missing');
+  if(code){const row=document.createElement('div');row.className='access-code-photo';code.before(row);row.append(code,photo);}
+  else box.append(photo);
+ }
 }
 (() => {
  const previousHeader=renderPersonalHeader;
