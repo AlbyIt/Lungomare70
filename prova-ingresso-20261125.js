@@ -985,10 +985,17 @@ function renderWoodGateInstructions(lang){
   if(intro){
    intro.textContent=entryCopy[0];
    const identity=document.createElement('p');identity.className='entry-keyring-identity';
-   const roomNames=guest.rooms.slice().sort((a,b)=>a-b).map(n=>n+' · '+ROOM_NAMES[n-1]);
-   const names=new Intl.ListFormat(lang,{style:'long',type:'conjunction'}).format(roomNames);
-   const strong=document.createElement('strong');strong.textContent=names;
-   identity.append(entryCopy[1]+': ',strong);
+   const keyLabels={"it":["Chiave da ritirare","Chiavi da ritirare"],"en":["Key to collect","Keys to collect"],"de":["Abzuholender Schlüssel","Abzuholende Schlüssel"],"fr":["Clé à récupérer","Clés à récupérer"],"es":["Llave que recoger","Llaves que recoger"],"nl":["Op te halen sleutel","Op te halen sleutels"],"pl":["Klucz do odebrania","Klucze do odebrania"],"ro":["Cheie de ridicat","Chei de ridicat"],"cs":["Klíč k vyzvednutí","Klíče k vyzvednutí"],"hu":["Átveendő kulcs","Átveendő kulcsok"],"bg":["Ключ за вземане","Ключове за вземане"],"ja":["お受け取りいただく鍵","お受け取りいただく鍵"]};
+   const rooms=guest.rooms.slice().sort((a,b)=>a-b);
+   const label=document.createElement('span');label.className='entry-keyring-label';
+   label.textContent=(keyLabels[lang]||keyLabels.it)[rooms.length>1?1:0]+':';
+   const signs=document.createElement('span');signs.className='entry-keyring-signs';
+   for(const room of rooms){
+    const sign=document.createElement('img');sign.className='room-identity-sign entry-keyring-sign';
+    sign.src='assets/room-'+room+'-sign.png';sign.alt=room+' · '+ROOM_NAMES[room-1];
+    sign.width=64;sign.height=58;signs.append(sign);
+   }
+   identity.append(label,signs);
    const contents=document.createElement('p');contents.textContent=entryCopy[2];
    intro.after(identity,contents);
   }
