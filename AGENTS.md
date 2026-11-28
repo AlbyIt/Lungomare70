@@ -109,3 +109,12 @@ Nella miniatura della Taverna usare la fotografia reale della carne del suo sito
 - Aggiornare anche una scheda già aperta, al rientro nella pagina e al cambio lingua. Con date mancanti o non valide non presumere il trascorrere del soggiorno.
 - Quando Alberto comunica cambiamenti al programma, aggiornare la guida con i dati verificati. Finché i dati sono nel frammento URL, la modifica richiede un link aggiornato: non promettere che un link già inviato si aggiorni da solo. L'aggiornamento centralizzato dello stesso link dipende dalla futura gestione tramite token.
 - In italiano mantenere Buongiorno/Buonasera, con passaggio serale alle 18; nelle altre lingue rispettare i saluti naturali della lingua, compreso il pomeriggio dove appropriato. Restano prioritari Benvenuto all'arrivo e Arrivederci alla partenza.
+
+
+## Menu compatto e accesso durante il soggiorno — 28 novembre 2026
+
+Mantenere la versione in legno, foto originale, larghezza dei tasti, font e composizione finale con pesci, conchiglie e firma. Ridurre del 10% l’altezza minima dei tasti del menu, compreso Come entrare, consentendo altezza aggiuntiva se richiesta dai testi tradotti. Lo sfondo resta ancorato in basso alla scala originale: la pagina si accorcia dalla parte alta, senza deformare il finale.
+
+Come entrare resta in evidenza per tutta la data di arrivo in Europe/Rome. Dal giorno successivo e fino a fine giornata del check-out, nascondere il tasto grande senza lasciare un vuoto e mostrare una piccola targhetta in legno «Entrare e uscire» nella parte bassa destra della fotografia. Dentro mostrare codice cancello, alternativa con mini-telecomando avvicinato alla tastiera e pulsante quadrato di uscita sul lato interno della colonna della veranda. Prima dell’arrivo e nel giorno d’arrivo mantenere anche le istruzioni complete della cassaforte, ricordando di richiuderla dopo il ritiro delle chiavi. Per ora testi senza nuove fotografie o segnaposto; le fotografie verranno fornite da Alberto. Stessi contenuti e comportamento in tutte le dodici lingue, singolare soltanto per occupazione verificata di una persona. Con date invalide non presumere il passaggio.
+
+La copia temporanea backup/legno-prima-compattazione-20261128 serve fino all’approvazione di Alberto; dopo la sua approvazione rimuoverla. I file inutilizzati crystal-buttons.css e title-glass-preview.css/js sono stati rimossi su sua richiesta: non riproporre il vecchio modello in vetro.

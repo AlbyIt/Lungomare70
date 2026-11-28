@@ -1,4 +1,13 @@
 /* Separate variant: dominant entry action and a handwritten farewell. */
+/* Compact only the menu vertically; preserve artwork scale and bottom anchor. */
+html.wood-preview #cards.cards{grid-auto-rows:minmax(79.2px,auto)}
+html.wood-preview #cards>.card{min-height:79.2px;padding-top:5.6px;padding-bottom:5.6px}
+html.wood-preview #cards>.entry-card[hidden]{display:none!important}
+html.wood-preview .hero>.gate-shortcut{position:absolute;right:5%;bottom:7%;z-index:3;display:flex;align-items:center;gap:7px;max-width:155px;min-height:32px;padding:5px 10px;background:var(--wood) center/cover;border:1px solid #fffaf2;border-radius:12px;box-shadow:inset 0 0 0 1px #d7c0a2,0 3px 5px #29455555;color:#123e57;font:500 1rem/1.1 Georgia,serif;text-align:center}
+html.wood-preview .gate-shortcut svg{width:18px;height:18px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+html.wood-preview .gate-shortcut:focus-visible{outline:3px solid #175571;outline-offset:3px}
+html.wood-preview #detail.gate-only #detail-text{display:none}
+@media(max-width:600px){html.wood-preview #cards.cards{grid-auto-rows:minmax(55.8px,auto)}html.wood-preview #cards>.card{min-height:55.8px;padding-top:3.9px;padding-bottom:3.9px}html.wood-preview .hero>.gate-shortcut{font-size:.82rem;gap:5px;padding:4px 7px}}
 @font-face{font-family:'Caveat';src:url('assets/fonts/caveat-handwriting.ttf') format('truetype');font-weight:400 700;font-style:normal;font-display:swap}
 html.wood-preview #cards>.card.entry-card{grid-column:1/-1;justify-content:center}
 html.wood-preview #cards>.card.entry-card>span:not(.wood-icon){font-size:1.85rem}
@@ -177,3 +186,5 @@ html.wood-preview .topbar .brand-number{margin-left:-.05em;letter-spacing:0}
 
 /* Keep the tagline closer to the wordmark. */
 html.wood-preview .topbar .brand small{margin-top:0;position:relative;top:-4px;margin-bottom:-4px}
+
+html.wood-preview .gate-shortcut::before{content:"";position:absolute;inset:-6px 0}

@@ -810,3 +810,71 @@ function applyItalianOccupancy(root){
  renderStayEventsSection=function(index,lang){previousEvents(index,lang);applyItalianOccupancy(document.getElementById('detail'));};
  render();
 })();
+
+// Arrival instructions remain prominent through the entire arrival day in Rome.
+// All subsequent stay days use the compact wooden gate action within the photograph.
+const WOOD_GATE_COPY={
+ it:['Entrare e uscire','Digita le 6 cifre seguite da #.','In alternativa, per aprire il cancello basta avvicinare il mini-telecomando alla tastiera.','Per uscire, premi il pulsante quadrato sul lato interno della colonna della veranda.','Dopo aver ritirato le chiavi, richiudi la cassaforte.','Il codice del cancello è valido durante il soggiorno.'],
+ en:['Entering and leaving','Enter the 6 digits followed by #.','Alternatively, hold the small gate remote close to the keypad to open the gate.','To exit, press the square button on the inner side of the veranda column.','Close the key safe after collecting the keys.','The gate code is valid during the stay.'],
+ de:['Ein- und ausgehen','Die 6 Ziffern eingeben, gefolgt von #.','Alternativ lässt sich das Tor öffnen, indem die kleine Torfernbedienung nahe an das Tastenfeld gehalten wird.','Zum Verlassen den quadratischen Knopf an der Innenseite der Verandasäule drücken.','Den Schlüsselsafe nach der Schlüsselentnahme wieder schließen.','Der Torcode gilt während des Aufenthalts.'],
+ fr:['Entrer et sortir','Saisir les 6 chiffres suivis de #.','Il est aussi possible d’ouvrir le portail en approchant la petite télécommande du clavier.','Pour sortir, appuyer sur le bouton carré situé sur la face intérieure de la colonne de la véranda.','Refermer le coffre à clés après avoir récupéré les clés.','Le code du portail est valable pendant le séjour.'],
+ es:['Entrar y salir','Introducir las 6 cifras seguidas de #.','También se puede abrir el portón acercando el pequeño mando al teclado.','Para salir, pulsar el botón cuadrado situado en el lado interior de la columna de la veranda.','Cerrar la caja de llaves después de recoger las llaves.','El código del portón es válido durante la estancia.'],
+ nl:['Binnenkomen en weggaan','Voer de 6 cijfers in, gevolgd door #.','De poort kan ook worden geopend door de kleine afstandsbediening dicht bij het toetsenpaneel te houden.','Druk om naar buiten te gaan op de vierkante knop aan de binnenzijde van de verandazuil.','Sluit het sleutelkluisje na het ophalen van de sleutels.','De poortcode is geldig tijdens het verblijf.'],
+ pl:['Wejście i wyjście','Należy wpisać 6 cyfr, a następnie #.','Bramę można też otworzyć, zbliżając mały pilot do klawiatury.','Aby wyjść, należy nacisnąć kwadratowy przycisk po wewnętrznej stronie kolumny werandy.','Po odebraniu kluczy należy zamknąć sejf na klucze.','Kod do bramy jest ważny podczas pobytu.'],
+ ro:['Intrare și ieșire','Introduceți cele 6 cifre urmate de #.','Poarta se poate deschide și apropiind mica telecomandă de tastatură.','Pentru a ieși, apăsați butonul pătrat de pe partea interioară a coloanei verandei.','Închideți seiful după ridicarea cheilor.','Codul porții este valabil pe durata sejurului.'],
+ cs:['Vstup a odchod','Zadejte 6 číslic a poté #.','Bránu lze také otevřít přiložením malého dálkového ovladače ke klávesnici.','Při odchodu stiskněte čtvercové tlačítko na vnitřní straně sloupu verandy.','Po vyzvednutí klíčů schránku opět zavřete.','Kód brány platí po dobu pobytu.'],
+ hu:['Be- és kijutás','Adja meg a 6 számjegyet, majd a # jelet.','A kapu a kis távirányító billentyűzethez közelítésével is kinyitható.','Kifelé menet a veranda oszlopának belső oldalán lévő négyzet alakú gombot kell megnyomni.','A kulcsok átvétele után a kulcsszéfet vissza kell zárni.','A kapukód a tartózkodás ideje alatt érvényes.'],
+ bg:['Влизане и излизане','Въведете 6-те цифри, последвани от #.','Порталът може да се отвори и чрез доближаване на малкото дистанционно до клавиатурата.','За излизане натиснете квадратния бутон от вътрешната страна на колоната на верандата.','След вземане на ключовете затворете сейфа.','Кодът за портала е валиден по време на престоя.'],
+ ja:['出入りの方法','6桁の数字に続けて # を入力してください。','小型リモコンをキーパッドに近づけても門を開けられます。','外に出るときは、ベランダの柱の内側にある四角いボタンを押してください。','鍵を取り出した後は、キーボックスを閉めてください。','門の暗証番号は滞在期間中有効です。']
+};
+function woodGateCompact(g=guest,now=new Date()){
+ if(!g||g.invalid)return false;
+ const phase=woodStayPhase(g,now);
+ const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome'}).format(now);
+ return (phase==='during'||phase==='departure')&&today>g.arrival;
+}
+function woodGateText(lang){
+ const copy=[...(WOOD_GATE_COPY[lang]||WOOD_GATE_COPY.it)];
+ if(guestKnownSolo(guest)){
+  if(lang==='ro'){copy[1]='Introdu cele 6 cifre urmate de #.';copy[3]='Pentru a ieși, apasă butonul pătrat de pe partea interioară a coloanei verandei.';copy[4]='Închide seiful după ridicarea cheilor.';}
+  if(lang==='cs'){copy[1]='Zadej 6 číslic a poté #.';copy[3]='Při odchodu stiskni čtvercové tlačítko na vnitřní straně sloupu verandy.';copy[4]='Po vyzvednutí klíčů schránku opět zavři.';}
+  if(lang==='bg'){copy[1]='Въведи 6-те цифри, последвани от #.';copy[3]='За излизане натисни квадратния бутон от вътрешната страна на колоната на верандата.';copy[4]='След вземане на ключовете затвори сейфа.';}
+ }
+ return copy.map(text=>localizedOccupancyText(text,guestKnownSolo(guest),lang));
+}
+function renderWoodGateAction(lang){
+ const compact=woodGateCompact();
+ const entry=document.querySelector('#cards>.entry-card');
+ if(entry){if(compact&&entry.contains(document.activeElement))document.activeElement.blur();entry.hidden=compact;}
+ let action=document.getElementById('wood-gate-shortcut');
+ if(!compact){action?.remove();return;}
+ if(!action){
+  action=document.createElement('button');action.id='wood-gate-shortcut';action.className='gate-shortcut';action.type='button';action.setAttribute('aria-haspopup','dialog');
+  action.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="m11.5 11.5 9 9m-3-3 3-3m-6 0 3-3"/></svg><span></span>';
+  action.addEventListener('click',()=>openSection(0));document.querySelector('.hero').append(action);
+ }
+ action.querySelector('span').textContent=woodGateText(lang)[0];
+}
+function renderWoodGateInstructions(lang){
+ const detail=document.getElementById('detail');detail.classList.remove('gate-only');
+ if(activeSection!==0||!guest||guest.invalid)return;
+ const panel=document.getElementById('personal-access');if(!panel)return;
+ const copy=woodGateText(lang);
+ const boxes=panel.querySelectorAll('.access-step');const gate=boxes[0];const safe=boxes[1];
+ if(!gate)return;
+ panel.querySelectorAll('.access-photo-pending').forEach(node=>node.remove());
+ const help=gate.querySelector('p:not(.access-code):not(.access-missing)');if(help)help.textContent=copy[1];
+ for(const index of [5,2,3]){const p=document.createElement('p');p.className='gate-instruction';p.textContent=copy[index];gate.append(p);}
+ if(woodGateCompact()){
+  detail.classList.add('gate-only');safe?.remove();panel.querySelector('.entry-map-button')?.remove();
+  const title=document.getElementById('detail-title');const label=title.querySelector('.section-title-label');
+  if(label)label.textContent=copy[0];else title.textContent=copy[0];
+ }else if(safe){const p=document.createElement('p');p.textContent=copy[4];safe.append(p);}
+}
+(() => {
+ const previousHeader=renderPersonalHeader;
+ renderPersonalHeader=function(lang){previousHeader(lang);renderWoodGateAction(lang);};
+ const previousOpen=openSection;
+ openSection=function(index){previousOpen(index);renderWoodGateInstructions(document.documentElement.lang||'it');};
+ render();
+})();
