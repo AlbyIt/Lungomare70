@@ -1011,7 +1011,14 @@ function renderWoodGateInstructions(lang){
    intro.after(identity,contents);
   }
   const close=document.createElement('p');close.textContent=copy[4];close.dataset.accessAction='';safe.append(close);
-  const remote=safe.querySelector('.remote-note');if(remote){remote.classList.add('entry-remote-note');safe.after(remote);}
+  const remote=safe.querySelector('.remote-note');if(remote){
+   remote.classList.add('entry-remote-note');
+   if(lang==='it'){
+    const text=remote.textContent,split=text.indexOf('il mini-telecomando');
+    if(split>0){const first=document.createElement('span'),second=document.createElement('span');first.textContent=text.slice(0,split);second.textContent=text.slice(split);remote.replaceChildren(first,second);}
+   }
+   safe.after(remote);
+  }
   const upstairs=document.createElement('p');upstairs.className='entry-upstairs';upstairs.textContent=entryCopy[3];panel.append(upstairs);
  }
  const exitTitles={it:'Per uscire',en:'To exit',de:'Zum Verlassen',fr:'Pour sortir',es:'Para salir',nl:'Naar buiten',pl:'Wyjście',ro:'Pentru a ieși',cs:'Odchod',hu:'Kijutás',bg:'За излизане',ja:'外に出るとき'};
