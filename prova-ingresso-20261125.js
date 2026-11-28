@@ -815,17 +815,17 @@ function applyItalianOccupancy(root){
 // All subsequent stay days use the compact wooden gate action within the photograph.
 const WOOD_GATE_COPY={
  it:['Entrare e uscire','Digita le 6 cifre seguite da #.','In alternativa, per aprire il cancello basta avvicinare il mini-telecomando alla tastiera.','Per uscire, premi il pulsante quadrato sul lato interno della colonna della veranda.','Dopo aver ritirato le chiavi, richiudi la cassaforte.','Il codice è valido per tutto il soggiorno.'],
- en:['Entering and leaving','Enter the 6 digits followed by #.','Alternatively, hold the small gate remote close to the keypad to open the gate.','To exit, press the square button on the inner side of the veranda column.','Close the key safe after collecting the keys.','The code is valid throughout your stay.'],
- de:['Ein- und ausgehen','Die 6 Ziffern eingeben, gefolgt von #.','Alternativ lässt sich das Tor öffnen, indem die kleine Torfernbedienung nahe an das Tastenfeld gehalten wird.','Zum Verlassen den quadratischen Knopf an der Innenseite der Verandasäule drücken.','Den Schlüsselsafe nach der Schlüsselentnahme wieder schließen.','Der Code gilt für den gesamten Aufenthalt.'],
- fr:['Entrer et sortir','Saisir les 6 chiffres suivis de #.','Il est aussi possible d’ouvrir le portail en approchant la petite télécommande du clavier.','Pour sortir, appuyer sur le bouton carré situé sur la face intérieure de la colonne de la véranda.','Refermer le coffre à clés après avoir récupéré les clés.','Le code est valable pendant tout le séjour.'],
- es:['Entrar y salir','Introducir las 6 cifras seguidas de #.','También se puede abrir el portón acercando el pequeño mando al teclado.','Para salir, pulsar el botón cuadrado situado en el lado interior de la columna de la veranda.','Cerrar la caja de llaves después de recoger las llaves.','El código es válido durante toda la estancia.'],
- nl:['Binnenkomen en weggaan','Voer de 6 cijfers in, gevolgd door #.','De poort kan ook worden geopend door de kleine afstandsbediening dicht bij het toetsenpaneel te houden.','Druk om naar buiten te gaan op de vierkante knop aan de binnenzijde van de verandazuil.','Sluit het sleutelkluisje na het ophalen van de sleutels.','De code is geldig gedurende het hele verblijf.'],
- pl:['Wejście i wyjście','Należy wpisać 6 cyfr, a następnie #.','Bramę można też otworzyć, zbliżając mały pilot do klawiatury.','Aby wyjść, należy nacisnąć kwadratowy przycisk po wewnętrznej stronie kolumny werandy.','Po odebraniu kluczy należy zamknąć sejf na klucze.','Kod jest ważny przez cały pobyt.'],
+ en:['Entering and leaving','Enter the 6 digits followed by #.','Alternatively, hold the small gate remote close to the keypad to open the gate.','To exit, open the gate by pressing the square button on the inner side of the veranda column.','Close the key safe after collecting the keys.','The code is valid throughout your stay.'],
+ de:['Ein- und ausgehen','Die 6 Ziffern eingeben, gefolgt von #.','Alternativ lässt sich das Tor öffnen, indem die kleine Torfernbedienung nahe an das Tastenfeld gehalten wird.','Um hinauszugehen, öffne das Tor durch Drücken des quadratischen Knopfs an der Innenseite der Verandasäule.','Den Schlüsselsafe nach der Schlüsselentnahme wieder schließen.','Der Code gilt für den gesamten Aufenthalt.'],
+ fr:['Entrer et sortir','Saisir les 6 chiffres suivis de #.','Il est aussi possible d’ouvrir le portail en approchant la petite télécommande du clavier.','Pour sortir, ouvre le portail en appuyant sur le bouton carré situé sur la face intérieure de la colonne de la véranda.','Refermer le coffre à clés après avoir récupéré les clés.','Le code est valable pendant tout le séjour.'],
+ es:['Entrar y salir','Introducir las 6 cifras seguidas de #.','También se puede abrir el portón acercando el pequeño mando al teclado.','Para salir, abre el portón pulsando el botón cuadrado situado en el lado interior de la columna de la veranda.','Cerrar la caja de llaves después de recoger las llaves.','El código es válido durante toda la estancia.'],
+ nl:['Binnenkomen en weggaan','Voer de 6 cijfers in, gevolgd door #.','De poort kan ook worden geopend door de kleine afstandsbediening dicht bij het toetsenpaneel te houden.','Open om naar buiten te gaan de poort door op de vierkante knop aan de binnenzijde van de verandazuil te drukken.','Sluit het sleutelkluisje na het ophalen van de sleutels.','De code is geldig gedurende het hele verblijf.'],
+ pl:['Wejście i wyjście','Należy wpisać 6 cyfr, a następnie #.','Bramę można też otworzyć, zbliżając mały pilot do klawiatury.','Aby wyjść, otwórz bramę, naciskając kwadratowy przycisk po wewnętrznej stronie kolumny werandy.','Po odebraniu kluczy należy zamknąć sejf na klucze.','Kod jest ważny przez cały pobyt.'],
  ro:['Intrare și ieșire','Introduceți cele 6 cifre urmate de #.','Poarta se poate deschide și apropiind mica telecomandă de tastatură.','Pentru a ieși, apăsați butonul pătrat de pe partea interioară a coloanei verandei.','Închideți seiful după ridicarea cheilor.','Codul este valabil pe toată durata sejurului.'],
  cs:['Vstup a odchod','Zadejte 6 číslic a poté #.','Bránu lze také otevřít přiložením malého dálkového ovladače ke klávesnici.','Při odchodu stiskněte čtvercové tlačítko na vnitřní straně sloupu verandy.','Po vyzvednutí klíčů schránku opět zavřete.','Kód platí po celou dobu pobytu.'],
- hu:['Be- és kijutás','A 6 számjegyet, majd a # jelet kell beírni.','A kapu a kis távirányító billentyűzethez közelítésével is kinyitható.','Kifelé menet a veranda oszlopának belső oldalán lévő négyzet alakú gombot kell megnyomni.','A kulcsok átvétele után a kulcsszéfet vissza kell zárni.','A kód a teljes tartózkodás alatt érvényes.'],
+ hu:['Be- és kijutás','A 6 számjegyet, majd a # jelet kell beírni.','A kapu a kis távirányító billentyűzethez közelítésével is kinyitható.','Kifelé menet nyisd ki a kaput a veranda oszlopának belső oldalán lévő négyzet alakú gomb megnyomásával.','A kulcsok átvétele után a kulcsszéfet vissza kell zárni.','A kód a teljes tartózkodás alatt érvényes.'],
  bg:['Влизане и излизане','Въведете 6-те цифри, последвани от #.','Порталът може да се отвори и чрез доближаване на малкото дистанционно до клавиатурата.','За излизане натиснете квадратния бутон от вътрешната страна на колоната на верандата.','След вземане на ключовете затворете сейфа.','Кодът е валиден за целия престой.'],
- ja:['出入りの方法','6桁の数字に続けて # を入力してください。','小型リモコンをキーパッドに近づけても門を開けられます。','外に出るときは、ベランダの柱の内側にある四角いボタンを押してください。','鍵を取り出した後は、キーボックスを閉めてください。','暗証番号は滞在期間中ずっと有効です。']
+ ja:['出入りの方法','6桁の数字に続けて # を入力してください。','小型リモコンをキーパッドに近づけても門を開けられます。','外に出るときは、ベランダの柱の内側にある四角いボタンを押して門を開けてください。','鍵を取り出した後は、キーボックスを閉めてください。','暗証番号は滞在期間中ずっと有効です。']
 };
 function woodGateCompact(g=guest,now=new Date()){
  if(!g||g.invalid)return false;
@@ -838,18 +838,18 @@ function woodGateCompact(g=guest,now=new Date()){
 function woodGateText(lang){
  const copy=[...(WOOD_GATE_COPY[lang]||WOOD_GATE_COPY.it)];
  const actions={
-  it:['Digita le 6 cifre seguite da #.','Per uscire, premere il pulsante quadrato sul lato interno della colonna della veranda.','Dopo aver ritirato le chiavi, richiudi la cassaforte.'],
-  en:['Enter the 6 digits followed by #.','To exit, press the square button on the inner side of the veranda column.','Close the key safe after collecting the keys.'],
-  de:['Gib die 6 Ziffern ein, gefolgt von #.','Zum Verlassen den quadratischen Knopf an der Innenseite der Verandasäule drücken.','Schließe den Schlüsselsafe nach der Schlüsselentnahme wieder.'],
-  fr:['Saisis les 6 chiffres suivis de #.','Pour sortir, appuyer sur le bouton carré situé sur la face intérieure de la colonne de la véranda.','Referme le coffre à clés après avoir récupéré les clés.'],
-  es:['Introduce las 6 cifras seguidas de #.','Para salir, pulsar el botón cuadrado situado en el lado interior de la columna de la veranda.','Cierra la caja de llaves después de recoger las llaves.'],
-  nl:['Voer de 6 cijfers in, gevolgd door #.','Druk om naar buiten te gaan op de vierkante knop aan de binnenzijde van de verandazuil.','Sluit het sleutelkluisje na het ophalen van de sleutels.'],
-  pl:['Wpisz 6 cyfr, a następnie #.','Aby wyjść, należy nacisnąć kwadratowy przycisk po wewnętrznej stronie kolumny werandy.','Po odebraniu kluczy zamknij sejf na klucze.'],
-  ro:['Introdu cele 6 cifre urmate de #.','Pentru a ieși, se apasă butonul pătrat de pe partea interioară a coloanei verandei.','Închide seiful după ridicarea cheilor.'],
-  cs:['Zadej 6 číslic a poté #.','Při odchodu je třeba stisknout čtvercové tlačítko na vnitřní straně sloupu verandy.','Po vyzvednutí klíčů schránku opět zavři.'],
-  hu:['Írd be a 6 számjegyet, majd a # jelet.','Kifelé menet a veranda oszlopának belső oldalán lévő négyzet alakú gombot kell megnyomni.','A kulcsok átvétele után zárd vissza a kulcsszéfet.'],
-  bg:['Въведи 6-те цифри, последвани от #.','За излизане трябва да се натисне квадратният бутон от вътрешната страна на колоната на верандата.','След вземане на ключовете затвори сейфа.'],
-  ja:['6桁の数字に続けて # を入力してください。','外に出るときは、ベランダの柱の内側にある四角いボタンを押してください。','鍵を取り出した後は、キーボックスを閉めてください。']
+  it:['Digita le 6 cifre seguite da #.','Per uscire, apri il cancello premendo il pulsante quadrato sul lato interno della colonna della veranda.','Dopo aver ritirato le chiavi, richiudi la cassaforte.'],
+  en:['Enter the 6 digits followed by #.','To exit, open the gate by pressing the square button on the inner side of the veranda column.','Close the key safe after collecting the keys.'],
+  de:['Gib die 6 Ziffern ein, gefolgt von #.','Um hinauszugehen, öffne das Tor durch Drücken des quadratischen Knopfs an der Innenseite der Verandasäule.','Schließe den Schlüsselsafe nach der Schlüsselentnahme wieder.'],
+  fr:['Saisis les 6 chiffres suivis de #.','Pour sortir, ouvre le portail en appuyant sur le bouton carré situé sur la face intérieure de la colonne de la véranda.','Referme le coffre à clés après avoir récupéré les clés.'],
+  es:['Introduce las 6 cifras seguidas de #.','Para salir, abre el portón pulsando el botón cuadrado situado en el lado interior de la columna de la veranda.','Cierra la caja de llaves después de recoger las llaves.'],
+  nl:['Voer de 6 cijfers in, gevolgd door #.','Open om naar buiten te gaan de poort door op de vierkante knop aan de binnenzijde van de verandazuil te drukken.','Sluit het sleutelkluisje na het ophalen van de sleutels.'],
+  pl:['Wpisz 6 cyfr, a następnie #.','Aby wyjść, otwórz bramę, naciskając kwadratowy przycisk po wewnętrznej stronie kolumny werandy.','Po odebraniu kluczy zamknij sejf na klucze.'],
+  ro:['Introdu cele 6 cifre urmate de #.','Pentru a ieși, deschide poarta apăsând butonul pătrat de pe partea interioară a coloanei verandei.','Închide seiful după ridicarea cheilor.'],
+  cs:['Zadej 6 číslic a poté #.','Při odchodu otevři bránu stisknutím čtvercového tlačítka na vnitřní straně sloupu verandy.','Po vyzvednutí klíčů schránku opět zavři.'],
+  hu:['Írd be a 6 számjegyet, majd a # jelet.','Kifelé menet nyisd ki a kaput a veranda oszlopának belső oldalán lévő négyzet alakú gomb megnyomásával.','A kulcsok átvétele után zárd vissza a kulcsszéfet.'],
+  bg:['Въведи 6-те цифри, последвани от #.','За да излезеш, отвори портала, като натиснеш квадратния бутон от вътрешната страна на колоната на верандата.','След вземане на ключовете затвори сейфа.'],
+  ja:['6桁の数字に続けて # を入力してください。','外に出るときは、ベランダの柱の内側にある四角いボタンを押して門を開けてください。','鍵を取り出した後は、キーボックスを閉めてください。']
  };
  const action=actions[lang]||actions.it;
  [copy[1],copy[3],copy[4]]=action;
@@ -1010,14 +1010,15 @@ function renderWoodGateInstructions(lang){
    const contents=document.createElement('p');contents.textContent=entryCopy[2];
    intro.after(identity,contents);
   }
-  const close=document.createElement('p');close.textContent=copy[4];close.dataset.accessAction='';safe.append(close);
+  const close=document.createElement('p');close.textContent=copy[4];close.dataset.accessAction='';safe.after(close);
   const remote=safe.querySelector('.remote-note');if(remote){
    remote.classList.add('entry-remote-note');
    if(lang==='it'){
     const text=remote.textContent,split=text.indexOf('il mini-telecomando');
     if(split>0){const first=document.createElement('span'),second=document.createElement('span');first.textContent=text.slice(0,split);second.textContent=text.slice(split);remote.replaceChildren(first,second);}
    }
-   safe.after(remote);
+   const remoteItem=safe.querySelector('.keyring-items li:last-child');
+   if(remoteItem)remoteItem.append(remote);
   }
   const upstairs=document.createElement('p');upstairs.className='entry-upstairs';upstairs.textContent=entryCopy[3];panel.append(upstairs);
  }
